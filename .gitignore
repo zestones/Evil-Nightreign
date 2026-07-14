@@ -1,8 +1,11 @@
 # Local working copies of game files — never commit (copyright, large)
-inputs/
+# (keep the empty folder so the structure is visible on a fresh clone)
+inputs/*
+!inputs/.gitkeep
 
 # Big regenerable data intermediates (rebuild with `nr data`)
-data/raw/
+data/raw/*
+!data/raw/.gitkeep
 
 # Python
 __pycache__/
