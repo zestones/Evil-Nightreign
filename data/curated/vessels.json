@@ -1,0 +1,1232 @@
+{
+ "Duchess": [
+  {
+   "name": "Duchess' Chalice",
+   "slots": [
+    "Blue",
+    "Yellow",
+    "Any",
+    "Red",
+    "Blue",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Duchess' Goblet",
+   "slots": [
+    "Yellow",
+    "Yellow",
+    "Green",
+    "Yellow",
+    "Yellow",
+    "Green"
+   ]
+  },
+  {
+   "name": "Duchess' Urn",
+   "slots": [
+    "Red",
+    "Blue",
+    "Blue",
+    "Red",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Soot-Covered Duchess' Urn",
+   "slots": [
+    "Red",
+    "Red",
+    "Green",
+    "Red",
+    "Red",
+    "Green"
+   ]
+  },
+  {
+   "name": "Sealed Duchess' Urn",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Red",
+    "Green",
+    "Green",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Decrepit Duchess' Goblet",
+   "slots": [
+    "Blue",
+    "Green",
+    "Green",
+    "Blue",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Forgotten Duchess' Goblet",
+   "slots": [
+    "Green",
+    "Yellow",
+    "Yellow",
+    "Red",
+    "Green",
+    "Any"
+   ]
+  },
+  {
+   "name": "Giant's Cradle Grail",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Sacred Erdtree Grail",
+   "slots": [
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Spirit Shelter Grail",
+   "slots": [
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Scadutree Grail",
+   "slots": [
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red"
+   ]
+  }
+ ],
+ "Executor": [
+  {
+   "name": "Executor's Chalice",
+   "slots": [
+    "Blue",
+    "Yellow",
+    "Any",
+    "Yellow",
+    "Yellow",
+    "Green"
+   ]
+  },
+  {
+   "name": "Executor's Goblet",
+   "slots": [
+    "Red",
+    "Blue",
+    "Green",
+    "Red",
+    "Blue",
+    "Green"
+   ]
+  },
+  {
+   "name": "Executor's Urn",
+   "slots": [
+    "Red",
+    "Yellow",
+    "Yellow",
+    "Red",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Soot-Covered Executor's Urn",
+   "slots": [
+    "Red",
+    "Red",
+    "Blue",
+    "Red",
+    "Red",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Sealed Executor's Urn",
+   "slots": [
+    "Yellow",
+    "Yellow",
+    "Red",
+    "Green",
+    "Green",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Decrepit Executor's Goblet",
+   "slots": [
+    "Red",
+    "Red",
+    "Yellow",
+    "Red",
+    "Red",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Forgotten Executor's Goblet",
+   "slots": [
+    "Green",
+    "Blue",
+    "Red",
+    "Yellow",
+    "Green",
+    "Any"
+   ]
+  },
+  {
+   "name": "Giant's Cradle Grail",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Sacred Erdtree Grail",
+   "slots": [
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Spirit Shelter Grail",
+   "slots": [
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Scadutree Grail",
+   "slots": [
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red"
+   ]
+  }
+ ],
+ "Guardian": [
+  {
+   "name": "Guardian's Chalice",
+   "slots": [
+    "Blue",
+    "Yellow",
+    "Any",
+    "Red",
+    "Blue",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Guardian's Goblet",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Green",
+    "Blue",
+    "Blue",
+    "Green"
+   ]
+  },
+  {
+   "name": "Guardian's Urn",
+   "slots": [
+    "Red",
+    "Yellow",
+    "Yellow",
+    "Red",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Soot-Covered Guardian's Urn",
+   "slots": [
+    "Red",
+    "Green",
+    "Green",
+    "Red",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Sealed Guardian's Urn",
+   "slots": [
+    "Yellow",
+    "Yellow",
+    "Red",
+    "Green",
+    "Green",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Decrepit Guardian's Goblet",
+   "slots": [
+    "Yellow",
+    "Green",
+    "Green",
+    "Yellow",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Forgotten Guardian's Goblet",
+   "slots": [
+    "Green",
+    "Blue",
+    "Blue",
+    "Red",
+    "Blue",
+    "Any"
+   ]
+  },
+  {
+   "name": "Giant's Cradle Grail",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Sacred Erdtree Grail",
+   "slots": [
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Spirit Shelter Grail",
+   "slots": [
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Scadutree Grail",
+   "slots": [
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red"
+   ]
+  }
+ ],
+ "Ironeye": [
+  {
+   "name": "Ironeye's Chalice",
+   "slots": [
+    "Red",
+    "Green",
+    "Any",
+    "Red",
+    "Red",
+    "Green"
+   ]
+  },
+  {
+   "name": "Ironeye's Goblet",
+   "slots": [
+    "Red",
+    "Blue",
+    "Yellow",
+    "Red",
+    "Blue",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Ironeye's Urn",
+   "slots": [
+    "Yellow",
+    "Green",
+    "Green",
+    "Yellow",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Soot-Covered Ironeye's Urn",
+   "slots": [
+    "Blue",
+    "Yellow",
+    "Yellow",
+    "Blue",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Sealed Ironeye's Urn",
+   "slots": [
+    "Green",
+    "Green",
+    "Yellow",
+    "Blue",
+    "Blue",
+    "Red"
+   ]
+  },
+  {
+   "name": "Decrepit Ironeye's Goblet",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Green",
+    "Blue",
+    "Blue",
+    "Green"
+   ]
+  },
+  {
+   "name": "Forgotten Ironeye's Goblet",
+   "slots": [
+    "Yellow",
+    "Blue",
+    "Red",
+    "Yellow",
+    "Green",
+    "Any"
+   ]
+  },
+  {
+   "name": "Giant's Cradle Grail",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Sacred Erdtree Grail",
+   "slots": [
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Spirit Shelter Grail",
+   "slots": [
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Scadutree Grail",
+   "slots": [
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red"
+   ]
+  }
+ ],
+ "Raider": [
+  {
+   "name": "Raider's Chalice",
+   "slots": [
+    "Red",
+    "Red",
+    "Any",
+    "Red",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Raider's Goblet",
+   "slots": [
+    "Red",
+    "Blue",
+    "Yellow",
+    "Red",
+    "Blue",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Raider's Urn",
+   "slots": [
+    "Red",
+    "Green",
+    "Green",
+    "Red",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Soot-Covered Raider's Urn",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Green",
+    "Blue",
+    "Blue",
+    "Green"
+   ]
+  },
+  {
+   "name": "Sealed Raider's Urn",
+   "slots": [
+    "Green",
+    "Green",
+    "Red",
+    "Yellow",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Decrepit Raider's Goblet",
+   "slots": [
+    "Yellow",
+    "Yellow",
+    "Green",
+    "Yellow",
+    "Yellow",
+    "Green"
+   ]
+  },
+  {
+   "name": "Forgotten Raider's Goblet",
+   "slots": [
+    "Yellow",
+    "Blue",
+    "Red",
+    "Red",
+    "Green",
+    "Any"
+   ]
+  },
+  {
+   "name": "Giant's Cradle Grail",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Sacred Erdtree Grail",
+   "slots": [
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Spirit Shelter Grail",
+   "slots": [
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Scadutree Grail",
+   "slots": [
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red"
+   ]
+  }
+ ],
+ "Recluse": [
+  {
+   "name": "Recluse's Chalice",
+   "slots": [
+    "Yellow",
+    "Green",
+    "Any",
+    "Blue",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Recluse's Goblet",
+   "slots": [
+    "Red",
+    "Blue",
+    "Yellow",
+    "Red",
+    "Blue",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Recluse's Urn",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Green",
+    "Blue",
+    "Blue",
+    "Green"
+   ]
+  },
+  {
+   "name": "Soot-Covered Recluse's Urn",
+   "slots": [
+    "Red",
+    "Red",
+    "Yellow",
+    "Red",
+    "Red",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Sealed Recluse's Urn",
+   "slots": [
+    "Green",
+    "Blue",
+    "Blue",
+    "Yellow",
+    "Yellow",
+    "Red"
+   ]
+  },
+  {
+   "name": "Decrepit Recluse's Goblet",
+   "slots": [
+    "Red",
+    "Red",
+    "Blue",
+    "Red",
+    "Red",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Forgotten Recluse's Goblet",
+   "slots": [
+    "Yellow",
+    "Blue",
+    "Red",
+    "Blue",
+    "Green",
+    "Any"
+   ]
+  },
+  {
+   "name": "Giant's Cradle Grail",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Sacred Erdtree Grail",
+   "slots": [
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Spirit Shelter Grail",
+   "slots": [
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Scadutree Grail",
+   "slots": [
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red"
+   ]
+  }
+ ],
+ "Revenant": [
+  {
+   "name": "Revenant's Chalice",
+   "slots": [
+    "Blue",
+    "Green",
+    "Any",
+    "Blue",
+    "Yellow",
+    "Green"
+   ]
+  },
+  {
+   "name": "Revenant's Goblet",
+   "slots": [
+    "Red",
+    "Red",
+    "Green",
+    "Red",
+    "Red",
+    "Green"
+   ]
+  },
+  {
+   "name": "Revenant's Urn",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Yellow",
+    "Blue",
+    "Blue",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Soot-Covered Revenant's Urn",
+   "slots": [
+    "Red",
+    "Yellow",
+    "Yellow",
+    "Red",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Sealed Revenant's Urn",
+   "slots": [
+    "Yellow",
+    "Blue",
+    "Blue",
+    "Green",
+    "Green",
+    "Red"
+   ]
+  },
+  {
+   "name": "Decrepit Revenant's Goblet",
+   "slots": [
+    "Red",
+    "Red",
+    "Yellow",
+    "Red",
+    "Red",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Forgotten Revenant's Goblet",
+   "slots": [
+    "Green",
+    "Red",
+    "Red",
+    "Yellow",
+    "Green",
+    "Any"
+   ]
+  },
+  {
+   "name": "Giant's Cradle Grail",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Sacred Erdtree Grail",
+   "slots": [
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Spirit Shelter Grail",
+   "slots": [
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Scadutree Grail",
+   "slots": [
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red"
+   ]
+  }
+ ],
+ "Wylder": [
+  {
+   "name": "Wylder's Chalice",
+   "slots": [
+    "Red",
+    "Yellow",
+    "Any",
+    "Red",
+    "Blue",
+    "Green"
+   ]
+  },
+  {
+   "name": "Wylder's Goblet",
+   "slots": [
+    "Yellow",
+    "Green",
+    "Green",
+    "Yellow",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Wylder's Urn",
+   "slots": [
+    "Red",
+    "Red",
+    "Blue",
+    "Red",
+    "Red",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Soot-Covered Wylder's Urn",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Yellow",
+    "Blue",
+    "Blue",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Sealed Wylder's Urn",
+   "slots": [
+    "Blue",
+    "Red",
+    "Red",
+    "Green",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Decrepit Wylder's Goblet",
+   "slots": [
+    "Blue",
+    "Green",
+    "Yellow",
+    "Blue",
+    "Green",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Forgotten Wylder's Goblet",
+   "slots": [
+    "Green",
+    "Green",
+    "Yellow",
+    "Red",
+    "Green",
+    "Any"
+   ]
+  },
+  {
+   "name": "Giant's Cradle Grail",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Sacred Erdtree Grail",
+   "slots": [
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Spirit Shelter Grail",
+   "slots": [
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Scadutree Grail",
+   "slots": [
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red"
+   ]
+  }
+ ],
+ "Scholar": [
+  {
+   "name": "Scholar's Chalice",
+   "slots": [
+    "Red",
+    "Blue",
+    "Any",
+    "Red",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Scholar's Goblet",
+   "slots": [
+    "Blue",
+    "Green",
+    "Yellow",
+    "Blue",
+    "Green",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Scholar's Urn",
+   "slots": [
+    "Red",
+    "Red",
+    "Yellow",
+    "Red",
+    "Red",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Sealed Scholar's Urn",
+   "slots": [
+    "Yellow",
+    "Red",
+    "Red",
+    "Green",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Soot-Covered Scholar's Urn",
+   "slots": [
+    "Blue",
+    "Green",
+    "Green",
+    "Blue",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Decrepit Scholar's Goblet",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Green",
+    "Blue",
+    "Blue",
+    "Green"
+   ]
+  },
+  {
+   "name": "Forgotten Scholar's Goblet",
+   "slots": [
+    "Yellow",
+    "Green",
+    "Blue",
+    "Red",
+    "Green",
+    "Any"
+   ]
+  },
+  {
+   "name": "Giant's Cradle Grail",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Sacred Erdtree Grail",
+   "slots": [
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Spirit Shelter Grail",
+   "slots": [
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Scadutree Grail",
+   "slots": [
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red"
+   ]
+  }
+ ],
+ "Undertaker": [
+  {
+   "name": "Undertaker's Chalice",
+   "slots": [
+    "Green",
+    "Yellow",
+    "Any",
+    "Blue",
+    "Green",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Undertaker's Goblet",
+   "slots": [
+    "Red",
+    "Yellow",
+    "Yellow",
+    "Red",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Undertaker's Urn",
+   "slots": [
+    "Blue",
+    "Green",
+    "Green",
+    "Blue",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Sealed Undertaker's Urn",
+   "slots": [
+    "Green",
+    "Green",
+    "Blue",
+    "Yellow",
+    "Red",
+    "Red"
+   ]
+  },
+  {
+   "name": "Soot-Covered Undertaker's Urn",
+   "slots": [
+    "Red",
+    "Red",
+    "Blue",
+    "Red",
+    "Red",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Decrepit Undertaker's Goblet",
+   "slots": [
+    "Red",
+    "Blue",
+    "Blue",
+    "Red",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Forgotten Undertaker's Goblet",
+   "slots": [
+    "Yellow",
+    "Yellow",
+    "Red",
+    "Blue",
+    "Yellow",
+    "Green"
+   ]
+  },
+  {
+   "name": "Giant's Cradle Grail",
+   "slots": [
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Sacred Erdtree Grail",
+   "slots": [
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Spirit Shelter Grail",
+   "slots": [
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green",
+    "Green"
+   ]
+  },
+  {
+   "name": "Scadutree Grail",
+   "slots": [
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red",
+    "Red"
+   ]
+  }
+ ]
+}

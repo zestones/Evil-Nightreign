@@ -1,0 +1,5202 @@
+{
+ "": {
+  "npc_id": 100000,
+  "name": "[Ultimate - Executor] Aspect of the Crucible: Beast",
+  "hp": 63936,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Condemned Invader Standin": {
+  "npc_id": 1000000,
+  "name": "Condemned Invader Standin",
+  "hp": 1939,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Flame of Frenzy": {
+  "npc_id": 10000400,
+  "name": "Flame of Frenzy (Random Encounter)",
+  "hp": 1939,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Coffin": {
+  "npc_id": 10000500,
+  "name": "Coffin",
+  "hp": 1939,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Black Knife Assassin": {
+  "npc_id": 21000020,
+  "name": "Black Knife Assassin (Field Boss)",
+  "hp": 904,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.9,
+   "blow": 0.9,
+   "thrust": 0.65,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 154,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Morgott": {
+  "npc_id": 21300000,
+  "name": "Morgott",
+  "hp": 2521,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Omen": {
+  "npc_id": 21403000,
+  "name": "Omen",
+  "hp": 1625,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Omen - Sword": {
+  "npc_id": 21400310,
+  "name": "Omen - Sword (Eastern Underground Fort Elite)",
+  "hp": 1082,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Omen - Axe": {
+  "npc_id": 21401310,
+  "name": "Omen - Axe (Eastern Underground Fort Elite)",
+  "hp": 1082,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Lightning Ball": {
+  "npc_id": 21500300,
+  "name": "Lightning Ball",
+  "hp": 5120,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Crucible Knight": {
+  "npc_id": 25009999,
+  "name": "Crucible Knight",
+  "hp": 63936,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Crucible Knight - Sword": {
+  "npc_id": 25000110,
+  "name": "Crucible Knight - Sword (Ruins Group Boss)",
+  "hp": 1302,
+  "damage_multiplier": {
+   "phys": 0.65,
+   "slash": 0.65,
+   "blow": 0.65,
+   "thrust": 0.65,
+   "magic": 0.6,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 999,
+   "frost": 252,
+   "sleep": 252,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Crucible Knight - Spear": {
+  "npc_id": 25001040,
+  "name": "Crucible Knight - Spear (Ruins Group Boss)",
+  "hp": 1086,
+  "damage_multiplier": {
+   "phys": 0.65,
+   "slash": 0.65,
+   "blow": 0.65,
+   "thrust": 0.65,
+   "magic": 0.6,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 999,
+   "frost": 252,
+   "sleep": 252,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Exile Soldier": {
+  "npc_id": 30009900,
+  "name": "Exile Soldier",
+  "hp": 63936,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Banished Knight": {
+  "npc_id": 30100275,
+  "name": "Banished Knight",
+  "hp": 2609,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 1.0,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Outland Commander": {
+  "npc_id": 30500000,
+  "name": "Outland Commander",
+  "hp": 2834,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Battlefield Commander": {
+  "npc_id": 30500100,
+  "name": "Battlefield Commander",
+  "hp": 2834,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Giant Skeleton": {
+  "npc_id": 30600000,
+  "name": "Giant Skeleton",
+  "hp": 671,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 0.9,
+   "blow": 1.4,
+   "thrust": 0.65,
+   "magic": 1.0,
+   "fire": 0.8,
+   "lightning": 0.6,
+   "holy": 1.4
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Bell Bearing Hunter": {
+  "npc_id": 31000010,
+  "name": "Bell Bearing Hunter (Field Boss)",
+  "hp": 2359,
+  "damage_multiplier": {
+   "phys": 0.65,
+   "slash": 0.65,
+   "blow": 0.65,
+   "thrust": 0.9,
+   "magic": 0.6,
+   "fire": 0.6,
+   "lightning": 0.8,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Night's Cavalry": {
+  "npc_id": 31500000,
+  "name": "Night's Cavalry",
+  "hp": 1006,
+  "damage_multiplier": {
+   "phys": 0.65,
+   "slash": 0.65,
+   "blow": 0.65,
+   "thrust": 0.9,
+   "magic": 0.6,
+   "fire": 0.6,
+   "lightning": 0.8,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Funeral Steed": {
+  "npc_id": 31600000,
+  "name": "Funeral Steed",
+  "hp": 1089,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 1.0,
+   "blow": 0.9,
+   "thrust": 0.9,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Albinauric Archer's Wolf": {
+  "npc_id": 31800000,
+  "name": "Albinauric Archer's Wolf",
+  "hp": 538,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 154,
+   "frost": 252,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Red Wolf of Radagon": {
+  "npc_id": 31810000,
+  "name": "Red Wolf of Radagon",
+  "hp": 1293,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 0.6,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Red Wolf of the Champion": {
+  "npc_id": 31810040,
+  "name": "Red Wolf of the Champion (Ruins Boss)",
+  "hp": 1293,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 0.6,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Nomadic Merchant": {
+  "npc_id": 32000000,
+  "name": "Nomadic Merchant",
+  "hp": 1282,
+  "damage_multiplier": {
+   "phys": 1.1,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.1,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 154,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Draconic Tree Sentinel": {
+  "npc_id": 32500010,
+  "name": "Draconic Tree Sentinel",
+  "hp": 2324,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 0.9,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 0.6,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Tree Sentinel": {
+  "npc_id": 32510020,
+  "name": "Tree Sentinel (Field Boss)",
+  "hp": 2033,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 0.9,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 1.0,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Royal Carian Knight": {
+  "npc_id": 32520010,
+  "name": "Royal Carian Knight (Field Boss)",
+  "hp": 2148,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.9,
+   "blow": 0.9,
+   "thrust": 0.9,
+   "magic": 0.6,
+   "fire": 0.6,
+   "lightning": 1.0,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Nox Swordstress/Monk/Nightmaiden": {
+  "npc_id": 33000010,
+  "name": "Nox Swordstress/Monk/Nightmaiden (Dragonkin Soldier Prelude)",
+  "hp": 659,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.2
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Nox Monk": {
+  "npc_id": 33000020,
+  "name": "Nox Monk (Evergaol)",
+  "hp": 659,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.2
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Nox Swordstress": {
+  "npc_id": 33001020,
+  "name": "Nox Swordstress (Evergaol)",
+  "hp": 659,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.2
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Silver Tear Ball": {
+  "npc_id": 33300010,
+  "name": "Silver Tear Ball (Great Church)",
+  "hp": 552,
+  "damage_multiplier": {
+   "phys": 0.65,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 0.65,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 1.0,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 999,
+   "frost": 252,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Crystalian": {
+  "npc_id": 33509000,
+  "name": "Crystalian",
+  "hp": 15706,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 0.65,
+   "magic": 0.6,
+   "fire": 0.6,
+   "lightning": 0.6,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 999,
+   "frost": 252,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Putrid Ancestral Follower": {
+  "npc_id": 33619000,
+  "name": "Putrid Ancestral Follower",
+  "hp": 2560,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 100,
+   "bleed": 100,
+   "frost": 100,
+   "sleep": 100,
+   "madness": 100,
+   "rot": 100,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Grave Warden Duelist": {
+  "npc_id": 34000000,
+  "name": "Grave Warden Duelist",
+  "hp": 1280,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 84,
+   "frost": 112,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Grave Warden Duelist - Greataxe": {
+  "npc_id": 34000110,
+  "name": "Grave Warden Duelist - Greataxe (Blacksmith Group Boss)",
+  "hp": 1280,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 84,
+   "frost": 112,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Grave Warden Duelist - Hammers": {
+  "npc_id": 34001110,
+  "name": "Grave Warden Duelist - Hammers (Blacksmith Group Boss)",
+  "hp": 960,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 84,
+   "frost": 112,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Misbegotten": {
+  "npc_id": 34500200,
+  "name": "Misbegotten",
+  "hp": 2640,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Scaly Misbegotten": {
+  "npc_id": 34510000,
+  "name": "Scaly Misbegotten",
+  "hp": 531,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 0.9,
+   "blow": 1.0,
+   "thrust": 1.1,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Leonine Misbegotten": {
+  "npc_id": 34600020,
+  "name": "Leonine Misbegotten (Field Boss)",
+  "hp": 1240,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 1.0,
+   "blow": 0.9,
+   "thrust": 0.9,
+   "magic": 0.8,
+   "fire": 1.0,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Large Albinauric": {
+  "npc_id": 34715315,
+  "name": "Large Albinauric (Ruins, healthbar)",
+  "hp": 2006,
+  "damage_multiplier": {
+   "phys": 1.1,
+   "slash": 1.1,
+   "blow": 0.9,
+   "thrust": 1.1,
+   "magic": 1.0,
+   "fire": 0.8,
+   "lightning": 1.2,
+   "holy": 1.4
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 84,
+   "frost": 252,
+   "sleep": 84,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Large Blood Albinauric": {
+  "npc_id": 34715210,
+  "name": "Large Blood Albinauric (Lord of Blood Prelude)",
+  "hp": 669,
+  "damage_multiplier": {
+   "phys": 1.1,
+   "slash": 1.1,
+   "blow": 0.9,
+   "thrust": 1.1,
+   "magic": 1.0,
+   "fire": 0.6,
+   "lightning": 1.2,
+   "holy": 1.4
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 63,
+   "frost": 84,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Sanguine Noble": {
+  "npc_id": 35500015,
+  "name": "Sanguine Noble",
+  "hp": 1164,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 84,
+   "frost": 112,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Godskin Apostle": {
+  "npc_id": 35600900,
+  "name": "Godskin Apostle",
+  "hp": 4015,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 0.8,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 112,
+   "frost": 154,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Godskin Noble": {
+  "npc_id": 35700000,
+  "name": "Godskin Noble",
+  "hp": 2439,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 0.65,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 0.8,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 112,
+   "frost": 154,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Alabaster Lord": {
+  "npc_id": 36000000,
+  "name": "Alabaster Lord",
+  "hp": 985,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.9,
+   "blow": 0.9,
+   "thrust": 0.9,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 999,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Onyx Lord": {
+  "npc_id": 36001000,
+  "name": "Onyx Lord",
+  "hp": 985,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.9,
+   "blow": 0.9,
+   "thrust": 0.9,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 999,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Oracle Envoy": {
+  "npc_id": 36200015,
+  "name": "Oracle Envoy (Large)",
+  "hp": 1042,
+  "damage_multiplier": {
+   "phys": 1.1,
+   "slash": 1.1,
+   "blow": 0.9,
+   "thrust": 1.1,
+   "magic": 1.0,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 84,
+   "frost": 112,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Erdtree Guardian": {
+  "npc_id": 36501110,
+  "name": "Erdtree Guardian",
+  "hp": 609,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 0.6,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 112,
+   "frost": 84,
+   "sleep": 84,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Putrid Corpse": {
+  "npc_id": 36629010,
+  "name": "Putrid Corpse (Large)",
+  "hp": 2560,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 100,
+   "bleed": 100,
+   "frost": 100,
+   "sleep": 100,
+   "madness": 100,
+   "rot": 100,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Depraved Perfumer": {
+  "npc_id": 37000093,
+  "name": "Depraved Perfumer",
+  "hp": 1152,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 84,
+   "frost": 112,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Page": {
+  "npc_id": 37031000,
+  "name": "Page",
+  "hp": 582,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 84,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 84,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Battlemage": {
+  "npc_id": 37040093,
+  "name": "Battlemage",
+  "hp": 1792,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.6,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 0.5,
+  "status_resistance": {
+   "poison": 84,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 84,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Graven Mass": {
+  "npc_id": 37300210,
+  "name": "Graven Mass (Western Underground Fort Elite)",
+  "hp": 593,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 0.2,
+   "magic": 0.2,
+   "fire": 0.6,
+   "lightning": 0.6,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Cleanrot Knight - Spear": {
+  "npc_id": 38000010,
+  "name": "Cleanrot Knight - Spear (Marsh Boss)",
+  "hp": 841,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 1.2,
+   "lightning": 1.0,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Fire Monk": {
+  "npc_id": 39000000,
+  "name": "Fire Monk",
+  "hp": 755,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 0.9,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 0.6,
+   "lightning": 0.8,
+   "holy": 1.2
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 112,
+   "frost": 252,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Blackflame Monk": {
+  "npc_id": 39010000,
+  "name": "Blackflame Monk",
+  "hp": 594,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 0.9,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 0.6,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 112,
+   "frost": 154,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Blackflame Monk - Mace": {
+  "npc_id": 39010020,
+  "name": "Blackflame Monk - Mace (Blacksmith Group Boss)",
+  "hp": 594,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 0.9,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 0.6,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 112,
+   "frost": 154,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Blackflame Monk - Sword": {
+  "npc_id": 39011020,
+  "name": "Blackflame Monk - Sword (Blacksmith Group Boss)",
+  "hp": 594,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 0.9,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 0.6,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 112,
+   "frost": 154,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Fire Prelate": {
+  "npc_id": 39100100,
+  "name": "Fire Prelate",
+  "hp": 1164,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 0.9,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 0.8,
+   "holy": 1.2
+  },
+  "weak_point_multiplier": 0.5,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 112,
+   "frost": 252,
+   "sleep": 252,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Azula Beastman": {
+  "npc_id": 39700500,
+  "name": "Azula Beastman",
+  "hp": 3280,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 0.8,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 84,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Royal Revenant": {
+  "npc_id": 40210000,
+  "name": "Royal Revenant",
+  "hp": 2279,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Kaiden Sellsword": {
+  "npc_id": 40509500,
+  "name": "Kaiden Sellsword",
+  "hp": 99999,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.2,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 154,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Giant Rat": {
+  "npc_id": 40900000,
+  "name": "Giant Rat",
+  "hp": 556,
+  "damage_multiplier": {
+   "phys": 1.1,
+   "slash": 1.4,
+   "blow": 1.1,
+   "thrust": 1.1,
+   "magic": 1.2,
+   "fire": 1.4,
+   "lightning": 1.2,
+   "holy": 1.2
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 84,
+   "frost": 112,
+   "sleep": 84,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Demi-Human Shaman": {
+  "npc_id": 41109000,
+  "name": "Demi-Human Shaman",
+  "hp": 599,
+  "damage_multiplier": {
+   "phys": 1.1,
+   "slash": 1.4,
+   "blow": 1.1,
+   "thrust": 1.1,
+   "magic": 1.2,
+   "fire": 1.2,
+   "lightning": 1.2,
+   "holy": 1.2
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 84,
+   "bleed": 84,
+   "frost": 84,
+   "sleep": 84,
+   "madness": 999,
+   "rot": 84,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Demi-Human Chief": {
+  "npc_id": 41200000,
+  "name": "Demi-Human Chief",
+  "hp": 534,
+  "damage_multiplier": {
+   "phys": 1.1,
+   "slash": 1.4,
+   "blow": 1.1,
+   "thrust": 1.1,
+   "magic": 1.2,
+   "fire": 1.2,
+   "lightning": 1.2,
+   "holy": 1.2
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 84,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 84,
+   "madness": 999,
+   "rot": 84,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Demi-Human Queen": {
+  "npc_id": 41301000,
+  "name": "Demi-Human Queen",
+  "hp": 1587,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 84,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 84,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Spiritcaller Snail": {
+  "npc_id": 41402210,
+  "name": "Spiritcaller Snail (Great Church Boss)",
+  "hp": 584,
+  "damage_multiplier": {
+   "phys": 1.1,
+   "slash": 1.4,
+   "blow": 1.1,
+   "thrust": 1.1,
+   "magic": 0.6,
+   "fire": 1.0,
+   "lightning": 1.2,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 84,
+   "bleed": 84,
+   "frost": 63,
+   "sleep": 63,
+   "madness": 999,
+   "rot": 84,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Putrid Flesh": {
+  "npc_id": 41710000,
+  "name": "Putrid Flesh (Large)",
+  "hp": 1048,
+  "damage_multiplier": {
+   "phys": 0.65,
+   "slash": 0.65,
+   "blow": 0.65,
+   "thrust": 0.65,
+   "magic": 0.8,
+   "fire": 1.0,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 154,
+   "frost": 112,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Fingercreeper": {
+  "npc_id": 42410000,
+  "name": "Fingercreeper (Large)",
+  "hp": 1021,
+  "damage_multiplier": {
+   "phys": 1.1,
+   "slash": 1.4,
+   "blow": 1.1,
+   "thrust": 1.1,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 84,
+   "frost": 112,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Erdtree Burial Watchdog": {
+  "npc_id": 42600615,
+  "name": "Erdtree Burial Watchdog",
+  "hp": 2105,
+  "damage_multiplier": {
+   "phys": 0.65,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 0.65,
+   "magic": 0.6,
+   "fire": 0.6,
+   "lightning": 0.6,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.0,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Elder Lion": {
+  "npc_id": 42700035,
+  "name": "Elder Lion",
+  "hp": 2560,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Bloodhound Knight": {
+  "npc_id": 42900010,
+  "name": "Bloodhound Knight (Evergaol)",
+  "hp": 1187,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.9,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.2,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Mad Pumpkin Head": {
+  "npc_id": 43408000,
+  "name": "Mad Pumpkin Head",
+  "hp": 1229,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.2,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 0.2,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 84,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Lordsworn Captain": {
+  "npc_id": 43510000,
+  "name": "Lordsworn Captain",
+  "hp": 576,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 1.0,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Cuckoo Knight": {
+  "npc_id": 43520000,
+  "name": "Cuckoo Knight",
+  "hp": 576,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.6,
+   "fire": 0.8,
+   "lightning": 1.0,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Cuckoo Knight - Sword": {
+  "npc_id": 43520020,
+  "name": "Cuckoo Knight - Sword (Marsh Group Boss)",
+  "hp": 576,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.6,
+   "fire": 0.8,
+   "lightning": 1.0,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 542,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Cuckoo Knight - Spear": {
+  "npc_id": 43521020,
+  "name": "Cuckoo Knight - Spear (Marsh Group Boss)",
+  "hp": 576,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.6,
+   "fire": 0.8,
+   "lightning": 1.0,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 542,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Leyndell Knight": {
+  "npc_id": 43530190,
+  "name": "Leyndell Knight",
+  "hp": 1900,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.6,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Redmane Knight": {
+  "npc_id": 43540015,
+  "name": "Redmane Knight (Encampment, healthbar)",
+  "hp": 1728,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 1.0,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Mausoleum Knight": {
+  "npc_id": 43550000,
+  "name": "Mausoleum Knight",
+  "hp": 576,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Mausoleum Knight - Sword": {
+  "npc_id": 43550040,
+  "name": "Mausoleum Knight - Sword (Death Knights Prelude)",
+  "hp": 576,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Giant Crayfish": {
+  "npc_id": 44202010,
+  "name": "Giant Crayfish (Great Church Boss)",
+  "hp": 1567,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 1.0,
+   "thrust": 0.9,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 4.0,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 84,
+   "sleep": 84,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Frost Crayfish": {
+  "npc_id": 44203010,
+  "name": "Frost Crayfish (Marsh Boss)",
+  "hp": 876,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 1.0,
+   "thrust": 0.65,
+   "magic": 0.8,
+   "fire": 1.2,
+   "lightning": 1.0,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 4.0,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 999,
+   "sleep": 84,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Flame Chariot": {
+  "npc_id": 44600015,
+  "name": "Flame Chariot (Encampment, healthbar)",
+  "hp": 5069,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.9,
+   "blow": 1.0,
+   "thrust": 0.9,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.0,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 154,
+   "frost": 252,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Abductor Virgin": {
+  "npc_id": 44700020,
+  "name": "Abductor Virgin",
+  "hp": 1601,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.9,
+   "blow": 1.0,
+   "thrust": 0.9,
+   "magic": 1.0,
+   "fire": 0.8,
+   "lightning": 1.2,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 2.0,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Miranda Blossom": {
+  "npc_id": 44800000,
+  "name": "Miranda Blossom",
+  "hp": 1939,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.4,
+   "blow": 0.65,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.4,
+   "lightning": 0.6,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 542,
+   "bleed": 252,
+   "frost": 63,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Frenzied Miranda": {
+  "npc_id": 44800110,
+  "name": "Frenzied Miranda (Marsh Group Boss)",
+  "hp": 1395,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.4,
+   "blow": 0.65,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 0.6,
+   "lightning": 0.6,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 542,
+   "bleed": 252,
+   "frost": 63,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Flying Dragon": {
+  "npc_id": 45000010,
+  "name": "Flying Dragon (Field Boss)",
+  "hp": 1518,
+  "damage_multiplier": {
+   "phys": 0.65,
+   "slash": 0.65,
+   "blow": 0.65,
+   "thrust": 0.9,
+   "magic": 0.6,
+   "fire": 0.6,
+   "lightning": 0.6,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Decaying Ekzykes": {
+  "npc_id": 45010000,
+  "name": "Decaying Ekzykes",
+  "hp": 5753,
+  "damage_multiplier": {
+   "phys": 1.4,
+   "slash": 1.4,
+   "blow": 1.4,
+   "thrust": 1.1,
+   "magic": 1.4,
+   "fire": 2.0,
+   "lightning": 1.4,
+   "holy": 1.4
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 542,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 542,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Borealis the Freezing Fog": {
+  "npc_id": 45030020,
+  "name": "Borealis the Freezing Fog",
+  "hp": 2142,
+  "damage_multiplier": {
+   "phys": 0.65,
+   "slash": 0.2,
+   "blow": 0.9,
+   "thrust": 0.2,
+   "magic": 0.6,
+   "fire": 0.6,
+   "lightning": 0.6,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 252,
+   "frost": 542,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Mountaintop Ice Dragon": {
+  "npc_id": 45030010,
+  "name": "Mountaintop Ice Dragon (Boss)",
+  "hp": 2142,
+  "damage_multiplier": {
+   "phys": 0.65,
+   "slash": 0.2,
+   "blow": 0.9,
+   "thrust": 0.2,
+   "magic": 0.6,
+   "fire": 0.6,
+   "lightning": 0.6,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 252,
+   "frost": 542,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Ancient Dragon": {
+  "npc_id": 45101100,
+  "name": "Ancient Dragon",
+  "hp": 2575,
+  "damage_multiplier": {
+   "phys": 0.65,
+   "slash": 0.65,
+   "blow": 0.65,
+   "thrust": 0.9,
+   "magic": 0.6,
+   "fire": 0.6,
+   "lightning": 0.2,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 2.0,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Giant Dog": {
+  "npc_id": 45500000,
+  "name": "Giant Dog",
+  "hp": 668,
+  "damage_multiplier": {
+   "phys": 1.1,
+   "slash": 1.4,
+   "blow": 1.1,
+   "thrust": 1.1,
+   "magic": 1.2,
+   "fire": 1.4,
+   "lightning": 1.2,
+   "holy": 1.2
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 84,
+   "bleed": 84,
+   "frost": 112,
+   "sleep": 84,
+   "madness": 999,
+   "rot": 84,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Giant Crow": {
+  "npc_id": 45600000,
+  "name": "Giant Crow",
+  "hp": 1126,
+  "damage_multiplier": {
+   "phys": 1.1,
+   "slash": 1.4,
+   "blow": 1.1,
+   "thrust": 1.1,
+   "magic": 1.2,
+   "fire": 1.4,
+   "lightning": 1.2,
+   "holy": 1.2
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 84,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Giant Crowd": {
+  "npc_id": 45601020,
+  "name": "Giant Crowd (healthbar)",
+  "hp": 1126,
+  "damage_multiplier": {
+   "phys": 1.1,
+   "slash": 1.4,
+   "blow": 1.1,
+   "thrust": 1.1,
+   "magic": 1.2,
+   "fire": 1.4,
+   "lightning": 1.2,
+   "holy": 1.2
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 84,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Bloodbane Giant Crow": {
+  "npc_id": 45610010,
+  "name": "Bloodbane Giant Crow (Ruins Group Boss)",
+  "hp": 767,
+  "damage_multiplier": {
+   "phys": 1.1,
+   "slash": 1.4,
+   "blow": 1.1,
+   "thrust": 1.1,
+   "magic": 1.2,
+   "fire": 1.0,
+   "lightning": 1.2,
+   "holy": 1.2
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 84,
+   "frost": 112,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Wormface": {
+  "npc_id": 45700000,
+  "name": "Wormface",
+  "hp": 621,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 2.0,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Large Wormface": {
+  "npc_id": 45800000,
+  "name": "Large Wormface",
+  "hp": 1587,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 2.0,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Troll": {
+  "npc_id": 46000000,
+  "name": "Troll",
+  "hp": 1901,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 2.0,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 154,
+   "sleep": 20,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Troll - Mimic Tear": {
+  "npc_id": 46000040,
+  "name": "Troll - Mimic Tear (Great Church Group Boss)",
+  "hp": 1901,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 2.0,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 154,
+   "sleep": 20,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Headless Troll": {
+  "npc_id": 46000220,
+  "name": "Headless Troll (Remembrance)",
+  "hp": 1901,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 2.0,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Frenzied Flame Troll": {
+  "npc_id": 46004010,
+  "name": "Frenzied Flame Troll (Encampment)",
+  "hp": 1830,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 2.0,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 154,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Troll Knight": {
+  "npc_id": 46010020,
+  "name": "Troll Knight",
+  "hp": 1901,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.0,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 154,
+   "sleep": 20,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Snowfield Troll": {
+  "npc_id": 46020000,
+  "name": "Snowfield Troll",
+  "hp": 1901,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 2.0,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 542,
+   "sleep": 20,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Astel, Naturalborn of the Void": {
+  "npc_id": 46200000,
+  "name": "Astel, Naturalborn of the Void",
+  "hp": 2708,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.9,
+   "blow": 0.9,
+   "thrust": 0.9,
+   "magic": 0.6,
+   "fire": 0.6,
+   "lightning": 0.6,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 252,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Naturalborn of the Void": {
+  "npc_id": 46200010,
+  "name": "Naturalborn of the Void (Noklateo)",
+  "hp": 2708,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.9,
+   "blow": 0.9,
+   "thrust": 0.9,
+   "magic": 0.6,
+   "fire": 0.6,
+   "lightning": 0.6,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 252,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Runebear": {
+  "npc_id": 46300000,
+  "name": "Runebear",
+  "hp": 2585,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 84,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Ulcerated Tree Spirit": {
+  "npc_id": 46400010,
+  "name": "Ulcerated Tree Spirit (Field Boss)",
+  "hp": 2854,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 1.2,
+   "lightning": 0.8,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 252,
+   "frost": 112,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Weapon-Bequeathed Harmonia": {
+  "npc_id": 46410000,
+  "name": "Weapon-Bequeathed Harmonia (Everdark Worm)",
+  "hp": 1280,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.1,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Dragonkin Soldier": {
+  "npc_id": 46500010,
+  "name": "Dragonkin Soldier (Night Boss)",
+  "hp": 2758,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 1.0,
+   "blow": 0.9,
+   "thrust": 0.9,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.6,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 252,
+   "frost": 542,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Guardian Golem": {
+  "npc_id": 46600000,
+  "name": "Guardian Golem",
+  "hp": 2419,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.9,
+   "blow": 1.0,
+   "thrust": 0.9,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 0.6,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 2.5,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Ancestor Spirit": {
+  "npc_id": 46700010,
+  "name": "Ancestor Spirit (Field Boss)",
+  "hp": 1882,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 1.2,
+   "lightning": 1.0,
+   "holy": 1.2
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 542,
+   "bleed": 542,
+   "frost": 542,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 542,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Fallingstar Beast": {
+  "npc_id": 46800000,
+  "name": "Fallingstar Beast",
+  "hp": 2946,
+  "damage_multiplier": {
+   "phys": 0.65,
+   "slash": 0.65,
+   "blow": 0.65,
+   "thrust": 0.65,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 252,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Grafted Scion": {
+  "npc_id": 46900010,
+  "name": "Grafted Scion (Field Boss)",
+  "hp": 1811,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Godrick the Grafted": {
+  "npc_id": 47500000,
+  "name": "Godrick the Grafted",
+  "hp": 2560,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Grafted Monarch": {
+  "npc_id": 47509010,
+  "name": "Grafted Monarch (Night Boss)",
+  "hp": 2560,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Valiant Gargoyle": {
+  "npc_id": 47700000,
+  "name": "Valiant Gargoyle",
+  "hp": 1745,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 1.0,
+   "thrust": 0.65,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 0.6,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Black Blade Kindred": {
+  "npc_id": 47701210,
+  "name": "Black Blade Kindred (Field Boss)",
+  "hp": 1745,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 1.0,
+   "thrust": 0.65,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 0.6,
+   "holy": 0.2
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Black Blade Kindred - Sword+Halberd": {
+  "npc_id": 47701220,
+  "name": "Black Blade Kindred - Sword+Halberd (Western Underground Fort Variant)",
+  "hp": 1745,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 1.0,
+   "thrust": 0.65,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 0.6,
+   "holy": 0.2
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Lord of Blood / Mohg": {
+  "npc_id": 48000000,
+  "name": "Lord of Blood / Mohg",
+  "hp": 2592,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.9,
+   "blow": 0.9,
+   "thrust": 0.9,
+   "magic": 0.6,
+   "fire": 0.2,
+   "lightning": 0.6,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 112,
+   "frost": 252,
+   "sleep": 542,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Erdtree Avatar": {
+  "npc_id": 48100010,
+  "name": "Erdtree Avatar (Field Boss)",
+  "hp": 2321,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.9,
+   "blow": 1.0,
+   "thrust": 0.9,
+   "magic": 0.8,
+   "fire": 1.4,
+   "lightning": 0.8,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 999,
+   "frost": 112,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Omenkiller": {
+  "npc_id": 48200010,
+  "name": "Omenkiller (Blacksmith Group Boss)",
+  "hp": 986,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 84,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Caligo - Miasma of Night": {
+  "npc_id": 49000000,
+  "name": "Caligo - Miasma of Night",
+  "hp": 3392,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 0.85,
+   "blow": 1.15,
+   "thrust": 0.9,
+   "magic": 0.8,
+   "fire": 1.35,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 252,
+   "frost": 542,
+   "sleep": 542,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "nightlord"
+ },
+ "Caligo, Miasma of Night": {
+  "npc_id": 49000040,
+  "name": "Caligo, Miasma of Night (Raid)",
+  "hp": 3392,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 0.85,
+   "blow": 1.15,
+   "thrust": 0.9,
+   "magic": 0.8,
+   "fire": 1.35,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 252,
+   "frost": 542,
+   "sleep": 542,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "nightlord"
+ },
+ "Magma Wyrm": {
+  "npc_id": 49100000,
+  "name": "Magma Wyrm",
+  "hp": 2968,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 0.9,
+   "magic": 0.6,
+   "fire": 0.2,
+   "lightning": 0.6,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 252,
+   "frost": 542,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Great Wyrm": {
+  "npc_id": 49110000,
+  "name": "Great Wyrm",
+  "hp": 3561,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.65,
+   "blow": 0.9,
+   "thrust": 0.9,
+   "magic": 0.6,
+   "fire": 0.2,
+   "lightning": 0.6,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 252,
+   "frost": 542,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Tibia Mariner": {
+  "npc_id": 49500000,
+  "name": "Tibia Mariner",
+  "hp": 1918,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.9,
+   "blow": 1.4,
+   "thrust": 0.65,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.6,
+   "holy": 1.4
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Giant Skeleton Torso": {
+  "npc_id": 49600000,
+  "name": "Giant Skeleton Torso",
+  "hp": 1918,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.9,
+   "blow": 1.4,
+   "thrust": 0.65,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.6,
+   "holy": 1.4
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Death Rite Bird": {
+  "npc_id": 49801030,
+  "name": "Death Rite Bird (The Oldest Gaol)",
+  "hp": 2880,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.9,
+   "blow": 1.4,
+   "thrust": 0.65,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.6,
+   "holy": 1.4
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Large Golden Hippopotamus": {
+  "npc_id": 50100000,
+  "name": "Large Golden Hippopotamus",
+  "hp": 2957,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 1.2,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Golden Hippopotamus": {
+  "npc_id": 50110010,
+  "name": "Golden Hippopotamus (Field Boss)",
+  "hp": 1792,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 1.2,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Curseblade": {
+  "npc_id": 50400010,
+  "name": "Curseblade (Eastern Underground Fort Elite)",
+  "hp": 1030,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.2,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 63,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Curseblade - Darkness": {
+  "npc_id": 50400120,
+  "name": "Curseblade - Darkness (Night Group Boss)",
+  "hp": 576,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.2,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 63,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Death Knight - Twinaxes": {
+  "npc_id": 50700020,
+  "name": "Death Knight - Twinaxes (Blacksmith Boss)",
+  "hp": 672,
+  "damage_multiplier": {
+   "phys": 0.6,
+   "slash": 0.6,
+   "blow": 0.6,
+   "thrust": 0.8,
+   "magic": 0.6,
+   "fire": 0.8,
+   "lightning": 0.6,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 999,
+   "frost": 252,
+   "sleep": 252,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Chief Bloodfiend": {
+  "npc_id": 50810010,
+  "name": "Chief Bloodfiend (Blacksmith Boss)",
+  "hp": 1094,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.2,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 252,
+   "frost": 112,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Chief Purple Fiend": {
+  "npc_id": 50811010,
+  "name": "Chief Purple Fiend (Ruins Boss)",
+  "hp": 1094,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.2,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 0.8,
+   "holy": 0.8
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 252,
+   "frost": 112,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Fire Knight - Greatsword": {
+  "npc_id": 51600010,
+  "name": "Fire Knight - Greatsword",
+  "hp": 512,
+  "damage_multiplier": {
+   "phys": 0.8,
+   "slash": 0.6,
+   "blow": 0.8,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 252,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Fire Knight Captain - Greatsword": {
+  "npc_id": 51600110,
+  "name": "Fire Knight Captain - Greatsword (Western Underground Fort Elite)",
+  "hp": 768,
+  "damage_multiplier": {
+   "phys": 0.8,
+   "slash": 0.6,
+   "blow": 0.8,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 252,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Fire Knight - Twindaggers": {
+  "npc_id": 51601010,
+  "name": "Fire Knight - Twindaggers",
+  "hp": 512,
+  "damage_multiplier": {
+   "phys": 0.8,
+   "slash": 0.6,
+   "blow": 0.8,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 252,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Fire Knight Sage - Twindaggers": {
+  "npc_id": 51601110,
+  "name": "Fire Knight Sage - Twindaggers (Western Underground Fort Elite)",
+  "hp": 768,
+  "damage_multiplier": {
+   "phys": 0.8,
+   "slash": 0.6,
+   "blow": 0.8,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 252,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Fire Knight - Dagger": {
+  "npc_id": 51602010,
+  "name": "Fire Knight - Dagger",
+  "hp": 512,
+  "damage_multiplier": {
+   "phys": 0.8,
+   "slash": 0.6,
+   "blow": 0.8,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 252,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Fire Knight Elder - Dagger": {
+  "npc_id": 51602110,
+  "name": "Fire Knight Elder - Dagger (Western Underground Fort Elite)",
+  "hp": 768,
+  "damage_multiplier": {
+   "phys": 0.8,
+   "slash": 0.6,
+   "blow": 0.8,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.6,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 252,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Divine Beast Dancing Lion": {
+  "npc_id": 52100010,
+  "name": "Divine Beast Dancing Lion (Night Boss)",
+  "hp": 2016,
+  "damage_multiplier": {
+   "phys": 0.7,
+   "slash": 0.8,
+   "blow": 0.7,
+   "thrust": 1.0,
+   "magic": 0.6,
+   "fire": 1.0,
+   "lightning": 0.6,
+   "holy": 0.6
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 112,
+   "frost": 252,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Horned Warrior - Dual Swords": {
+  "npc_id": 52500030,
+  "name": "Horned Warrior - Dual Swords",
+  "hp": 584,
+  "damage_multiplier": {
+   "phys": 0.6,
+   "slash": 0.6,
+   "blow": 0.6,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 63,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Divine Bird Warrior": {
+  "npc_id": 52500110,
+  "name": "Divine Bird Warrior (Eastern Underground Fort Elite)",
+  "hp": 960,
+  "damage_multiplier": {
+   "phys": 0.6,
+   "slash": 0.6,
+   "blow": 0.6,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 63,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Horned Warrior - Greatsword": {
+  "npc_id": 52501030,
+  "name": "Horned Warrior - Greatsword",
+  "hp": 584,
+  "damage_multiplier": {
+   "phys": 0.6,
+   "slash": 0.6,
+   "blow": 0.6,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 63,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Divine Beast Warrior - Lightning": {
+  "npc_id": 52501220,
+  "name": "Divine Beast Warrior - Lightning (Night Group Boss)",
+  "hp": 1190,
+  "damage_multiplier": {
+   "phys": 0.6,
+   "slash": 0.6,
+   "blow": 0.6,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 0.8,
+   "lightning": 0.8,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 63,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Elder Inquisitor": {
+  "npc_id": 53120010,
+  "name": "Elder Inquisitor (Great Church Boss)",
+  "hp": 1722,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 1.2,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 0.9,
+   "fire": 1.2,
+   "lightning": 0.9,
+   "holy": 0.9
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 63,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Fat Inquisitor": {
+  "npc_id": 53200010,
+  "name": "Fat Inquisitor (Great Church Boss)",
+  "hp": 1348,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 1.2,
+   "blow": 0.75,
+   "thrust": 1.0,
+   "magic": 0.9,
+   "fire": 1.2,
+   "lightning": 0.9,
+   "holy": 0.9
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 112,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 63,
+   "madness": 999,
+   "rot": 112,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Demi-Human Swordmaster": {
+  "npc_id": 58100900,
+  "name": "Demi-Human Swordmaster",
+  "hp": 1587,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.2,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 84,
+   "bleed": 112,
+   "frost": 112,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 84,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Great Red Bear": {
+  "npc_id": 58200010,
+  "name": "Great Red Bear (Night Boss)",
+  "hp": 2240,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 84,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Ghostflame Dragon": {
+  "npc_id": 58600010,
+  "name": "Ghostflame Dragon (Great Church Boss)",
+  "hp": 1493,
+  "damage_multiplier": {
+   "phys": 0.65,
+   "slash": 0.55,
+   "blow": 0.9,
+   "thrust": 0.6,
+   "magic": 0.4,
+   "fire": 0.6,
+   "lightning": 0.6,
+   "holy": 1.1
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Ancient Hero": {
+  "npc_id": 71000115,
+  "name": "Ancient Hero (Ruins, healthbar)",
+  "hp": 3571,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.9,
+   "blow": 0.9,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 1.2,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 252,
+   "frost": 542,
+   "sleep": 112,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Gladius - Beast of Night": {
+  "npc_id": 75000000,
+  "name": "Gladius - Beast of Night",
+  "hp": 3200,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.1,
+   "magic": 1.0,
+   "fire": 0.5,
+   "lightning": 1.0,
+   "holy": 1.35
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 542,
+   "bleed": 252,
+   "frost": 542,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "nightlord"
+ },
+ "Gladius, Beast of Night - Sword Sundered": {
+  "npc_id": 75001110,
+  "name": "Gladius, Beast of Night - Sword Sundered (Raid)",
+  "hp": 960,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.1,
+   "magic": 1.0,
+   "fire": 0.5,
+   "lightning": 1.0,
+   "holy": 1.35
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 542,
+   "bleed": 252,
+   "frost": 542,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "nightlord"
+ },
+ "Gladius, Beast of Night - Sundered": {
+  "npc_id": 75002110,
+  "name": "Gladius, Beast of Night - Sundered (Raid)",
+  "hp": 960,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.1,
+   "magic": 1.0,
+   "fire": 0.5,
+   "lightning": 1.0,
+   "holy": 1.35
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 542,
+   "bleed": 252,
+   "frost": 542,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "nightlord"
+ },
+ "Adel - Baron of Night": {
+  "npc_id": 75100000,
+  "name": "Adel - Baron of Night",
+  "hp": 3712,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 0.8,
+   "lightning": 0.5,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 542,
+   "frost": 154,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "nightlord"
+ },
+ "Gnoster - Wisdom of Night": {
+  "npc_id": 75200000,
+  "name": "Gnoster - Wisdom of Night",
+  "hp": 3680,
+  "damage_multiplier": {
+   "phys": 1.15,
+   "slash": 1.25,
+   "blow": 1.15,
+   "thrust": 1.25,
+   "magic": 0.5,
+   "fire": 1.4,
+   "lightning": 0.9,
+   "holy": 0.9
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 542,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 542,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "nightlord"
+ },
+ "Animus - Ascendant Light": {
+  "npc_id": 75210000,
+  "name": "Animus - Ascendant Light",
+  "hp": 1498,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.0,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 999,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Faurtis Stoneshield": {
+  "npc_id": 75300000,
+  "name": "Faurtis Stoneshield",
+  "hp": 3456,
+  "damage_multiplier": {
+   "phys": 0.9,
+   "slash": 0.8,
+   "blow": 1.2,
+   "thrust": 1.1,
+   "magic": 0.9,
+   "fire": 1.35,
+   "lightning": 0.9,
+   "holy": 0.9
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Maris - Fathom of Night": {
+  "npc_id": 75410000,
+  "name": "Maris - Fathom of Night (Everdark Sovereign Phase 2)",
+  "hp": 8320,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.15,
+   "blow": 0.8,
+   "thrust": 0.9,
+   "magic": 0.8,
+   "fire": 0.5,
+   "lightning": 1.4,
+   "holy": 0.85
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 252,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "nightlord"
+ },
+ "Libra - Creature of Night": {
+  "npc_id": 75600020,
+  "name": "Libra - Creature of Night (Boss)",
+  "hp": 3686,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 0.8,
+   "fire": 1.2,
+   "lightning": 1.0,
+   "holy": 1.35
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 999,
+   "madness": 154,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "nightlord"
+ },
+ "Heolstor": {
+  "npc_id": 75800000,
+  "name": "Heolstor (Shape of Night)",
+  "hp": 1408,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.15,
+   "blow": 0.9,
+   "thrust": 1.1,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 1.0,
+   "holy": 1.35
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 999,
+   "frost": 999,
+   "sleep": 542,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "nightlord"
+ },
+ "Fulghor - Champion of Nightglow": {
+  "npc_id": 76000000,
+  "name": "Fulghor - Champion of Nightglow",
+  "hp": 3360,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.2,
+   "holy": 0.7
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 154,
+   "bleed": 154,
+   "frost": 154,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 154,
+   "curse": 999
+  },
+  "category": "nightlord"
+ },
+ "Traitorous Straghess": {
+  "npc_id": 76100000,
+  "name": "Traitorous Straghess",
+  "hp": 3264,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.1,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 0.9,
+   "holy": 1.25
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 542,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 252,
+   "madness": 999,
+   "rot": 542,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Pure Impulse Straghess": {
+  "npc_id": 76109000,
+  "name": "Pure Impulse Straghess",
+  "hp": 3101,
+  "damage_multiplier": {
+   "phys": 0.95,
+   "slash": 1.05,
+   "blow": 0.95,
+   "thrust": 1.05,
+   "magic": 0.95,
+   "fire": 1.1,
+   "lightning": 0.85,
+   "holy": 1.15
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 542,
+   "bleed": 542,
+   "frost": 542,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 542,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Weapon-Bequeathed Harmonia - Halberd": {
+  "npc_id": 76200110,
+  "name": "Weapon-Bequeathed Harmonia - Halberd (Raid)",
+  "hp": 640,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 0.92,
+   "blow": 1.1,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 0.92,
+   "lightning": 0.9,
+   "holy": 0.7
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 252,
+   "frost": 252,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "enemy"
+ },
+ "Dreg Wormface": {
+  "npc_id": 76600000,
+  "name": "Dreg Wormface",
+  "hp": 1587,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.1,
+   "blow": 1.0,
+   "thrust": 1.1,
+   "magic": 1.0,
+   "fire": 1.2,
+   "lightning": 0.9,
+   "holy": 1.25
+  },
+  "weak_point_multiplier": 2.0,
+  "status_resistance": {
+   "poison": 252,
+   "bleed": 154,
+   "frost": 112,
+   "sleep": 154,
+   "madness": 999,
+   "rot": 252,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Knight Artorias": {
+  "npc_id": 77200000,
+  "name": "Knight Artorias",
+  "hp": 2880,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 0.9,
+   "blow": 1.1,
+   "thrust": 1.0,
+   "magic": 0.85,
+   "fire": 0.9,
+   "lightning": 1.1,
+   "holy": 1.1
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 542,
+   "bleed": 542,
+   "frost": 542,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 542,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Demon from Below": {
+  "npc_id": 79300000,
+  "name": "Demon from Below",
+  "hp": 1600,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.18,
+   "blow": 0.99,
+   "thrust": 1.02,
+   "magic": 0.8,
+   "fire": 0.22,
+   "lightning": 0.78,
+   "holy": 0.83
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 252,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 542,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Demon in Pain": {
+  "npc_id": 79300100,
+  "name": "Demon in Pain",
+  "hp": 1600,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.18,
+   "blow": 0.99,
+   "thrust": 1.02,
+   "magic": 0.8,
+   "fire": 0.22,
+   "lightning": 0.78,
+   "holy": 0.83
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 252,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 542,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Demon Prince - Demon from Below": {
+  "npc_id": 79301010,
+  "name": "Demon Prince - Demon from Below (Night Boss)",
+  "hp": 2880,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.18,
+   "blow": 0.99,
+   "thrust": 1.02,
+   "magic": 0.8,
+   "fire": 0.22,
+   "lightning": 0.78,
+   "holy": 0.83
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 252,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 542,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Demon Prince - Demon in Pain": {
+  "npc_id": 79301110,
+  "name": "Demon Prince - Demon in Pain (Night Boss)",
+  "hp": 2880,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.18,
+   "blow": 0.99,
+   "thrust": 1.02,
+   "magic": 0.8,
+   "fire": 0.22,
+   "lightning": 0.78,
+   "holy": 0.83
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 999,
+   "bleed": 252,
+   "frost": 999,
+   "sleep": 999,
+   "madness": 999,
+   "rot": 542,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Wylder": {
+  "npc_id": 521010000,
+  "name": "Wylder (Roundtable NPC)",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 0,
+   "bleed": 0,
+   "frost": 0,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 0,
+   "curse": 0
+  },
+  "category": "field_boss"
+ },
+ "Guardian": {
+  "npc_id": 521020000,
+  "name": "Guardian (Roundtable NPC)",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 0,
+   "bleed": 0,
+   "frost": 0,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 0,
+   "curse": 0
+  },
+  "category": "field_boss"
+ },
+ "Ironeye": {
+  "npc_id": 521030000,
+  "name": "Ironeye (Roundtable NPC)",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 0,
+   "bleed": 0,
+   "frost": 0,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 0,
+   "curse": 0
+  },
+  "category": "field_boss"
+ },
+ "Traitor": {
+  "npc_id": 521030100,
+  "name": "Traitor (Ironeye Remembrance)",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 0,
+   "bleed": 0,
+   "frost": 0,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 0,
+   "curse": 0
+  },
+  "category": "field_boss"
+ },
+ "Night Hunter": {
+  "npc_id": 521030700,
+  "name": "Night Hunter (Ironeye Remembrance)",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 100,
+   "bleed": 100,
+   "frost": 100,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 100,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Duchess": {
+  "npc_id": 521040000,
+  "name": "Duchess (Roundtable NPC)",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 0,
+   "bleed": 0,
+   "frost": 0,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 0,
+   "curse": 0
+  },
+  "category": "field_boss"
+ },
+ "Raider": {
+  "npc_id": 521050000,
+  "name": "Raider (Roundtable NPC)",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 0,
+   "bleed": 0,
+   "frost": 0,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 0,
+   "curse": 0
+  },
+  "category": "field_boss"
+ },
+ "White Horn": {
+  "npc_id": 521050700,
+  "name": "White Horn (Raider Remembrance)",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 100,
+   "bleed": 100,
+   "frost": 100,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 100,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Revenant": {
+  "npc_id": 521060000,
+  "name": "Revenant (Roundtable NPC)",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 0,
+   "bleed": 0,
+   "frost": 0,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 0,
+   "curse": 0
+  },
+  "category": "field_boss"
+ },
+ "Recluse": {
+  "npc_id": 521070000,
+  "name": "Recluse (Roundtable NPC)",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 0,
+   "bleed": 0,
+   "frost": 0,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 0,
+   "curse": 0
+  },
+  "category": "field_boss"
+ },
+ "Executor": {
+  "npc_id": 521080000,
+  "name": "Executor (Roundtable NPC)",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 0,
+   "bleed": 0,
+   "frost": 0,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 0,
+   "curse": 0
+  },
+  "category": "field_boss"
+ },
+ "Executor's Cry": {
+  "npc_id": 521080700,
+  "name": "Executor's Cry (Executor Remembrance)",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 100,
+   "bleed": 100,
+   "frost": 100,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 100,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Scholar": {
+  "npc_id": 521090000,
+  "name": "Scholar (Roundtable NPC)",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 0,
+   "bleed": 0,
+   "frost": 0,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 0,
+   "curse": 0
+  },
+  "category": "field_boss"
+ },
+ "Undertaker": {
+  "npc_id": 521100000,
+  "name": "Undertaker (Roundtable NPC)",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 0,
+   "bleed": 0,
+   "frost": 0,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 0,
+   "curse": 0
+  },
+  "category": "field_boss"
+ },
+ "Priestess": {
+  "npc_id": 523090000,
+  "name": "Priestess (Duchess)",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 0,
+   "bleed": 0,
+   "frost": 0,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 0,
+   "curse": 0
+  },
+  "category": "field_boss"
+ },
+ "Witch of the Wheel": {
+  "npc_id": 523120000,
+  "name": "Witch of the Wheel (Recluse Remembrance)",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 0,
+   "bleed": 0,
+   "frost": 0,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 0,
+   "curse": 0
+  },
+  "category": "field_boss"
+ },
+ "Executor?": {
+  "npc_id": 523130000,
+  "name": "Executor?",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 0,
+   "bleed": 0,
+   "frost": 0,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 0,
+   "curse": 0
+  },
+  "category": "field_boss"
+ },
+ "Night Assassin": {
+  "npc_id": 600030000,
+  "name": "Night Assassin (Wylder) - Template",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 100,
+   "bleed": 100,
+   "frost": 100,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 100,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Night Fallen": {
+  "npc_id": 600030100,
+  "name": "Night Fallen (Guardian) - Template",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 100,
+   "bleed": 100,
+   "frost": 100,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 100,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Night Thief": {
+  "npc_id": 600030300,
+  "name": "Night Thief (Duchess) - Template",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 100,
+   "bleed": 100,
+   "frost": 100,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 100,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Night Raider": {
+  "npc_id": 600030400,
+  "name": "Night Raider (Raider) - Template",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 100,
+   "bleed": 100,
+   "frost": 100,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 100,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Night Idol": {
+  "npc_id": 600030500,
+  "name": "Night Idol (Revenant) - Template",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 100,
+   "bleed": 100,
+   "frost": 100,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 100,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Night Witch": {
+  "npc_id": 600030600,
+  "name": "Night Witch (Recluse) - Template",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 100,
+   "bleed": 100,
+   "frost": 100,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 100,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Night Executor": {
+  "npc_id": 600030700,
+  "name": "Night Executor (Executor) - Template",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 100,
+   "bleed": 100,
+   "frost": 100,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 100,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Night Deceiver": {
+  "npc_id": 600030800,
+  "name": "Night Deceiver (Scholar) - Template",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 100,
+   "bleed": 100,
+   "frost": 100,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 100,
+   "curse": 999
+  },
+  "category": "field_boss"
+ },
+ "Night Profaner": {
+  "npc_id": 600030900,
+  "name": "Night Profaner (Undertaker) - Template",
+  "hp": 1551,
+  "damage_multiplier": {
+   "phys": 1.0,
+   "slash": 1.0,
+   "blow": 1.0,
+   "thrust": 1.0,
+   "magic": 1.0,
+   "fire": 1.0,
+   "lightning": 1.25,
+   "holy": 1.0
+  },
+  "weak_point_multiplier": 1.3,
+  "status_resistance": {
+   "poison": 100,
+   "bleed": 100,
+   "frost": 100,
+   "sleep": 0,
+   "madness": 0,
+   "rot": 100,
+   "curse": 999
+  },
+  "category": "field_boss"
+ }
+}
