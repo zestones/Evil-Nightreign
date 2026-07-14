@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nightreign"
+version = "0.1.0"
+description = "Elden Ring Nightreign relic build optimizer (save + game-data driven)"
+requires-python = ">=3.10"
+dependencies = []  # pure stdlib (uses system openssl + libzstd via ctypes)
+
+[project.scripts]
+nr = "nightreign.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.setuptools]
+packages = ["nightreign"]
+
+[tool.setuptools.package-data]
+nightreign = ["io/defs/*.xml", "resources/names/*.json"]

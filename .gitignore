@@ -1,0 +1,13 @@
+# Local working copies of game files — never commit (copyright, large)
+inputs/
+
+# Big regenerable data intermediates (rebuild with `nr data`)
+data/raw/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+build/
+dist/
