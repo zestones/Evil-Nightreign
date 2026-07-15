@@ -26,11 +26,13 @@ def _load_reference_data():
         group = re.search(r"group:\s*EffectGroup\.(\w+)", body)
         level = re.search(r"level:\s*(\d+)", body)
         nightfarer = re.search(r"nightfarer:\s*Nightfarer\.(\w+)", body)
+        stacks = "stacks: true" in body
         for i in re.findall(r"\d+", ids_match.group(1)):
             effect_by_id[int(i)] = dict(
                 key=key,
                 group=group.group(1) if group else None,
                 level=int(level.group(1)) if level else None,
+                stacks=stacks,
                 nightfarer=nightfarer.group(1) if nightfarer else None,
             )
 
@@ -89,6 +91,7 @@ def run():
                 text=text_by_key.get(effect_by_id.get(e, {}).get("key"), str(e)),
                 group=effect_by_id.get(e, {}).get("group"),
                 level=effect_by_id.get(e, {}).get("level"),
+                stacks=effect_by_id.get(e, {}).get("stacks", False),
                 nightfarer=effect_by_id.get(e, {}).get("nightfarer"),
             ) for e in effect_ids],
         ))
