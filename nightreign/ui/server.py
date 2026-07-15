@@ -1,0 +1,146 @@
+#!/usr/bin/env python3
+"""Local web UI for the optimizer — stdlib only, offline, single page.
+
+    nr ui            start http://127.0.0.1:8377 and open the browser
+
+Endpoints:
+    GET  /            the single-page app (static/index.html)
+    GET  /api/meta    characters, bosses, weapon types, toggles, actions, levels
+    POST /api/optimize  run the engine; body = the form as JSON
+
+Game data is loaded once at startup and shared read-only across requests.
+"""
+import json
+import threading
+import webbrowser
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+
+from nightreign.optimize import runner
+from nightreign.resources import actions, weapon_types
+
+STATIC = Path(__file__).parent / "static"
+
+TOGGLES = {
+    "caster": "Je lance des sorts (sorcelleries / incantations)",
+    "low_hp": "Je joue à PV bas",
+    "situational": "Effets situationnels (garde, ennemis affligés)",
+    "status_build": "Build orienté statuts",
+    "starting_loadout": "Effets de loadout de départ",
+    "coop": "Coop / alliés",
+    "triple_loadout": "Je porte 3+ armes du même type",
+}
+
+
+def _meta(data):
+    heroes = []
+    for name in runner.HERO_ORDER:
+        base = (runner.HERO_ORDER.index(name) + 1) * 10000
+        levels = sorted(data["hero_stats"][str(base + i)]["totalLevel"]
+                        for i in range(8) if str(base + i) in data["hero_stats"])
+        vessels = [v["name"] for v in data["vessels"].get(name, []) if v.get("owned")]
+        if levels and vessels:
+            heroes.append({"name": name, "levels": levels, "vessels": vessels})
+    return {
+        "characters": heroes,
+        "bosses": list(data["nightlords"]),
+        "weapon_types": sorted(set(weapon_types.WEPMOTION_TO_TYPE.values())),
+        "toggles": TOGGLES,
+        "actions": actions.ACTION_CLASSES,
+        "don_levels": sorted(int(k) for k in data["scaling"]["deep_of_night"]),
+        "relic_count": len(data["relics"]),
+    }
+
+
+def _serialize(result):
+    picks = []
+    for (kind, color), relic in result["picks"]:
+        picks.append({
+            "kind": kind, "slot_color": color,
+            "name": runner.pretty_name(relic["name"]),
+            "color": relic["color"],
+            "unique": relic["type"] == "UniqueRelic",
+            "grid": relic.get("grid"), "grid_by_color": relic.get("grid_by_color"),
+            "effects": [e["text"] for e in relic["effects"]],
+        })
+    b = result["breakdown"]
+    return {
+        "score": result["score"],
+        "weapon": result["weapon"], "weapon_type": result["weapon_type"],
+        "weapon_alternatives": result.get("weapon_alternatives") or [],
+        "vessel": result["vessel"], "targets": result["targets"],
+        "picks": picks,
+        "offense_ratio": b["offense_ratio"], "survival_ratio": b["survival_ratio"],
+        "attack_multipliers": b["attack_multipliers"],
+        "stat_bonuses": b["stat_bonuses"],
+        "top_effects": [{"key": runner.pretty_name(k), "mult": m, "action": a}
+                        for k, m, a in b.get("top_effects", [])],
+        "ignored_effects": [{"key": runner.pretty_name(k), "mult": m, "action": a}
+                            for k, m, a in b.get("ignored_effects", [])],
+    }
+
+
+def make_handler(data):
+    class Handler(BaseHTTPRequestHandler):
+        def log_message(self, *args):
+            pass
+
+        def _send(self, code, body, ctype="application/json"):
+            payload = body if isinstance(body, bytes) else json.dumps(body).encode()
+            self.send_response(code)
+            self.send_header("Content-Type", ctype)
+            self.send_header("Content-Length", str(len(payload)))
+            self.end_headers()
+            self.wfile.write(payload)
+
+        def do_GET(self):
+            if self.path in ("/", "/index.html"):
+                self._send(200, (STATIC / "index.html").read_bytes(),
+                           "text/html; charset=utf-8")
+            elif self.path == "/api/meta":
+                self._send(200, _meta(data))
+            else:
+                self._send(404, {"error": "not found"})
+
+        def do_POST(self):
+            if self.path != "/api/optimize":
+                return self._send(404, {"error": "not found"})
+            try:
+                length = int(self.headers.get("Content-Length", 0))
+                req = json.loads(self.rfile.read(length) or b"{}")
+                play = {a: float(w) for a, w in (req.get("play") or {}).items()
+                        if float(w) > 0} or {"melee": 1.0}
+                total = sum(play.values())
+                play = {a: w / total for a, w in play.items()}
+                results = runner.optimize(
+                    req["character"], boss=req.get("boss") or None,
+                    weapon_type=req.get("weapon_type") or None,
+                    level=int(req.get("level", 15)),
+                    weight=float(req.get("weight", 0.5)),
+                    don=int(req.get("don", 0)),
+                    toggles=tuple(req.get("toggles") or ()),
+                    beam_k=int(req.get("beam", 12)),
+                    top=int(req.get("top", 3)),
+                    play=play, data=data)
+                self._send(200, {"results": [_serialize(r) for r in results]})
+            except SystemExit as e:
+                self._send(400, {"error": str(e)})
+            except Exception as e:  # surface the reason instead of a dead page
+                self._send(500, {"error": f"{type(e).__name__}: {e}"})
+
+    return Handler
+
+
+def serve(port=8377, open_browser=True):
+    print("loading game data ...")
+    data = runner.load_data()
+    server = ThreadingHTTPServer(("127.0.0.1", port), make_handler(data))
+    url = f"http://127.0.0.1:{port}"
+    print(f"nr ui ready on {url}  (Ctrl+C to stop)")
+    if open_browser:
+        threading.Timer(0.4, lambda: webbrowser.open(url)).start()
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print("\nbye")
+    return 0

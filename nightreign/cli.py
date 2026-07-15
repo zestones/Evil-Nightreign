@@ -124,6 +124,12 @@ def main(argv=None):
     p_opt.add_argument("--top", type=int, default=3, help="gameplans to show (default 3)")
     p_opt.set_defaults(func=cmd_optimize)
 
+    p_ui = sub.add_parser("ui", help="local web UI for the optimizer")
+    p_ui.add_argument("--port", type=int, default=8377)
+    p_ui.add_argument("--no-browser", action="store_true")
+    p_ui.set_defaults(func=lambda a: __import__("nightreign.ui.server", fromlist=["serve"])
+                      .serve(a.port, not a.no_browser))
+
     p_demo = sub.add_parser("demo", help="run an example (matchup | pipeline)")
     p_demo.add_argument("name", nargs="?", choices=["matchup", "pipeline"])
     p_demo.set_defaults(func=cmd_demo)

@@ -64,7 +64,10 @@ Implemented in `nightreign/optimize/` behind `nr optimize`:
 
 ```
 nr optimize <character> [boss] [--weapon-type T] [--weight W] [--don N]
-            [--toggle dim]... [--level N] [--beam K] [--top N]
+            [--toggle dim]... [--play "melee=0.7,crit=0.3"] [--types N]
+            [--level N] [--beam K] [--top N]
+nr ui                # the same engine behind a local web UI (stdlib http.server,
+                     # offline, French labels) — every option as a form control
 ```
 
 ```
