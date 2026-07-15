@@ -243,7 +243,12 @@ function render(results, req, mode) {
        <em>vs l'arme nue du même type</em> : il ne se compare pas d'un type à l'autre.</div>`
     : `<div class="mode-note">S = amélioration par rapport à l'arme nue du type
        (« que rapportent les reliques »). Effets barrés = inactifs dans ce contexte.</div>`;
-  $("results").innerHTML = note + results.map((r, i) => {
+  const deepNote = +req.don === 0
+    ? `<div class="mode-note">⚠ Expédition normale (Deep of Night = « Non ») :
+       les <b>3 slots deep ne sont pas inclus</b> — les reliques profondes ne
+       s'appliquent qu'en Deep of Night. Choisis un niveau ≥ 1 pour un build à 6 reliques.</div>`
+    : "";
+  $("results").innerHTML = note + deepNote + results.map((r, i) => {
     const relics = r.picks.map(p => `
       <div class="relic">
         <div class="relic-head">
