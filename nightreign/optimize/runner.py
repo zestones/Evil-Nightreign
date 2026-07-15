@@ -55,17 +55,22 @@ def hero_stats_row(data, character, level):
     return max(eligible, key=lambda r: r.get("totalLevel", 0))
 
 
-def resolve_targets(data, boss):
-    """[(name, npc_row, max_damage)] — one Nightlord, or all of them (generalist)."""
+def resolve_targets(data, boss, hp_scale=1.0):
+    """[(name, npc_row, max_damage, max_hp, status_resistance)] — one
+    Nightlord, or all of them (generalist). max_hp carries the Deep-of-Night
+    HP scaling so status procs (% of max HP) stay honest."""
     lords = data["nightlords"]
     picked = ([b for b in lords if b.lower() == boss.lower()] if boss else list(lords))
     if boss and not picked:
         raise SystemExit(f"unknown boss '{boss}' — expected one of: {', '.join(lords)}")
     out = []
     for name in picked:
-        row = data["npc_params"].get(str(lords[name]["npc_id"]))
+        lord = lords[name]
+        row = data["npc_params"].get(str(lord["npc_id"]))
         if row:
-            out.append((name, row, (lords[name].get("attacks") or {}).get("max_damage") or {}))
+            out.append((name, row, (lord.get("attacks") or {}).get("max_damage") or {},
+                        (lord.get("hp") or 0) * hp_scale,
+                        lord.get("status_resistance") or {}))
     return out
 
 
@@ -125,7 +130,9 @@ def pick_weapon(data, stats, targets, wtype=None, agg=None, play=None,
         ar = attack_rating.attack_rating(wid, level, stats_eff, data["ar_tables"])
         if not ar:
             continue
-        ranked.append((scoring.offense(ar, agg, play, targets), wid, level, name, label))
+        ranked.append((scoring.offense(ar, agg, play, targets,
+                                       data["weapons"][wid].get("status")),
+                       wid, level, name, label))
     if not ranked:
         raise SystemExit("no usable weapon candidate")
     ranked.sort(key=lambda x: -x[0])
@@ -149,7 +156,7 @@ def best_weapon_types(data, stats, targets, count=3, max_level=25):
         ar = attack_rating.attack_rating(wid, level, stats, data["ar_tables"])
         if not ar:
             continue
-        dmg = sum(damage.damage_vs_enemy(ar, npc)[0] for _n, npc, _m in targets)
+        dmg = sum(damage.damage_vs_enemy(ar, npc)[0] for _n, npc, _m, _hp, _res in targets)
         if dmg > per_type.get(label, 0.0):
             per_type[label] = dmg
     return sorted(per_type, key=per_type.get, reverse=True)[:count]
@@ -175,7 +182,7 @@ def weak_element(targets):
     (None when nothing beats neutral by 5%+)."""
     best, best_rate = None, 1.05
     for etype in ("mag", "fire", "thunder", "dark"):
-        rate = sum(damage.enemy_cut_rate(npc, etype) for _n, npc, _m in targets) \
+        rate = sum(damage.enemy_cut_rate(npc, etype) for _n, npc, _m, _hp, _res in targets) \
                / max(len(targets), 1)
         if rate > best_rate:
             best, best_rate = etype, rate
@@ -194,7 +201,7 @@ def pick_weapon_elemental(data, stats, targets, wtype, element, play, max_level=
         total = sum(ar.values())
         if not total or ar.get(element, 0.0) < 0.3 * total:
             continue
-        dmg = scoring.offense(ar, {}, play, targets)
+        dmg = scoring.offense(ar, {}, play, targets, data["weapons"][wid].get("status"))
         if best is None or dmg > best[0]:
             best = (dmg, wid, level, name, label)
     return None if best is None else (best[1], best[2], best[3], best[4], [])
@@ -219,10 +226,10 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
     if character is None:
         raise SystemExit(f"unknown character — expected one of: {', '.join(HERO_ORDER)}")
     stats = hero_stats_row(data, character, level)
-    targets = resolve_targets(data, boss)
     include_deep = don >= 1
-    don_scale = (data["scaling"]["deep_of_night"].get(str(don), {}).get("attack", 1.0)
-                 if include_deep else 1.0)
+    don_row = data["scaling"]["deep_of_night"].get(str(don), {}) if include_deep else {}
+    don_scale = don_row.get("attack", 1.0)
+    targets = resolve_targets(data, boss, don_row.get("hp", 1.0))
     vessels = [v for v in data["vessels"].get(character, []) if v.get("owned")]
     types_to_try = [weapon_type] if weapon_type else \
         best_weapon_types(data, stats, targets, types_count, max_weapon_level)
@@ -254,7 +261,8 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
         # type's bare-best weapon (S then ranks absolute damage in-type)
         type_ref_off = scoring.offense(
             attack_rating.attack_rating(starts[0][0], starts[0][1], stats,
-                                        data["ar_tables"]), {}, play, targets)
+                                        data["ar_tables"]), {}, play, targets,
+            data["weapons"][starts[0][0]].get("status"))
         if elem:
             alt_start = pick_weapon_elemental(data, stats, targets, wtype, elem,
                                               play, max_weapon_level)
@@ -267,7 +275,8 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
                                         data["characters"][character]["defense"],
                                         targets, weight, don_scale, data["ar_tables"],
                                         play=play, reinforce=weapon_level,
-                                        off_baseline=type_ref_off)
+                                        off_baseline=type_ref_off,
+                                        weapon_status=data["weapons"][weapon_id].get("status"))
                 vessel_results = search_vessels(scorer, pools)
                 # coordinate ascent: re-rank the type's weapons under the best
                 # build's multipliers; a changed pick re-runs the relic search
@@ -332,6 +341,10 @@ def pretty_name(camel):
     return "".join(out).title()
 
 
+STATUS_FR = {"bleed": "saignement", "poison": "poison", "rot": "écarlate",
+             "frost": "gel"}
+
+
 def format_report(results, weight):
     lines = []
     for i, r in enumerate(results, 1):
@@ -364,5 +377,9 @@ def format_report(results, weight):
         if b.get("ignored_effects"):
             lines.append("    NOTE : gated out by your play profile — " + "  ".join(
                 f"{pretty_name(k)} (x{m:.2f}, {a})" for k, m, a in b["ignored_effects"]))
+        for st, info in (b.get("status") or {}).items():
+            lines.append(f"    STATUT: {STATUS_FR.get(st, st)} — proc ~{info['proc']:.0f} "
+                         f"toutes les ~{info['hits_per_proc']:.1f} touches "
+                         f"(buildup {info['buildup']:.0f}/coup)")
         lines.append("")
     return "\n".join(lines)

@@ -154,6 +154,7 @@ const FR_ACTIONS = {
   incant_dragon_communion: "Incant. communion draconique", incant_frenzied_flame: "Incant. flamme frénétique",
 };
 const FR_TYPES = { phys: "Physique", mag: "Magie", fire: "Feu", thunder: "Foudre", dark: "Sacré" };
+const FR_STATUS = { bleed: "Saignement", poison: "Poison", rot: "Écarlate", frost: "Gel" };
 const CHIP = { Red: "var(--red)", Blue: "var(--blue)", Yellow: "var(--yellow)",
                Green: "var(--green)", Any: "var(--any)" };
 const $ = id => document.getElementById(id);
@@ -269,6 +270,8 @@ function render(results, req, mode) {
     const counted = r.top_effects.map(e =>
       `<span>${esc(e.key)} ×${e.mult.toFixed(2)} ${e.action !== "*" ?
         `<span class="act">${FR_ACTIONS[e.action] || e.action}</span>` : ""}</span>`).join("");
+    const statusLine = Object.entries(r.status || {}).map(([st, i]) =>
+      `<span>${FR_STATUS[st] || st} : proc ~${Math.round(i.proc)} toutes les ~${i.hits_per_proc.toFixed(1)} touches</span>`).join("");
     const ignored = r.ignored_effects.map(e =>
       `<span class="ignored">${esc(e.key)} ×${e.mult.toFixed(2)} <span class="act">${FR_ACTIONS[e.action] || e.action}</span></span>`).join("");
     const alts = r.weapon_alternatives.map(([n, ratio]) =>
@@ -295,6 +298,7 @@ function render(results, req, mode) {
         <div class="relics">${relics}</div>
       </div>
       ${mults ? `<div class="section mults"><span class="tag">Multiplicateurs</span>${mults}</div>` : ""}
+      ${statusLine ? `<div class="section mults"><span class="tag">Statuts</span>${statusLine}</div>` : ""}
       ${stats ? `<div class="section stats"><span class="tag">Stats</span>${stats}</div>` : ""}
       ${counted ? `<div class="section fxlist"><span class="tag">Comptés</span>${counted}</div>` : ""}
       ${ignored ? `<div class="section fxlist"><span class="tag">Ignorés (profil)</span>${ignored}</div>` : ""}

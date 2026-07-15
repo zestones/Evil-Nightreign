@@ -81,6 +81,7 @@ def _serialize(result, data, character, toggles, don):
         "offense_ratio": b["offense_ratio"], "survival_ratio": b["survival_ratio"],
         "attack_multipliers": b["attack_multipliers"],
         "stat_bonuses": b["stat_bonuses"],
+        "status": b.get("status") or {},
         "top_effects": [{"key": runner.pretty_name(k), "mult": m, "action": a}
                         for k, m, a in b.get("top_effects", [])],
         "ignored_effects": [{"key": runner.pretty_name(k), "mult": m, "action": a}

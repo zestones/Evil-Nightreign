@@ -144,7 +144,7 @@ def test_play_profile_gates_offense():
              "statIntelligence": 5, "statFaith": 5, "statArcane": 5}
     npc = {"def_phys": 100, "def_mag": 100, "def_fire": 100,
            "def_thunder": 100, "def_dark": 100}
-    targets = [("dummy", npc, {"fire": 100})]
+    targets = [("dummy", npc, {"fire": 100}, 0, {})]
     crit_relic = [("critKey", True, {("atk", "phys", "crit"): math.log(1.5)})]
 
     melee_only = scoring.Scorer("1750000", stats, {"negation": {}}, targets, weight=1.0)
@@ -170,3 +170,18 @@ def test_melee_performed_hierarchy():
         assert actions.classes_applying_to(a) >= {"*", a}
     assert "melee" not in actions.classes_applying_to("throwing_knife")
     assert "skill" not in actions.classes_applying_to("crit")
+
+
+def test_status_expected_damage():
+    # bleed: buildup/threshold x 15% max HP per hit (calibrated on the measured
+    # 371 proc); immunity (999) contributes nothing.
+    from nightreign.optimize import scoring
+    ar = {"phys": 100.0}
+    npc = {"def_phys": 100}
+    bleedable = [("t", npc, {}, 2000, {"bleed": 250})]
+    immune = [("t", npc, {}, 2000, {"bleed": 999})]
+    base = scoring.offense(ar, {}, {"melee": 1.0}, bleedable)
+    with_bleed = scoring.offense(ar, {}, {"melee": 1.0}, bleedable, {"bleed": 45})
+    assert with_bleed - base == pytest.approx(45 / 250 * 0.15 * 2000)   # +54/hit
+    assert scoring.offense(ar, {}, {"melee": 1.0}, immune, {"bleed": 45}) \
+        == pytest.approx(base)

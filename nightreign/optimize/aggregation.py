@@ -34,6 +34,13 @@ CUT_RATE_FIELDS = {
     "darkDamageCutRate": "dark",
 }
 MAX_HP_FIELD = "maxHpRate"
+# status buildup fields (relic magnitude or on-hit effects) -> status name
+STATUS_BUILDUP_FIELDS = {
+    "bloodAttackPower": "bleed", "poizonAttackPower": "poison",
+    "diseaseAttackPower": "rot", "freezeAttackPower": "frost",
+    "sleepAttackPower": "sleep", "madnessAttackPower": "madness",
+    "curseAttackPower": "curse",
+}
 # additive stat bonus fields -> hero_stats field they add to
 STAT_ADD_FIELDS = {
     "addStrengthStatus": "statStrength",
@@ -52,6 +59,7 @@ def parse_relic(relic, effects_db, context):
       ("cut", dtype)  -> -log cut rate    (defense axis, >= 0)
       ("hp",)         -> log maxHpRate
       ("stat", field) -> flat stat bonus  (raw, additive)
+      ("stbuild", status) -> flat status buildup per hit (raw, additive)
     Only effects whose condition is satisfied by the context contribute.
     Action-gated offense (crit-only, throwing-knife-only, ...) carries its
     action class so the scorer can weight it by the play profile.
@@ -78,6 +86,11 @@ def parse_relic(relic, effects_db, context):
         v = magnitude.get(MAX_HP_FIELD)
         if isinstance(v, (int, float)) and v > 1:
             contrib[("hp",)] = math.log(v)
+        on_hit = info.get("on_hit") or {}
+        for field, status in STATUS_BUILDUP_FIELDS.items():
+            v = (magnitude.get(field) or 0) + (on_hit.get(field) or 0)
+            if isinstance(v, (int, float)) and v > 0:
+                contrib[("stbuild", status)] = float(v)
         for field, stat in STAT_ADD_FIELDS.items():
             v = magnitude.get(field)
             if isinstance(v, (int, float)) and v:

@@ -50,9 +50,28 @@ def run():
     print(f"  weapons: HeroStatusParam -> {len(hero)} rows")
 
     weapons = decode("EquipParamWeapon")
-    dump({rid: {k: _san(f[k]) for k in WEAPON_FIELDS if k in f} for rid, f in weapons.items()},
-         "weapons.json")
-    print(f"  weapons: EquipParamWeapon -> {len(weapons)} weapons")
+    # status buildup per weapon: the attached SpEffects carry bloodAttackPower
+    # etc. (chain validated on Reduvia: spEffectBehaviorId0 -> blood 45/hit)
+    from nightreign.resources import statuses
+    speffects = decode("SpEffectParam")
+    out = {}
+    for rid, f in weapons.items():
+        row = {k: _san(f[k]) for k in WEAPON_FIELDS if k in f}
+        buildup = {}
+        for slot in ("spEffectBehaviorId0", "spEffectBehaviorId1", "spEffectBehaviorId2"):
+            sp = speffects.get(f.get(slot))
+            if not sp:
+                continue
+            for field, status in statuses.BUILDUP_FIELDS.items():
+                v = sp.get(field)
+                if isinstance(v, (int, float)) and v > 0:
+                    buildup[status] = buildup.get(status, 0) + v
+        if buildup:
+            row["status"] = buildup
+        out[rid] = row
+    dump(out, "weapons.json")
+    n_status = sum(1 for r in out.values() if r.get("status"))
+    print(f"  weapons: EquipParamWeapon -> {len(weapons)} weapons ({n_status} with status buildup)")
 
     for name, fname in [("ReinforceParamWeapon", "reinforce_weapon.json"),
                         ("CalcCorrectGraph", "calc_correct_graph.json"),
