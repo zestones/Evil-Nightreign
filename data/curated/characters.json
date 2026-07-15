@@ -3,110 +3,350 @@
   "skill_cooldown": 8.0,
   "skill_usage_count": 1,
   "ultimate_charge": 999.989990234375,
-  "hero_status_param_id": 10000,
-  "text_ids": {
-   "skill": 411010,
-   "ultimate": 413010,
-   "passive": 415010
+  "starting_weapon": 3750000,
+  "skill_weapon": 60000000,
+  "ultimate_weapon": 60010000,
+  "defense": {
+   "negation": {
+    "phys": 0.81,
+    "slash": 0.8,
+    "blow": 0.81,
+    "thrust": 0.8,
+    "magic": 0.81,
+    "fire": 0.81,
+    "thunder": 0.8,
+    "dark": 0.83
+   },
+   "flat_defense": {
+    "phys": 0,
+    "magic": 0,
+    "fire": 0,
+    "thunder": 0
+   },
+   "status_resist": {
+    "poison": 102,
+    "bleed": 95,
+    "frost": 95,
+    "sleep": 59,
+    "madness": 59,
+    "disease": 102,
+    "curse": 59
+   }
   }
  },
  "Guardian": {
   "skill_cooldown": 13.5,
   "skill_usage_count": 1,
   "ultimate_charge": 999.989990234375,
-  "hero_status_param_id": 20000,
-  "text_ids": {
-   "skill": 411011,
-   "ultimate": 413011,
-   "passive": 415011
+  "starting_weapon": 18750000,
+  "skill_weapon": 60100000,
+  "ultimate_weapon": 60120000,
+  "defense": {
+   "negation": {
+    "phys": 0.722,
+    "slash": 0.7125,
+    "blow": 0.722,
+    "thrust": 0.76,
+    "magic": 0.729,
+    "fire": 0.774,
+    "thunder": 0.765,
+    "dark": 0.747
+   },
+   "flat_defense": {
+    "phys": 0,
+    "magic": 0,
+    "fire": 0,
+    "thunder": 0
+   },
+   "status_resist": {
+    "poison": 112,
+    "bleed": 85,
+    "frost": 85,
+    "sleep": 69,
+    "madness": 69,
+    "disease": 112,
+    "curse": 59
+   }
   }
  },
  "Ironeye": {
   "skill_cooldown": 10.0,
   "skill_usage_count": 1,
   "ultimate_charge": 999.989990234375,
-  "hero_status_param_id": 30000,
-  "text_ids": {
-   "skill": 411012,
-   "ultimate": 413012,
-   "passive": 415012
+  "starting_weapon": 41750000,
+  "skill_weapon": 60230000,
+  "ultimate_weapon": 60210000,
+  "defense": {
+   "negation": {
+    "phys": 0.81,
+    "slash": 0.85,
+    "blow": 0.86,
+    "thrust": 0.85,
+    "magic": 0.81,
+    "fire": 0.86,
+    "thunder": 0.8,
+    "dark": 0.83
+   },
+   "flat_defense": {
+    "phys": 0,
+    "magic": 0,
+    "fire": 0,
+    "thunder": 0
+   },
+   "status_resist": {
+    "poison": 112,
+    "bleed": 85,
+    "frost": 85,
+    "sleep": 59,
+    "madness": 59,
+    "disease": 112,
+    "curse": 59
+   }
   }
  },
  "Duchess": {
   "skill_cooldown": 12.0,
   "skill_usage_count": 1,
   "ultimate_charge": 999.989990234375,
-  "hero_status_param_id": 40000,
-  "text_ids": {
-   "skill": 411013,
-   "ultimate": 413013,
-   "passive": 415013
+  "starting_weapon": 1750000,
+  "skill_weapon": 60300000,
+  "ultimate_weapon": 60310000,
+  "defense": {
+   "negation": {
+    "phys": 0.81,
+    "slash": 0.85,
+    "blow": 0.86,
+    "thrust": 0.85,
+    "magic": 0.72,
+    "fire": 0.78,
+    "thunder": 0.78,
+    "dark": 0.77
+   },
+   "flat_defense": {
+    "phys": 0,
+    "magic": 0,
+    "fire": 0,
+    "thunder": 0
+   },
+   "status_resist": {
+    "poison": 102,
+    "bleed": 85,
+    "frost": 85,
+    "sleep": 69,
+    "madness": 69,
+    "disease": 102,
+    "curse": 59
+   }
   }
  },
  "Raider": {
   "skill_cooldown": 12.0,
   "skill_usage_count": 1,
   "ultimate_charge": 999.989990234375,
-  "hero_status_param_id": 50000,
-  "text_ids": {
-   "skill": 411014,
-   "ultimate": 413014,
-   "passive": 415014
+  "starting_weapon": 23750000,
+  "skill_weapon": 60400000,
+  "ultimate_weapon": 60410000,
+  "defense": {
+   "negation": {
+    "phys": 0.76,
+    "slash": 0.75,
+    "blow": 0.76,
+    "thrust": 0.85,
+    "magic": 0.86,
+    "fire": 0.76,
+    "thunder": 0.85,
+    "dark": 0.83
+   },
+   "flat_defense": {
+    "phys": 0,
+    "magic": 0,
+    "fire": 0,
+    "thunder": 0
+   },
+   "status_resist": {
+    "poison": 102,
+    "bleed": 95,
+    "frost": 95,
+    "sleep": 49,
+    "madness": 49,
+    "disease": 102,
+    "curse": 59
+   }
   }
  },
  "Revenant": {
   "skill_cooldown": 0.0,
   "skill_usage_count": 1,
   "ultimate_charge": 999.989990234375,
-  "hero_status_param_id": 60000,
-  "text_ids": {
-   "skill": 411015,
-   "ultimate": 413015,
-   "passive": 415015
+  "starting_weapon": 21750000,
+  "skill_weapon": 60500000,
+  "ultimate_weapon": 60510000,
+  "defense": {
+   "negation": {
+    "phys": 0.86,
+    "slash": 0.9,
+    "blow": 0.86,
+    "thrust": 0.9,
+    "magic": 0.72,
+    "fire": 0.71,
+    "thunder": 0.71,
+    "dark": 0.8
+   },
+   "flat_defense": {
+    "phys": 0,
+    "magic": 0,
+    "fire": 0,
+    "thunder": 0
+   },
+   "status_resist": {
+    "poison": 112,
+    "bleed": 85,
+    "frost": 85,
+    "sleep": 69,
+    "madness": 69,
+    "disease": 112,
+    "curse": 69
+   }
   }
  },
  "Recluse": {
   "skill_cooldown": 0.0,
   "skill_usage_count": 1,
   "ultimate_charge": 999.989990234375,
-  "hero_status_param_id": 70000,
-  "text_ids": {
-   "skill": 411016,
-   "ultimate": 413016,
-   "passive": 415016
+  "starting_weapon": 33760000,
+  "skill_weapon": 60600000,
+  "ultimate_weapon": 60610000,
+  "defense": {
+   "negation": {
+    "phys": 0.86,
+    "slash": 0.9,
+    "blow": 0.86,
+    "thrust": 0.9,
+    "magic": 0.71,
+    "fire": 0.76,
+    "thunder": 0.75,
+    "dark": 0.75
+   },
+   "flat_defense": {
+    "phys": 0,
+    "magic": 0,
+    "fire": 0,
+    "thunder": 0
+   },
+   "status_resist": {
+    "poison": 112,
+    "bleed": 85,
+    "frost": 85,
+    "sleep": 69,
+    "madness": 69,
+    "disease": 112,
+    "curse": 59
+   }
   }
  },
  "Executor": {
   "skill_cooldown": 0.0,
   "skill_usage_count": 1,
   "ultimate_charge": 999.989990234375,
-  "hero_status_param_id": 80000,
-  "text_ids": {
-   "skill": 411017,
-   "ultimate": 413017,
-   "passive": 415017
+  "starting_weapon": 9750000,
+  "skill_weapon": 60700000,
+  "ultimate_weapon": -1,
+  "defense": {
+   "negation": {
+    "phys": 0.76,
+    "slash": 0.75,
+    "blow": 0.76,
+    "thrust": 0.8,
+    "magic": 0.86,
+    "fire": 0.81,
+    "thunder": 0.85,
+    "dark": 0.78
+   },
+   "flat_defense": {
+    "phys": 0,
+    "magic": 0,
+    "fire": 0,
+    "thunder": 0
+   },
+   "status_resist": {
+    "poison": 92,
+    "bleed": 105,
+    "frost": 105,
+    "sleep": 49,
+    "madness": 49,
+    "disease": 92,
+    "curse": 69
+   }
   }
  },
  "Scholar": {
   "skill_cooldown": 12.0,
   "skill_usage_count": 1,
   "ultimate_charge": 999.989990234375,
-  "hero_status_param_id": 90000,
-  "text_ids": {
-   "skill": 411018,
-   "ultimate": 413018,
-   "passive": 415018
+  "starting_weapon": 5750000,
+  "skill_weapon": 60800000,
+  "ultimate_weapon": 60810000,
+  "defense": {
+   "negation": {
+    "phys": 0.81,
+    "slash": 0.83,
+    "blow": 0.85,
+    "thrust": 0.8,
+    "magic": 0.73,
+    "fire": 0.75,
+    "thunder": 0.76,
+    "dark": 0.91
+   },
+   "flat_defense": {
+    "phys": 0,
+    "magic": 0,
+    "fire": 0,
+    "thunder": 0
+   },
+   "status_resist": {
+    "poison": 102,
+    "bleed": 85,
+    "frost": 85,
+    "sleep": 69,
+    "madness": 69,
+    "disease": 102,
+    "curse": 59
+   }
   }
  },
  "Undertaker": {
   "skill_cooldown": 14.0,
   "skill_usage_count": 1,
   "ultimate_charge": 999.989990234375,
-  "hero_status_param_id": 100000,
-  "text_ids": {
-   "skill": 411019,
-   "ultimate": 413019,
-   "passive": 415019
+  "starting_weapon": 11750100,
+  "skill_weapon": 60900000,
+  "ultimate_weapon": 60950000,
+  "defense": {
+   "negation": {
+    "phys": 0.82,
+    "slash": 0.88,
+    "blow": 0.82,
+    "thrust": 0.88,
+    "magic": 0.8,
+    "fire": 0.83,
+    "thunder": 0.8,
+    "dark": 0.74
+   },
+   "flat_defense": {
+    "phys": 0,
+    "magic": 0,
+    "fire": 0,
+    "thunder": 0
+   },
+   "status_resist": {
+    "poison": 102,
+    "bleed": 85,
+    "frost": 95,
+    "sleep": 49,
+    "madness": 59,
+    "disease": 102,
+    "curse": 79
+   }
   }
  }
 }
