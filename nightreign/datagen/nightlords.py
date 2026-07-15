@@ -53,10 +53,41 @@ def profile(row, names, npc_id):
     )
 
 
+_ATK_ELEMENTS = [("phys", "atkPhys"), ("mag", "atkMag"), ("fire", "atkFire"),
+                 ("thunder", "atkThun"), ("dark", "atkDark")]
+
+
+def _attack_index(behaviors):
+    """variationId -> list of AtkParam_Npc ids it triggers (refType 1 = attack)."""
+    index = {}
+    for b in behaviors.values():
+        if b.get("refType") == 1 and b.get("refId", -1) > 0:
+            index.setdefault(b.get("variationId"), []).append(b["refId"])
+    return index
+
+
+def resolve_attacks(variation_id, attack_index, attacks):
+    """An enemy's attack profile: peak damage per element + peak poise damage."""
+    max_damage, poise, count = {}, 0, 0
+    for ref_id in attack_index.get(variation_id, []):
+        atk = attacks.get(str(ref_id))
+        if not atk:
+            continue
+        count += 1
+        for elem, field in _ATK_ELEMENTS:
+            if atk.get(field):
+                max_damage[elem] = max(max_damage.get(elem, 0), atk[field])
+        poise = max(poise, atk.get("atkSuperArmor", 0) or 0)
+    return {"max_damage": max_damage, "poise": poise, "attack_count": count}
+
+
 def run():
     constants.DATA_CURATED.mkdir(parents=True, exist_ok=True)
     npc = json.load(open(constants.DATA_RAW / "npc_params.json"))
     names = load_npc_names()
+    behaviors = json.load(open(constants.DATA_RAW / "behavior.json"))
+    attacks = json.load(open(constants.DATA_RAW / "atk_npc.json"))
+    attack_index = _attack_index(behaviors)
 
     roster = {}
     for nightlord, npc_id in NIGHTLORDS.items():
@@ -64,7 +95,9 @@ def run():
         if not row:
             print(f"  nightlords: WARNING {nightlord} (npc {npc_id}) missing")
             continue
-        roster[nightlord] = profile(row, names, npc_id)
+        entry = profile(row, names, npc_id)
+        entry["attacks"] = resolve_attacks(row.get("behaviorVariationId"), attack_index, attacks)
+        roster[nightlord] = entry
 
     json.dump(roster, open(constants.DATA_CURATED / "nightlords.json", "w"),
               ensure_ascii=False, indent=1)

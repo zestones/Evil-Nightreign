@@ -31,6 +31,13 @@
    "madness": "immune",
    "rot": "moderate",
    "curse": "immune"
+  },
+  "attacks": {
+   "max_damage": {
+    "fire": 500
+   },
+   "poise": 30.0,
+   "attack_count": 10
   }
  },
  "Adel": {
@@ -65,6 +72,14 @@
    "madness": "immune",
    "rot": "weak",
    "curse": "immune"
+  },
+  "attacks": {
+   "max_damage": {
+    "phys": 270,
+    "thunder": 380
+   },
+   "poise": 50.0,
+   "attack_count": 48
   }
  },
  "Gnoster": {
@@ -99,6 +114,13 @@
    "madness": "immune",
    "rot": "weak",
    "curse": "immune"
+  },
+  "attacks": {
+   "max_damage": {
+    "mag": 300
+   },
+   "poise": 30.0,
+   "attack_count": 112
   }
  },
  "Maris": {
@@ -133,6 +155,14 @@
    "madness": "immune",
    "rot": "moderate",
    "curse": "immune"
+  },
+  "attacks": {
+   "max_damage": {
+    "mag": 210,
+    "phys": 150
+   },
+   "poise": 30.0,
+   "attack_count": 8
   }
  },
  "Libra": {
@@ -167,6 +197,14 @@
    "madness": "weak",
    "rot": "weak",
    "curse": "immune"
+  },
+  "attacks": {
+   "max_damage": {
+    "phys": 270,
+    "dark": 350
+   },
+   "poise": 100.0,
+   "attack_count": 12
   }
  },
  "Fulghor": {
@@ -201,6 +239,14 @@
    "madness": "immune",
    "rot": "weak",
    "curse": "immune"
+  },
+  "attacks": {
+   "max_damage": {
+    "phys": 300,
+    "dark": 300
+   },
+   "poise": 100.0,
+   "attack_count": 68
   }
  },
  "Caligo": {
@@ -235,6 +281,14 @@
    "madness": "immune",
    "rot": "moderate",
    "curse": "immune"
+  },
+  "attacks": {
+   "max_damage": {
+    "mag": 400,
+    "phys": 280
+   },
+   "poise": 80.0,
+   "attack_count": 26
   }
  },
  "Heolstor": {
@@ -269,6 +323,17 @@
    "madness": "immune",
    "rot": "moderate",
    "curse": "immune"
+  },
+  "attacks": {
+   "max_damage": {
+    "phys": 25,
+    "mag": 320,
+    "fire": 400,
+    "thunder": 400,
+    "dark": 400
+   },
+   "poise": 30.0,
+   "attack_count": 39
   }
  }
 }

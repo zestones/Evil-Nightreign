@@ -67,5 +67,24 @@ def run():
                for rid, f in rows.items()}
         json.dump(out, open(constants.DATA_RAW / fname, "w"), ensure_ascii=False, allow_nan=False)
         print(f"  params: {name} -> {len(rows)} rows")
-    # Owned-effect resolution (magnitude + condition) is done by the `effects` step,
-    # which walks the AttachEffect system instead of guessing at direct SpEffects.
+
+    # Enemy attack system (for boss damage / the one-shot check): an enemy's
+    # behaviorVariationId links to BehaviorParam rows whose refId points at
+    # AtkParam_Npc rows carrying the real per-element attack damage.
+    _, beh_layout, _ = paramdef.parse_def(constants.DEFS / "BehaviorParam.xml")
+    beh = paramdef.decode_param(params["BehaviorParam"], beh_layout)
+    beh_out = {rid: {k: f.get(k) for k in ("variationId", "refType", "refId")}
+               for rid, f in beh.items()}
+    json.dump(beh_out, open(constants.DATA_RAW / "behavior.json", "w"),
+              ensure_ascii=False, allow_nan=False)
+    print(f"  params: BehaviorParam -> {len(beh)} rows")
+
+    _, atk_layout, _ = paramdef.parse_def(constants.DEFS / "AtkParam.xml")
+    atk = paramdef.decode_param(params["AtkParam_Npc"], atk_layout)
+    atk_fields = ("atkPhys", "atkMag", "atkFire", "atkThun", "atkDark", "atkStam", "atkSuperArmor")
+    atk_out = {rid: d for rid, f in atk.items()
+               if (d := {k: _sanitize(f[k]) for k in atk_fields if f.get(k)})}
+    json.dump(atk_out, open(constants.DATA_RAW / "atk_npc.json", "w"),
+              ensure_ascii=False, allow_nan=False)
+    print(f"  params: AtkParam_Npc -> {len(atk)} rows ({len(atk_out)} with damage)")
+    # Owned-effect resolution (magnitude + condition) is done by the `effects` step.
