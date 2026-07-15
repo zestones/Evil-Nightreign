@@ -1,1231 +1,1451 @@
 {
- "Duchess": [
+ "Wylder": [
   {
-   "name": "Duchess' Chalice",
-   "slots": [
+   "name": "Wylder's Urn",
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Red"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Red"
+   ]
+  },
+  {
+   "name": "Wylder's Goblet",
+   "normal_slots": [
     "Blue",
     "Yellow",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Blue",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Wylder's Chalice",
+   "normal_slots": [
+    "Any",
+    "Blue",
+    "Green"
+   ],
+   "deep_slots": [
     "Any",
     "Red",
-    "Blue",
     "Yellow"
    ]
   },
   {
-   "name": "Duchess' Goblet",
-   "slots": [
-    "Yellow",
-    "Yellow",
-    "Green",
-    "Yellow",
-    "Yellow",
-    "Green"
-   ]
-  },
-  {
-   "name": "Duchess' Urn",
-   "slots": [
+   "name": "Soot-Covered Wylder's Urn",
+   "normal_slots": [
     "Red",
-    "Blue",
-    "Blue",
     "Red",
-    "Blue",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
     "Blue"
    ]
   },
   {
-   "name": "Soot-Covered Duchess' Urn",
-   "slots": [
+   "name": "Sealed Wylder's Urn",
+   "normal_slots": [
     "Red",
-    "Red",
-    "Green",
-    "Red",
-    "Red",
-    "Green"
-   ]
-  },
-  {
-   "name": "Sealed Duchess' Urn",
-   "slots": [
-    "Blue",
-    "Blue",
-    "Red",
-    "Green",
-    "Green",
-    "Yellow"
-   ]
-  },
-  {
-   "name": "Decrepit Duchess' Goblet",
-   "slots": [
-    "Blue",
-    "Green",
-    "Green",
-    "Blue",
-    "Green",
-    "Green"
-   ]
-  },
-  {
-   "name": "Forgotten Duchess' Goblet",
-   "slots": [
-    "Green",
-    "Yellow",
-    "Yellow",
-    "Red",
-    "Green",
+    "Any",
     "Any"
+   ],
+   "deep_slots": [
+    "Yellow",
+    "Blue",
+    "Blue"
    ]
   },
   {
-   "name": "Giant's Cradle Grail",
-   "slots": [
-    "Blue",
-    "Blue",
-    "Blue",
-    "Blue",
-    "Blue",
+   "name": "Decrepit Wylder's Goblet",
+   "normal_slots": [
+    "Red",
+    "Yellow",
     "Blue"
+   ],
+   "deep_slots": [
+    "Red",
+    "Yellow",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Forgotten Wylder's Goblet",
+   "normal_slots": [
+    "Yellow",
+    "Yellow",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Any",
+    "Yellow",
+    "Green"
    ]
   },
   {
    "name": "Sacred Erdtree Grail",
-   "slots": [
-    "Yellow",
-    "Yellow",
-    "Yellow",
-    "Yellow",
-    "Yellow",
-    "Yellow"
+   "normal_slots": [
+    "Blue",
+    "Blue",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Blue",
+    "Blue",
+    "Blue"
    ]
   },
   {
    "name": "Spirit Shelter Grail",
-   "slots": [
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green"
-   ]
-  },
-  {
-   "name": "Scadutree Grail",
-   "slots": [
-    "Red",
-    "Red",
-    "Red",
-    "Red",
-    "Red",
-    "Red"
-   ]
-  }
- ],
- "Executor": [
-  {
-   "name": "Executor's Chalice",
-   "slots": [
-    "Blue",
+   "normal_slots": [
     "Yellow",
-    "Any",
-    "Yellow",
-    "Yellow",
-    "Green"
-   ]
-  },
-  {
-   "name": "Executor's Goblet",
-   "slots": [
-    "Red",
-    "Blue",
-    "Green",
-    "Red",
-    "Blue",
-    "Green"
-   ]
-  },
-  {
-   "name": "Executor's Urn",
-   "slots": [
-    "Red",
-    "Yellow",
-    "Yellow",
-    "Red",
     "Yellow",
     "Yellow"
-   ]
-  },
-  {
-   "name": "Soot-Covered Executor's Urn",
-   "slots": [
-    "Red",
-    "Red",
-    "Blue",
-    "Red",
-    "Red",
-    "Blue"
-   ]
-  },
-  {
-   "name": "Sealed Executor's Urn",
-   "slots": [
+   ],
+   "deep_slots": [
     "Yellow",
     "Yellow",
-    "Red",
-    "Green",
-    "Green",
-    "Blue"
-   ]
-  },
-  {
-   "name": "Decrepit Executor's Goblet",
-   "slots": [
-    "Red",
-    "Red",
-    "Yellow",
-    "Red",
-    "Red",
     "Yellow"
-   ]
-  },
-  {
-   "name": "Forgotten Executor's Goblet",
-   "slots": [
-    "Green",
-    "Blue",
-    "Red",
-    "Yellow",
-    "Green",
-    "Any"
    ]
   },
   {
    "name": "Giant's Cradle Grail",
-   "slots": [
-    "Blue",
-    "Blue",
-    "Blue",
-    "Blue",
-    "Blue",
-    "Blue"
-   ]
-  },
-  {
-   "name": "Sacred Erdtree Grail",
-   "slots": [
-    "Yellow",
-    "Yellow",
-    "Yellow",
-    "Yellow",
-    "Yellow",
-    "Yellow"
-   ]
-  },
-  {
-   "name": "Spirit Shelter Grail",
-   "slots": [
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green"
+   "normal_slots": [
+    "Red",
+    "Red",
+    "Red"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
+    "Red"
    ]
   },
   {
    "name": "Scadutree Grail",
-   "slots": [
-    "Red",
-    "Red",
-    "Red",
-    "Red",
-    "Red",
-    "Red"
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Any"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Any"
    ]
   }
  ],
  "Guardian": [
   {
-   "name": "Guardian's Chalice",
-   "slots": [
-    "Blue",
-    "Yellow",
+   "name": "Guardian's Urn",
+   "normal_slots": [
     "Any",
-    "Red",
     "Blue",
-    "Yellow"
+    "Blue"
+   ],
+   "deep_slots": [
+    "Any",
+    "Blue",
+    "Blue"
    ]
   },
   {
    "name": "Guardian's Goblet",
-   "slots": [
-    "Blue",
-    "Blue",
-    "Green",
-    "Blue",
-    "Blue",
-    "Green"
+   "normal_slots": [
+    "Red",
+    "Red",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
+    "Yellow"
    ]
   },
   {
-   "name": "Guardian's Urn",
-   "slots": [
+   "name": "Guardian's Chalice",
+   "normal_slots": [
     "Red",
-    "Yellow",
-    "Yellow",
+    "Blue",
+    "Green"
+   ],
+   "deep_slots": [
+    "Any",
     "Red",
-    "Yellow",
-    "Yellow"
+    "Blue"
    ]
   },
   {
    "name": "Soot-Covered Guardian's Urn",
-   "slots": [
-    "Red",
-    "Green",
-    "Green",
-    "Red",
-    "Green",
-    "Green"
+   "normal_slots": [
+    "Any",
+    "Yellow",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Any",
+    "Yellow",
+    "Yellow"
    ]
   },
   {
    "name": "Sealed Guardian's Urn",
-   "slots": [
+   "normal_slots": [
+    "Blue",
+    "Blue",
+    "Any"
+   ],
+   "deep_slots": [
     "Yellow",
     "Yellow",
-    "Red",
-    "Green",
-    "Green",
-    "Blue"
+    "Red"
    ]
   },
   {
    "name": "Decrepit Guardian's Goblet",
-   "slots": [
+   "normal_slots": [
+    "Blue",
     "Yellow",
-    "Green",
-    "Green",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Blue",
     "Yellow",
-    "Green",
-    "Green"
+    "Yellow"
    ]
   },
   {
    "name": "Forgotten Guardian's Goblet",
-   "slots": [
-    "Green",
-    "Blue",
-    "Blue",
+   "normal_slots": [
+    "Yellow",
     "Red",
-    "Blue",
-    "Any"
+    "Red"
+   ],
+   "deep_slots": [
+    "Any",
+    "Red",
+    "Green"
    ]
   },
   {
-   "name": "Giant's Cradle Grail",
-   "slots": [
+   "name": "Sacred Erdtree Grail",
+   "normal_slots": [
     "Blue",
     "Blue",
-    "Blue",
+    "Blue"
+   ],
+   "deep_slots": [
     "Blue",
     "Blue",
     "Blue"
    ]
   },
   {
-   "name": "Sacred Erdtree Grail",
-   "slots": [
+   "name": "Spirit Shelter Grail",
+   "normal_slots": [
     "Yellow",
     "Yellow",
-    "Yellow",
+    "Yellow"
+   ],
+   "deep_slots": [
     "Yellow",
     "Yellow",
     "Yellow"
    ]
   },
   {
-   "name": "Spirit Shelter Grail",
-   "slots": [
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green"
+   "name": "Giant's Cradle Grail",
+   "normal_slots": [
+    "Red",
+    "Red",
+    "Red"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
+    "Red"
    ]
   },
   {
    "name": "Scadutree Grail",
-   "slots": [
-    "Red",
-    "Red",
-    "Red",
-    "Red",
-    "Red",
-    "Red"
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Any"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Any"
    ]
   }
  ],
  "Ironeye": [
   {
-   "name": "Ironeye's Chalice",
-   "slots": [
-    "Red",
-    "Green",
-    "Any",
-    "Red",
-    "Red",
-    "Green"
+   "name": "Ironeye's Urn",
+   "normal_slots": [
+    "Blue",
+    "Yellow",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Blue",
+    "Yellow",
+    "Yellow"
    ]
   },
   {
    "name": "Ironeye's Goblet",
-   "slots": [
+   "normal_slots": [
+    "Any",
     "Red",
-    "Blue",
-    "Yellow",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Any",
     "Red",
-    "Blue",
-    "Yellow"
+    "Blue"
    ]
   },
   {
-   "name": "Ironeye's Urn",
-   "slots": [
+   "name": "Ironeye's Chalice",
+   "normal_slots": [
+    "Any",
     "Yellow",
-    "Green",
-    "Green",
-    "Yellow",
-    "Green",
     "Green"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Yellow"
    ]
   },
   {
    "name": "Soot-Covered Ironeye's Urn",
-   "slots": [
+   "normal_slots": [
+    "Red",
     "Blue",
-    "Yellow",
-    "Yellow",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Red",
     "Blue",
-    "Yellow",
-    "Yellow"
+    "Blue"
    ]
   },
   {
    "name": "Sealed Ironeye's Urn",
-   "slots": [
-    "Green",
-    "Green",
+   "normal_slots": [
     "Yellow",
-    "Blue",
-    "Blue",
-    "Red"
-   ]
-  },
-  {
-   "name": "Decrepit Ironeye's Goblet",
-   "slots": [
-    "Blue",
-    "Blue",
-    "Green",
-    "Blue",
-    "Blue",
-    "Green"
-   ]
-  },
-  {
-   "name": "Forgotten Ironeye's Goblet",
-   "slots": [
     "Yellow",
-    "Blue",
+    "Blue"
+   ],
+   "deep_slots": [
     "Red",
-    "Yellow",
-    "Green",
+    "Red",
     "Any"
    ]
   },
   {
-   "name": "Giant's Cradle Grail",
-   "slots": [
+   "name": "Decrepit Ironeye's Goblet",
+   "normal_slots": [
+    "Red",
+    "Red",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Forgotten Ironeye's Goblet",
+   "normal_slots": [
+    "Blue",
+    "Red",
+    "Any"
+   ],
+   "deep_slots": [
+    "Blue",
+    "Yellow",
+    "Green"
+   ]
+  },
+  {
+   "name": "Sacred Erdtree Grail",
+   "normal_slots": [
     "Blue",
     "Blue",
-    "Blue",
+    "Blue"
+   ],
+   "deep_slots": [
     "Blue",
     "Blue",
     "Blue"
    ]
   },
   {
-   "name": "Sacred Erdtree Grail",
-   "slots": [
+   "name": "Spirit Shelter Grail",
+   "normal_slots": [
     "Yellow",
     "Yellow",
-    "Yellow",
+    "Yellow"
+   ],
+   "deep_slots": [
     "Yellow",
     "Yellow",
     "Yellow"
    ]
   },
   {
-   "name": "Spirit Shelter Grail",
-   "slots": [
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green"
+   "name": "Giant's Cradle Grail",
+   "normal_slots": [
+    "Red",
+    "Red",
+    "Red"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
+    "Red"
    ]
   },
   {
    "name": "Scadutree Grail",
-   "slots": [
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Any"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Any"
+   ]
+  }
+ ],
+ "Duchess": [
+  {
+   "name": "Duchess' Urn",
+   "normal_slots": [
+    "Any",
+    "Red",
+    "Red"
+   ],
+   "deep_slots": [
+    "Any",
+    "Red",
+    "Red"
+   ]
+  },
+  {
+   "name": "Duchess' Goblet",
+   "normal_slots": [
+    "Blue",
+    "Blue",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Blue",
+    "Blue",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Duchess' Chalice",
+   "normal_slots": [
+    "Red",
+    "Blue",
+    "Green"
+   ],
+   "deep_slots": [
+    "Any",
+    "Red",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Soot-Covered Duchess' Urn",
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Sealed Duchess' Urn",
+   "normal_slots": [
     "Red",
     "Red",
+    "Any"
+   ],
+   "deep_slots": [
+    "Yellow",
+    "Yellow",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Decrepit Duchess' Goblet",
+   "normal_slots": [
     "Red",
+    "Yellow",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Red",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Forgotten Duchess' Goblet",
+   "normal_slots": [
+    "Yellow",
+    "Blue",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Any",
+    "Yellow",
+    "Green"
+   ]
+  },
+  {
+   "name": "Sacred Erdtree Grail",
+   "normal_slots": [
+    "Blue",
+    "Blue",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Blue",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Spirit Shelter Grail",
+   "normal_slots": [
+    "Yellow",
+    "Yellow",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Yellow",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Giant's Cradle Grail",
+   "normal_slots": [
     "Red",
     "Red",
     "Red"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
+    "Red"
+   ]
+  },
+  {
+   "name": "Scadutree Grail",
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Any"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Any"
    ]
   }
  ],
  "Raider": [
   {
-   "name": "Raider's Chalice",
-   "slots": [
-    "Red",
-    "Red",
+   "name": "Raider's Urn",
+   "normal_slots": [
     "Any",
-    "Red",
+    "Yellow",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Any",
     "Yellow",
     "Yellow"
    ]
   },
   {
    "name": "Raider's Goblet",
-   "slots": [
+   "normal_slots": [
+    "Any",
     "Red",
-    "Blue",
-    "Yellow",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Any",
     "Red",
-    "Blue",
-    "Yellow"
+    "Blue"
    ]
   },
   {
-   "name": "Raider's Urn",
-   "slots": [
-    "Red",
-    "Green",
-    "Green",
-    "Red",
-    "Green",
+   "name": "Raider's Chalice",
+   "normal_slots": [
+    "Any",
+    "Any",
     "Green"
+   ],
+   "deep_slots": [
+    "Any",
+    "Blue",
+    "Blue"
    ]
   },
   {
    "name": "Soot-Covered Raider's Urn",
-   "slots": [
-    "Blue",
-    "Blue",
-    "Green",
-    "Blue",
-    "Blue",
-    "Green"
+   "normal_slots": [
+    "Red",
+    "Red",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
+    "Yellow"
    ]
   },
   {
    "name": "Sealed Raider's Urn",
-   "slots": [
-    "Green",
-    "Green",
-    "Red",
+   "normal_slots": [
     "Yellow",
+    "Yellow",
+    "Any"
+   ],
+   "deep_slots": [
     "Blue",
-    "Blue"
+    "Red",
+    "Red"
    ]
   },
   {
    "name": "Decrepit Raider's Goblet",
-   "slots": [
-    "Yellow",
-    "Yellow",
-    "Green",
-    "Yellow",
-    "Yellow",
-    "Green"
+   "normal_slots": [
+    "Blue",
+    "Blue",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Blue",
+    "Blue",
+    "Yellow"
    ]
   },
   {
    "name": "Forgotten Raider's Goblet",
-   "slots": [
-    "Yellow",
+   "normal_slots": [
     "Blue",
     "Red",
-    "Red",
-    "Green",
     "Any"
-   ]
-  },
-  {
-   "name": "Giant's Cradle Grail",
-   "slots": [
-    "Blue",
-    "Blue",
-    "Blue",
-    "Blue",
-    "Blue",
-    "Blue"
-   ]
-  },
-  {
-   "name": "Sacred Erdtree Grail",
-   "slots": [
-    "Yellow",
-    "Yellow",
-    "Yellow",
-    "Yellow",
-    "Yellow",
-    "Yellow"
-   ]
-  },
-  {
-   "name": "Spirit Shelter Grail",
-   "slots": [
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green"
-   ]
-  },
-  {
-   "name": "Scadutree Grail",
-   "slots": [
-    "Red",
-    "Red",
-    "Red",
-    "Red",
-    "Red",
-    "Red"
-   ]
-  }
- ],
- "Recluse": [
-  {
-   "name": "Recluse's Chalice",
-   "slots": [
-    "Yellow",
-    "Green",
+   ],
+   "deep_slots": [
     "Any",
-    "Blue",
-    "Green",
+    "Yellow",
     "Green"
-   ]
-  },
-  {
-   "name": "Recluse's Goblet",
-   "slots": [
-    "Red",
-    "Blue",
-    "Yellow",
-    "Red",
-    "Blue",
-    "Yellow"
-   ]
-  },
-  {
-   "name": "Recluse's Urn",
-   "slots": [
-    "Blue",
-    "Blue",
-    "Green",
-    "Blue",
-    "Blue",
-    "Green"
-   ]
-  },
-  {
-   "name": "Soot-Covered Recluse's Urn",
-   "slots": [
-    "Red",
-    "Red",
-    "Yellow",
-    "Red",
-    "Red",
-    "Yellow"
-   ]
-  },
-  {
-   "name": "Sealed Recluse's Urn",
-   "slots": [
-    "Green",
-    "Blue",
-    "Blue",
-    "Yellow",
-    "Yellow",
-    "Red"
-   ]
-  },
-  {
-   "name": "Decrepit Recluse's Goblet",
-   "slots": [
-    "Red",
-    "Red",
-    "Blue",
-    "Red",
-    "Red",
-    "Blue"
-   ]
-  },
-  {
-   "name": "Forgotten Recluse's Goblet",
-   "slots": [
-    "Yellow",
-    "Blue",
-    "Red",
-    "Blue",
-    "Green",
-    "Any"
-   ]
-  },
-  {
-   "name": "Giant's Cradle Grail",
-   "slots": [
-    "Blue",
-    "Blue",
-    "Blue",
-    "Blue",
-    "Blue",
-    "Blue"
    ]
   },
   {
    "name": "Sacred Erdtree Grail",
-   "slots": [
+   "normal_slots": [
+    "Blue",
+    "Blue",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Blue",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Spirit Shelter Grail",
+   "normal_slots": [
     "Yellow",
     "Yellow",
-    "Yellow",
+    "Yellow"
+   ],
+   "deep_slots": [
     "Yellow",
     "Yellow",
     "Yellow"
    ]
   },
   {
-   "name": "Spirit Shelter Grail",
-   "slots": [
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green"
+   "name": "Giant's Cradle Grail",
+   "normal_slots": [
+    "Red",
+    "Red",
+    "Red"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
+    "Red"
    ]
   },
   {
    "name": "Scadutree Grail",
-   "slots": [
-    "Red",
-    "Red",
-    "Red",
-    "Red",
-    "Red",
-    "Red"
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Any"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Any"
    ]
   }
  ],
  "Revenant": [
   {
-   "name": "Revenant's Chalice",
-   "slots": [
-    "Blue",
-    "Green",
-    "Any",
-    "Blue",
-    "Yellow",
-    "Green"
+   "name": "Revenant's Urn",
+   "normal_slots": [
+    "Red",
+    "Red",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
+    "Blue"
    ]
   },
   {
    "name": "Revenant's Goblet",
-   "slots": [
-    "Red",
-    "Red",
-    "Green",
-    "Red",
-    "Red",
-    "Green"
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Yellow"
    ]
   },
   {
-   "name": "Revenant's Urn",
-   "slots": [
-    "Blue",
-    "Blue",
+   "name": "Revenant's Chalice",
+   "normal_slots": [
+    "Red",
     "Yellow",
-    "Blue",
+    "Green"
+   ],
+   "deep_slots": [
+    "Red",
     "Blue",
     "Yellow"
    ]
   },
   {
    "name": "Soot-Covered Revenant's Urn",
-   "slots": [
-    "Red",
-    "Yellow",
-    "Yellow",
-    "Red",
-    "Yellow",
-    "Yellow"
+   "normal_slots": [
+    "Any",
+    "Blue",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Any",
+    "Blue",
+    "Blue"
    ]
   },
   {
    "name": "Sealed Revenant's Urn",
-   "slots": [
-    "Yellow",
+   "normal_slots": [
     "Blue",
-    "Blue",
-    "Green",
-    "Green",
+    "Red",
     "Red"
+   ],
+   "deep_slots": [
+    "Yellow",
+    "Yellow",
+    "Any"
    ]
   },
   {
    "name": "Decrepit Revenant's Goblet",
-   "slots": [
-    "Red",
-    "Red",
-    "Yellow",
-    "Red",
-    "Red",
-    "Yellow"
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Blue"
    ]
   },
   {
    "name": "Forgotten Revenant's Goblet",
-   "slots": [
-    "Green",
-    "Red",
-    "Red",
+   "normal_slots": [
     "Yellow",
-    "Green",
+    "Any",
     "Any"
+   ],
+   "deep_slots": [
+    "Blue",
+    "Yellow",
+    "Green"
    ]
   },
   {
-   "name": "Giant's Cradle Grail",
-   "slots": [
+   "name": "Sacred Erdtree Grail",
+   "normal_slots": [
     "Blue",
     "Blue",
-    "Blue",
+    "Blue"
+   ],
+   "deep_slots": [
     "Blue",
     "Blue",
     "Blue"
    ]
   },
   {
-   "name": "Sacred Erdtree Grail",
-   "slots": [
+   "name": "Spirit Shelter Grail",
+   "normal_slots": [
     "Yellow",
     "Yellow",
-    "Yellow",
+    "Yellow"
+   ],
+   "deep_slots": [
     "Yellow",
     "Yellow",
     "Yellow"
    ]
   },
   {
-   "name": "Spirit Shelter Grail",
-   "slots": [
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green"
+   "name": "Giant's Cradle Grail",
+   "normal_slots": [
+    "Red",
+    "Red",
+    "Red"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
+    "Red"
    ]
   },
   {
    "name": "Scadutree Grail",
-   "slots": [
-    "Red",
-    "Red",
-    "Red",
-    "Red",
-    "Red",
-    "Red"
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Any"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Any"
    ]
   }
  ],
- "Wylder": [
+ "Recluse": [
   {
-   "name": "Wylder's Chalice",
-   "slots": [
+   "name": "Recluse's Urn",
+   "normal_slots": [
     "Red",
-    "Yellow",
+    "Red",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Recluse's Goblet",
+   "normal_slots": [
     "Any",
     "Red",
-    "Blue",
-    "Green"
-   ]
-  },
-  {
-   "name": "Wylder's Goblet",
-   "slots": [
-    "Yellow",
-    "Green",
-    "Green",
-    "Yellow",
-    "Green",
-    "Green"
-   ]
-  },
-  {
-   "name": "Wylder's Urn",
-   "slots": [
-    "Red",
-    "Red",
-    "Blue",
-    "Red",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Any",
     "Red",
     "Blue"
    ]
   },
   {
-   "name": "Soot-Covered Wylder's Urn",
-   "slots": [
-    "Blue",
+   "name": "Recluse's Chalice",
+   "normal_slots": [
     "Blue",
     "Yellow",
-    "Blue",
-    "Blue",
-    "Yellow"
-   ]
-  },
-  {
-   "name": "Sealed Wylder's Urn",
-   "slots": [
-    "Blue",
+    "Green"
+   ],
+   "deep_slots": [
     "Red",
-    "Red",
-    "Green",
     "Yellow",
     "Yellow"
    ]
   },
   {
-   "name": "Decrepit Wylder's Goblet",
-   "slots": [
-    "Blue",
-    "Green",
-    "Yellow",
-    "Blue",
-    "Green",
-    "Yellow"
+   "name": "Soot-Covered Recluse's Urn",
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Blue"
    ]
   },
   {
-   "name": "Forgotten Wylder's Goblet",
-   "slots": [
-    "Green",
-    "Green",
+   "name": "Sealed Recluse's Urn",
+   "normal_slots": [
     "Yellow",
     "Red",
-    "Green",
+    "Red"
+   ],
+   "deep_slots": [
+    "Blue",
+    "Blue",
     "Any"
    ]
   },
   {
-   "name": "Giant's Cradle Grail",
-   "slots": [
+   "name": "Decrepit Recluse's Goblet",
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Red"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Red"
+   ]
+  },
+  {
+   "name": "Forgotten Recluse's Goblet",
+   "normal_slots": [
+    "Blue",
+    "Red",
+    "Any"
+   ],
+   "deep_slots": [
+    "Red",
+    "Yellow",
+    "Green"
+   ]
+  },
+  {
+   "name": "Sacred Erdtree Grail",
+   "normal_slots": [
     "Blue",
     "Blue",
-    "Blue",
+    "Blue"
+   ],
+   "deep_slots": [
     "Blue",
     "Blue",
     "Blue"
    ]
   },
   {
-   "name": "Sacred Erdtree Grail",
-   "slots": [
+   "name": "Spirit Shelter Grail",
+   "normal_slots": [
     "Yellow",
     "Yellow",
-    "Yellow",
+    "Yellow"
+   ],
+   "deep_slots": [
     "Yellow",
     "Yellow",
     "Yellow"
    ]
   },
   {
-   "name": "Spirit Shelter Grail",
-   "slots": [
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green"
+   "name": "Giant's Cradle Grail",
+   "normal_slots": [
+    "Red",
+    "Red",
+    "Red"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
+    "Red"
    ]
   },
   {
    "name": "Scadutree Grail",
-   "slots": [
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Any"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Any"
+   ]
+  }
+ ],
+ "Executor": [
+  {
+   "name": "Executor's Urn",
+   "normal_slots": [
+    "Any",
+    "Blue",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Any",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Executor's Goblet",
+   "normal_slots": [
+    "Any",
     "Red",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Any",
     "Red",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Executor's Chalice",
+   "normal_slots": [
     "Red",
+    "Blue",
+    "Green"
+   ],
+   "deep_slots": [
+    "Blue",
+    "Blue",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Soot-Covered Executor's Urn",
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Red"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Red"
+   ]
+  },
+  {
+   "name": "Sealed Executor's Urn",
+   "normal_slots": [
+    "Blue",
+    "Blue",
+    "Any"
+   ],
+   "deep_slots": [
+    "Yellow",
+    "Yellow",
+    "Red"
+   ]
+  },
+  {
+   "name": "Decrepit Executor's Goblet",
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Forgotten Executor's Goblet",
+   "normal_slots": [
+    "Yellow",
+    "Red",
+    "Any"
+   ],
+   "deep_slots": [
+    "Blue",
+    "Yellow",
+    "Green"
+   ]
+  },
+  {
+   "name": "Sacred Erdtree Grail",
+   "normal_slots": [
+    "Blue",
+    "Blue",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Blue",
+    "Blue",
+    "Blue"
+   ]
+  },
+  {
+   "name": "Spirit Shelter Grail",
+   "normal_slots": [
+    "Yellow",
+    "Yellow",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Yellow",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Giant's Cradle Grail",
+   "normal_slots": [
     "Red",
     "Red",
     "Red"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
+    "Red"
+   ]
+  },
+  {
+   "name": "Scadutree Grail",
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Any"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Any"
    ]
   }
  ],
  "Scholar": [
   {
-   "name": "Scholar's Chalice",
-   "slots": [
-    "Red",
-    "Blue",
+   "name": "Scholar's Urn",
+   "normal_slots": [
     "Any",
-    "Red",
-    "Yellow",
-    "Yellow"
+    "Any",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Blue"
    ]
   },
   {
    "name": "Scholar's Goblet",
-   "slots": [
-    "Blue",
-    "Green",
+   "normal_slots": [
+    "Red",
     "Yellow",
-    "Blue",
-    "Green",
-    "Yellow"
+    "Blue"
+   ],
+   "deep_slots": [
+    "Red",
+    "Yellow",
+    "Blue"
    ]
   },
   {
-   "name": "Scholar's Urn",
-   "slots": [
+   "name": "Scholar's Chalice",
+   "normal_slots": [
+    "Any",
     "Red",
-    "Red",
-    "Yellow",
-    "Red",
-    "Red",
-    "Yellow"
-   ]
-  },
-  {
-   "name": "Sealed Scholar's Urn",
-   "slots": [
-    "Yellow",
-    "Red",
-    "Red",
-    "Green",
+    "Green"
+   ],
+   "deep_slots": [
+    "Any",
     "Blue",
     "Blue"
    ]
   },
   {
    "name": "Soot-Covered Scholar's Urn",
-   "slots": [
+   "normal_slots": [
+    "Red",
+    "Yellow",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Red",
+    "Yellow",
+    "Yellow"
+   ]
+  },
+  {
+   "name": "Sealed Scholar's Urn",
+   "normal_slots": [
     "Blue",
-    "Green",
-    "Green",
-    "Blue",
-    "Green",
-    "Green"
+    "Any",
+    "Any"
+   ],
+   "deep_slots": [
+    "Yellow",
+    "Red",
+    "Red"
    ]
   },
   {
    "name": "Decrepit Scholar's Goblet",
-   "slots": [
-    "Blue",
-    "Blue",
-    "Green",
-    "Blue",
-    "Blue",
-    "Green"
+   "normal_slots": [
+    "Red",
+    "Red",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
+    "Yellow"
    ]
   },
   {
    "name": "Forgotten Scholar's Goblet",
-   "slots": [
-    "Yellow",
-    "Green",
+   "normal_slots": [
     "Blue",
-    "Red",
-    "Green",
-    "Any"
+    "Yellow",
+    "Red"
+   ],
+   "deep_slots": [
+    "Any",
+    "Yellow",
+    "Green"
    ]
   },
   {
-   "name": "Giant's Cradle Grail",
-   "slots": [
+   "name": "Sacred Erdtree Grail",
+   "normal_slots": [
     "Blue",
     "Blue",
-    "Blue",
+    "Blue"
+   ],
+   "deep_slots": [
     "Blue",
     "Blue",
     "Blue"
    ]
   },
   {
-   "name": "Sacred Erdtree Grail",
-   "slots": [
+   "name": "Spirit Shelter Grail",
+   "normal_slots": [
     "Yellow",
     "Yellow",
-    "Yellow",
+    "Yellow"
+   ],
+   "deep_slots": [
     "Yellow",
     "Yellow",
     "Yellow"
    ]
   },
   {
-   "name": "Spirit Shelter Grail",
-   "slots": [
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green"
+   "name": "Giant's Cradle Grail",
+   "normal_slots": [
+    "Red",
+    "Red",
+    "Red"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
+    "Red"
    ]
   },
   {
    "name": "Scadutree Grail",
-   "slots": [
-    "Red",
-    "Red",
-    "Red",
-    "Red",
-    "Red",
-    "Red"
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Any"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Any"
    ]
   }
  ],
  "Undertaker": [
   {
-   "name": "Undertaker's Chalice",
-   "slots": [
-    "Green",
+   "name": "Undertaker's Urn",
+   "normal_slots": [
+    "Red",
     "Yellow",
-    "Any",
-    "Blue",
-    "Green",
+    "Yellow"
+   ],
+   "deep_slots": [
+    "Red",
+    "Yellow",
     "Yellow"
    ]
   },
   {
    "name": "Undertaker's Goblet",
-   "slots": [
-    "Red",
-    "Yellow",
-    "Yellow",
-    "Red",
-    "Yellow",
-    "Yellow"
+   "normal_slots": [
+    "Any",
+    "Blue",
+    "Blue"
+   ],
+   "deep_slots": [
+    "Any",
+    "Blue",
+    "Blue"
    ]
   },
   {
-   "name": "Undertaker's Urn",
-   "slots": [
+   "name": "Undertaker's Chalice",
+   "normal_slots": [
+    "Yellow",
     "Blue",
-    "Green",
-    "Green",
-    "Blue",
-    "Green",
     "Green"
-   ]
-  },
-  {
-   "name": "Sealed Undertaker's Urn",
-   "slots": [
-    "Green",
-    "Green",
-    "Blue",
-    "Yellow",
+   ],
+   "deep_slots": [
     "Red",
-    "Red"
+    "Yellow",
+    "Blue"
    ]
   },
   {
    "name": "Soot-Covered Undertaker's Urn",
-   "slots": [
-    "Red",
-    "Red",
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Red"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Red"
+   ]
+  },
+  {
+   "name": "Sealed Undertaker's Urn",
+   "normal_slots": [
+    "Yellow",
+    "Yellow",
+    "Red"
+   ],
+   "deep_slots": [
     "Blue",
-    "Red",
-    "Red",
-    "Blue"
+    "Any",
+    "Any"
    ]
   },
   {
    "name": "Decrepit Undertaker's Goblet",
-   "slots": [
+   "normal_slots": [
+    "Any",
     "Red",
-    "Blue",
-    "Blue",
+    "Red"
+   ],
+   "deep_slots": [
+    "Any",
     "Red",
-    "Blue",
-    "Blue"
+    "Red"
    ]
   },
   {
    "name": "Forgotten Undertaker's Goblet",
-   "slots": [
-    "Yellow",
-    "Yellow",
+   "normal_slots": [
+    "Blue",
+    "Blue",
+    "Any"
+   ],
+   "deep_slots": [
     "Red",
     "Blue",
-    "Yellow",
     "Green"
    ]
   },
   {
-   "name": "Giant's Cradle Grail",
-   "slots": [
+   "name": "Sacred Erdtree Grail",
+   "normal_slots": [
     "Blue",
     "Blue",
-    "Blue",
+    "Blue"
+   ],
+   "deep_slots": [
     "Blue",
     "Blue",
     "Blue"
    ]
   },
   {
-   "name": "Sacred Erdtree Grail",
-   "slots": [
+   "name": "Spirit Shelter Grail",
+   "normal_slots": [
     "Yellow",
     "Yellow",
-    "Yellow",
+    "Yellow"
+   ],
+   "deep_slots": [
     "Yellow",
     "Yellow",
     "Yellow"
    ]
   },
   {
-   "name": "Spirit Shelter Grail",
-   "slots": [
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green",
-    "Green"
+   "name": "Giant's Cradle Grail",
+   "normal_slots": [
+    "Red",
+    "Red",
+    "Red"
+   ],
+   "deep_slots": [
+    "Red",
+    "Red",
+    "Red"
    ]
   },
   {
    "name": "Scadutree Grail",
-   "slots": [
-    "Red",
-    "Red",
-    "Red",
-    "Red",
-    "Red",
-    "Red"
+   "normal_slots": [
+    "Any",
+    "Any",
+    "Any"
+   ],
+   "deep_slots": [
+    "Any",
+    "Any",
+    "Any"
    ]
   }
  ]
