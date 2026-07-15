@@ -17,6 +17,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 from nightreign.optimize import runner
+from nightreign.optimize.context import Context
 from nightreign.resources import actions, weapon_types
 
 STATIC = Path(__file__).parent / "static"
@@ -52,20 +53,27 @@ def _meta(data):
     }
 
 
-def _serialize(result):
+def _serialize(result, data, character, toggles, don):
+    """JSON view of a gameplan; each relic effect is flagged active/inactive
+    in the result's own context so the UI can gray out what does nothing."""
+    ctx = Context(character, result["weapon_type"], frozenset(toggles), max(don, 1))
     picks = []
     for (kind, color), relic in result["picks"]:
+        effects = [{"text": e["text"],
+                    "active": ctx.effect_active(data["effects"].get(str(e["id"])) or {}, e)}
+                   for e in relic["effects"]]
         picks.append({
             "kind": kind, "slot_color": color,
             "name": runner.pretty_name(relic["name"]),
             "color": relic["color"],
             "unique": relic["type"] == "UniqueRelic",
             "grid": relic.get("grid"), "grid_by_color": relic.get("grid_by_color"),
-            "effects": [e["text"] for e in relic["effects"]],
+            "effects": effects,
         })
     b = result["breakdown"]
     return {
         "score": result["score"],
+        "absolute_offense": result.get("absolute_offense", b["offense"]),
         "weapon": result["weapon"], "weapon_type": result["weapon_type"],
         "weapon_alternatives": result.get("weapon_alternatives") or [],
         "vessel": result["vessel"], "targets": result["targets"],
@@ -122,7 +130,13 @@ def make_handler(data):
                     beam_k=int(req.get("beam", 12)),
                     top=int(req.get("top", 3)),
                     play=play, data=data)
-                self._send(200, {"results": [_serialize(r) for r in results]})
+                toggles = req.get("toggles") or ()
+                self._send(200, {
+                    "mode": "fixed" if req.get("weapon_type") else "auto",
+                    "results": [_serialize(r, data, results[0]["character"] if results
+                                           else req["character"], toggles,
+                                           int(req.get("don", 0)))
+                                for r in results]})
             except SystemExit as e:
                 self._send(400, {"error": str(e)})
             except Exception as e:  # surface the reason instead of a dead page

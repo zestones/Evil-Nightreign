@@ -169,16 +169,6 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
     vessels = [v for v in data["vessels"].get(character, []) if v.get("owned")]
     types_to_try = [weapon_type] if weapon_type else \
         best_weapon_types(data, stats, targets, types_count)
-    # Offense normalizer. Exploring several types: the best BARE weapon overall,
-    # so S ranks absolute damage across types. Type fixed by the user: that
-    # type's own bare baseline — they asked for the best gameplan of THIS
-    # style, not a verdict on the style's single-hit strength.
-    ref_off = None
-    if not weapon_type:
-        ref_id, _rn, _rl, _ra = pick_weapon(data, stats, targets, play=play)
-        ref_off = scoring.offense(
-            attack_rating.attack_rating(ref_id, 0, stats, data["ar_tables"]),
-            {}, play, targets)
 
     def search_vessels(scorer, pools):
         out = []
@@ -207,7 +197,7 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
             scorer = scoring.Scorer(weapon_id, stats,
                                     data["characters"][character]["defense"],
                                     targets, weight, don_scale, data["ar_tables"],
-                                    play=play, off_baseline=ref_off)
+                                    play=play)
             vessel_results = search_vessels(scorer, pools)
             # coordinate ascent: re-rank the type's weapons under the best
             # build's multipliers; a changed pick re-runs the relic search
@@ -220,24 +210,37 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
                 break
             weapon_id, weapon_name = new_id, new_name
         for score, vessel, picks in vessel_results:
+            breakdown = scorer.breakdown([p for _slot, r in picks
+                                          for p in [_parsed_of(pools, r)]])
             results.append({
                 "score": score, "character": character, "weapon_type": wlabel,
                 "weapon": weapon_name, "weapon_id": weapon_id,
                 "weapon_alternatives": alts,
                 "vessel": vessel["name"], "picks": picks,
-                "breakdown": scorer.breakdown([p for _slot, r in picks
-                                               for p in [_parsed_of(pools, r)]]),
+                "breakdown": breakdown,
+                "absolute_offense": breakdown["offense"],
                 "targets": [t[0] for t in targets],
             })
-    results.sort(key=lambda r: -r["score"])
-    # several vessels often reach the same relic set — keep the first of each
-    seen, unique = set(), []
+    # S is the improvement over the type's own bare weapon: comparable within a
+    # type, NOT across types. Fixed type: top builds by S. Free exploration:
+    # the best build of EACH type, ordered by absolute per-hit damage (stated
+    # as such — attack speed is not modeled, so this is a single-hit index).
+    if weapon_type:
+        results.sort(key=lambda r: -r["score"])
+        seen, unique = set(), []
+        for r in results:  # several vessels often reach the same relic set
+            key = frozenset(relic["record_id"] for _s, relic in r["picks"])
+            if key not in seen:
+                seen.add(key)
+                unique.append(r)
+        return unique[:top]
+    champions = {}
     for r in results:
-        key = frozenset(relic["record_id"] for _s, relic in r["picks"])
-        if key not in seen:
-            seen.add(key)
-            unique.append(r)
-    return unique[:top]
+        cur = champions.get(r["weapon_type"])
+        if cur is None or r["score"] > cur["score"]:
+            champions[r["weapon_type"]] = r
+    ranked = sorted(champions.values(), key=lambda r: -r["absolute_offense"])
+    return ranked[:top]
 
 
 def _parsed_of(pools, relic):
@@ -262,7 +265,8 @@ def format_report(results, weight):
     for i, r in enumerate(results, 1):
         b = r["breakdown"]
         lines.append(f"#{i}  S={r['score']:.4f}  (offense x{b['offense_ratio']:.3f}, "
-                     f"survival x{b['survival_ratio']:.3f}, w={weight})")
+                     f"survival x{b['survival_ratio']:.3f}, w={weight}, "
+                     f"~{r.get('absolute_offense', b['offense']):.0f} dmg/hit)")
         lines.append(f"    HUNT : {r['weapon']} ({r['weapon_type']})   "
                      f"vs {', '.join(r['targets'])}   [biggest single hit — "
                      f"attack speed/DPS not modeled yet; fix a type with --weapon-type]")
