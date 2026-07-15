@@ -17,7 +17,7 @@ Run: python3 -m nightreign data effects
 """
 import json
 
-from nightreign.resources import conditions, constants
+from nightreign.resources import actions, conditions, constants
 
 CHARACTERS = ["Wylder", "Guardian", "Ironeye", "Duchess", "Raider",
               "Revenant", "Recluse", "Executor", "Scholar", "Undertaker"]
@@ -52,6 +52,40 @@ def _magnitude(effect_params, *sp_ids):
     return out
 
 
+def _action_gates(effect_params, *sp_ids):
+    """(action classes, state gate) restricting where the effect applies.
+
+    Reads the SpEffect `magicSubCategoryChange*` fields (attack sub-category
+    gates) and `stateInfo` (engine behaviors) — see resources/actions.py.
+    Empty actions = the effect applies to every attack.
+    """
+    acts, state = set(), None
+    mag = miracle = False
+    for sp_id in sp_ids:
+        if sp_id is None or sp_id < 0:
+            continue
+        row = effect_params.get(str(sp_id)) or {}
+        for field, value in row.items():
+            if "SubCategory" in field and isinstance(value, int) and value > 0:
+                label = actions.SUBCATEGORY_ACTIONS.get(value)
+                if label:
+                    acts.add(label)
+            elif field == "stateInfo" and isinstance(value, int):
+                if value in actions.STATEINFO_ACTIONS:
+                    acts.add(actions.STATEINFO_ACTIONS[value])
+                elif value in actions.STATEINFO_STATES:
+                    state = actions.STATEINFO_STATES[value]
+            elif field == "magParamChange" and value:
+                mag = True
+            elif field == "miracleParamChange" and value:
+                miracle = True
+    # exactly one spell flag and no finer gate = generic sorcery/incant buff
+    # (generic offense carries BOTH flags; school buffs are sub-category gated)
+    if not acts and mag != miracle:
+        acts.add("sorcery_any" if mag else "incant_any")
+    return sorted(acts), state
+
+
 def run():
     constants.DATA_CURATED.mkdir(parents=True, exist_ok=True)
     relics = json.load(open(constants.DATA_CURATED / "relics.json"))
@@ -70,7 +104,8 @@ def run():
         ae = attach.get(str(eid))
         if not ae:
             resolved[eid] = dict(key=key, text=text_by_id[eid], magnitude={},
-                                 on_hit={}, condition=None, characters="all", is_debuff=False)
+                                 on_hit={}, condition=None, actions=[], state_gate=None,
+                                 characters="all", is_debuff=False)
             continue
 
         magnitude = _magnitude(effect_params, ae.get("passiveSpEffectId_1"),
@@ -87,10 +122,14 @@ def run():
 
         allowed = [c for c in CHARACTERS if ae.get(f"allow{c}")]
         characters = "all" if len(allowed) == len(CHARACTERS) else allowed
+        acts, state_gate = _action_gates(
+            effect_params, ae.get("passiveSpEffectId_1"), ae.get("passiveSpEffectId_2"),
+            ae.get("passiveSpEffectId_3"), ae.get("permanentSpEffectId"))
 
         resolved[eid] = dict(
             key=key, text=text_by_id[eid],
             magnitude=magnitude, on_hit=on_hit, condition=condition,
+            actions=acts, state_gate=state_gate,
             characters=characters, is_debuff=bool(ae.get("isDebuff")),
             displayed_value=ae.get("displayedModifierValue"),
         )
