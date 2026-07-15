@@ -47,9 +47,13 @@ class Scorer:
     """Scores a parsed-relic set for one context (weapon, targets, weights)."""
 
     def __init__(self, weapon_id, hero_stats, char_defense, targets,
-                 weight=0.5, don_attack_scale=1.0, ar_tables=None, play=None):
+                 weight=0.5, don_attack_scale=1.0, ar_tables=None, play=None,
+                 off_baseline=None):
         """targets: list of (name, npc_row, attacks_max_damage_dict).
-        play: normalized {action: weight} — default pure-melee benchmark."""
+        play: normalized {action: weight} — default pure-melee benchmark.
+        off_baseline: shared offense normalizer (the best BARE weapon's damage)
+        so scores stay comparable across weapon types; None = this weapon's
+        own bare damage (single-type use)."""
         self.weapon_id = str(weapon_id)
         self.base_stats = dict(hero_stats)
         self.negation = {NEGATION_TYPE_TO_ENGINE[k]: v
@@ -62,7 +66,8 @@ class Scorer:
         self.tables = ar_tables or attack_rating.load_tables()
         self._ar_cache = {}
         self._baseline = None
-        self._baseline = self._axes(aggregation.aggregate([]))
+        off0, surv0 = self._axes(aggregation.aggregate([]))
+        self._baseline = (off_baseline or off0, surv0)
 
     # ---- axes ----
     def _ar(self, agg):

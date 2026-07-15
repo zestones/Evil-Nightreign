@@ -169,6 +169,16 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
     vessels = [v for v in data["vessels"].get(character, []) if v.get("owned")]
     types_to_try = [weapon_type] if weapon_type else \
         best_weapon_types(data, stats, targets, types_count)
+    # Offense normalizer. Exploring several types: the best BARE weapon overall,
+    # so S ranks absolute damage across types. Type fixed by the user: that
+    # type's own bare baseline — they asked for the best gameplan of THIS
+    # style, not a verdict on the style's single-hit strength.
+    ref_off = None
+    if not weapon_type:
+        ref_id, _rn, _rl, _ra = pick_weapon(data, stats, targets, play=play)
+        ref_off = scoring.offense(
+            attack_rating.attack_rating(ref_id, 0, stats, data["ar_tables"]),
+            {}, play, targets)
 
     def search_vessels(scorer, pools):
         out = []
@@ -197,7 +207,7 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
             scorer = scoring.Scorer(weapon_id, stats,
                                     data["characters"][character]["defense"],
                                     targets, weight, don_scale, data["ar_tables"],
-                                    play=play)
+                                    play=play, off_baseline=ref_off)
             vessel_results = search_vessels(scorer, pools)
             # coordinate ascent: re-rank the type's weapons under the best
             # build's multipliers; a changed pick re-runs the relic search
@@ -254,7 +264,8 @@ def format_report(results, weight):
         lines.append(f"#{i}  S={r['score']:.4f}  (offense x{b['offense_ratio']:.3f}, "
                      f"survival x{b['survival_ratio']:.3f}, w={weight})")
         lines.append(f"    HUNT : {r['weapon']} ({r['weapon_type']})   "
-                     f"vs {', '.join(r['targets'])}")
+                     f"vs {', '.join(r['targets'])}   [biggest single hit — "
+                     f"attack speed/DPS not modeled yet; fix a type with --weapon-type]")
         if r.get("weapon_alternatives"):
             lines.append("    alt  : " + "  ".join(
                 f"{name} ({100 * (ratio - 1):+.1f}%)"
