@@ -72,6 +72,38 @@ The multiplicative objective and the submodular log-objective have the **same op
 
 **Survival.** The effective-HP multiplier is $\exp\!\big(-\sum \log(\text{cutRate})\big)$, again $\exp(\text{submodular})$ (cut rates $\le 1$ on the data, INV-3); the same argument applies per axis.
 
+### 2.1 Action-gated offense (the play profile)
+
+Of the $123$ keys touching an `*AttackRate` field, only $59$ apply to every attack; the other $64$ are **gated to a specific action** by three engine mechanisms decoded from the raw SpEffect rows (`resources/actions.py`, extracted into `effects.json` as `actions` / `state_gate`):
+
+1. `magicSubCategoryChange1/2/3` — attack sub-categories, self-labeled by the keys that carry them: melee ($130$), first standard attack ($119$), skill ($111/112$), guard counter ($103$), throwing knife ($120$), pots ($108$), glintstone/gravity stones ($121$), perfumes ($109$), roars ($106/107/116$), chain finisher ($104$), and $14$ sorcery/incantation schools ($2$–$26$).
+2. `stateInfo` — hardcoded behaviors: $367$ = critical hits only (**game-verified**: the R1 control stayed at $125$ in every crit-relic run of §5.0 while backstabs scaled), $2100$ = "3+ armaments of the type equipped" (a *loadout state*, exposed as the `triple_loadout` toggle).
+3. `magParamChange` / `miracleParamChange` — generic offense carries **both** flags; exactly one flag (and no finer gate) marks the six generic spell buffs (`improvedSorceries*` → all sorcery schools, `improvedIncantations*` → all incantation schools). Verified exhaustively: on the owned collection the one-flag keys are *exactly* those six plus the school-gated ones.
+
+**Model.** Each key $k$ gets an action class $\alpha(k) \in A \cup \{*\}$; the player declares a **play profile** $p = (p_a)_{a}$, $\sum_a p_a = 1$ — the share of their damage each action carries (default: the pure-melee benchmark $p = \{\text{melee}: 1\}$). Writing $C(a)$ for the classes applying to action $a$ ($*$, $a$ itself, and the spell umbrella of $a$'s school),
+
+$$\mathrm{OFF}(R) \;=\; \sum_{a} p_a \cdot D\!\Big(\mathrm{AR} \cdot \exp\big(\textstyle\sum_{c \in C(a)} \mathrm{Agg}_c(R)\big)\Big),$$
+
+with $D$ the damage pipeline (defense curve $\times$ target multipliers). Three consequences. (i) Per action, the objective is still $D(\text{base} \cdot e^{\text{submodular}})$; the mixture over actions is a weighted sum of such terms — monotone, not submodular: exactly the regime §4 already assigns to beam $+$ exhaustive verification, no new machinery. (ii) Theorem 2 is untouched: profile dimensions refine from $(\text{atk}, \text{type})$ to $(\text{atk}, \text{type}, \text{class})$ and the proof never counts dimensions. (iii) Under the default profile a crit-only or throwing-knife-only relic is worth exactly nothing — matching the measured game behavior instead of the $\times 8.5$ fantasy multipliers an ungated model produces. Note $D$ is *convex* in attack over much of the curve, so a declared action's multiplier can be worth **more** than its face value — the mixture must be evaluated through $D$, not on raw multipliers.
+
+**In-game verification of the action gates** (2026-07-15; Wylder, training grounds, same target; the floating damage number accumulates rapid consecutive hits, and the R1 chain resets when pausing — slow-paced hits are all *first* hits):
+
+| equipped                          | 1st chain hit | chained 2nd hit | verdict |
+|-----------------------------------|:----:|:----:|---------|
+| none                              | 125  | 126  | baseline |
+| melee $\times 1.06$ (sub-cat 130) | 131  | 133  | **whole chain buffed** ($\times 1.05$, display-rounding of $1.06$) |
+| first-hit $\times 1.15$ (sub-cat 119) | 144 | 126 | **first hit only** ($\times 1.152$; the chained hit is exactly baseline) |
+
+Both gates behave as decoded, and the first chain hit received **both** buffs across configs — an initial standard attack *is* a melee attack. A second session (weapon with a damaging art, carrier of melee $\times 1.06$ $+$ skill $\times 1.15$) settled the hierarchy:
+
+| measure               | without | with | ratio | verdict |
+|-----------------------|:----:|:----:|:------:|---------|
+| R1 (control)          | 142  | 149  | $\times 1.049$ | melee buff, same display damping as above |
+| weapon art (L2)       | 152  | 182  | $\times 1.197$ | $\approx 1.15 \cdot 1.06$ — **skills inherit melee buffs** (skill alone predicts $\sim 171$–$175$) |
+| backstab (crit)       | 286  | 300  | $\times 1.049$ | exactly the melee ratio — **crits inherit melee buffs, and not skill buffs** |
+
+The class hierarchy therefore treats `initial`, `skill`, `crit` (and, by extrapolation, `guard_counter`, `chain_finisher` — same melee-performed family, unmeasured) as sub-classes of `melee`. Practical corollary: at a hit-and-run pace the chain keeps resetting, so first-hit buffs apply to almost every hit — exactly what a play profile like `melee=0.6, initial=0.4` expresses. The crit gate ($367$) itself was verified earlier (§5.0).
+
 ## 3. Dominance pruning
 
 **Definition (profile, dominance).** In context $x$, a relic's **profile** assigns to every key $k$ of every axis: the *sum* of its active copies' values if $\sigma(k)=1$ (intra-relic copies exist — sum, don't max), the max otherwise. Relic $r'$ **dominates** $r$ if $\operatorname{col}$, $\operatorname{typ}$ are equal and $\operatorname{profile}(r') \ge \operatorname{profile}(r)$ on every key, strictly somewhere.
@@ -181,3 +213,4 @@ Three reading notes. First, both mechanisms peak at $w = 1.0$, a **single-axis**
 3. **Prune dominated relics** per context with the **$s_c$-aware rule** (Theorem 2); the single-dominator shortcut is only valid when every slot color is distinct and no slot is Any.
 4. Search with **beam** ($k = 12$ measured sufficient; slot order then immaterial in the sweep). Slot-ordered greedy — under *any* static order — drops up to $1$–$6\%$ below OPT on Any-slot vessels (§5.3); keep greedy only as a lower-bound warm start. Retain an exhaustive verifier on the pruned pool for regression tests, exactly as done here.
 5. The only genuinely non-submodular coupling *inside one axis* — the **stat feedback** ($+\text{stat} \Rightarrow$ higher AR) — enters $\mathrm{Agg}_{\text{off}}$'s $\text{base}_\tau$ and is handled by evaluating AR inside the marginal step (or one fixed-point pass). Split-AR weapons (physical $+$ elemental) add a second such coupling if scored jointly (§2): both are reasons the exhaustive verifier stays in the loop.
+6. Score offense through the **play profile** (§2.1): action-gated effects count only at the weight of the action they boost, evaluated through the damage pipeline per action. Never sum a gated multiplier into the generic offense — the game does not.

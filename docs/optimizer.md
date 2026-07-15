@@ -108,11 +108,12 @@ These affect exact numbers but not build ranking, so they are left for later:
 - **Motion values** (per-attack damage %) — need animation/TAE data from the game archives.
 - **Skill / weapon-art damage** — same TAE wall (skill *effects* and names are available).
 - **Exact HP/FP/stamina pools** — the stat→pool curves need locating; ranking uses the raw stats.
-- **Per-action buff gating** — "Passive combat buff" effects actually apply to a
-  specific action (critical hits, throwing knives, guard counters, first R1…):
-  measured in game, `improvedCriticalHits` leaves normal hits untouched (R1
-  control constant across all crit-relic runs). V1 scores them as always-on,
-  which overvalues them for playstyles that never exercise the action — the
-  report's PLAY line lists the effects a build relies on so the trade-off is
-  visible. Proper fix: decode each effect's AttachEffectFilter trigger
-  (`condition.value`) into action toggles.
+- ~~**Per-action buff gating**~~ — **done**: the SpEffect gates (attack
+  sub-categories, stateInfo 367 for crits, magParamChange/miracleParamChange
+  for spells) are decoded into per-effect `actions`, and offense is scored
+  through a **play profile** (`--play "melee=0.7,skill=0.2,crit=0.1"`, default
+  pure melee) — see `optimizer_mathematical_formulation.md` §2.1. The report's
+  PLAY line shows counted effects, NOTE the ones your profile gates out.
+- **Spell damage** — casters are ranked via their relic multipliers (school
+  gates decoded), but the offense base is still weapon AR; real sorcery/
+  incantation damage needs the spell params (same family as motion values).
