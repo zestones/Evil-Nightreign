@@ -71,7 +71,8 @@ def resolve_targets(data, boss, hp_scale=1.0):
         if row:
             out.append((name, row, (lord.get("attacks") or {}).get("max_damage") or {},
                         (lord.get("hp") or 0) * hp_scale,
-                        lord.get("status_resistance") or {}))
+                        lord.get("status_resistance") or {},
+                        lord.get("status_escalation") or {}))
     return out
 
 
@@ -142,7 +143,8 @@ def pick_weapon(data, stats, targets, wtype=None, agg=None, play=None,
             continue
         ranked.append((scoring.offense(ar, agg, play, targets,
                                        data["weapons"][wid].get("status"),
-                                       mv_profile(data, wid)),
+                                       mv_profile(data, wid),
+                                       weapon_types.cadence(data["weapons"][wid])),
                        wid, level, name, label))
     if not ranked:
         raise SystemExit("no usable weapon candidate")
@@ -167,7 +169,7 @@ def best_weapon_types(data, stats, targets, count=3, max_level=25):
         ar = attack_rating.attack_rating(wid, level, stats, data["ar_tables"])
         if not ar:
             continue
-        dmg = sum(damage.damage_vs_enemy(ar, npc)[0] for _n, npc, _m, _hp, _res in targets)
+        dmg = sum(damage.damage_vs_enemy(ar, npc)[0] for _n, npc, _m, _hp, _res, _e in targets)
         if dmg > per_type.get(label, 0.0):
             per_type[label] = dmg
     return sorted(per_type, key=per_type.get, reverse=True)[:count]
@@ -193,7 +195,7 @@ def weak_element(targets):
     (None when nothing beats neutral by 5%+)."""
     best, best_rate = None, 1.05
     for etype in ("mag", "fire", "thunder", "dark"):
-        rate = sum(damage.enemy_cut_rate(npc, etype) for _n, npc, _m, _hp, _res in targets) \
+        rate = sum(damage.enemy_cut_rate(npc, etype) for _n, npc, _m, _hp, _res, _e in targets) \
                / max(len(targets), 1)
         if rate > best_rate:
             best, best_rate = etype, rate
@@ -213,7 +215,7 @@ def pick_weapon_elemental(data, stats, targets, wtype, element, play, max_level=
         if not total or ar.get(element, 0.0) < 0.3 * total:
             continue
         dmg = scoring.offense(ar, {}, play, targets, data["weapons"][wid].get("status"),
-                              mv_profile(data, wid))
+                              mv_profile(data, wid), weapon_types.cadence(data["weapons"][wid]))
         if best is None or dmg > best[0]:
             best = (dmg, wid, level, name, label)
     return None if best is None else (best[1], best[2], best[3], best[4], [])
@@ -275,7 +277,7 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
             attack_rating.attack_rating(starts[0][0], starts[0][1], stats,
                                         data["ar_tables"]), {}, play, targets,
             data["weapons"][starts[0][0]].get("status"),
-            mv_profile(data, starts[0][0]))
+            mv_profile(data, starts[0][0]), weapon_types.cadence(data["weapons"][starts[0][0]]))
         if elem:
             alt_start = pick_weapon_elemental(data, stats, targets, wtype, elem,
                                               play, max_weapon_level)
@@ -290,7 +292,8 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
                                         play=play, reinforce=weapon_level,
                                         off_baseline=type_ref_off,
                                         weapon_status=data["weapons"][weapon_id].get("status"),
-                                        weapon_mv=mv_profile(data, weapon_id))
+                                        weapon_mv=mv_profile(data, weapon_id),
+                                        cadence=weapon_types.cadence(data["weapons"][weapon_id]))
                 vessel_results = search_vessels(scorer, pools)
                 # coordinate ascent: re-rank the type's weapons under the best
                 # build's multipliers; a changed pick re-runs the relic search
@@ -306,6 +309,7 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
             for score, vessel, picks in vessel_results:
                 breakdown = scorer.breakdown([p for _slot, r in picks
                                               for p in [_parsed_of(pools, r)]])
+                cad = weapon_types.cadence(data["weapons"][weapon_id])
                 results.append({
                     "score": score, "character": character, "weapon_type": wlabel,
                     "weapon": weapon_name, "weapon_id": weapon_id,
@@ -313,12 +317,14 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
                     "vessel": vessel["name"], "picks": picks,
                     "breakdown": breakdown,
                     "absolute_offense": breakdown["offense"],
+                    "cadence": cad,
+                    "absolute_dps": breakdown["offense"] * cad,
                     "targets": [t[0] for t in targets],
                 })
     # S is the improvement over the type's own bare weapon: comparable within a
     # type, NOT across types. Fixed type: top builds by S. Free exploration:
-    # the best build of EACH type, ordered by absolute per-hit damage (stated
-    # as such — attack speed is not modeled, so this is a single-hit index).
+    # the best build of EACH type, ranked by DPS = per-hit damage x class
+    # cadence (weapon_types.CADENCE), so slow big-hit weapons no longer top it.
     if weapon_type:
         results.sort(key=lambda r: -r["score"])
         seen, unique = set(), []
@@ -334,7 +340,7 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
         cur = champions.get(r["weapon_type"])
         if cur is None or r["score"] > cur["score"]:
             champions[r["weapon_type"]] = r
-    ranked = sorted(champions.values(), key=lambda r: -r["absolute_offense"])
+    ranked = sorted(champions.values(), key=lambda r: -r["absolute_dps"])
     return ranked[:top]
 
 
@@ -365,10 +371,11 @@ def format_report(results, weight):
         b = r["breakdown"]
         lines.append(f"#{i}  S={r['score']:.4f}  (offense x{b['offense_ratio']:.3f}, "
                      f"survival x{b['survival_ratio']:.3f}, w={weight}, "
-                     f"~{r.get('absolute_offense', b['offense']):.0f} dmg/hit)")
+                     f"~{r.get('absolute_offense', b['offense']):.0f} dmg/hit"
+                     + (f", ~{r['absolute_dps']:.0f} dmg/s" if 'absolute_dps' in r else "") + ")")
+        cad = f"  [DPS = per-hit x {r['cadence']:.2f} atk/s class cadence]" if r.get("cadence") else ""
         lines.append(f"    HUNT : {r['weapon']} ({r['weapon_type']})   "
-                     f"vs {', '.join(r['targets'])}   [biggest single hit — "
-                     f"attack speed/DPS not modeled yet; fix a type with --weapon-type]")
+                     f"vs {', '.join(r['targets'])}{cad}")
         if r.get("weapon_alternatives"):
             lines.append("    alt  : " + "  ".join(
                 f"{name} ({100 * (ratio - 1):+.1f}%)"
@@ -397,7 +404,7 @@ def format_report(results, weight):
                 f"{a} ~{v:.0f}/coup" for a, v in acts.items()))
         for st, info in (b.get("status") or {}).items():
             lines.append(f"    STATUT: {STATUS_FR.get(st, st)} — proc ~{info['proc']:.0f} "
-                         f"toutes les ~{info['hits_per_proc']:.1f} touches "
-                         f"(buildup {info['buildup']:.0f}/coup)")
+                         f"(1er à ~{info['first_hits']:.0f} touches, ~{info['fight_procs']:.1f} "
+                         f"procs/combat — le seuil monte à chaque proc)")
         lines.append("")
     return "\n".join(lines)

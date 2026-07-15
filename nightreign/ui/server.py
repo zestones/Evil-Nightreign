@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Local web UI for the optimizer — stdlib only, offline, single page.
+"""
+Local web UI for the optimizer — stdlib only, offline, single page.
 
     nr ui            start http://127.0.0.1:8377 and open the browser
 
@@ -10,6 +11,7 @@ Endpoints:
 
 Game data is loaded once at startup and shared read-only across requests.
 """
+
 import json
 import threading
 import webbrowser
@@ -37,8 +39,11 @@ def _meta(data):
     heroes = []
     for name in runner.HERO_ORDER:
         base = (runner.HERO_ORDER.index(name) + 1) * 10000
-        levels = sorted(data["hero_stats"][str(base + i)]["totalLevel"]
-                        for i in range(8) if str(base + i) in data["hero_stats"])
+        levels = sorted(
+            data["hero_stats"][str(base + i)]["totalLevel"]
+            for i in range(8)
+            if str(base + i) in data["hero_stats"]
+        )
         vessels = [v["name"] for v in data["vessels"].get(name, []) if v.get("owned")]
         if levels and vessels:
             heroes.append({"name": name, "levels": levels, "vessels": vessels})
@@ -59,34 +64,50 @@ def _serialize(result, data, character, toggles, don):
     ctx = Context(character, result["weapon_type"], frozenset(toggles), max(don, 1))
     picks = []
     for (kind, color), relic in result["picks"]:
-        effects = [{"text": e["text"],
-                    "active": ctx.effect_active(data["effects"].get(str(e["id"])) or {}, e)}
-                   for e in relic["effects"]]
-        picks.append({
-            "kind": kind, "slot_color": color,
-            "name": runner.pretty_name(relic["name"]),
-            "color": relic["color"],
-            "unique": relic["type"] == "UniqueRelic",
-            "grid": relic.get("grid"), "grid_by_color": relic.get("grid_by_color"),
-            "effects": effects,
-        })
+        effects = [
+            {
+                "text": e["text"],
+                "active": ctx.effect_active(data["effects"].get(str(e["id"])) or {}, e),
+            }
+            for e in relic["effects"]
+        ]
+        picks.append(
+            {
+                "kind": kind,
+                "slot_color": color,
+                "name": runner.pretty_name(relic["name"]),
+                "color": relic["color"],
+                "unique": relic["type"] == "UniqueRelic",
+                "grid": relic.get("grid"),
+                "grid_by_color": relic.get("grid_by_color"),
+                "effects": effects,
+            }
+        )
     b = result["breakdown"]
     return {
         "score": result["score"],
         "absolute_offense": result.get("absolute_offense", b["offense"]),
-        "weapon": result["weapon"], "weapon_type": result["weapon_type"],
+        "absolute_dps": result.get("absolute_dps"),
+        "weapon": result["weapon"],
+        "weapon_type": result["weapon_type"],
         "weapon_alternatives": result.get("weapon_alternatives") or [],
-        "vessel": result["vessel"], "targets": result["targets"],
+        "vessel": result["vessel"],
+        "targets": result["targets"],
         "picks": picks,
-        "offense_ratio": b["offense_ratio"], "survival_ratio": b["survival_ratio"],
+        "offense_ratio": b["offense_ratio"],
+        "survival_ratio": b["survival_ratio"],
         "attack_multipliers": b["attack_multipliers"],
         "stat_bonuses": b["stat_bonuses"],
         "status": b.get("status") or {},
         "actions_hit": b.get("actions_hit") or {},
-        "top_effects": [{"key": runner.pretty_name(k), "mult": m, "action": a}
-                        for k, m, a in b.get("top_effects", [])],
-        "ignored_effects": [{"key": runner.pretty_name(k), "mult": m, "action": a}
-                            for k, m, a in b.get("ignored_effects", [])],
+        "top_effects": [
+            {"key": runner.pretty_name(k), "mult": m, "action": a}
+            for k, m, a in b.get("top_effects", [])
+        ],
+        "ignored_effects": [
+            {"key": runner.pretty_name(k), "mult": m, "action": a}
+            for k, m, a in b.get("ignored_effects", [])
+        ],
     }
 
 
@@ -105,8 +126,11 @@ def make_handler(data):
 
         def do_GET(self):
             if self.path in ("/", "/index.html"):
-                self._send(200, (STATIC / "index.html").read_bytes(),
-                           "text/html; charset=utf-8")
+                self._send(
+                    200,
+                    (STATIC / "index.html").read_bytes(),
+                    "text/html; charset=utf-8",
+                )
             elif self.path == "/api/meta":
                 self._send(200, _meta(data))
             else:
@@ -118,12 +142,16 @@ def make_handler(data):
             try:
                 length = int(self.headers.get("Content-Length", 0))
                 req = json.loads(self.rfile.read(length) or b"{}")
-                play = {a: float(w) for a, w in (req.get("play") or {}).items()
-                        if float(w) > 0} or {"melee": 1.0}
+                play = {
+                    a: float(w)
+                    for a, w in (req.get("play") or {}).items()
+                    if float(w) > 0
+                } or {"melee": 1.0}
                 total = sum(play.values())
                 play = {a: w / total for a, w in play.items()}
                 results = runner.optimize(
-                    req["character"], boss=req.get("boss") or None,
+                    req["character"],
+                    boss=req.get("boss") or None,
                     weapon_type=req.get("weapon_type") or None,
                     level=int(req.get("level", 15)),
                     weight=float(req.get("weight", 0.5)),
@@ -132,14 +160,30 @@ def make_handler(data):
                     beam_k=int(req.get("beam", 12)),
                     top=int(req.get("top", 3)),
                     max_weapon_level=int(req.get("max_weapon_level", 25)),
-                    play=play, data=data)
+                    play=play,
+                    data=data,
+                )
                 toggles = req.get("toggles") or ()
-                self._send(200, {
-                    "mode": "fixed" if req.get("weapon_type") else "auto",
-                    "results": [_serialize(r, data, results[0]["character"] if results
-                                           else req["character"], toggles,
-                                           int(req.get("don", 0)))
-                                for r in results]})
+                self._send(
+                    200,
+                    {
+                        "mode": "fixed" if req.get("weapon_type") else "auto",
+                        "results": [
+                            _serialize(
+                                r,
+                                data,
+                                (
+                                    results[0]["character"]
+                                    if results
+                                    else req["character"]
+                                ),
+                                toggles,
+                                int(req.get("don", 0)),
+                            )
+                            for r in results
+                        ],
+                    },
+                )
             except SystemExit as e:
                 self._send(400, {"error": str(e)})
             except Exception as e:  # surface the reason instead of a dead page

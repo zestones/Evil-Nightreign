@@ -104,12 +104,34 @@ All under `data/curated/` (regenerate with `nr data`), all real in-game values:
 | `mode_scaling.json`                  | Deep of Night ladder (x1.0 → x1.45)                          |
 | `nightreign/resources/conditions.py` | condition taxonomy → the user toggles                        |
 
+## Game archive extraction (`nightreign/io/`)
+
+The encrypted dvdbnd archives (`data0-3.bhd/.bdt`) are readable end-to-end,
+stdlib-only plus a self-built Oodle lib (`io/oodle/`, rebuild with its
+`build.sh`). Pipeline, validated 2026-07-15: RSA-decrypt the BHD5 index
+(`io/archive.py`, public per-archive keys) → seek + partial AES-128-ECB in the
+BDT → `io/dcx.py` decompresses the DCX (Oodle Kraken, block-by-block, or ZSTD)
+→ `parse_bnd4` → `io/tae.py` reads TAE animation durations. `nr data
+animations` writes `data/raw/animation_durations.json` (10,755 attack-animation
+play lengths across 506 categories). This unlocks all packed content (motion
+values live here too, though those came from the params).
+
 ## Deferred (non-blocking, absolute-number only)
 
 These affect exact numbers but not build ranking, so they are left for later:
 
-- **Motion values** (per-attack damage %) — need animation/TAE data from the game archives.
-- **Skill / weapon-art damage** — same TAE wall (skill *effects* and names are available).
+- **Attack cadence (DPS)** — free-mode now ranks by DPS = per-hit damage ×
+  a per-class cadence (`weapon_types.CADENCE`, established ER weapon-class
+  attack speeds), so the slowest big-hit weapons no longer top it (Jar Cannon
+  drops below fast melee). The refinement still open: a **per-weapon**
+  cadence from the extracted TAE durations — the animation lengths are in hand
+  (`nr data animations`, ~1.5–5.3s spread that corroborates the class
+  ordering), but each weapon's exact R1 animation lives in a shared TAE
+  moveset category reached through the format's inheritance graph, still to be
+  resolved. Class cadence is the working approximation.
+- **Skill / weapon-art damage** — motion values per skill hit are wired
+  (`resources/actions.py` skill class); the spell/art *base* damage still needs
+  the Magic/SwordArts params (available in `regulation.bin`).
 - **Exact HP/FP/stamina pools** — the stat→pool curves need locating; ranking uses the raw stats.
 - ~~**Per-action buff gating**~~ — **done**: the SpEffect gates (attack
   sub-categories, stateInfo 367 for crits, magParamChange/miracleParamChange

@@ -49,7 +49,7 @@ class Scorer:
     def __init__(self, weapon_id, hero_stats, char_defense, targets,
                  weight=0.5, don_attack_scale=1.0, ar_tables=None, play=None,
                  reinforce=3, off_baseline=None, weapon_status=None,
-                 weapon_mv=None):
+                 weapon_mv=None, cadence=1.0):
         """targets: list of (name, npc_row, attacks_max_damage_dict).
         play: normalized {action: weight} — default pure-melee benchmark.
         off_baseline: offense normalizer shared by every weapon of a type (the
@@ -63,6 +63,7 @@ class Scorer:
         self.reinforce = reinforce
         self.weapon_status = weapon_status or {}
         self.weapon_mv = weapon_mv or {}
+        self.cadence = cadence
         self.base_stats = dict(hero_stats)
         self.negation = {NEGATION_TYPE_TO_ENGINE[k]: v
                          for k, v in (char_defense.get("negation") or {}).items()
@@ -94,33 +95,51 @@ class Scorer:
     def _axes(self, agg):
         """(offense, survival) raw values for an aggregated state."""
         off_total = offense(self._ar(agg), agg, self.play, self.targets,
-                            self.weapon_status, self.weapon_mv)
+                            self.weapon_status, self.weapon_mv, self.cadence)
         surv_total = 0.0
         vigor = self.base_stats.get("statVigor", 0) + agg.get(("stat", "statVigor"), 0.0)
         hp_proxy = vigor * math.exp(agg.get(("hp",), 0.0))
-        for _name, _npc, max_damage, _hp, _res in self.targets:
+        for _name, _npc, max_damage, _hp, _res, _esc in self.targets:
             surv_total += hp_proxy / self._biggest_hit(agg, max_damage)
         return off_total, surv_total / max(len(self.targets), 1)
 
     def status_report(self, parsed_relics):
-        """{status: {buildup, proc, hits_per_proc}} averaged over the targets."""
+        """{status: {buildup, proc, first_hits, fight_procs}} over the targets.
+
+        first_hits = hits to the FIRST proc; fight_procs = expected procs over
+        the whole fight (the threshold escalates after each — ResistCorrectParam)."""
         agg = aggregation.aggregate(parsed_relics)
+        ar = self._ar(agg)
         out = {}
         for status in statuses.PROC:
             buildup = self.weapon_status.get(status, 0) + agg.get(("stbuild", status), 0.0)
             if not buildup:
                 continue
-            procs, hits = [], []
-            for _n, _npc, _md, max_hp, resists in self.targets:
+            procvals, firsts, fprocs = [], [], []
+            for _n, npc, _md, max_hp, resists, escal in self.targets:
                 resist = (resists or {}).get(status, 0)
-                if resist and resist < 999 and max_hp:
-                    procs.append(statuses.proc_damage(status, max_hp))
-                    hits.append(resist / buildup)
-            if procs:
+                if not (resist and resist < 999 and max_hp):
+                    continue
+                procvals.append(statuses.proc_damage(status, max_hp))
+                firsts.append(resist / buildup)
+                direct = sum(p * damage.damage_vs_enemy(
+                    self._attack_for_action(agg, ar, a), npc)[0] for a, p in self.play.items())
+                fh = min(300.0, max(8.0, max_hp / direct)) if direct else 30.0
+                thr = (escal or {}).get(status)
+                fprocs.append(statuses._proc_count(fh * buildup, thr) if thr else fh * buildup / resist)
+            if procvals:
                 out[status] = {"buildup": buildup,
-                               "proc": sum(procs) / len(procs),
-                               "hits_per_proc": sum(hits) / len(hits)}
+                               "proc": sum(procvals) / len(procvals),
+                               "first_hits": sum(firsts) / len(firsts),
+                               "fight_procs": sum(fprocs) / len(fprocs)}
         return out
+
+    def _attack_for_action(self, agg, ar, action):
+        classes = actions.classes_applying_to(action)
+        mv = self.weapon_mv.get(action, 1.0)
+        return {t: ar.get(t, 0.0) * mv
+                   * math.exp(sum(agg.get(("atk", t, c), 0.0) for c in classes))
+                for t in AR_TYPES if ar.get(t, 0.0) > 0}
 
     def _biggest_hit(self, agg, max_damage):
         """Largest incoming hit after negation, relic cuts and DoN scaling."""
@@ -169,12 +188,12 @@ class Scorer:
             "ignored_effects": ignored[:3],
             "status": self.status_report(parsed_relics),
             "actions_hit": {a: offense(ar, agg, {a: 1.0}, self.targets,
-                                       self.weapon_status, self.weapon_mv)
+                                       self.weapon_status, self.weapon_mv, self.cadence)
                             for a in self.play},
         }
 
 
-def offense(ar, agg, play, targets, weapon_status=None, weapon_mv=None):
+def offense(ar, agg, play, targets, weapon_status=None, weapon_mv=None, cadence=1.0):
     """Play-profile-weighted average damage of a weapon AR under an Agg state.
 
     Shared by the Scorer and the weapon re-pick of the coordinate ascent: the
@@ -194,18 +213,23 @@ def offense(ar, agg, play, targets, weapon_status=None, weapon_mv=None):
             for t in AR_TYPES if ar.get(t, 0.0) > 0}
     weapon_status = weapon_status or {}
     total = 0.0
-    for _name, npc, _max_damage, max_hp, resists in targets:
-        t_total = sum(p * damage.damage_vs_enemy(attacks[a], npc)[0]
-                      for a, p in play.items())
+    for tgt in targets:
+        npc, max_hp, resists, escal = tgt[1], tgt[3], tgt[4] or {}, (tgt[5] if len(tgt) > 5 else {}) or {}
+        direct = sum(p * damage.damage_vs_enemy(attacks[a], npc)[0]
+                     for a, p in play.items())
+        # fight length: hits to deplete HP at the direct rate (status is
+        # front-loaded, so amortizing over the whole fight is what matters)
+        fight_hits = min(300.0, max(8.0, max_hp / direct)) if (max_hp and direct) else None
+        t_total = direct
         for status in statuses.PROC:
             buildup = weapon_status.get(status, 0) + agg.get(("stbuild", status), 0.0)
             if buildup and max_hp:
                 t_total += statuses.expected_per_hit(
-                    buildup, (resists or {}).get(status, 0), status, max_hp)
+                    buildup, resists.get(status, 0), status, max_hp,
+                    escal.get(status), fight_hits, cadence)
         # frost also debuffs the target: damage taken x1.15 while procced
-        # (30s duration >> proc cycle -> near-permanent uptime)
         frost = weapon_status.get("frost", 0) + agg.get(("stbuild", "frost"), 0.0)
-        if frost and 0 < (resists or {}).get("frost", 0) < 999:
+        if frost and 0 < resists.get("frost", 0) < 999:
             t_total *= statuses.FROST_DEBUFF
         total += t_total
     return total / max(len(targets), 1)

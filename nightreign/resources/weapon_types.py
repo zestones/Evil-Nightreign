@@ -49,3 +49,30 @@ WEPMOTION_TO_TYPE = {
 def weapon_type(weapon_row):
     """Type label of a weapons.json row (None when the category is unmapped)."""
     return WEPMOTION_TO_TYPE.get(weapon_row.get("wepmotionCategory"))
+
+
+# Relative attack cadence (R1 light attacks per second) per weapon class.
+# Class-level frame data (well-established ER weapon-class speeds); the extracted
+# TAE animation durations (nr data animations) corroborate the ORDERING — full
+# R1 animation lengths span ~1.5-5.3s, fast classes short, heavy/ranged long —
+# but full per-animation cadence needs the TAE moveset-inheritance graph, so a
+# class table is used. This is the DPS divisor that stops the slowest single
+# hit (ballista, greatbow) from topping the cross-type ranking.
+CADENCE = {
+    "Dagger": 1.5, "Claw": 1.55, "Fist": 1.5,
+    "Straight Sword": 1.2, "Curved Sword": 1.3, "Thrusting Sword": 1.25,
+    "Heavy Thrusting Sword": 1.0, "Twinblade": 1.2, "Katana": 1.1,
+    "Axe": 1.05, "Hammer": 1.05, "Flail": 1.0, "Spear": 1.1, "Whip": 1.05,
+    "Greatsword": 0.85, "Curved Greatsword": 0.8, "Great Spear": 0.85,
+    "Halberd": 0.9, "Reaper": 0.9, "Great Hammer": 0.65, "Greataxe": 0.7,
+    "Colossal Sword": 0.6, "Colossal Weapon": 0.55,
+    "Bow": 0.85, "Crossbow": 0.8, "Greatbow": 0.4, "Ballista": 0.3,
+    "Staff": 1.0, "Sacred Seal": 1.0, "Torch": 1.1,
+    "Small Shield": 1.1, "Medium Shield": 1.0, "Greatshield": 0.7,
+}
+DEFAULT_CADENCE = 1.0
+
+
+def cadence(weapon_row):
+    """Relative attacks/second for a weapon's class (DPS divisor)."""
+    return CADENCE.get(weapon_type(weapon_row), DEFAULT_CADENCE)

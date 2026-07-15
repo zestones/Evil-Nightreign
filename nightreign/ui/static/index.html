@@ -111,7 +111,7 @@
     </div>
     <label>Type d'arme</label>
     <select id="wtype"><option value="">Auto (explore les meilleurs types)</option></select>
-    <div class="note" style="margin-top:3px">Classement inter-types = plus gros coup <em>unique</em> (la vitesse d'attaque n'est pas encore modélisée) — fixe ton type de prédilection pour un gameplan fidèle.</div>
+    <div class="note" style="margin-top:3px">Classement inter-types = <b>DPS</b> (dégâts/coup × cadence de la classe). Fixe un type pour le meilleur gameplan de ce style.</div>
 
     <h2>Objectif</h2>
     <label>Offense <span class="slider-value" id="weight-val">50 %</span> Survie</label>
@@ -239,8 +239,8 @@ function render(results, req, mode) {
   const w = req.weight;
   const note = mode === "auto"
     ? `<div class="mode-note"><b>Exploration libre</b> : meilleur build de chaque type d'arme,
-       classés par <b>dégâts absolus par coup</b> (la vitesse d'attaque n'est pas modélisée —
-       une baliste frappe fort mais lentement !). Le score S mesure l'amélioration
+       classés par <b>DPS</b> = dégâts/coup × cadence de la classe (une baliste frappe fort
+       mais lentement, donc elle descend). Le score S mesure l'amélioration
        <em>vs l'arme nue du même type</em> : il ne se compare pas d'un type à l'autre.</div>`
     : `<div class="mode-note">S = amélioration par rapport à l'arme nue du type
        (« que rapportent les reliques »). Effets barrés = inactifs dans ce contexte.</div>`;
@@ -273,7 +273,7 @@ function render(results, req, mode) {
     const actionsLine = Object.entries(r.actions_hit || {}).map(([a, v]) =>
       `<span>${FR_ACTIONS[a] || a} ≈ ${Math.round(v)}/coup</span>`).join("");
     const statusLine = Object.entries(r.status || {}).map(([st, i]) =>
-      `<span>${FR_STATUS[st] || st} : proc ~${Math.round(i.proc)} toutes les ~${i.hits_per_proc.toFixed(1)} touches</span>`).join("");
+      `<span>${FR_STATUS[st] || st} : proc ~${Math.round(i.proc)} (1er à ~${Math.round(i.first_hits)} touches, ~${i.fight_procs.toFixed(1)} procs/combat)</span>`).join("");
     const ignored = r.ignored_effects.map(e =>
       `<span class="ignored">${esc(e.key)} ×${e.mult.toFixed(2)} <span class="act">${FR_ACTIONS[e.action] || e.action}</span></span>`).join("");
     const alts = r.weapon_alternatives.map(([n, ratio]) =>
@@ -283,7 +283,8 @@ function render(results, req, mode) {
       <div class="card-head">
         <span class="rank">#${i + 1}</span>
         <span class="score" title="amélioration vs l'arme nue du type">S = ${r.score.toFixed(3)}</span>
-        <span class="abs" title="dégâts moyens par coup vs la cible (indice absolu)">≈ ${Math.round(r.absolute_offense)} dmg/coup</span>
+        <span class="abs" title="dégâts par coup vs la cible">≈ ${Math.round(r.absolute_offense)} dmg/coup</span>
+        ${r.absolute_dps ? `<span class="abs" title="DPS = dégâts/coup × cadence de la classe">≈ ${Math.round(r.absolute_dps)} dmg/s</span>` : ""}
         <div class="bars">
           <span>Offense</span><div class="bar"><i class="off" style="width:${Math.min(100, r.offense_ratio / 3 * 100)}%"></i></div><span>×${r.offense_ratio.toFixed(2)}</span>
           <span>Survie</span><div class="bar"><i class="srv" style="width:${Math.min(100, r.survival_ratio / 3 * 100)}%"></i></div><span>×${r.survival_ratio.toFixed(2)}</span>

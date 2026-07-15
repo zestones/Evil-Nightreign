@@ -19,4 +19,4 @@ dev = ["pytest>=8"]
 packages = ["nightreign"]
 
 [tool.setuptools.package-data]
-nightreign = ["io/defs/*.xml", "resources/names/*.json", "ui/static/*.html"]
+nightreign = ["io/defs/*.xml", "resources/names/*.json", "ui/static/*.html", "io/oodle/*"]

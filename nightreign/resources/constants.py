@@ -34,6 +34,16 @@ STEAM_GAME_DIRS = [
     Path.home() / ".local/share/Steam" / _GAME,               # native Linux (alt)
 ]
 
+
+def game_root(override=None):
+    """First existing game Game/ dir (or the override). Holds data0-3.bhd/.bdt."""
+    from pathlib import Path as _P
+    cands = [_P(override)] if override else STEAM_GAME_DIRS
+    for d in cands:
+        if (d / "data0.bhd").exists():
+            return d
+    raise SystemExit("game archives (data0.bhd) not found; pass the Game/ dir explicitly")
+
 # --- Cryptography (validated by successful decryption, not guessed) ---
 SAVE_KEY = "18F6326605BD178A5524523AC0A0C609"                                    # AES-128 (save)
 REGULATION_KEY = "9A8EE90C4C01A43168A17D9D75E4A7D02107EBCF43D5ACB0554F941601B57918"  # AES-256 (regulation)

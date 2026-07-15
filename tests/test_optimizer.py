@@ -144,7 +144,7 @@ def test_play_profile_gates_offense():
              "statIntelligence": 5, "statFaith": 5, "statArcane": 5}
     npc = {"def_phys": 100, "def_mag": 100, "def_fire": 100,
            "def_thunder": 100, "def_dark": 100}
-    targets = [("dummy", npc, {"fire": 100}, 0, {})]
+    targets = [("dummy", npc, {"fire": 100}, 0, {}, {})]
     crit_relic = [("critKey", True, {("atk", "phys", "crit"): math.log(1.5)})]
 
     melee_only = scoring.Scorer("1750000", stats, {"negation": {}}, targets, weight=1.0)
@@ -178,8 +178,8 @@ def test_status_expected_damage():
     from nightreign.optimize import scoring
     ar = {"phys": 100.0}
     npc = {"def_phys": 100}
-    bleedable = [("t", npc, {}, 2000, {"bleed": 250})]
-    immune = [("t", npc, {}, 2000, {"bleed": 999})]
+    bleedable = [("t", npc, {}, 2000, {"bleed": 250}, {})]
+    immune = [("t", npc, {}, 2000, {"bleed": 999}, {})]
     base = scoring.offense(ar, {}, {"melee": 1.0}, bleedable)
     with_bleed = scoring.offense(ar, {}, {"melee": 1.0}, bleedable, {"bleed": 45})
     assert with_bleed - base == pytest.approx(45 / 250 * 0.15 * 2000)   # +54/hit
@@ -198,3 +198,60 @@ def test_motion_value_profile():
     assert gs["melee"] == pytest.approx(1.0325)      # chain 100/101/102/110
     assert gs["initial"] == pytest.approx(1.0)
     assert gs["crit"] == pytest.approx(2.0)          # measured backstab ratio 2.01
+
+
+def test_archive_pipeline_extracts_animations():
+    # game-gated: full binary pipeline (RSA BHD5 -> BDT -> AES -> Oodle Kraken
+    # -> BND4 -> TAE). Validated 2026-07-15 against a real install.
+    from nightreign.resources import constants
+    try:
+        game = constants.game_root()
+    except SystemExit:
+        pytest.skip("game archives not present")
+    from nightreign.io import archive, dcx, tae
+    from nightreign.io.regulation import parse_bnd4
+    arc = archive.DataArchive()
+    assert len(arc) > 20000
+    data = dcx.decompress(arc.get("/chr/c0000.anibnd.dcx"))
+    assert data[:4] == b"BND4" and len(data) == 57621370
+    files = parse_bnd4(data)
+    durs = tae.animation_durations(files["a03.tae"])
+    # R1 combo animations rise through the chain (game-verified feel)
+    assert durs[4200] == pytest.approx(0.9667, abs=1e-3)
+    assert durs[4200] < durs[4210] < durs[4220]
+
+
+def test_cadence_dps_ranking():
+    # class cadence turns the slowest big hit into a lower DPS: a ballista's
+    # huge per-hit does not beat a fast melee weapon once cadence applies.
+    from nightreign.resources import weapon_types
+    assert weapon_types.CADENCE["Ballista"] < weapon_types.CADENCE["Dagger"]
+    ballista = {"wepmotionCategory": 52}   # -> Ballista
+    dagger = {"wepmotionCategory": 20}     # -> Dagger
+    # equal per-hit damage -> dagger wins on DPS
+    assert weapon_types.cadence(dagger) > weapon_types.cadence(ballista)
+
+
+def test_bleed_escalation_amortizes():
+    # game-verified: threshold escalates (proc ~5 hits, then ~20). Over a fight
+    # the amortized bleed/hit is far below the naive first-proc rate.
+    from nightreign.resources import statuses
+    thresholds = [252, 794, 1793, 2792, 3791]   # Gladius bleed (base*addRate+addPoint)
+    # 44-hit fight at 45 buildup -> 3 procs (thresholds 252/999/1746 crossed)
+    assert statuses._proc_count(44 * 45, thresholds) == 3
+    escalated = statuses.expected_per_hit(45, 252, "bleed", 4160, thresholds, 44)
+    naive = statuses.expected_per_hit(45, 252, "bleed", 4160)   # no escalation
+    assert escalated < naive / 2   # front-loading roughly thirds the value
+
+
+def test_dot_uptime_not_per_proc():
+    # a DoT delivers rate x active_time regardless of how many procs refresh it
+    # (refreshes don't stack), so it is capped by rate x fight, never n x full.
+    from nightreign.resources import statuses
+    thr = [252, 794, 1793, 2792, 3791]
+    hp, buildup, fight_hits, cad = 4160, 66, 44, 1.1
+    per_hit = statuses.expected_per_hit(buildup, 252, "poison", hp, thr, fight_hits, cad)
+    total = per_hit * fight_hits
+    rate, fight_s = statuses.dot_rate("poison", hp), fight_hits / cad
+    assert total <= rate * fight_s + 1e-6   # never exceeds continuous uptime
+    assert total > rate * fight_s * 0.7     # near-continuous once first proc lands
