@@ -66,10 +66,12 @@ def cmd_data(args):
 
 def cmd_optimize(args):
     from nightreign.optimize import runner
+    from nightreign.resources import actions
     results = runner.optimize(
         args.character, boss=args.boss, weapon_type=args.weapon_type,
         level=args.level, weight=args.weight, don=args.don,
-        toggles=tuple(args.toggle or ()), beam_k=args.beam, top=args.top)
+        toggles=tuple(args.toggle or ()), beam_k=args.beam, top=args.top,
+        play=actions.parse_play_profile(args.play))
     print(runner.format_report(results, args.weight))
     return 0
 
@@ -111,7 +113,11 @@ def main(argv=None):
                        help="Deep of Night level 1-7 (0 = normal expedition, no deep slots)")
     p_opt.add_argument("--toggle", action="append",
                        help="commit a playstyle toggle: caster, low_hp, situational, "
-                            "status_build, starting_loadout, coop (repeatable)")
+                            "status_build, starting_loadout, coop, triple_loadout "
+                            "(repeatable)")
+    p_opt.add_argument("--play", help='play profile, e.g. "melee=0.7,skill=0.2,crit=0.1" '
+                                      "(default: melee=1 — action-gated buffs count only "
+                                      "for the actions you declare)")
     p_opt.add_argument("--beam", type=int, default=12, help="beam width (default 12)")
     p_opt.add_argument("--top", type=int, default=3, help="gameplans to show (default 3)")
     p_opt.set_defaults(func=cmd_optimize)

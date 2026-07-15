@@ -48,11 +48,13 @@ def parse_relic(relic, effects_db, context):
     """Active effect copies of a relic in a context.
 
     Returns a list of (key, stacks, contrib) where contrib maps:
-      ("atk", dtype)  -> log multiplier   (offense axis, per damage type)
+      ("atk", dtype, action) -> log multiplier  (offense; action "*" = every attack)
       ("cut", dtype)  -> -log cut rate    (defense axis, >= 0)
       ("hp",)         -> log maxHpRate
       ("stat", field) -> flat stat bonus  (raw, additive)
     Only effects whose condition is satisfied by the context contribute.
+    Action-gated offense (crit-only, throwing-knife-only, ...) carries its
+    action class so the scorer can weight it by the play profile.
     """
     out = []
     for entry in relic["effects"]:
@@ -60,13 +62,15 @@ def parse_relic(relic, effects_db, context):
         if not info or not context.effect_active(info, entry):
             continue
         magnitude = info.get("magnitude") or {}
+        actions = info.get("actions") or ["*"]
         contrib = {}
         # INV-3 (asserted by validate_invariants.py): no tracked field carries a
         # malus, so every log contribution below is > 0 — monotonicity holds.
         for field, dtype in ATTACK_RATE_FIELDS.items():
             v = magnitude.get(field)
             if isinstance(v, (int, float)) and v > 1:
-                contrib[("atk", dtype)] = math.log(v)
+                for action in actions:
+                    contrib[("atk", dtype, action)] = math.log(v)
         for field, dtype in CUT_RATE_FIELDS.items():
             v = magnitude.get(field)
             if isinstance(v, (int, float)) and 0 < v < 1:

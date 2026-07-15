@@ -15,7 +15,7 @@ import pytest
 from nightreign.optimize import aggregation, pruning, search
 from nightreign.optimize.context import Context
 
-ATK = ("atk", "phys")
+ATK = ("atk", "phys", "*")   # offense dims carry an action class ("*" = every attack)
 
 
 def _relic(*copies):
@@ -62,7 +62,11 @@ def test_real_relic_dark_night_of_the_baron():
         pytest.skip("relic not in this collection")
     ctx = Context("Wylder")
     parsed = aggregation.parse_relic(dark[0], effects, ctx)
-    assert _mult([parsed]) == pytest.approx(1.18 * 1.23, rel=1e-6)
+    agg = aggregation.aggregate([parsed])
+    # both effects are crit-gated (stateInfo 367): full x1.452 on crits...
+    assert math.exp(agg[("atk", "phys", "crit")]) == pytest.approx(1.18 * 1.23, rel=1e-6)
+    # ...and nothing on ungated attacks (the in-game R1 control stayed at 125)
+    assert agg.get(("atk", "phys", "*"), 0.0) == 0.0
 
 
 # ---- pruning: Theorem 2 vs the naive rule ----
@@ -116,7 +120,11 @@ def test_beam_matches_exhaustive_on_real_context():
         if relic["type"] == "DeepRelic":
             continue
         parsed = aggregation.parse_relic(relic, effects, ctx)
-        parsed = [(k, s, {ATK: c[ATK]}) for k, s, c in parsed if ATK in c]
+        # melee-benchmark view: keep phys offense on ungated + melee actions
+        parsed = [(k, s, {ATK: c.get(("atk", "phys", "*"), 0.0)
+                          + c.get(("atk", "phys", "melee"), 0.0)})
+                  for k, s, c in parsed
+                  if c.get(("atk", "phys", "*")) or c.get(("atk", "phys", "melee"))]
         if parsed:
             pools.setdefault(("normal", relic["color"]), []).append(
                 (relic, parsed, aggregation.profile(parsed)))
@@ -126,3 +134,39 @@ def test_beam_matches_exhaustive_on_real_context():
     opt, _ = search.exhaustive_search(slots, pruned, _score)
     beam, _ = search.beam_search(slots, pruned, _score, k=12)
     assert beam == pytest.approx(opt, rel=1e-12)
+
+
+# ---- play profile: action-gated offense counts only when declared ----
+
+def test_play_profile_gates_offense():
+    from nightreign.optimize import scoring
+    stats = {"statVigor": 10, "statStrength": 20, "statDexterity": 15,
+             "statIntelligence": 5, "statFaith": 5, "statArcane": 5}
+    npc = {"def_phys": 100, "def_mag": 100, "def_fire": 100,
+           "def_thunder": 100, "def_dark": 100}
+    targets = [("dummy", npc, {"fire": 100})]
+    crit_relic = [("critKey", True, {("atk", "phys", "crit"): math.log(1.5)})]
+
+    melee_only = scoring.Scorer("1750000", stats, {"negation": {}}, targets, weight=1.0)
+    mixed = scoring.Scorer("1750000", stats, {"negation": {}}, targets, weight=1.0,
+                           play={"melee": 0.5, "crit": 0.5})
+    crit_only = scoring.Scorer("1750000", stats, {"negation": {}}, targets, weight=1.0,
+                               play={"crit": 1.0})
+    # pure-melee benchmark: a crit-only relic is worth nothing (R1 unchanged in game)
+    assert melee_only.score([crit_relic]) == pytest.approx(1.0)
+    # the more crit share the profile declares, the more the relic is worth
+    # (no linear bound: the FromSoft defense curve is convex in attack here)
+    assert melee_only.score([crit_relic]) < mixed.score([crit_relic]) \
+        < crit_only.score([crit_relic])
+
+
+def test_melee_performed_hierarchy():
+    # game-verified 2026-07-15: initial/skill/crit all inherit melee buffs;
+    # ranged/item/spell actions do not.
+    from nightreign.resources import actions
+    for a in ("initial", "skill", "crit"):
+        assert "melee" in actions.classes_applying_to(a)
+    for a in ("throwing_knife", "sorcery_gravity", "melee"):
+        assert actions.classes_applying_to(a) >= {"*", a}
+    assert "melee" not in actions.classes_applying_to("throwing_knife")
+    assert "skill" not in actions.classes_applying_to("crit")

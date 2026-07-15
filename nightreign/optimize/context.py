@@ -29,6 +29,9 @@ class Context:
         nightfarer = relic_entry.get("nightfarer")
         if nightfarer and nightfarer != self.character:
             return False
+        state = effect_info.get("state_gate")
+        if state and state not in self.toggles:
+            return False   # e.g. "triple_loadout": needs 3+ armaments of the type
         cond = effect_info.get("condition") or {}
         dim = cond.get("dimension")
         if dim is None:

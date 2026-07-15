@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
 """Build scoring: S = w * OFFENSE + (1 - w) * SURVIVAL (optimizer.md).
 
-OFFENSE  — real damage vs the target: weapon AR (params + stats, engine-
-           validated) x per-type relic multipliers (per-key Agg, game-verified)
-           through the FromSoft attack/defense curve and the target's per-type
-           damage multipliers.
+OFFENSE  — play-profile-weighted real damage vs the target. Each attack action
+           a (melee, skill, crit, throwing knife, ...) has its own multiplier
+           state: ungated effects apply to every action, action-gated effects
+           only to theirs (decoded from the SpEffect sub-category / stateInfo
+           gates — see resources/actions.py). With the play profile p:
+
+               OFF = sum_a p_a * damage( AR * exp(Agg_* + Agg_a) )
+
+           The default profile is the pure-melee benchmark p = {melee: 1.0},
+           so crit-only or throwing-knife-only relics count for nothing unless
+           the player declares those actions (--play).
 SURVIVAL — one-shot margin proxy: (vigor x maxHpRate multipliers) divided by
            the target's biggest hit after character negation, relic damage-cut
            multipliers and Deep-of-Night attack scaling. Exact HP pools are
@@ -12,13 +19,16 @@ SURVIVAL — one-shot margin proxy: (vigor x maxHpRate multipliers) divided by
 
 Both axes are normalized by the relic-less baseline, so S is dimensionless and
 S = 1 means "no better than an empty vessel". Stat-boosting relics feed back
-into AR inside the marginal step (optimizer_mathematical_formulation.md §6.5) via a memoized AR
-recomputation — the only non-submodular coupling, handled exactly.
+into AR inside the marginal step (optimizer_mathematical_formulation.md §6.5)
+via a memoized AR recomputation — the only non-submodular coupling, handled
+exactly. The per-action mixture is a weighted sum of exponentials: monotone,
+not submodular — the regime §4 already assigns to beam + exhaustive checks.
 """
 import math
 
 from nightreign.engine import attack_rating, damage
 from nightreign.optimize import aggregation
+from nightreign.resources import actions
 
 # nightlords.json attack / damage_multiplier naming -> engine damage types
 TARGET_TYPE_TO_ENGINE = {
@@ -37,8 +47,9 @@ class Scorer:
     """Scores a parsed-relic set for one context (weapon, targets, weights)."""
 
     def __init__(self, weapon_id, hero_stats, char_defense, targets,
-                 weight=0.5, don_attack_scale=1.0, ar_tables=None):
-        """targets: list of (name, npc_row, attacks_max_damage_dict)."""
+                 weight=0.5, don_attack_scale=1.0, ar_tables=None, play=None):
+        """targets: list of (name, npc_row, attacks_max_damage_dict).
+        play: normalized {action: weight} — default pure-melee benchmark."""
         self.weapon_id = str(weapon_id)
         self.base_stats = dict(hero_stats)
         self.negation = {NEGATION_TYPE_TO_ENGINE[k]: v
@@ -46,6 +57,7 @@ class Scorer:
                          if k in NEGATION_TYPE_TO_ENGINE}
         self.targets = targets
         self.weight = weight
+        self.play = play or {"melee": 1.0}
         self.don_attack_scale = don_attack_scale
         self.tables = ar_tables or attack_rating.load_tables()
         self._ar_cache = {}
@@ -66,17 +78,23 @@ class Scorer:
             self._ar_cache[bonuses] = cached
         return cached
 
+    def _attack_for_action(self, agg, ar, action):
+        classes = actions.classes_applying_to(action)
+        return {t: ar.get(t, 0.0)
+                   * math.exp(sum(agg.get(("atk", t, c), 0.0) for c in classes))
+                for t in AR_TYPES if ar.get(t, 0.0) > 0}
+
     def _axes(self, agg):
         """(offense, survival) raw values for an aggregated state."""
         ar = self._ar(agg)
-        attack = {t: ar.get(t, 0.0) * math.exp(agg.get(("atk", t), 0.0))
-                  for t in AR_TYPES if ar.get(t, 0.0) > 0}
+        attacks = {a: self._attack_for_action(agg, ar, a) for a in self.play}
 
         off_total, surv_total = 0.0, 0.0
         vigor = self.base_stats.get("statVigor", 0) + agg.get(("stat", "statVigor"), 0.0)
         hp_proxy = vigor * math.exp(agg.get(("hp",), 0.0))
         for _name, npc, max_damage in self.targets:
-            off_total += damage.damage_vs_enemy(attack, npc)[0]
+            off_total += sum(p * damage.damage_vs_enemy(attacks[a], npc)[0]
+                             for a, p in self.play.items())
             surv_total += hp_proxy / self._biggest_hit(agg, max_damage)
         n = max(len(self.targets), 1)
         return off_total / n, surv_total / n
@@ -108,32 +126,51 @@ class Scorer:
         agg = aggregation.aggregate(parsed_relics)
         off, surv = self._axes(agg)
         off0, surv0 = self._baseline
-        primary = max(self._ar(agg), key=self._ar(agg).get, default="phys")
-        per_key = _per_key(parsed_relics, ("atk", primary))
+        ar = self._ar(agg)
+        primary = max(ar, key=ar.get, default="phys")
+        counted, ignored = _per_key_actions(parsed_relics, primary, self.play)
+        mults = {t: sum(p * math.exp(agg.get(("atk", t, "*"), 0.0)
+                                     + agg.get(("atk", t, a), 0.0))
+                        for a, p in self.play.items())
+                 for t in AR_TYPES}
         return {
             "score": self.weight * (off / off0 if off0 else 0.0)
                      + (1 - self.weight) * (surv / surv0 if surv0 else 0.0),
             "offense": off, "offense_ratio": off / off0 if off0 else 0.0,
             "survival_ratio": surv / surv0 if surv0 else 0.0,
-            "attack_multipliers": {t: math.exp(agg.get(("atk", t), 0.0)) for t in AR_TYPES},
+            "attack_multipliers": mults,
             "stat_bonuses": {f: agg.get(("stat", f), 0.0)
                              for f in aggregation.STAT_ADD_FIELDS.values()
                              if agg.get(("stat", f), 0.0)},
-            "top_effects": sorted(((k, math.exp(v)) for k, v in per_key.items()),
-                                  key=lambda kv: -kv[1])[:5],
+            "top_effects": counted[:5],
+            "ignored_effects": ignored[:3],
         }
 
 
-def _per_key(parsed_relics, dim):
-    """Per-key aggregated contribution on one dimension (for reporting)."""
-    sums, ones = {}, {}
+def _per_key_actions(parsed_relics, dtype, play):
+    """Per-key offense contributions on `dtype`, split counted / gated-out.
+
+    Returns two lists of (key, multiplier, action), sorted by multiplier desc.
+    """
+    per = {}
     for copies in parsed_relics:
         for key, stacks, contrib in copies:
-            v = contrib.get(dim)
-            if not v:
-                continue
-            if stacks:
-                sums[key] = sums.get(key, 0.0) + v
-            else:
-                ones[key] = max(ones.get(key, 0.0), v)
-    return {**sums, **{k: max(v, sums.get(k, 0.0)) for k, v in ones.items()}}
+            for dim, v in contrib.items():
+                if len(dim) != 3 or dim[0] != "atk" or dim[1] != dtype:
+                    continue
+                action = dim[2]
+                slot = (key, action)
+                if stacks:
+                    per[slot] = per.get(slot, 0.0) + v
+                else:
+                    per[slot] = max(per.get(slot, 0.0), v)
+    covered = set()
+    for declared in play:
+        covered |= actions.classes_applying_to(declared)
+    counted, ignored = [], []
+    for (key, action), v in per.items():
+        entry = (key, math.exp(v), action)
+        (counted if action in covered else ignored).append(entry)
+    counted.sort(key=lambda e: -e[1])
+    ignored.sort(key=lambda e: -e[1])
+    return counted, ignored

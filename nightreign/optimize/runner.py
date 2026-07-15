@@ -128,8 +128,12 @@ def build_pools(data, context, include_deep):
 
 
 def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
-             don=0, toggles=(), beam_k=12, top=3, data=None):
-    """Run the full engine loop; returns the `top` best gameplans (dicts)."""
+             don=0, toggles=(), beam_k=12, top=3, play=None, data=None):
+    """Run the full engine loop; returns the `top` best gameplans (dicts).
+
+    play: normalized {action: weight} play profile (resources/actions.py);
+    None = the pure-melee benchmark.
+    """
     data = data or load_data()
     character = next((h for h in HERO_ORDER if h.lower() == character.lower()), None)
     if character is None:
@@ -148,7 +152,7 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
         context = Context(character, wtype, frozenset(toggles), max(don, 1))
         weapon_id, weapon_name, wlabel = pick_weapon(data, stats, targets, wtype)
         scorer = scoring.Scorer(weapon_id, stats, data["characters"][character]["defense"],
-                                targets, weight, don_scale, data["ar_tables"])
+                                targets, weight, don_scale, data["ar_tables"], play=play)
         pools = build_pools(data, context, include_deep)
         for vessel in vessels:
             slots = [("normal", c) for c in vessel["normal_slots"]]
@@ -217,7 +221,11 @@ def format_report(results, weight):
             lines.append("    STATS: " + "  ".join(f"{f.replace('stat', '')} +{v:.0f}"
                                                    for f, v in b["stat_bonuses"].items()))
         if b.get("top_effects"):
-            lines.append("    PLAY : exercise these effects — " + "  ".join(
-                f"{pretty_name(k)} (x{m:.2f})" for k, m in b["top_effects"]))
+            lines.append("    PLAY : counted — " + "  ".join(
+                f"{pretty_name(k)} (x{m:.2f}{'' if a == '*' else ', ' + a})"
+                for k, m, a in b["top_effects"]))
+        if b.get("ignored_effects"):
+            lines.append("    NOTE : gated out by your play profile — " + "  ".join(
+                f"{pretty_name(k)} (x{m:.2f}, {a})" for k, m, a in b["ignored_effects"]))
         lines.append("")
     return "\n".join(lines)
