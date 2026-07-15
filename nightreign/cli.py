@@ -71,7 +71,7 @@ def cmd_optimize(args):
         args.character, boss=args.boss, weapon_type=args.weapon_type,
         level=args.level, weight=args.weight, don=args.don,
         toggles=tuple(args.toggle or ()), beam_k=args.beam, top=args.top,
-        play=actions.parse_play_profile(args.play))
+        play=actions.parse_play_profile(args.play), types_count=args.types)
     print(runner.format_report(results, args.weight))
     return 0
 
@@ -118,6 +118,8 @@ def main(argv=None):
     p_opt.add_argument("--play", help='play profile, e.g. "melee=0.7,skill=0.2,crit=0.1" '
                                       "(default: melee=1 — action-gated buffs count only "
                                       "for the actions you declare)")
+    p_opt.add_argument("--types", type=int, default=5,
+                       help="weapon types to explore when none is fixed (default 5)")
     p_opt.add_argument("--beam", type=int, default=12, help="beam width (default 12)")
     p_opt.add_argument("--top", type=int, default=3, help="gameplans to show (default 3)")
     p_opt.set_defaults(func=cmd_optimize)

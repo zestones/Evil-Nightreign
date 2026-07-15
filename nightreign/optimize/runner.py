@@ -82,19 +82,37 @@ def weapon_candidates(data, wtype=None):
     return out
 
 
-def pick_weapon(data, stats, targets, wtype=None):
-    """Best (weapon_id, name, type) by real average damage vs the targets."""
-    best = None
+def pick_weapon(data, stats, targets, wtype=None, agg=None, play=None):
+    """Best (weapon_id, name, type, alternatives) vs the targets.
+
+    With an aggregated relic state `agg` the ranking includes the build's
+    per-type multipliers and stat bonuses — the coordinate-ascent step that
+    lets an elemental weapon overtake a raw-AR one once the relics stack its
+    element. alternatives = the runner-up weapons as (name, damage ratio).
+    """
+    agg = agg or {}
+    play = play or {"melee": 1.0}
+    stats_eff = dict(stats)
+    for field in aggregation.STAT_ADD_FIELDS.values():
+        stats_eff[field] = stats_eff.get(field, 0) + agg.get(("stat", field), 0.0)
+    ranked = []
     for wid, name, label in weapon_candidates(data, wtype):
-        ar = attack_rating.attack_rating(wid, 0, stats, data["ar_tables"])
+        ar = attack_rating.attack_rating(wid, 0, stats_eff, data["ar_tables"])
         if not ar:
             continue
-        dmg = sum(damage.damage_vs_enemy(ar, npc)[0] for _n, npc, _m in targets)
-        if best is None or dmg > best[0]:
-            best = (dmg, wid, name, label)
-    if best is None:
+        ranked.append((scoring.offense(ar, agg, play, targets), wid, name, label))
+    if not ranked:
         raise SystemExit("no usable weapon candidate")
-    return best[1], best[2], best[3]
+    ranked.sort(key=lambda x: -x[0])
+    best = ranked[0]
+    seen, alts = {best[2]}, []
+    for dmg, _wid, name, _label in ranked[1:]:
+        if name not in seen:
+            seen.add(name)
+            alts.append((name, dmg / best[0]))
+        if len(alts) == 3:
+            break
+    return best[1], best[2], best[3], alts
 
 
 def best_weapon_types(data, stats, targets, count=3):
@@ -128,13 +146,18 @@ def build_pools(data, context, include_deep):
 
 
 def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
-             don=0, toggles=(), beam_k=12, top=3, play=None, data=None):
+             don=0, toggles=(), beam_k=12, top=3, play=None, types_count=5,
+             data=None):
     """Run the full engine loop; returns the `top` best gameplans (dicts).
 
     play: normalized {action: weight} play profile (resources/actions.py);
-    None = the pure-melee benchmark.
+    None = the pure-melee benchmark. Per weapon type the weapon choice and the
+    relic search run in coordinate ascent: search relics for the bare-best
+    weapon, re-rank every weapon of the type under the found build's
+    multipliers, and repeat once if the pick changed.
     """
     data = data or load_data()
+    play = play or {"melee": 1.0}
     character = next((h for h in HERO_ORDER if h.lower() == character.lower()), None)
     if character is None:
         raise SystemExit(f"unknown character — expected one of: {', '.join(HERO_ORDER)}")
@@ -145,15 +168,10 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
                  if include_deep else 1.0)
     vessels = [v for v in data["vessels"].get(character, []) if v.get("owned")]
     types_to_try = [weapon_type] if weapon_type else \
-        best_weapon_types(data, stats, targets)
+        best_weapon_types(data, stats, targets, types_count)
 
-    results = []
-    for wtype in types_to_try:
-        context = Context(character, wtype, frozenset(toggles), max(don, 1))
-        weapon_id, weapon_name, wlabel = pick_weapon(data, stats, targets, wtype)
-        scorer = scoring.Scorer(weapon_id, stats, data["characters"][character]["defense"],
-                                targets, weight, don_scale, data["ar_tables"], play=play)
-        pools = build_pools(data, context, include_deep)
+    def search_vessels(scorer, pools):
+        out = []
         for vessel in vessels:
             slots = [("normal", c) for c in vessel["normal_slots"]]
             if include_deep:
@@ -165,9 +183,37 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
                 if s_c:
                     pruned[(kind, color)] = pruning.prune_pool(entries, s_c)
             score, picks = search.beam_search(slots, pruned, scorer.score, beam_k)
+            out.append((score, vessel, picks))
+        return out
+
+    results = []
+    for wtype in types_to_try:
+        context = Context(character, wtype, frozenset(toggles), max(don, 1))
+        pools = build_pools(data, context, include_deep)
+        weapon_id, weapon_name, wlabel, alts = pick_weapon(data, stats, targets, wtype,
+                                                           play=play)
+        vessel_results = []
+        for _ascent_pass in range(2):
+            scorer = scoring.Scorer(weapon_id, stats,
+                                    data["characters"][character]["defense"],
+                                    targets, weight, don_scale, data["ar_tables"],
+                                    play=play)
+            vessel_results = search_vessels(scorer, pools)
+            # coordinate ascent: re-rank the type's weapons under the best
+            # build's multipliers; a changed pick re-runs the relic search
+            best_picks = max(vessel_results, key=lambda x: x[0])[2]
+            best_agg = aggregation.aggregate(
+                [_parsed_of(pools, relic) for _slot, relic in best_picks])
+            new_id, new_name, _lbl, alts = pick_weapon(data, stats, targets, wtype,
+                                                       agg=best_agg, play=play)
+            if new_id == weapon_id:
+                break
+            weapon_id, weapon_name = new_id, new_name
+        for score, vessel, picks in vessel_results:
             results.append({
                 "score": score, "character": character, "weapon_type": wlabel,
                 "weapon": weapon_name, "weapon_id": weapon_id,
+                "weapon_alternatives": alts,
                 "vessel": vessel["name"], "picks": picks,
                 "breakdown": scorer.breakdown([p for _slot, r in picks
                                                for p in [_parsed_of(pools, r)]]),
@@ -209,6 +255,10 @@ def format_report(results, weight):
                      f"survival x{b['survival_ratio']:.3f}, w={weight})")
         lines.append(f"    HUNT : {r['weapon']} ({r['weapon_type']})   "
                      f"vs {', '.join(r['targets'])}")
+        if r.get("weapon_alternatives"):
+            lines.append("    alt  : " + "  ".join(
+                f"{name} ({100 * (ratio - 1):+.1f}%)"
+                for name, ratio in r["weapon_alternatives"]))
         lines.append(f"    EQUIP: {r['vessel']}")
         for (kind, color), relic in r["picks"]:
             grid = relic.get("grid_by_color") or relic.get("grid") or ["?", "?"]

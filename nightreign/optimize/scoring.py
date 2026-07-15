@@ -78,26 +78,15 @@ class Scorer:
             self._ar_cache[bonuses] = cached
         return cached
 
-    def _attack_for_action(self, agg, ar, action):
-        classes = actions.classes_applying_to(action)
-        return {t: ar.get(t, 0.0)
-                   * math.exp(sum(agg.get(("atk", t, c), 0.0) for c in classes))
-                for t in AR_TYPES if ar.get(t, 0.0) > 0}
-
     def _axes(self, agg):
         """(offense, survival) raw values for an aggregated state."""
-        ar = self._ar(agg)
-        attacks = {a: self._attack_for_action(agg, ar, a) for a in self.play}
-
-        off_total, surv_total = 0.0, 0.0
+        off_total = offense(self._ar(agg), agg, self.play, self.targets)
+        surv_total = 0.0
         vigor = self.base_stats.get("statVigor", 0) + agg.get(("stat", "statVigor"), 0.0)
         hp_proxy = vigor * math.exp(agg.get(("hp",), 0.0))
-        for _name, npc, max_damage in self.targets:
-            off_total += sum(p * damage.damage_vs_enemy(attacks[a], npc)[0]
-                             for a, p in self.play.items())
+        for _name, _npc, max_damage in self.targets:
             surv_total += hp_proxy / self._biggest_hit(agg, max_damage)
-        n = max(len(self.targets), 1)
-        return off_total / n, surv_total / n
+        return off_total, surv_total / max(len(self.targets), 1)
 
     def _biggest_hit(self, agg, max_damage):
         """Largest incoming hit after negation, relic cuts and DoN scaling."""
@@ -145,6 +134,25 @@ class Scorer:
             "top_effects": counted[:5],
             "ignored_effects": ignored[:3],
         }
+
+
+def offense(ar, agg, play, targets):
+    """Play-profile-weighted average damage of a weapon AR under an Agg state.
+
+    Shared by the Scorer and the weapon re-pick of the coordinate ascent: the
+    same formula ranks relic sets for a weapon and weapons for a relic set.
+    """
+    attacks = {}
+    for action in play:
+        classes = actions.classes_applying_to(action)
+        attacks[action] = {
+            t: ar.get(t, 0.0) * math.exp(sum(agg.get(("atk", t, c), 0.0) for c in classes))
+            for t in AR_TYPES if ar.get(t, 0.0) > 0}
+    total = 0.0
+    for _name, npc, _max_damage in targets:
+        total += sum(p * damage.damage_vs_enemy(attacks[a], npc)[0]
+                     for a, p in play.items())
+    return total / max(len(targets), 1)
 
 
 def _per_key_actions(parsed_relics, dtype, play):
