@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Aggregate a set of relic effects into per-type attack multipliers.
+"""Turn resolved relic effects into per-type attack multipliers.
 
-Maps SpEffect "xxxAttackRate" fields to damage types and combines them.
+Consumes data/curated/effects.json (produced by datagen/effects.py), which already
+holds each effect's REAL magnitude resolved through the AttachEffect system.
 
 NOTE on stacking: multiplicative combination is a first approximation. Real
-Nightreign stacking varies per effect (some additive, some capped); that
-calibration is future work. The combination strategy is isolated here.
+Nightreign stacking varies per effect; that calibration is future work.
 Stdlib only.
 """
 import json
@@ -22,26 +22,27 @@ RATE_FIELD_TO_TYPE = {
 DAMAGE_TYPES = ("phys", "mag", "fire", "thunder", "dark")
 
 
-def load_effect_params():
-    return json.load(open(constants.DATA_RAW / "effect_params.json"))
+def load_effects():
+    """{effect_id(str): {magnitude, on_hit, condition, characters, ...}}."""
+    return json.load(open(constants.DATA_CURATED / "effects.json"))
 
 
-def effect_multipliers(effect_id, effect_params):
-    """Per-type attack multipliers contributed by a single effect (default 1.0)."""
-    fields = effect_params.get(str(effect_id)) or effect_params.get(effect_id) or {}
+def effect_multipliers(effect_id, effects):
+    """Per-type attack multipliers contributed by a single resolved effect."""
+    magnitude = (effects.get(str(effect_id)) or {}).get("magnitude", {})
     out = {}
     for field, dtype in RATE_FIELD_TO_TYPE.items():
-        rate = fields.get(field)
+        rate = magnitude.get(field)
         if isinstance(rate, (int, float)) and rate > 0:
             out[dtype] = rate
     return out
 
 
-def attack_multipliers(effect_ids, effect_params, combine="mult"):
+def attack_multipliers(effect_ids, effects, combine="mult"):
     """Combine several effects into one multiplier per damage type."""
     result = {t: 1.0 for t in DAMAGE_TYPES}
     for eid in effect_ids:
-        for dtype, rate in effect_multipliers(eid, effect_params).items():
+        for dtype, rate in effect_multipliers(eid, effects).items():
             if combine == "mult":
                 result[dtype] *= rate
             else:
@@ -49,10 +50,10 @@ def attack_multipliers(effect_ids, effect_params, combine="mult"):
     return result
 
 
-def best_single_multiplier(effect_params, owned_effect_ids):
+def best_single_multiplier(effects, owned_effect_ids):
     """Highest single-effect multiplier available per damage type (a simple proxy)."""
     best = {t: 1.0 for t in DAMAGE_TYPES}
     for eid in owned_effect_ids:
-        for dtype, rate in effect_multipliers(eid, effect_params).items():
+        for dtype, rate in effect_multipliers(eid, effects).items():
             best[dtype] = max(best[dtype], rate)
     return best

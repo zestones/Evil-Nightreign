@@ -23,8 +23,7 @@ def main():
     tables = attack_rating.load_tables()
     weapons = tables[0]
     hero = json.load(open(constants.DATA_RAW / "hero_stats.json"))
-    effect_params = effects.load_effect_params()
-    owned = json.load(open(constants.DATA_CURATED / "relic_effect_magnitudes.json"))
+    resolved = effects.load_effects()
     nightlords = json.load(open(constants.DATA_CURATED / "nightlords.json"))
 
     stats = hero["40003"]  # Duchess level 15
@@ -34,7 +33,7 @@ def main():
     weapon_id = next(wid for wid, w in weapons.items()
                      if (w.get("attackBasePhysics") or 0) > 90 and (w.get("reinforceTypeId") or 0) > 0)
     ar = attack_rating.attack_rating(weapon_id, 0, stats, tables)
-    best_mult = effects.best_single_multiplier(effect_params, [int(e) for e in owned])
+    best_mult = effects.best_single_multiplier(resolved, [int(e) for e in resolved])
     effective = {t: ar.get(t, 0) * best_mult.get(t, 1.0) for t in ar}
     print(f"Weapon {weapon_id}: AR = {dict((k, round(v)) for k, v in effective.items())}\n")
 

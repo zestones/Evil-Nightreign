@@ -56,19 +56,16 @@ def run():
               ensure_ascii=False, allow_nan=False)
     print(f"  params: NpcParam -> {len(npc)} enemies")
 
-    # Join owned effects -> magnitudes (needs curated/relics.json from the relics step).
-    relics_path = constants.DATA_CURATED / "relics.json"
-    if relics_path.exists():
-        relics = json.load(open(relics_path))
-        owned, matched = {}, 0
-        for relic in relics:
-            for effect in relic["effects"]:
-                eid = effect["id"]
-                if eid in owned:
-                    continue
-                mag = effect_params.get(eid)
-                owned[eid] = dict(key=effect["key"], text=effect["text"], magnitudes=mag)
-                matched += bool(mag)
-        json.dump(owned, open(constants.DATA_CURATED / "relic_effect_magnitudes.json", "w"),
-                  ensure_ascii=False, indent=1)
-        print(f"  params: joined {len(owned)} owned effects ({matched} with magnitudes)")
+    # AttachEffect system: the real relic-effect mechanism. Each relic effect is
+    # an AttachEffectParam row that points to passive SpEffects (magnitude) and an
+    # AttachEffectFilterParam row (the condition, e.g. weapon type). Kept in full.
+    for name, fname in [("AttachEffectParam", "attach_effect.json"),
+                        ("AttachEffectFilterParam", "attach_effect_filter.json")]:
+        _, layout, _ = paramdef.parse_def(constants.DEFS / f"{name}.xml")
+        rows = paramdef.decode_param(params[name], layout)
+        out = {rid: {k: _sanitize(v) for k, v in f.items() if _sanitize(v) is not None}
+               for rid, f in rows.items()}
+        json.dump(out, open(constants.DATA_RAW / fname, "w"), ensure_ascii=False, allow_nan=False)
+        print(f"  params: {name} -> {len(rows)} rows")
+    # Owned-effect resolution (magnitude + condition) is done by the `effects` step,
+    # which walks the AttachEffect system instead of guessing at direct SpEffects.

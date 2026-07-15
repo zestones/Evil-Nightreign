@@ -17,8 +17,8 @@ from pathlib import Path
 
 from nightreign.resources import constants
 
-# Ordered so dependencies come first (params joins relics; rosters need npc_params).
-DATA_STEPS = ["relics", "params", "weapons", "nightlords", "npcs", "vessels"]
+# Ordered so dependencies come first (effects need params+relics; rosters need npc_params).
+DATA_STEPS = ["relics", "params", "effects", "weapons", "nightlords", "npcs", "vessels", "scaling"]
 
 
 def cmd_setup(args):
@@ -49,9 +49,11 @@ def cmd_setup(args):
 
 
 def cmd_data(args):
-    from nightreign.datagen import params, weapons, relics, nightlords, npcs, vessels
-    runners = {"relics": relics.run, "params": params.run, "weapons": weapons.run,
-               "nightlords": nightlords.run, "npcs": npcs.run, "vessels": vessels.run}
+    from nightreign.datagen import (params, weapons, relics, nightlords, npcs,
+                                    vessels, effects, scaling)
+    runners = {"relics": relics.run, "params": params.run, "effects": effects.run,
+               "weapons": weapons.run, "nightlords": nightlords.run, "npcs": npcs.run,
+               "vessels": vessels.run, "scaling": scaling.run}
     steps = [args.step] if args.step else DATA_STEPS
     for step in steps:
         print(f"[{step}]")
