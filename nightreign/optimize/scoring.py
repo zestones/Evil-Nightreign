@@ -48,7 +48,8 @@ class Scorer:
 
     def __init__(self, weapon_id, hero_stats, char_defense, targets,
                  weight=0.5, don_attack_scale=1.0, ar_tables=None, play=None,
-                 reinforce=3, off_baseline=None, weapon_status=None):
+                 reinforce=3, off_baseline=None, weapon_status=None,
+                 weapon_mv=None):
         """targets: list of (name, npc_row, attacks_max_damage_dict).
         play: normalized {action: weight} — default pure-melee benchmark.
         off_baseline: offense normalizer shared by every weapon of a type (the
@@ -61,6 +62,7 @@ class Scorer:
         self.weapon_id = str(weapon_id)
         self.reinforce = reinforce
         self.weapon_status = weapon_status or {}
+        self.weapon_mv = weapon_mv or {}
         self.base_stats = dict(hero_stats)
         self.negation = {NEGATION_TYPE_TO_ENGINE[k]: v
                          for k, v in (char_defense.get("negation") or {}).items()
@@ -92,7 +94,7 @@ class Scorer:
     def _axes(self, agg):
         """(offense, survival) raw values for an aggregated state."""
         off_total = offense(self._ar(agg), agg, self.play, self.targets,
-                            self.weapon_status)
+                            self.weapon_status, self.weapon_mv)
         surv_total = 0.0
         vigor = self.base_stats.get("statVigor", 0) + agg.get(("stat", "statVigor"), 0.0)
         hp_proxy = vigor * math.exp(agg.get(("hp",), 0.0))
@@ -166,10 +168,13 @@ class Scorer:
             "top_effects": counted[:5],
             "ignored_effects": ignored[:3],
             "status": self.status_report(parsed_relics),
+            "actions_hit": {a: offense(ar, agg, {a: 1.0}, self.targets,
+                                       self.weapon_status, self.weapon_mv)
+                            for a in self.play},
         }
 
 
-def offense(ar, agg, play, targets, weapon_status=None):
+def offense(ar, agg, play, targets, weapon_status=None, weapon_mv=None):
     """Play-profile-weighted average damage of a weapon AR under an Agg state.
 
     Shared by the Scorer and the weapon re-pick of the coordinate ascent: the
@@ -179,21 +184,30 @@ def offense(ar, agg, play, targets, weapon_status=None):
     Targets: (name, npc_row, max_damage, max_hp, status_resistance).
     """
     attacks = {}
+    weapon_mv = weapon_mv or {}
     for action in play:
         classes = actions.classes_applying_to(action)
+        mv = weapon_mv.get(action, 1.0)   # motion value of this action's hits
         attacks[action] = {
-            t: ar.get(t, 0.0) * math.exp(sum(agg.get(("atk", t, c), 0.0) for c in classes))
+            t: ar.get(t, 0.0) * mv
+               * math.exp(sum(agg.get(("atk", t, c), 0.0) for c in classes))
             for t in AR_TYPES if ar.get(t, 0.0) > 0}
     weapon_status = weapon_status or {}
     total = 0.0
     for _name, npc, _max_damage, max_hp, resists in targets:
-        total += sum(p * damage.damage_vs_enemy(attacks[a], npc)[0]
-                     for a, p in play.items())
+        t_total = sum(p * damage.damage_vs_enemy(attacks[a], npc)[0]
+                      for a, p in play.items())
         for status in statuses.PROC:
             buildup = weapon_status.get(status, 0) + agg.get(("stbuild", status), 0.0)
             if buildup and max_hp:
-                total += statuses.expected_per_hit(
+                t_total += statuses.expected_per_hit(
                     buildup, (resists or {}).get(status, 0), status, max_hp)
+        # frost also debuffs the target: damage taken x1.15 while procced
+        # (30s duration >> proc cycle -> near-permanent uptime)
+        frost = weapon_status.get("frost", 0) + agg.get(("stbuild", "frost"), 0.0)
+        if frost and 0 < (resists or {}).get("frost", 0) < 999:
+            t_total *= statuses.FROST_DEBUFF
+        total += t_total
     return total / max(len(targets), 1)
 
 

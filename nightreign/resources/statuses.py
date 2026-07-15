@@ -46,6 +46,12 @@ PROC = {
 #: overlap computation (motion values / swing-speed work).
 DOT_EFFICIENCY = 0.5
 
+#: frost proc also applies "damage taken x1.15 for 30s" (SpEffectParam family
+#: of 195 rows, stateInfo 260). A frost weapon procs every ~5-10 hits, so the
+#: debuff is near-permanently up once the fight starts: modeled as a flat
+#: multiplier on ALL damage dealt to non-immune targets.
+FROST_DEBUFF = 1.15
+
 
 def proc_damage(status, target_max_hp):
     """Expected damage of one proc of `status` on a target with that max HP

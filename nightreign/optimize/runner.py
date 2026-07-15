@@ -15,7 +15,7 @@ candidates at the character's stats — that pick is also the HUNT advice.
 import json
 
 from nightreign.engine import attack_rating, damage
-from nightreign.optimize import aggregation, pruning, scoring, search
+from nightreign.optimize import aggregation, motion, pruning, scoring, search
 from nightreign.optimize.context import Context
 from nightreign.resources import constants, weapon_types
 
@@ -42,6 +42,7 @@ def load_data():
         "weapons": raw("weapons.json"), "npc_params": raw("npc_params.json"),
         "hero_stats": raw("hero_stats.json"), "weapon_names": names,
         "custom_weapons": raw("custom_weapons.json"),
+        "motion": raw("motion_values.json"), "_mv_cache": {},
         "ar_tables": attack_rating.load_tables(),
     }
 
@@ -110,6 +111,15 @@ def weapon_candidates(data, wtype=None, max_level=25):
     return out
 
 
+def mv_profile(data, wid):
+    """Cached per-weapon motion-value profile (optimize/motion.py)."""
+    prof = data["_mv_cache"].get(wid)
+    if prof is None:
+        prof = motion.profile(data["weapons"].get(wid) or {}, data["motion"])
+        data["_mv_cache"][wid] = prof
+    return prof
+
+
 def pick_weapon(data, stats, targets, wtype=None, agg=None, play=None,
                 max_level=25):
     """Best (weapon_id, level, name, type, alternatives) vs the targets.
@@ -131,7 +141,8 @@ def pick_weapon(data, stats, targets, wtype=None, agg=None, play=None,
         if not ar:
             continue
         ranked.append((scoring.offense(ar, agg, play, targets,
-                                       data["weapons"][wid].get("status")),
+                                       data["weapons"][wid].get("status"),
+                                       mv_profile(data, wid)),
                        wid, level, name, label))
     if not ranked:
         raise SystemExit("no usable weapon candidate")
@@ -201,7 +212,8 @@ def pick_weapon_elemental(data, stats, targets, wtype, element, play, max_level=
         total = sum(ar.values())
         if not total or ar.get(element, 0.0) < 0.3 * total:
             continue
-        dmg = scoring.offense(ar, {}, play, targets, data["weapons"][wid].get("status"))
+        dmg = scoring.offense(ar, {}, play, targets, data["weapons"][wid].get("status"),
+                              mv_profile(data, wid))
         if best is None or dmg > best[0]:
             best = (dmg, wid, level, name, label)
     return None if best is None else (best[1], best[2], best[3], best[4], [])
@@ -262,7 +274,8 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
         type_ref_off = scoring.offense(
             attack_rating.attack_rating(starts[0][0], starts[0][1], stats,
                                         data["ar_tables"]), {}, play, targets,
-            data["weapons"][starts[0][0]].get("status"))
+            data["weapons"][starts[0][0]].get("status"),
+            mv_profile(data, starts[0][0]))
         if elem:
             alt_start = pick_weapon_elemental(data, stats, targets, wtype, elem,
                                               play, max_weapon_level)
@@ -276,7 +289,8 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
                                         targets, weight, don_scale, data["ar_tables"],
                                         play=play, reinforce=weapon_level,
                                         off_baseline=type_ref_off,
-                                        weapon_status=data["weapons"][weapon_id].get("status"))
+                                        weapon_status=data["weapons"][weapon_id].get("status"),
+                                        weapon_mv=mv_profile(data, weapon_id))
                 vessel_results = search_vessels(scorer, pools)
                 # coordinate ascent: re-rank the type's weapons under the best
                 # build's multipliers; a changed pick re-runs the relic search
@@ -377,6 +391,10 @@ def format_report(results, weight):
         if b.get("ignored_effects"):
             lines.append("    NOTE : gated out by your play profile — " + "  ".join(
                 f"{pretty_name(k)} (x{m:.2f}, {a})" for k, m, a in b["ignored_effects"]))
+        acts = b.get("actions_hit") or {}
+        if len(acts) > 1 or "skill" in acts:
+            lines.append("    ACTIONS: " + "  ".join(
+                f"{a} ~{v:.0f}/coup" for a, v in acts.items()))
         for st, info in (b.get("status") or {}).items():
             lines.append(f"    STATUT: {STATUS_FR.get(st, st)} — proc ~{info['proc']:.0f} "
                          f"toutes les ~{info['hits_per_proc']:.1f} touches "

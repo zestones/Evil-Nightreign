@@ -21,6 +21,7 @@ WEAPON_FIELDS = [
     "reinforceTypeId", "attackElementCorrectId", "materialSetId",
     "properStrength", "properAgility", "properMagic", "properFaith", "properLuck",
     "weight", "wepmotionCategory", "isDualBlade", "originEquipWep",
+    "behaviorVariationId", "swordArtsParamId",
 ]
 
 

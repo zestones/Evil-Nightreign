@@ -185,3 +185,16 @@ def test_status_expected_damage():
     assert with_bleed - base == pytest.approx(45 / 250 * 0.15 * 2000)   # +54/hit
     assert scoring.offense(ar, {}, {"melee": 1.0}, immune, {"bleed": 45}) \
         == pytest.approx(base)
+
+
+def test_motion_value_profile():
+    # extraction pinned to the in-game measured chain (125/126 -> MV 100/101)
+    import json
+    from nightreign.optimize import motion
+    from nightreign.resources import constants
+    tables = json.load(open(constants.DATA_RAW / "motion_values.json"))
+    weapons = json.load(open(constants.DATA_RAW / "weapons.json"))
+    gs = motion.profile(weapons["3750000"], tables)
+    assert gs["melee"] == pytest.approx(1.0325)      # chain 100/101/102/110
+    assert gs["initial"] == pytest.approx(1.0)
+    assert gs["crit"] == pytest.approx(2.0)          # measured backstab ratio 2.01

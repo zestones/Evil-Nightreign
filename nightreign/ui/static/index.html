@@ -270,6 +270,8 @@ function render(results, req, mode) {
     const counted = r.top_effects.map(e =>
       `<span>${esc(e.key)} ×${e.mult.toFixed(2)} ${e.action !== "*" ?
         `<span class="act">${FR_ACTIONS[e.action] || e.action}</span>` : ""}</span>`).join("");
+    const actionsLine = Object.entries(r.actions_hit || {}).map(([a, v]) =>
+      `<span>${FR_ACTIONS[a] || a} ≈ ${Math.round(v)}/coup</span>`).join("");
     const statusLine = Object.entries(r.status || {}).map(([st, i]) =>
       `<span>${FR_STATUS[st] || st} : proc ~${Math.round(i.proc)} toutes les ~${i.hits_per_proc.toFixed(1)} touches</span>`).join("");
     const ignored = r.ignored_effects.map(e =>
@@ -298,6 +300,7 @@ function render(results, req, mode) {
         <div class="relics">${relics}</div>
       </div>
       ${mults ? `<div class="section mults"><span class="tag">Multiplicateurs</span>${mults}</div>` : ""}
+      ${actionsLine ? `<div class="section mults"><span class="tag">Actions</span>${actionsLine}</div>` : ""}
       ${statusLine ? `<div class="section mults"><span class="tag">Statuts</span>${statusLine}</div>` : ""}
       ${stats ? `<div class="section stats"><span class="tag">Stats</span>${stats}</div>` : ""}
       ${counted ? `<div class="section fxlist"><span class="tag">Comptés</span>${counted}</div>` : ""}
