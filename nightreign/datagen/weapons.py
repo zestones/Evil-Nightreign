@@ -14,6 +14,7 @@ from nightreign.resources import constants
 WEAPON_FIELDS = [
     "attackBasePhysics", "attackBaseMagic", "attackBaseFire",
     "attackBaseThunder", "attackBaseDark", "attackBaseStamina",
+    "staminaConsumptionRate",  # stamina economy (per-attack cost factor)
     "correctStrength", "correctAgility", "correctMagic", "correctFaith", "correctLuck",
     "correctType_Physics", "correctType_Magic", "correctType_Fire",
     "correctType_Thunder", "correctType_Dark",

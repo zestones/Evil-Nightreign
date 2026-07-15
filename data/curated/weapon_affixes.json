@@ -1,0 +1,2750 @@
+{
+ "6647100": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": {
+   "kind": "character",
+   "label": "Executor",
+   "dimension": "character"
+  }
+ },
+ "7352400": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8600259,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerOnWepType": 51
+  },
+  "condition": {
+   "kind": "weapon",
+   "label": "Bow",
+   "dimension": "weapon_type"
+  }
+ },
+ "8100101": {
+  "display_value": 9,
+  "percent": true,
+  "magnitude": {
+   "magicAttackRate": 1.09
+  },
+  "condition": null
+ },
+ "8100102": {
+  "display_value": 12,
+  "percent": true,
+  "magnitude": {
+   "magicAttackRate": 1.12
+  },
+  "condition": null
+ },
+ "8100201": {
+  "display_value": 9,
+  "percent": true,
+  "magnitude": {
+   "fireAttackRate": 1.09
+  },
+  "condition": null
+ },
+ "8100202": {
+  "display_value": 12,
+  "percent": true,
+  "magnitude": {
+   "fireAttackRate": 1.12
+  },
+  "condition": null
+ },
+ "8100300": {
+  "display_value": 6,
+  "percent": true,
+  "magnitude": {
+   "thunderAttackRate": 1.06
+  },
+  "condition": null
+ },
+ "8100301": {
+  "display_value": 9,
+  "percent": true,
+  "magnitude": {
+   "thunderAttackRate": 1.09
+  },
+  "condition": null
+ },
+ "8100302": {
+  "display_value": 12,
+  "percent": true,
+  "magnitude": {
+   "thunderAttackRate": 1.12
+  },
+  "condition": null
+ },
+ "8100400": {
+  "display_value": 6,
+  "percent": true,
+  "magnitude": {
+   "darkAttackRate": 1.06
+  },
+  "condition": null
+ },
+ "8100401": {
+  "display_value": 9,
+  "percent": true,
+  "magnitude": {
+   "darkAttackRate": 1.09
+  },
+  "condition": null
+ },
+ "8100402": {
+  "display_value": 12,
+  "percent": true,
+  "magnitude": {
+   "darkAttackRate": 1.12
+  },
+  "condition": null
+ },
+ "8110010": {
+  "display_value": 18,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8110000,
+   "spAttribute": 20,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110011": {
+  "display_value": 23,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8110001,
+   "spAttribute": 20,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110012": {
+  "display_value": 30,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8110002,
+   "spAttribute": 20,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110110": {
+  "display_value": 18,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8110100,
+   "spAttribute": 22,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110111": {
+  "display_value": 23,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8110101,
+   "spAttribute": 22,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110112": {
+  "display_value": 30,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8110102,
+   "spAttribute": 22,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110200": {
+  "display_value": 18,
+  "percent": false,
+  "magnitude": {},
+  "condition": null
+ },
+ "8110201": {
+  "display_value": 23,
+  "percent": false,
+  "magnitude": {},
+  "condition": null
+ },
+ "8110202": {
+  "display_value": 30,
+  "percent": false,
+  "magnitude": {},
+  "condition": null
+ },
+ "8110210": {
+  "display_value": 18,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8110200,
+   "spAttribute": 24,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110211": {
+  "display_value": 23,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8110201,
+   "spAttribute": 24,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110212": {
+  "display_value": 30,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8110202,
+   "spAttribute": 24,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110400": {
+  "display_value": 18,
+  "percent": false,
+  "magnitude": {},
+  "condition": null
+ },
+ "8110401": {
+  "display_value": 23,
+  "percent": false,
+  "magnitude": {},
+  "condition": null
+ },
+ "8110402": {
+  "display_value": 30,
+  "percent": false,
+  "magnitude": {},
+  "condition": null
+ },
+ "8110410": {
+  "display_value": 18,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8110400,
+   "spAttribute": 21,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110411": {
+  "display_value": 23,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8110401,
+   "spAttribute": 21,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110412": {
+  "display_value": 30,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8110402,
+   "spAttribute": 21,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110510": {
+  "display_value": 18,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8110500,
+   "spAttribute": 23,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110511": {
+  "display_value": 23,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8110501,
+   "spAttribute": 23,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110512": {
+  "display_value": 30,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8110502,
+   "spAttribute": 23,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110700": {
+  "display_value": 25,
+  "percent": false,
+  "magnitude": {
+   "physicsAttackPower": -25,
+   "fireAttackPower": 25,
+   "spAttribute": 11,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110701": {
+  "display_value": 30,
+  "percent": false,
+  "magnitude": {
+   "physicsAttackPower": -30,
+   "fireAttackPower": 30,
+   "spAttribute": 11,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110702": {
+  "display_value": 35,
+  "percent": false,
+  "magnitude": {
+   "physicsAttackPower": -35,
+   "fireAttackPower": 35,
+   "spAttribute": 11,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110800": {
+  "display_value": 25,
+  "percent": false,
+  "magnitude": {
+   "physicsAttackPower": -25,
+   "magicAttackPower": 25,
+   "spAttribute": 10,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110801": {
+  "display_value": 30,
+  "percent": false,
+  "magnitude": {
+   "physicsAttackPower": -30,
+   "magicAttackPower": 30,
+   "spAttribute": 10,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110802": {
+  "display_value": 35,
+  "percent": false,
+  "magnitude": {
+   "physicsAttackPower": -35,
+   "magicAttackPower": 35,
+   "spAttribute": 10,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110900": {
+  "display_value": 25,
+  "percent": false,
+  "magnitude": {
+   "physicsAttackPower": -25,
+   "thunderAttackPower": 25,
+   "spAttribute": 12,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110901": {
+  "display_value": 30,
+  "percent": false,
+  "magnitude": {
+   "physicsAttackPower": -30,
+   "thunderAttackPower": 30,
+   "spAttribute": 12,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8110902": {
+  "display_value": 35,
+  "percent": false,
+  "magnitude": {
+   "physicsAttackPower": -35,
+   "thunderAttackPower": 35,
+   "spAttribute": 12,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8111000": {
+  "display_value": 25,
+  "percent": false,
+  "magnitude": {
+   "physicsAttackPower": -25,
+   "spAttribute": 13,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackPower": 25,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8111001": {
+  "display_value": 30,
+  "percent": false,
+  "magnitude": {
+   "physicsAttackPower": -30,
+   "spAttribute": 13,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackPower": 30,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8111002": {
+  "display_value": 35,
+  "percent": false,
+  "magnitude": {
+   "physicsAttackPower": -35,
+   "spAttribute": 13,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackPower": 35,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8130001": {
+  "display_value": 18,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.18,
+   "magicAttackRate": 1.18,
+   "fireAttackRate": 1.18,
+   "thunderAttackRate": 1.18,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.18
+  },
+  "condition": null
+ },
+ "8130002": {
+  "display_value": 24,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.24,
+   "magicAttackRate": 1.24,
+   "fireAttackRate": 1.24,
+   "thunderAttackRate": 1.24,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.24
+  },
+  "condition": null
+ },
+ "8140000": {
+  "display_value": 30,
+  "percent": true,
+  "magnitude": {
+   "staminaAttackRate": 1.3
+  },
+  "condition": null
+ },
+ "8140001": {
+  "display_value": 45,
+  "percent": true,
+  "magnitude": {
+   "staminaAttackRate": 1.45
+  },
+  "condition": null
+ },
+ "8140002": {
+  "display_value": 60,
+  "percent": true,
+  "magnitude": {
+   "staminaAttackRate": 1.6
+  },
+  "condition": null
+ },
+ "8200100": {
+  "display_value": 12,
+  "percent": true,
+  "magnitude": {
+   "magicDamageCutRate": 0.88,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8200101": {
+  "display_value": 16,
+  "percent": true,
+  "magnitude": {
+   "magicDamageCutRate": 0.84,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8200102": {
+  "display_value": 20,
+  "percent": true,
+  "magnitude": {
+   "magicDamageCutRate": 0.8,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8200200": {
+  "display_value": 12,
+  "percent": true,
+  "magnitude": {
+   "fireDamageCutRate": 0.88,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8200201": {
+  "display_value": 16,
+  "percent": true,
+  "magnitude": {
+   "fireDamageCutRate": 0.84,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8200202": {
+  "display_value": 20,
+  "percent": true,
+  "magnitude": {
+   "fireDamageCutRate": 0.8,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8200300": {
+  "display_value": 12,
+  "percent": true,
+  "magnitude": {
+   "thunderDamageCutRate": 0.88,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8200301": {
+  "display_value": 16,
+  "percent": true,
+  "magnitude": {
+   "thunderDamageCutRate": 0.84,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8200302": {
+  "display_value": 20,
+  "percent": true,
+  "magnitude": {
+   "thunderDamageCutRate": 0.8,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8200400": {
+  "display_value": 12,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.88
+  },
+  "condition": null
+ },
+ "8200401": {
+  "display_value": 16,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.84
+  },
+  "condition": null
+ },
+ "8200402": {
+  "display_value": 20,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.8
+  },
+  "condition": null
+ },
+ "8210000": {
+  "display_value": 57,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changePoisonResistPoint": 57
+  },
+  "condition": null
+ },
+ "8210001": {
+  "display_value": 75,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changePoisonResistPoint": 75
+  },
+  "condition": null
+ },
+ "8210100": {
+  "display_value": 57,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeBloodResistPoint": 57
+  },
+  "condition": null
+ },
+ "8210101": {
+  "display_value": 75,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeBloodResistPoint": 75
+  },
+  "condition": null
+ },
+ "8210200": {
+  "display_value": 57,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeSleepResistPoint": 57
+  },
+  "condition": null
+ },
+ "8210300": {
+  "display_value": 57,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeCurseResistPoint": 57
+  },
+  "condition": null
+ },
+ "8210301": {
+  "display_value": 75,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeCurseResistPoint": 75
+  },
+  "condition": null
+ },
+ "8210400": {
+  "display_value": 57,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeDiseaseResistPoint": 57
+  },
+  "condition": null
+ },
+ "8210401": {
+  "display_value": 75,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeDiseaseResistPoint": 75
+  },
+  "condition": null
+ },
+ "8210500": {
+  "display_value": 57,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeFreezeResistPoint": 57
+  },
+  "condition": null
+ },
+ "8210501": {
+  "display_value": 75,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeFreezeResistPoint": 75
+  },
+  "condition": null
+ },
+ "8210502": {
+  "display_value": 112,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeFreezeResistPoint": 112
+  },
+  "condition": null
+ },
+ "8210600": {
+  "display_value": 57,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeMadnessResistPoint": 57
+  },
+  "condition": null
+ },
+ "8210601": {
+  "display_value": 75,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeMadnessResistPoint": 75
+  },
+  "condition": null
+ },
+ "8210602": {
+  "display_value": 112,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeMadnessResistPoint": 112
+  },
+  "condition": null
+ },
+ "8220001": {
+  "display_value": 15,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "guardStaminaMult": 0.85
+  },
+  "condition": null
+ },
+ "8220002": {
+  "display_value": 20,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "guardStaminaMult": 0.8
+  },
+  "condition": null
+ },
+ "8300000": {
+  "display_value": 12,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.12,
+   "magicAttackRate": 1.12,
+   "fireAttackRate": 1.12,
+   "thunderAttackRate": 1.12,
+   "darkAttackRate": 1.12,
+   "isUseAtkParamAtkPowerCorrect": 1
+  },
+  "condition": null
+ },
+ "8300001": {
+  "display_value": 15,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.15,
+   "magicAttackRate": 1.15,
+   "fireAttackRate": 1.15,
+   "thunderAttackRate": 1.15,
+   "darkAttackRate": 1.15,
+   "isUseAtkParamAtkPowerCorrect": 1
+  },
+  "condition": null
+ },
+ "8300002": {
+  "display_value": 18,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.18,
+   "magicAttackRate": 1.18,
+   "fireAttackRate": 1.18,
+   "thunderAttackRate": 1.18,
+   "darkAttackRate": 1.18,
+   "isUseAtkParamAtkPowerCorrect": 1
+  },
+  "condition": null
+ },
+ "8310001": {
+  "display_value": 15,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.15,
+   "magicAttackRate": 1.15,
+   "fireAttackRate": 1.15,
+   "thunderAttackRate": 1.15,
+   "darkAttackRate": 1.15,
+   "isUseAtkParamAtkPowerCorrect": 1
+  },
+  "condition": null
+ },
+ "8310002": {
+  "display_value": 18,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.18,
+   "magicAttackRate": 1.18,
+   "fireAttackRate": 1.18,
+   "thunderAttackRate": 1.18,
+   "darkAttackRate": 1.18,
+   "isUseAtkParamAtkPowerCorrect": 1
+  },
+  "condition": null
+ },
+ "8320000": {
+  "display_value": 21,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.21,
+   "magicAttackRate": 1.21,
+   "fireAttackRate": 1.21,
+   "thunderAttackRate": 1.21,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.21
+  },
+  "condition": null
+ },
+ "8320001": {
+  "display_value": 26,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.26,
+   "magicAttackRate": 1.26,
+   "fireAttackRate": 1.26,
+   "thunderAttackRate": 1.26,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.26
+  },
+  "condition": null
+ },
+ "8320002": {
+  "display_value": 31,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.31,
+   "magicAttackRate": 1.31,
+   "fireAttackRate": 1.31,
+   "thunderAttackRate": 1.31,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.31
+  },
+  "condition": null
+ },
+ "8320100": {
+  "display_value": 16,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.16,
+   "magicAttackRate": 1.16,
+   "fireAttackRate": 1.16,
+   "thunderAttackRate": 1.16,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.16
+  },
+  "condition": null
+ },
+ "8320101": {
+  "display_value": 19,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.19,
+   "magicAttackRate": 1.19,
+   "fireAttackRate": 1.19,
+   "thunderAttackRate": 1.19,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.19
+  },
+  "condition": null
+ },
+ "8320102": {
+  "display_value": 22,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.22,
+   "magicAttackRate": 1.22,
+   "fireAttackRate": 1.22,
+   "thunderAttackRate": 1.22,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.22
+  },
+  "condition": null
+ },
+ "8320300": {
+  "display_value": 14,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.14,
+   "magicAttackRate": 1.14,
+   "fireAttackRate": 1.14,
+   "thunderAttackRate": 1.14,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.14
+  },
+  "condition": null
+ },
+ "8320301": {
+  "display_value": 17,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.17,
+   "magicAttackRate": 1.17,
+   "fireAttackRate": 1.17,
+   "thunderAttackRate": 1.17,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.17
+  },
+  "condition": null
+ },
+ "8320302": {
+  "display_value": 20,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.2,
+   "magicAttackRate": 1.2,
+   "fireAttackRate": 1.2,
+   "thunderAttackRate": 1.2,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.2
+  },
+  "condition": null
+ },
+ "8320400": {
+  "display_value": 24,
+  "percent": true,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8320401,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8320420": {
+  "display_value": 40,
+  "percent": true,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8320421,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8320720": {
+  "display_value": 28,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.28,
+   "magicAttackRate": 1.28,
+   "fireAttackRate": 1.28,
+   "thunderAttackRate": 1.28,
+   "darkAttackRate": 1.28
+  },
+  "condition": null
+ },
+ "8330001": {
+  "display_value": 8,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.08,
+   "magicAttackRate": 1.08,
+   "fireAttackRate": 1.08,
+   "thunderAttackRate": 1.08,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.08
+  },
+  "condition": null
+ },
+ "8330002": {
+  "display_value": 11,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.11,
+   "magicAttackRate": 1.11,
+   "fireAttackRate": 1.11,
+   "thunderAttackRate": 1.11,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.11
+  },
+  "condition": null
+ },
+ "8330101": {
+  "display_value": 8,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.08,
+   "magicAttackRate": 1.08,
+   "fireAttackRate": 1.08,
+   "thunderAttackRate": 1.08,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.08
+  },
+  "condition": null
+ },
+ "8330102": {
+  "display_value": 11,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.11,
+   "magicAttackRate": 1.11,
+   "fireAttackRate": 1.11,
+   "thunderAttackRate": 1.11,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.11
+  },
+  "condition": null
+ },
+ "8330201": {
+  "display_value": 13,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.13,
+   "magicAttackRate": 1.13,
+   "fireAttackRate": 1.13,
+   "thunderAttackRate": 1.13,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.13
+  },
+  "condition": null
+ },
+ "8330301": {
+  "display_value": 13,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.13,
+   "magicAttackRate": 1.13,
+   "fireAttackRate": 1.13,
+   "thunderAttackRate": 1.13,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.13
+  },
+  "condition": null
+ },
+ "8330400": {
+  "display_value": 1,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "dexterityCancelSystemOnlyAddDexterity": 30
+  },
+  "condition": null
+ },
+ "8330401": {
+  "display_value": 2,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "dexterityCancelSystemOnlyAddDexterity": 60
+  },
+  "condition": null
+ },
+ "8330601": {
+  "display_value": -15,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "magicConsumptionRate": 0.85,
+   "shamanConsumptionRate": 0.85,
+   "miracleConsumptionRate": 0.85
+  },
+  "condition": null
+ },
+ "8330602": {
+  "display_value": -20,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "magicConsumptionRate": 0.8,
+   "shamanConsumptionRate": 0.8,
+   "miracleConsumptionRate": 0.8
+  },
+  "condition": null
+ },
+ "8330910": {
+  "display_value": 24,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8330920": {
+  "display_value": 30,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8340001": {
+  "display_value": 10,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.1,
+   "magicAttackRate": 1.1,
+   "fireAttackRate": 1.1,
+   "thunderAttackRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.1
+  },
+  "condition": null
+ },
+ "8340002": {
+  "display_value": 14,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.14,
+   "magicAttackRate": 1.14,
+   "fireAttackRate": 1.14,
+   "thunderAttackRate": 1.14,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.14
+  },
+  "condition": null
+ },
+ "8350001": {
+  "display_value": 18,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.18,
+   "magicAttackRate": 1.18,
+   "fireAttackRate": 1.18,
+   "thunderAttackRate": 1.18,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.18
+  },
+  "condition": null
+ },
+ "8350002": {
+  "display_value": 21,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.21,
+   "magicAttackRate": 1.21,
+   "fireAttackRate": 1.21,
+   "thunderAttackRate": 1.21,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.21
+  },
+  "condition": null
+ },
+ "8350201": {
+  "display_value": -18,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "artsConsumptionRate": 0.82
+  },
+  "condition": null
+ },
+ "8350202": {
+  "display_value": -24,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "artsConsumptionRate": 0.76
+  },
+  "condition": null
+ },
+ "8420001": {
+  "display_value": 20,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.2,
+   "magicAttackRate": 1.2,
+   "fireAttackRate": 1.2,
+   "thunderAttackRate": 1.2,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.2
+  },
+  "condition": null
+ },
+ "8420002": {
+  "display_value": 23,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.23,
+   "magicAttackRate": 1.23,
+   "fireAttackRate": 1.23,
+   "thunderAttackRate": 1.23,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.23
+  },
+  "condition": null
+ },
+ "8450000": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {},
+  "condition": null
+ },
+ "8460100": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {},
+  "condition": null
+ },
+ "8460300": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {},
+  "condition": null
+ },
+ "8460500": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {},
+  "condition": null
+ },
+ "8510001": {
+  "display_value": 30,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "itemDropRate": 0.3
+  },
+  "condition": null
+ },
+ "8510002": {
+  "display_value": 40,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "itemDropRate": 0.4
+  },
+  "condition": null
+ },
+ "8520001": {
+  "display_value": -9,
+  "percent": false,
+  "magnitude": {
+   "targetPriority": -450.0,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8520002": {
+  "display_value": -12,
+  "percent": false,
+  "magnitude": {
+   "targetPriority": -600.0,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8530000": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "isPeriodicEffect": 1
+  },
+  "condition": null
+ },
+ "8530100": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "isPeriodicEffect": 1
+  },
+  "condition": null
+ },
+ "8540000": {
+  "display_value": 1,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8600100": {
+  "display_value": 4,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8600105,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8600101": {
+  "display_value": 6,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8600106,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8600102": {
+  "display_value": 8,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8600107,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8600200": {
+  "display_value": 1,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8600205,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8600201": {
+  "display_value": 2,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8600206,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8600202": {
+  "display_value": 3,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8600207,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8610300": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8610301,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8610400": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8610401,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8610500": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8610501,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8610600": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "atkOccurrenceSpEffectId": 8610601,
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8610700": {
+  "display_value": 38,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "accumuOverFireId": 8610701,
+   "accumuOverVal": 32
+  },
+  "condition": null
+ },
+ "8610710": {
+  "display_value": 48,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "accumuOverFireId": 8610711,
+   "accumuOverVal": 32
+  },
+  "condition": null
+ },
+ "8610720": {
+  "display_value": 60,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "accumuOverFireId": 8610721,
+   "accumuOverVal": 32
+  },
+  "condition": null
+ },
+ "8620000": {
+  "display_value": 2,
+  "percent": false,
+  "magnitude": {},
+  "condition": null
+ },
+ "8620010": {
+  "display_value": 4,
+  "percent": false,
+  "magnitude": {},
+  "condition": null
+ },
+ "8620020": {
+  "display_value": 6,
+  "percent": false,
+  "magnitude": {},
+  "condition": null
+ },
+ "8620110": {
+  "display_value": 28,
+  "percent": true,
+  "magnitude": {},
+  "condition": null
+ },
+ "8620120": {
+  "display_value": 36,
+  "percent": true,
+  "magnitude": {},
+  "condition": null
+ },
+ "8630000": {
+  "display_value": 20,
+  "percent": false,
+  "magnitude": {
+   "applyIdOnKillSp": 8630002,
+   "bCurrHPIndependeMaxHP": 1,
+   "applyIdOnGetSoul": 8630001
+  },
+  "condition": null
+ },
+ "8630010": {
+  "display_value": 30,
+  "percent": false,
+  "magnitude": {
+   "applyIdOnKillSp": 8630012,
+   "bCurrHPIndependeMaxHP": 1,
+   "applyIdOnGetSoul": 8630011
+  },
+  "condition": null
+ },
+ "8630020": {
+  "display_value": 40,
+  "percent": false,
+  "magnitude": {
+   "applyIdOnKillSp": 8630022,
+   "bCurrHPIndependeMaxHP": 1,
+   "applyIdOnGetSoul": 8630021
+  },
+  "condition": null
+ },
+ "8630100": {
+  "display_value": 4,
+  "percent": true,
+  "magnitude": {
+   "applyIdOnKillSp": 8630102,
+   "bCurrHPIndependeMaxHP": 1,
+   "applyIdOnGetSoul": 8630101
+  },
+  "condition": null
+ },
+ "8630110": {
+  "display_value": 6,
+  "percent": true,
+  "magnitude": {
+   "applyIdOnKillSp": 8630112,
+   "bCurrHPIndependeMaxHP": 1,
+   "applyIdOnGetSoul": 8630111
+  },
+  "condition": null
+ },
+ "8630120": {
+  "display_value": 8,
+  "percent": true,
+  "magnitude": {
+   "applyIdOnKillSp": 8630122,
+   "bCurrHPIndependeMaxHP": 1,
+   "applyIdOnGetSoul": 8630121
+  },
+  "condition": null
+ },
+ "8630200": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1,
+   "accumuOverFireId": 7998001,
+   "accumuOverVal": 24
+  },
+  "condition": null
+ },
+ "8630300": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1,
+   "accumuOverFireId": 7998001,
+   "accumuOverVal": 24
+  },
+  "condition": null
+ },
+ "8630400": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1,
+   "accumuOverFireId": 7998001,
+   "accumuOverVal": 24
+  },
+  "condition": null
+ },
+ "8630500": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1,
+   "accumuOverFireId": 7998001,
+   "accumuOverVal": 24
+  },
+  "condition": null
+ },
+ "8630600": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1,
+   "accumuOverFireId": 7998001,
+   "accumuOverVal": 24
+  },
+  "condition": null
+ },
+ "8630700": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1,
+   "accumuOverFireId": 7998001,
+   "accumuOverVal": 24
+  },
+  "condition": null
+ },
+ "8630800": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1,
+   "accumuOverFireId": 7998001,
+   "accumuOverVal": 24
+  },
+  "condition": null
+ },
+ "8652010": {
+  "display_value": 18,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8652020": {
+  "display_value": 24,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8652110": {
+  "display_value": 19,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8652120": {
+  "display_value": 24,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8660000": {
+  "display_value": 13,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.13,
+   "magicAttackRate": 1.13,
+   "fireAttackRate": 1.13,
+   "thunderAttackRate": 1.13,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.13,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8660001": {
+  "display_value": 17,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.17,
+   "magicAttackRate": 1.17,
+   "fireAttackRate": 1.17,
+   "thunderAttackRate": 1.17,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.17,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8660002": {
+  "display_value": 21,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.21,
+   "magicAttackRate": 1.21,
+   "fireAttackRate": 1.21,
+   "thunderAttackRate": 1.21,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.21,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8660100": {
+  "display_value": 23,
+  "percent": true,
+  "magnitude": {
+   "slashDamageCutRate": 0.77,
+   "blowDamageCutRate": 0.77,
+   "thrustDamageCutRate": 0.77,
+   "neutralDamageCutRate": 0.77,
+   "magicDamageCutRate": 0.77,
+   "fireDamageCutRate": 0.77,
+   "thunderDamageCutRate": 0.77,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.77,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8660101": {
+  "display_value": 30,
+  "percent": true,
+  "magnitude": {
+   "slashDamageCutRate": 0.7,
+   "blowDamageCutRate": 0.7,
+   "thrustDamageCutRate": 0.7,
+   "neutralDamageCutRate": 0.7,
+   "magicDamageCutRate": 0.7,
+   "fireDamageCutRate": 0.7,
+   "thunderDamageCutRate": 0.7,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.7,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8660102": {
+  "display_value": 37,
+  "percent": true,
+  "magnitude": {
+   "slashDamageCutRate": 0.63,
+   "blowDamageCutRate": 0.63,
+   "thrustDamageCutRate": 0.63,
+   "neutralDamageCutRate": 0.63,
+   "magicDamageCutRate": 0.63,
+   "fireDamageCutRate": 0.63,
+   "thunderDamageCutRate": 0.63,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.63,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8670000": {
+  "display_value": 7,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.07,
+   "magicAttackRate": 1.07,
+   "fireAttackRate": 1.07,
+   "thunderAttackRate": 1.07,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.07,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8670001": {
+  "display_value": 10,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.105,
+   "magicAttackRate": 1.105,
+   "fireAttackRate": 1.105,
+   "thunderAttackRate": 1.105,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.105,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8670002": {
+  "display_value": 14,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.14,
+   "magicAttackRate": 1.14,
+   "fireAttackRate": 1.14,
+   "thunderAttackRate": 1.14,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.14,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8670100": {
+  "display_value": 24,
+  "percent": true,
+  "magnitude": {
+   "slashDamageCutRate": 0.76,
+   "blowDamageCutRate": 0.76,
+   "thrustDamageCutRate": 0.76,
+   "neutralDamageCutRate": 0.76,
+   "magicDamageCutRate": 0.76,
+   "fireDamageCutRate": 0.76,
+   "thunderDamageCutRate": 0.76,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.76,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8670101": {
+  "display_value": 32,
+  "percent": true,
+  "magnitude": {
+   "slashDamageCutRate": 0.68,
+   "blowDamageCutRate": 0.68,
+   "thrustDamageCutRate": 0.68,
+   "neutralDamageCutRate": 0.68,
+   "magicDamageCutRate": 0.68,
+   "fireDamageCutRate": 0.68,
+   "thunderDamageCutRate": 0.68,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.68,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8670102": {
+  "display_value": 40,
+  "percent": true,
+  "magnitude": {
+   "slashDamageCutRate": 0.6,
+   "blowDamageCutRate": 0.6,
+   "thrustDamageCutRate": 0.6,
+   "neutralDamageCutRate": 0.6,
+   "magicDamageCutRate": 0.6,
+   "fireDamageCutRate": 0.6,
+   "thunderDamageCutRate": 0.6,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.6,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8690000": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8690100": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "effectEndurance": 0.3,
+   "behaviorId": 869010000,
+   "bCurrHPIndependeMaxHP": 1,
+   "dmypolyId": 250
+  },
+  "condition": null
+ },
+ "8690200": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8690300": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8690400": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "behaviorId": 869040000,
+   "categoryPriority": 2,
+   "bCurrHPIndependeMaxHP": 1,
+   "dmypolyId": 900,
+   "unknown_240": 200
+  },
+  "condition": null
+ },
+ "8760000": {
+  "display_value": -4,
+  "percent": true,
+  "magnitude": {
+   "maxHpRate": 0.96,
+   "bCurrHPIndependeMaxHP": 1,
+   "isDestinedDeathHpMult": 1
+  },
+  "condition": null
+ },
+ "8760050": {
+  "display_value": -6,
+  "percent": true,
+  "magnitude": {
+   "maxHpRate": 0.94,
+   "bCurrHPIndependeMaxHP": 1,
+   "isDestinedDeathHpMult": 1
+  },
+  "condition": null
+ },
+ "8760100": {
+  "display_value": -6,
+  "percent": true,
+  "magnitude": {
+   "maxMpRate": 0.94,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8760150": {
+  "display_value": -9,
+  "percent": true,
+  "magnitude": {
+   "maxMpRate": 0.91,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8760200": {
+  "display_value": -5,
+  "percent": true,
+  "magnitude": {
+   "maxStaminaRate": 0.95,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8761000": {
+  "display_value": -6,
+  "percent": true,
+  "magnitude": {
+   "slashDamageCutRate": 1.06,
+   "blowDamageCutRate": 1.06,
+   "thrustDamageCutRate": 1.06,
+   "neutralDamageCutRate": 1.06,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8761050": {
+  "display_value": -8,
+  "percent": true,
+  "magnitude": {
+   "slashDamageCutRate": 1.08,
+   "blowDamageCutRate": 1.08,
+   "thrustDamageCutRate": 1.08,
+   "neutralDamageCutRate": 1.08,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8761100": {
+  "display_value": -6,
+  "percent": true,
+  "magnitude": {
+   "magicDamageCutRate": 1.06,
+   "fireDamageCutRate": 1.06,
+   "thunderDamageCutRate": 1.06,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 1.06
+  },
+  "condition": null
+ },
+ "8762000": {
+  "display_value": -30,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changePoisonResistPoint": -30,
+   "changeDiseaseResistPoint": -30,
+   "changeBloodResistPoint": -30,
+   "changeCurseResistPoint": -30,
+   "changeFreezeResistPoint": -30,
+   "changeSleepResistPoint": -30,
+   "changeMadnessResistPoint": -30
+  },
+  "condition": null
+ },
+ "8762050": {
+  "display_value": -45,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changePoisonResistPoint": -45,
+   "changeDiseaseResistPoint": -45,
+   "changeBloodResistPoint": -45,
+   "changeCurseResistPoint": -45,
+   "changeFreezeResistPoint": -45,
+   "changeSleepResistPoint": -45,
+   "changeMadnessResistPoint": -45
+  },
+  "condition": null
+ },
+ "8763000": {
+  "display_value": -6,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeHpEstusFlaskCorrectRate": 0.94
+  },
+  "condition": null
+ },
+ "8766000": {
+  "display_value": -1,
+  "percent": false,
+  "magnitude": {
+   "changeHpPoint": 1,
+   "regainGaugeDamage": 1,
+   "isIgnoreNoDamage": 1
+  },
+  "condition": null
+ },
+ "8770000": {
+  "display_value": 100,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "unk_04": 2.0
+  },
+  "condition": null
+ },
+ "8770050": {
+  "display_value": 150,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "unk_04": 2.5
+  },
+  "condition": null
+ },
+ "8771000": {
+  "display_value": 1,
+  "percent": false,
+  "magnitude": {
+   "slashDamageCutRate": 1.01,
+   "blowDamageCutRate": 1.01,
+   "thrustDamageCutRate": 1.01,
+   "neutralDamageCutRate": 1.01,
+   "magicDamageCutRate": 1.01,
+   "fireDamageCutRate": 1.01,
+   "thunderDamageCutRate": 1.01,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 1.01
+  },
+  "condition": null
+ },
+ "8771050": {
+  "display_value": 2,
+  "percent": false,
+  "magnitude": {
+   "slashDamageCutRate": 1.025,
+   "blowDamageCutRate": 1.025,
+   "thrustDamageCutRate": 1.025,
+   "neutralDamageCutRate": 1.025,
+   "magicDamageCutRate": 1.025,
+   "fireDamageCutRate": 1.025,
+   "thunderDamageCutRate": 1.025,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 1.025
+  },
+  "condition": null
+ },
+ "8800100": {
+  "display_value": -15,
+  "percent": true,
+  "magnitude": {
+   "slashDamageCutRate": 1.15,
+   "blowDamageCutRate": 1.15,
+   "thrustDamageCutRate": 1.15,
+   "neutralDamageCutRate": 1.15,
+   "magicDamageCutRate": 1.15,
+   "fireDamageCutRate": 1.15,
+   "thunderDamageCutRate": 1.15,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 1.15,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8800150": {
+  "display_value": -20,
+  "percent": true,
+  "magnitude": {
+   "slashDamageCutRate": 1.2,
+   "blowDamageCutRate": 1.2,
+   "thrustDamageCutRate": 1.2,
+   "neutralDamageCutRate": 1.2,
+   "magicDamageCutRate": 1.2,
+   "fireDamageCutRate": 1.2,
+   "thunderDamageCutRate": 1.2,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 1.2,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8800200": {
+  "display_value": -23,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "isIgnoreNoDamage": 1,
+   "unknown_239h": 1,
+   "accumuOverFireId": 8800205,
+   "accumuOverVal": 7000000
+  },
+  "condition": null
+ },
+ "8800250": {
+  "display_value": -30,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "isIgnoreNoDamage": 1,
+   "unknown_239h": 1,
+   "accumuOverFireId": 8800205,
+   "accumuOverVal": 7000000
+  },
+  "condition": null
+ },
+ "8801000": {
+  "display_value": -33,
+  "percent": true,
+  "magnitude": {
+   "slashDamageCutRate": 1.33,
+   "blowDamageCutRate": 1.33,
+   "thrustDamageCutRate": 1.33,
+   "neutralDamageCutRate": 1.33,
+   "magicDamageCutRate": 1.33,
+   "fireDamageCutRate": 1.33,
+   "thunderDamageCutRate": 1.33,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 1.33,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8801050": {
+  "display_value": -46,
+  "percent": true,
+  "magnitude": {
+   "slashDamageCutRate": 1.46,
+   "blowDamageCutRate": 1.46,
+   "thrustDamageCutRate": 1.46,
+   "neutralDamageCutRate": 1.46,
+   "magicDamageCutRate": 1.46,
+   "fireDamageCutRate": 1.46,
+   "thunderDamageCutRate": 1.46,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 1.46,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8810000": {
+  "display_value": -5,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 0.95,
+   "magicAttackRate": 0.95,
+   "fireAttackRate": 0.95,
+   "thunderAttackRate": 0.95,
+   "darkAttackRate": 0.95,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8810050": {
+  "display_value": -7,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 0.93,
+   "magicAttackRate": 0.93,
+   "fireAttackRate": 0.93,
+   "thunderAttackRate": 0.93,
+   "darkAttackRate": 0.93,
+   "displayIconForPermamentEffect": 1
+  },
+  "condition": null
+ },
+ "8810200": {
+  "display_value": -10,
+  "percent": true,
+  "magnitude": {
+   "displayIconForPermamentEffect": 1,
+   "ultimateArtGaugeRate": 0.9,
+   "unk_00": 1063675494
+  },
+  "condition": null
+ },
+ "8810250": {
+  "display_value": -15,
+  "percent": true,
+  "magnitude": {
+   "displayIconForPermamentEffect": 1,
+   "ultimateArtGaugeRate": 0.85,
+   "unk_00": 1062836634
+  },
+  "condition": null
+ },
+ "8810300": {
+  "display_value": -1,
+  "percent": false,
+  "magnitude": {
+   "isPeriodicEffect": 1
+  },
+  "condition": null
+ },
+ "8810350": {
+  "display_value": -2,
+  "percent": false,
+  "magnitude": {
+   "isPeriodicEffect": 1
+  },
+  "condition": null
+ },
+ "8810400": {
+  "display_value": -1,
+  "percent": false,
+  "magnitude": {
+   "isPeriodicEffect": 1
+  },
+  "condition": null
+ },
+ "8813100": {
+  "display_value": -10,
+  "percent": true,
+  "magnitude": {
+   "slashDamageCutRate": 1.1,
+   "blowDamageCutRate": 1.1,
+   "thrustDamageCutRate": 1.1,
+   "neutralDamageCutRate": 1.1,
+   "magicDamageCutRate": 1.1,
+   "fireDamageCutRate": 1.1,
+   "thunderDamageCutRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 1.1,
+   "necromancyActivationSpEffectId": 1112014848
+  },
+  "condition": null
+ },
+ "8813150": {
+  "display_value": -15,
+  "percent": true,
+  "magnitude": {
+   "slashDamageCutRate": 1.15,
+   "blowDamageCutRate": 1.15,
+   "thrustDamageCutRate": 1.15,
+   "neutralDamageCutRate": 1.15,
+   "magicDamageCutRate": 1.15,
+   "fireDamageCutRate": 1.15,
+   "thunderDamageCutRate": 1.15,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 1.15,
+   "necromancyActivationSpEffectId": 1112014848
+  },
+  "condition": null
+ },
+ "8821000": {
+  "display_value": -1,
+  "percent": false,
+  "magnitude": {
+   "physicsAttackRate": 0.01,
+   "magicAttackRate": 0.01,
+   "fireAttackRate": 0.01,
+   "thunderAttackRate": 0.01,
+   "darkAttackRate": 0.01,
+   "randomChanceValue": 3
+  },
+  "condition": null
+ },
+ "8821050": {
+  "display_value": -2,
+  "percent": false,
+  "magnitude": {
+   "physicsAttackRate": 0.01,
+   "magicAttackRate": 0.01,
+   "fireAttackRate": 0.01,
+   "thunderAttackRate": 0.01,
+   "darkAttackRate": 0.01,
+   "randomChanceValue": 5
+  },
+  "condition": null
+ },
+ "8830000": {
+  "display_value": 25,
+  "percent": true,
+  "magnitude": {
+   "bloodDamageRate": 125,
+   "freezeDamageRate": 125,
+   "bCurrHPIndependeMaxHP": 1,
+   "madnessDamageRate": 125,
+   "sleepDamageRate": 125
+  },
+  "condition": null
+ },
+ "8830050": {
+  "display_value": 35,
+  "percent": true,
+  "magnitude": {
+   "bloodDamageRate": 135,
+   "freezeDamageRate": 135,
+   "bCurrHPIndependeMaxHP": 1,
+   "madnessDamageRate": 135,
+   "sleepDamageRate": 135
+  },
+  "condition": null
+ },
+ "8831000": {
+  "display_value": -30,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "isIgnoreNoDamage": 1,
+   "unknown_239h": 1
+  },
+  "condition": null
+ },
+ "8831050": {
+  "display_value": -45,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "isIgnoreNoDamage": 1,
+   "unknown_239h": 1
+  },
+  "condition": null
+ },
+ "8831200": {
+  "display_value": -15,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "isIgnoreNoDamage": 1,
+   "unknown_239h": 1
+  },
+  "condition": null
+ },
+ "8831250": {
+  "display_value": -20,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "isIgnoreNoDamage": 1,
+   "unknown_239h": 1
+  },
+  "condition": null
+ },
+ "8850000": {
+  "display_value": 8,
+  "percent": true,
+  "magnitude": {
+   "maxHpRate": 1.08,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8850050": {
+  "display_value": 12,
+  "percent": true,
+  "magnitude": {
+   "maxHpRate": 1.12,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8850100": {
+  "display_value": 9,
+  "percent": true,
+  "magnitude": {
+   "maxMpRate": 1.09,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8850150": {
+  "display_value": 13,
+  "percent": true,
+  "magnitude": {
+   "maxMpRate": 1.13,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8850200": {
+  "display_value": -9,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "artsConsumptionRate": 0.91,
+   "magicConsumptionRate": 0.91,
+   "shamanConsumptionRate": 0.91,
+   "miracleConsumptionRate": 0.91,
+   "goodsConsumptionRate": 0.91
+  },
+  "condition": null
+ },
+ "8850250": {
+  "display_value": -13,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "artsConsumptionRate": 0.87,
+   "magicConsumptionRate": 0.87,
+   "shamanConsumptionRate": 0.87,
+   "miracleConsumptionRate": 0.87,
+   "goodsConsumptionRate": 0.87
+  },
+  "condition": null
+ },
+ "8850300": {
+  "display_value": 8,
+  "percent": true,
+  "magnitude": {
+   "maxStaminaRate": 1.08,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8850400": {
+  "display_value": 3,
+  "percent": false,
+  "magnitude": {
+   "staminaRecoverChangeSpeed": 3,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8850500": {
+  "display_value": 8,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.08
+  },
+  "condition": null
+ },
+ "8850550": {
+  "display_value": 10,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.1
+  },
+  "condition": null
+ },
+ "8850600": {
+  "display_value": 6,
+  "percent": true,
+  "magnitude": {
+   "magicAttackRate": 1.06,
+   "fireAttackRate": 1.06,
+   "thunderAttackRate": 1.06,
+   "darkAttackRate": 1.06
+  },
+  "condition": null
+ },
+ "8850650": {
+  "display_value": 8,
+  "percent": true,
+  "magnitude": {
+   "magicAttackRate": 1.08,
+   "fireAttackRate": 1.08,
+   "thunderAttackRate": 1.08,
+   "darkAttackRate": 1.08
+  },
+  "condition": null
+ },
+ "8850700": {
+  "display_value": 8,
+  "percent": true,
+  "magnitude": {
+   "saAttackPowerRate": 1.08
+  },
+  "condition": null
+ },
+ "8850800": {
+  "display_value": 9,
+  "percent": true,
+  "magnitude": {
+   "slashDamageCutRate": 0.91,
+   "blowDamageCutRate": 0.91,
+   "thrustDamageCutRate": 0.91,
+   "neutralDamageCutRate": 0.91,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8850850": {
+  "display_value": 13,
+  "percent": true,
+  "magnitude": {
+   "slashDamageCutRate": 0.87,
+   "blowDamageCutRate": 0.87,
+   "thrustDamageCutRate": 0.87,
+   "neutralDamageCutRate": 0.87,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8850900": {
+  "display_value": 9,
+  "percent": true,
+  "magnitude": {
+   "magicDamageCutRate": 0.91,
+   "fireDamageCutRate": 0.91,
+   "thunderDamageCutRate": 0.91,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.91
+  },
+  "condition": null
+ },
+ "8851000": {
+  "display_value": 52,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changePoisonResistPoint": 52,
+   "changeDiseaseResistPoint": 52,
+   "changeBloodResistPoint": 52,
+   "changeCurseResistPoint": 52,
+   "changeFreezeResistPoint": 52,
+   "changeSleepResistPoint": 52,
+   "changeMadnessResistPoint": 52
+  },
+  "condition": null
+ },
+ "8851100": {
+  "display_value": 20,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "toughnessDamageCutRate": 0.8
+  },
+  "condition": null
+ },
+ "8851150": {
+  "display_value": 33,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "toughnessDamageCutRate": 0.67
+  },
+  "condition": null
+ },
+ "8851200": {
+  "display_value": 6,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06,
+   "magicAttackRate": 1.06,
+   "fireAttackRate": 1.06,
+   "thunderAttackRate": 1.06,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.06
+  },
+  "condition": null
+ },
+ "8851250": {
+  "display_value": 8,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.08,
+   "magicAttackRate": 1.08,
+   "fireAttackRate": 1.08,
+   "thunderAttackRate": 1.08,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.08
+  },
+  "condition": null
+ },
+ "8851300": {
+  "display_value": 45,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "extendLifeRate": 1.45
+  },
+  "condition": null
+ },
+ "8851800": {
+  "display_value": 10,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8851850": {
+  "display_value": 15,
+  "percent": true,
+  "magnitude": {
+   "physicsAttackRate": 1.15,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8851900": {
+  "display_value": 13,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeHpEstusFlaskCorrectRate": 1.13
+  },
+  "condition": null
+ },
+ "8852000": {
+  "display_value": 6,
+  "percent": true,
+  "magnitude": {
+   "soulRate": 1.06,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8852050": {
+  "display_value": 9,
+  "percent": true,
+  "magnitude": {
+   "soulRate": 1.09,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8880000": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8880200": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8880300": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8881000": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8881200": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8881500": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8882100": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8882500": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8883000": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8883100": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8883200": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8883300": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8883400": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 1
+  },
+  "condition": null
+ },
+ "8884200": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 2
+  },
+  "condition": null
+ },
+ "8884300": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8885000": {
+  "display_value": 20,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "isIgnoreNoDamage": 1,
+   "unknown_239h": 1
+  },
+  "condition": null
+ },
+ "8885100": {
+  "display_value": 13,
+  "percent": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "condition": null
+ },
+ "8885200": {
+  "display_value": 0,
+  "percent": false,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "triggerAttachedWeapon": 2
+  },
+  "condition": null
+ }
+}
