@@ -84,23 +84,25 @@ Of the $123$ keys touching an `*AttackRate` field, only $59$ apply to every atta
 
 $$\mathrm{OFF}(R) \;=\; \sum_{a} p_a \cdot D\!\Big(\mathrm{AR} \cdot \exp\big(\textstyle\sum_{c \in C(a)} \mathrm{Agg}_c(R)\big)\Big),$$
 
-with $D$ the damage pipeline (defense curve $\times$ target multipliers). Three consequences. (i) Per action, the objective is still $D(\text{base} \cdot e^{\text{submodular}})$; the mixture over actions is a weighted sum of such terms — monotone, not submodular: exactly the regime §4 already assigns to beam $+$ exhaustive verification, no new machinery. (ii) Theorem 2 is untouched: profile dimensions refine from $(\text{atk}, \text{type})$ to $(\text{atk}, \text{type}, \text{class})$ and the proof never counts dimensions. (iii) Under the default profile a crit-only or throwing-knife-only relic is worth exactly nothing — matching the measured game behavior instead of the $\times 8.5$ fantasy multipliers an ungated model produces. Note $D$ is *convex* in attack over much of the curve, so a declared action's multiplier can be worth **more** than its face value — the mixture must be evaluated through $D$, not on raw multipliers.
+with $D$ the damage pipeline. Three consequences. (i) Per action, the objective is still $D(\text{base} \cdot e^{\text{submodular}})$; the mixture over actions is a weighted sum of such terms — monotone, not submodular: exactly the regime §4 already assigns to beam $+$ exhaustive verification, no new machinery. (ii) Theorem 2 is untouched: profile dimensions refine from $(\text{atk}, \text{type})$ to $(\text{atk}, \text{type}, \text{class})$ and the proof never counts dimensions. (iii) Under the default profile a crit-only or throwing-knife-only relic is worth exactly nothing — matching the measured game behavior instead of the $\times 8.5$ fantasy multipliers an ungated model produces.
+
+**$D$ is linear (game-verified 2026-07-15).** Every NPC carries the same inert flat defense ($100$ on all $200$ rows), and a two-dagger duel on such an enemy dealt *exactly* the displayed attack values ($103$ and $122$) where the Elden Ring attack/defense curve predicts a $\times 0.40$ multiplier: Nightreign player damage is $\text{attack} \times \text{MV} \times \text{cutRate}$, with the target's per-element multipliers as the only defense-side term. An earlier draft routed damage through the ER curve, whose per-type compression silently punished split-damage (elemental) weapons — with the linear $D$, elemental weapons against a matching weakness get their full face value.
 
 **In-game verification of the action gates** (2026-07-15; Wylder, training grounds, same target; the floating damage number accumulates rapid consecutive hits, and the R1 chain resets when pausing — slow-paced hits are all *first* hits):
 
-| equipped                          | 1st chain hit | chained 2nd hit | verdict |
-|-----------------------------------|:----:|:----:|---------|
-| none                              | 125  | 126  | baseline |
-| melee $\times 1.06$ (sub-cat 130) | 131  | 133  | **whole chain buffed** ($\times 1.05$, display-rounding of $1.06$) |
-| first-hit $\times 1.15$ (sub-cat 119) | 144 | 126 | **first hit only** ($\times 1.152$; the chained hit is exactly baseline) |
+| equipped                              | 1st chain hit | chained 2nd hit | verdict                                                                  |
+|---------------------------------------|:-------------:|:---------------:|--------------------------------------------------------------------------|
+| none                                  |      125      |       126       | baseline                                                                 |
+| melee $\times 1.06$ (sub-cat 130)     |      131      |       133       | **whole chain buffed** ($\times 1.05$, display-rounding of $1.06$)       |
+| first-hit $\times 1.15$ (sub-cat 119) |      144      |       126       | **first hit only** ($\times 1.152$; the chained hit is exactly baseline) |
 
 Both gates behave as decoded, and the first chain hit received **both** buffs across configs — an initial standard attack *is* a melee attack. A second session (weapon with a damaging art, carrier of melee $\times 1.06$ $+$ skill $\times 1.15$) settled the hierarchy:
 
-| measure               | without | with | ratio | verdict |
-|-----------------------|:----:|:----:|:------:|---------|
-| R1 (control)          | 142  | 149  | $\times 1.049$ | melee buff, same display damping as above |
-| weapon art (L2)       | 152  | 182  | $\times 1.197$ | $\approx 1.15 \cdot 1.06$ — **skills inherit melee buffs** (skill alone predicts $\sim 171$–$175$) |
-| backstab (crit)       | 286  | 300  | $\times 1.049$ | exactly the melee ratio — **crits inherit melee buffs, and not skill buffs** |
+| measure         | without | with |     ratio      | verdict                                                                                            |
+|-----------------|:-------:|:----:|:--------------:|----------------------------------------------------------------------------------------------------|
+| R1 (control)    |   142   | 149  | $\times 1.049$ | melee buff, same display damping as above                                                          |
+| weapon art (L2) |   152   | 182  | $\times 1.197$ | $\approx 1.15 \cdot 1.06$ — **skills inherit melee buffs** (skill alone predicts $\sim 171$–$175$) |
+| backstab (crit) |   286   | 300  | $\times 1.049$ | exactly the melee ratio — **crits inherit melee buffs, and not skill buffs**                       |
 
 The class hierarchy therefore treats `initial`, `skill`, `crit` (and, by extrapolation, `guard_counter`, `chain_finisher` — same melee-performed family, unmeasured) as sub-classes of `melee`. Practical corollary: at a hit-and-run pace the chain keeps resetting, so first-hit buffs apply to almost every hit — exactly what a play profile like `melee=0.6, initial=0.4` expresses. The crit gate ($367$) itself was verified earlier (§5.0).
 

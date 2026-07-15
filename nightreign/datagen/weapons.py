@@ -61,3 +61,19 @@ def run():
         dump({rid: {k: _san(v) for k, v in f.items() if _san(v) is not None} for rid, f in rows.items()},
              fname)
         print(f"  weapons: {name} -> {len(rows)} rows")
+
+    # The DROPPABLE weapon pool: EquipParamCustomWeapon defines the instances
+    # that actually spawn in a run (base weapon + weaponLevel + affix/art
+    # tables + isCursed for Deep of Night gear). Every EquipParamWeapon id
+    # outside this table (e.g. "Sacred Bloodstained Dagger") is engine-only
+    # and must never be recommended — verified in game 2026-07-15.
+    customs = decode("EquipParamCustomWeapon")
+    dump({rid: {"weapon_id": r.get("targetWeaponId"),
+                "level": r.get("weaponLevel"),
+                "sword_arts_table": r.get("swordArtsTableId"),
+                "affix_tables": [r.get(f"attachEffectTableId_{i}") for i in range(1, 7)
+                                 if (r.get(f"attachEffectTableId_{i}") or -1) > 0],
+                "is_cursed": bool(r.get("isCursed"))}
+          for rid, r in customs.items() if r.get("targetWeaponId")},
+         "custom_weapons.json")
+    print(f"  weapons: EquipParamCustomWeapon -> {len(customs)} droppable instances")

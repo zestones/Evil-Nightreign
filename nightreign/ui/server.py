@@ -129,6 +129,7 @@ def make_handler(data):
                     toggles=tuple(req.get("toggles") or ()),
                     beam_k=int(req.get("beam", 12)),
                     top=int(req.get("top", 3)),
+                    max_weapon_level=int(req.get("max_weapon_level", 25)),
                     play=play, data=data)
                 toggles = req.get("toggles") or ()
                 self._send(200, {

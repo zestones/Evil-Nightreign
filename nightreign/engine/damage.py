@@ -42,14 +42,14 @@ PHYS_SUBTYPE_CUT_RATE = {
 
 
 def defense_multiplier(attack, defense):
-    """Return the FromSoft attack/defense multiplier in [0.1, 0.9].
+    """REFUTED for Nightreign player damage — measured in game 2026-07-15.
 
-    r = attack / defense. Piecewise:
-      r <= 0.125             -> 0.10
-      0.125 < r <= 1         -> 19.2/49 * (r - 0.125)^2 + 0.1
-      1 < r <= 2.5           -> -0.4/3  * (r - 2.5)^2  + 0.7
-      2.5 < r <= 8           -> -0.8/121 * (r - 8)^2   + 0.9
-      r > 8                  -> 0.90
+    Two daggers on the same def_phys=100 enemy dealt EXACTLY their displayed
+    attack (103 and 122) where this Elden Ring curve predicts a x0.40
+    multiplier; every NPC in the game carries the same flat 100 defense
+    (inert placeholder). Player damage is linear: attack x MV x cut rate.
+    Kept only as historical reference — do not reintroduce without a new
+    in-game measurement contradicting the linear model.
     """
     if defense <= 0:
         return 0.9
@@ -66,16 +66,20 @@ def defense_multiplier(attack, defense):
 
 
 def damage(attack_power, defense, motion_value=1.0, cut_rate=1.0, negation=0.0):
-    """Damage of one type against one enemy.
+    """Damage of one type against one enemy — LINEAR (game-verified).
+
+    damage = attack x motion value x cut rate x (1 - negation). The flat
+    def_* fields are identical (100) on all 200 NPCs and measured inert:
+    in-game hits equal the displayed attack exactly (2026-07-15, two-dagger
+    duel on a camp soldier), so no attack/defense curve applies.
 
     attack_power : effective AR of this type (weapon + scaling + relic multipliers)
-    defense      : enemy flat defense for this type (feeds the atk/def curve)
+    defense      : ignored (kept for signature stability; inert in Nightreign)
     motion_value : attack move's motion value (1.0 = neutral / per-hit AR)
     cut_rate     : enemy per-element damage multiplier (weakness>1, resistance<1)
     negation     : extra fractional negation (0..1), usually 0 for enemies
     """
-    curve = defense_multiplier(attack_power, defense)
-    return (1.0 - negation) * curve * attack_power * motion_value * cut_rate
+    return (1.0 - negation) * attack_power * motion_value * cut_rate
 
 
 def enemy_defense(npc, damage_type, phys_subtype=None):

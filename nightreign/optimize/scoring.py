@@ -47,12 +47,19 @@ class Scorer:
     """Scores a parsed-relic set for one context (weapon, targets, weights)."""
 
     def __init__(self, weapon_id, hero_stats, char_defense, targets,
-                 weight=0.5, don_attack_scale=1.0, ar_tables=None, play=None):
+                 weight=0.5, don_attack_scale=1.0, ar_tables=None, play=None,
+                 reinforce=3, off_baseline=None):
         """targets: list of (name, npc_row, attacks_max_damage_dict).
         play: normalized {action: weight} — default pure-melee benchmark.
-        The offense axis is normalized by THIS weapon's bare damage: S reads
-        as the improvement over the naked weapon, comparable within a type."""
+        off_baseline: offense normalizer shared by every weapon of a type (the
+        type's bare-best weapon), so S ranks ABSOLUTE damage within the type —
+        normalizing each weapon by its own bare damage would crown weak-bare
+        weapons on inflated ratios. None = this weapon's own bare damage.
+        reinforce: weapon upgrade level, clamped per weapon (Nightreign caps
+        at +3) — +0 sits in the harshest zone of the defense curve and
+        distorts weapon rankings, so the endgame level is the default."""
         self.weapon_id = str(weapon_id)
+        self.reinforce = reinforce
         self.base_stats = dict(hero_stats)
         self.negation = {NEGATION_TYPE_TO_ENGINE[k]: v
                          for k, v in (char_defense.get("negation") or {}).items()
@@ -64,7 +71,8 @@ class Scorer:
         self.tables = ar_tables or attack_rating.load_tables()
         self._ar_cache = {}
         self._baseline = None
-        self._baseline = self._axes(aggregation.aggregate([]))
+        off0, surv0 = self._axes(aggregation.aggregate([]))
+        self._baseline = (off_baseline or off0, surv0)
 
     # ---- axes ----
     def _ar(self, agg):
@@ -76,7 +84,7 @@ class Scorer:
             stats = dict(self.base_stats)
             for field, add in bonuses:
                 stats[field] = stats.get(field, 0) + add
-            cached = attack_rating.attack_rating(self.weapon_id, 0, stats, self.tables)
+            cached = attack_rating.attack_rating(self.weapon_id, self.reinforce, stats, self.tables)
             self._ar_cache[bonuses] = cached
         return cached
 

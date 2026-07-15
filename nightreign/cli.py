@@ -71,7 +71,8 @@ def cmd_optimize(args):
         args.character, boss=args.boss, weapon_type=args.weapon_type,
         level=args.level, weight=args.weight, don=args.don,
         toggles=tuple(args.toggle or ()), beam_k=args.beam, top=args.top,
-        play=actions.parse_play_profile(args.play), types_count=args.types)
+        play=actions.parse_play_profile(args.play), types_count=args.types,
+        max_weapon_level=args.max_weapon_level)
     print(runner.format_report(results, args.weight))
     return 0
 
@@ -120,6 +121,9 @@ def main(argv=None):
                                       "for the actions you declare)")
     p_opt.add_argument("--types", type=int, default=5,
                        help="weapon types to explore when none is fixed (default 5)")
+    p_opt.add_argument("--max-weapon-level", type=int, default=25,
+                       help="cap on droppable weapon levels (in-run progression; "
+                            "default 25 = everything)")
     p_opt.add_argument("--beam", type=int, default=12, help="beam width (default 12)")
     p_opt.add_argument("--top", type=int, default=3, help="gameplans to show (default 3)")
     p_opt.set_defaults(func=cmd_optimize)

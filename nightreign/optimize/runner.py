@@ -41,6 +41,7 @@ def load_data():
         "nightlords": curated("nightlords.json"), "scaling": curated("mode_scaling.json"),
         "weapons": raw("weapons.json"), "npc_params": raw("npc_params.json"),
         "hero_stats": raw("hero_stats.json"), "weapon_names": names,
+        "custom_weapons": raw("custom_weapons.json"),
         "ar_tables": attack_rating.load_tables(),
     }
 
@@ -68,27 +69,51 @@ def resolve_targets(data, boss):
     return out
 
 
-def weapon_candidates(data, wtype=None):
-    """(weapon_id, display_name, type_label) for every real, named weapon."""
+def weapon_candidates(data, wtype=None, max_level=25):
+    """(weapon_id, level, display_name, type_label) for every DROPPABLE weapon.
+
+    The pool is EquipParamCustomWeapon — the instances that actually spawn in
+    a run, at their spawn weaponLevel — not the full EquipParamWeapon table
+    (which holds engine-only variants no player can find). Hero starting
+    weapons are excluded: they are a given, not a HUNT target."""
+    best_level = {}
+    for inst in data["custom_weapons"].values():
+        wid, level = str(inst["weapon_id"]), inst.get("level") or 0
+        if level > max_level or inst.get("is_cursed"):
+            continue
+        # weaponLevel 25 marks the renamed elemental variants ("Sacred
+        # Dagger", ...) — absent from the in-game weapon list (player-checked
+        # 2026-07-15), so they stay out until a decoded loot table proves they
+        # drop. Their semantics are under investigation (ItemLotParam def
+        # needed; byte-level scans give false positives).
+        if level == 25:
+            continue
+        # every weapon is wieldable at character level 15: keep each weapon's
+        # strongest droppable instance (weaponLevel clamps into the reinforce
+        # ladder; its exact scaling semantics are still under investigation)
+        best_level[wid] = max(best_level.get(wid, 0), level)
     out = []
-    for wid, w in data["weapons"].items():
-        name = data["weapon_names"].get(int(wid))
-        if not name or not name.startswith(WEAPON_RARITIES):
+    for wid, level in best_level.items():
+        w = data["weapons"].get(wid)
+        name = data["weapon_names"].get(int(wid)) if w else None
+        if not w or not name or not name.startswith(WEAPON_RARITIES):
             continue
         label = weapon_types.weapon_type(w)
         if wtype and label != wtype:
             continue
-        out.append((wid, name.split("] ", 1)[1], label))
+        out.append((wid, level, name.split("] ", 1)[1], label))
     return out
 
 
-def pick_weapon(data, stats, targets, wtype=None, agg=None, play=None):
-    """Best (weapon_id, name, type, alternatives) vs the targets.
+def pick_weapon(data, stats, targets, wtype=None, agg=None, play=None,
+                max_level=25):
+    """Best (weapon_id, level, name, type, alternatives) vs the targets.
 
-    With an aggregated relic state `agg` the ranking includes the build's
-    per-type multipliers and stat bonuses — the coordinate-ascent step that
-    lets an elemental weapon overtake a raw-AR one once the relics stack its
-    element. alternatives = the runner-up weapons as (name, damage ratio).
+    Candidates are the droppable instances at their spawn weaponLevel. With an
+    aggregated relic state `agg` the ranking includes the build's per-type
+    multipliers and stat bonuses — the coordinate-ascent step that lets an
+    elemental weapon overtake a raw-AR one once the relics stack its element.
+    alternatives = the runner-up weapons as (name, damage ratio).
     """
     agg = agg or {}
     play = play or {"melee": 1.0}
@@ -96,32 +121,32 @@ def pick_weapon(data, stats, targets, wtype=None, agg=None, play=None):
     for field in aggregation.STAT_ADD_FIELDS.values():
         stats_eff[field] = stats_eff.get(field, 0) + agg.get(("stat", field), 0.0)
     ranked = []
-    for wid, name, label in weapon_candidates(data, wtype):
-        ar = attack_rating.attack_rating(wid, 0, stats_eff, data["ar_tables"])
+    for wid, level, name, label in weapon_candidates(data, wtype, max_level):
+        ar = attack_rating.attack_rating(wid, level, stats_eff, data["ar_tables"])
         if not ar:
             continue
-        ranked.append((scoring.offense(ar, agg, play, targets), wid, name, label))
+        ranked.append((scoring.offense(ar, agg, play, targets), wid, level, name, label))
     if not ranked:
         raise SystemExit("no usable weapon candidate")
     ranked.sort(key=lambda x: -x[0])
     best = ranked[0]
-    seen, alts = {best[2]}, []
-    for dmg, _wid, name, _label in ranked[1:]:
+    seen, alts = {best[3]}, []
+    for dmg, _wid, _lvl, name, _label in ranked[1:]:
         if name not in seen:
             seen.add(name)
             alts.append((name, dmg / best[0]))
         if len(alts) == 3:
             break
-    return best[1], best[2], best[3], alts
+    return best[1], best[2], best[3], best[4], alts
 
 
-def best_weapon_types(data, stats, targets, count=3):
+def best_weapon_types(data, stats, targets, count=3, max_level=25):
     """The `count` weapon types with the strongest single weapon vs the targets."""
     per_type = {}
-    for wid, name, label in weapon_candidates(data):
+    for wid, level, name, label in weapon_candidates(data, None, max_level):
         if label is None:
             continue
-        ar = attack_rating.attack_rating(wid, 0, stats, data["ar_tables"])
+        ar = attack_rating.attack_rating(wid, level, stats, data["ar_tables"])
         if not ar:
             continue
         dmg = sum(damage.damage_vs_enemy(ar, npc)[0] for _n, npc, _m in targets)
@@ -145,16 +170,48 @@ def build_pools(data, context, include_deep):
     return pools
 
 
+def weak_element(targets):
+    """The engine damage type the targets take the most extra damage from
+    (None when nothing beats neutral by 5%+)."""
+    best, best_rate = None, 1.05
+    for etype in ("mag", "fire", "thunder", "dark"):
+        rate = sum(damage.enemy_cut_rate(npc, etype) for _n, npc, _m in targets) \
+               / max(len(targets), 1)
+        if rate > best_rate:
+            best, best_rate = etype, rate
+    return best
+
+
+def pick_weapon_elemental(data, stats, targets, wtype, element, play, max_level=25):
+    """Best droppable weapon of the type leaning on `element` (>= 30% of AR).
+
+    Second start of the coordinate ascent: the phys-heavy basin never explores
+    elemental weapons on its own, because relics adapt to the starting weapon.
+    """
+    best = None
+    for wid, level, name, label in weapon_candidates(data, wtype, max_level):
+        ar = attack_rating.attack_rating(wid, level, stats, data["ar_tables"])
+        total = sum(ar.values())
+        if not total or ar.get(element, 0.0) < 0.3 * total:
+            continue
+        dmg = scoring.offense(ar, {}, play, targets)
+        if best is None or dmg > best[0]:
+            best = (dmg, wid, level, name, label)
+    return None if best is None else (best[1], best[2], best[3], best[4], [])
+
+
 def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
              don=0, toggles=(), beam_k=12, top=3, play=None, types_count=5,
-             data=None):
+             max_weapon_level=25, data=None):
     """Run the full engine loop; returns the `top` best gameplans (dicts).
 
     play: normalized {action: weight} play profile (resources/actions.py);
     None = the pure-melee benchmark. Per weapon type the weapon choice and the
-    relic search run in coordinate ascent: search relics for the bare-best
-    weapon, re-rank every weapon of the type under the found build's
-    multipliers, and repeat once if the pick changed.
+    relic search run in coordinate ascent — from the bare-best weapon AND,
+    when the target has an elemental weakness, from the best weapon leaning on
+    that element (two basins: relics adapt to the weapon, so a single start
+    can lock into physical). max_weapon_level caps the droppable instances
+    considered (in-run progression: weapons unlock by level during a run).
     """
     data = data or load_data()
     play = play or {"melee": 1.0}
@@ -168,7 +225,8 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
                  if include_deep else 1.0)
     vessels = [v for v in data["vessels"].get(character, []) if v.get("owned")]
     types_to_try = [weapon_type] if weapon_type else \
-        best_weapon_types(data, stats, targets, types_count)
+        best_weapon_types(data, stats, targets, types_count, max_weapon_level)
+    elem = weak_element(targets)
 
     def search_vessels(scorer, pools):
         out = []
@@ -190,37 +248,50 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
     for wtype in types_to_try:
         context = Context(character, wtype, frozenset(toggles), max(don, 1))
         pools = build_pools(data, context, include_deep)
-        weapon_id, weapon_name, wlabel, alts = pick_weapon(data, stats, targets, wtype,
-                                                           play=play)
-        vessel_results = []
-        for _ascent_pass in range(2):
-            scorer = scoring.Scorer(weapon_id, stats,
-                                    data["characters"][character]["defense"],
-                                    targets, weight, don_scale, data["ar_tables"],
-                                    play=play)
-            vessel_results = search_vessels(scorer, pools)
-            # coordinate ascent: re-rank the type's weapons under the best
-            # build's multipliers; a changed pick re-runs the relic search
-            best_picks = max(vessel_results, key=lambda x: x[0])[2]
-            best_agg = aggregation.aggregate(
-                [_parsed_of(pools, relic) for _slot, relic in best_picks])
-            new_id, new_name, _lbl, alts = pick_weapon(data, stats, targets, wtype,
-                                                       agg=best_agg, play=play)
-            if new_id == weapon_id:
-                break
-            weapon_id, weapon_name = new_id, new_name
-        for score, vessel, picks in vessel_results:
-            breakdown = scorer.breakdown([p for _slot, r in picks
-                                          for p in [_parsed_of(pools, r)]])
-            results.append({
-                "score": score, "character": character, "weapon_type": wlabel,
-                "weapon": weapon_name, "weapon_id": weapon_id,
-                "weapon_alternatives": alts,
-                "vessel": vessel["name"], "picks": picks,
-                "breakdown": breakdown,
-                "absolute_offense": breakdown["offense"],
-                "targets": [t[0] for t in targets],
-            })
+        starts = [pick_weapon(data, stats, targets, wtype, play=play,
+                              max_level=max_weapon_level)]
+        # every weapon of the type shares the same offense normalizer: the
+        # type's bare-best weapon (S then ranks absolute damage in-type)
+        type_ref_off = scoring.offense(
+            attack_rating.attack_rating(starts[0][0], starts[0][1], stats,
+                                        data["ar_tables"]), {}, play, targets)
+        if elem:
+            alt_start = pick_weapon_elemental(data, stats, targets, wtype, elem,
+                                              play, max_weapon_level)
+            if alt_start and alt_start[0] != starts[0][0]:
+                starts.append(alt_start)
+        for weapon_id, weapon_level, weapon_name, wlabel, alts in starts:
+            vessel_results = []
+            for _ascent_pass in range(2):
+                scorer = scoring.Scorer(weapon_id, stats,
+                                        data["characters"][character]["defense"],
+                                        targets, weight, don_scale, data["ar_tables"],
+                                        play=play, reinforce=weapon_level,
+                                        off_baseline=type_ref_off)
+                vessel_results = search_vessels(scorer, pools)
+                # coordinate ascent: re-rank the type's weapons under the best
+                # build's multipliers; a changed pick re-runs the relic search
+                best_picks = max(vessel_results, key=lambda x: x[0])[2]
+                best_agg = aggregation.aggregate(
+                    [_parsed_of(pools, relic) for _slot, relic in best_picks])
+                new_id, new_lvl, new_name, _lbl, alts = pick_weapon(
+                    data, stats, targets, wtype, agg=best_agg, play=play,
+                    max_level=max_weapon_level)
+                if (new_id, new_lvl) == (weapon_id, weapon_level):
+                    break
+                weapon_id, weapon_level, weapon_name = new_id, new_lvl, new_name
+            for score, vessel, picks in vessel_results:
+                breakdown = scorer.breakdown([p for _slot, r in picks
+                                              for p in [_parsed_of(pools, r)]])
+                results.append({
+                    "score": score, "character": character, "weapon_type": wlabel,
+                    "weapon": weapon_name, "weapon_id": weapon_id,
+                    "weapon_alternatives": alts,
+                    "vessel": vessel["name"], "picks": picks,
+                    "breakdown": breakdown,
+                    "absolute_offense": breakdown["offense"],
+                    "targets": [t[0] for t in targets],
+                })
     # S is the improvement over the type's own bare weapon: comparable within a
     # type, NOT across types. Fixed type: top builds by S. Free exploration:
     # the best build of EACH type, ordered by absolute per-hit damage (stated
@@ -228,8 +299,9 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
     if weapon_type:
         results.sort(key=lambda r: -r["score"])
         seen, unique = set(), []
-        for r in results:  # several vessels often reach the same relic set
-            key = frozenset(relic["record_id"] for _s, relic in r["picks"])
+        for r in results:  # several vessels often reach the same gameplan
+            key = (r["weapon_id"],
+                   frozenset(relic["record_id"] for _s, relic in r["picks"]))
             if key not in seen:
                 seen.add(key)
                 unique.append(r)
