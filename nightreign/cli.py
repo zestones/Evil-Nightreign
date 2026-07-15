@@ -64,8 +64,13 @@ def cmd_data(args):
     return 0
 
 
-def cmd_optimize(_args):
-    print("optimize: not implemented yet — this is the next milestone.")
+def cmd_optimize(args):
+    from nightreign.optimize import runner
+    results = runner.optimize(
+        args.character, boss=args.boss, weapon_type=args.weapon_type,
+        level=args.level, weight=args.weight, don=args.don,
+        toggles=tuple(args.toggle or ()), beam_k=args.beam, top=args.top)
+    print(runner.format_report(results, args.weight))
     return 0
 
 
@@ -93,10 +98,22 @@ def main(argv=None):
     p_data.add_argument("step", nargs="?", choices=DATA_STEPS, help="a single step (default: all)")
     p_data.set_defaults(func=cmd_data)
 
-    p_opt = sub.add_parser("optimize", help="find the best relics (coming)")
-    p_opt.add_argument("character", nargs="?")
-    p_opt.add_argument("boss", nargs="?")
-    p_opt.add_argument("--deep", action="store_true", help="generalist / Deep of Night")
+    p_opt = sub.add_parser("optimize", help="find the best relic build")
+    p_opt.add_argument("character", help="Nightfarer (e.g. Wylder, Duchess)")
+    p_opt.add_argument("boss", nargs="?",
+                       help="target Nightlord (omit = generalist vs all 8)")
+    p_opt.add_argument("--weapon-type", help='fix the weapon type (e.g. "Greatsword"); '
+                                             "default: try the 3 best types")
+    p_opt.add_argument("--level", type=int, default=15, help="character level (default 15)")
+    p_opt.add_argument("--weight", type=float, default=0.5,
+                       help="offense<->survival slider, 1.0 = pure offense (default 0.5)")
+    p_opt.add_argument("--don", type=int, default=0,
+                       help="Deep of Night level 1-7 (0 = normal expedition, no deep slots)")
+    p_opt.add_argument("--toggle", action="append",
+                       help="commit a playstyle toggle: caster, low_hp, situational, "
+                            "status_build, starting_loadout, coop (repeatable)")
+    p_opt.add_argument("--beam", type=int, default=12, help="beam width (default 12)")
+    p_opt.add_argument("--top", type=int, default=3, help="gameplans to show (default 3)")
     p_opt.set_defaults(func=cmd_optimize)
 
     p_demo = sub.add_parser("demo", help="run an example (matchup | pipeline)")

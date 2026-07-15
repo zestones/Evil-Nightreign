@@ -1,0 +1,139 @@
+#!/usr/bin/env python3
+"""Build scoring: S = w * OFFENSE + (1 - w) * SURVIVAL (optimizer.md).
+
+OFFENSE  — real damage vs the target: weapon AR (params + stats, engine-
+           validated) x per-type relic multipliers (per-key Agg, game-verified)
+           through the FromSoft attack/defense curve and the target's per-type
+           damage multipliers.
+SURVIVAL — one-shot margin proxy: (vigor x maxHpRate multipliers) divided by
+           the target's biggest hit after character negation, relic damage-cut
+           multipliers and Deep-of-Night attack scaling. Exact HP pools are
+           deferred (optimizer.md): ranking uses the raw stats.
+
+Both axes are normalized by the relic-less baseline, so S is dimensionless and
+S = 1 means "no better than an empty vessel". Stat-boosting relics feed back
+into AR inside the marginal step (optimizer_mathematical_formulation.md §6.5) via a memoized AR
+recomputation — the only non-submodular coupling, handled exactly.
+"""
+import math
+
+from nightreign.engine import attack_rating, damage
+from nightreign.optimize import aggregation
+
+# nightlords.json attack / damage_multiplier naming -> engine damage types
+TARGET_TYPE_TO_ENGINE = {
+    "phys": "phys", "slash": "slash", "blow": "blow", "thrust": "thrust",
+    "magic": "mag", "fire": "fire", "lightning": "thunder", "holy": "dark",
+}
+# character negation naming -> engine damage types
+NEGATION_TYPE_TO_ENGINE = {
+    "phys": "phys", "slash": "slash", "blow": "blow", "thrust": "thrust",
+    "magic": "mag", "fire": "fire", "thunder": "thunder", "dark": "dark",
+}
+AR_TYPES = ("phys", "mag", "fire", "thunder", "dark")
+
+
+class Scorer:
+    """Scores a parsed-relic set for one context (weapon, targets, weights)."""
+
+    def __init__(self, weapon_id, hero_stats, char_defense, targets,
+                 weight=0.5, don_attack_scale=1.0, ar_tables=None):
+        """targets: list of (name, npc_row, attacks_max_damage_dict)."""
+        self.weapon_id = str(weapon_id)
+        self.base_stats = dict(hero_stats)
+        self.negation = {NEGATION_TYPE_TO_ENGINE[k]: v
+                         for k, v in (char_defense.get("negation") or {}).items()
+                         if k in NEGATION_TYPE_TO_ENGINE}
+        self.targets = targets
+        self.weight = weight
+        self.don_attack_scale = don_attack_scale
+        self.tables = ar_tables or attack_rating.load_tables()
+        self._ar_cache = {}
+        self._baseline = None
+        self._baseline = self._axes(aggregation.aggregate([]))
+
+    # ---- axes ----
+    def _ar(self, agg):
+        """Weapon AR with relic stat bonuses folded in (memoized)."""
+        bonuses = tuple(sorted((f, agg.get(("stat", f), 0.0))
+                               for f in aggregation.STAT_ADD_FIELDS.values()))
+        cached = self._ar_cache.get(bonuses)
+        if cached is None:
+            stats = dict(self.base_stats)
+            for field, add in bonuses:
+                stats[field] = stats.get(field, 0) + add
+            cached = attack_rating.attack_rating(self.weapon_id, 0, stats, self.tables)
+            self._ar_cache[bonuses] = cached
+        return cached
+
+    def _axes(self, agg):
+        """(offense, survival) raw values for an aggregated state."""
+        ar = self._ar(agg)
+        attack = {t: ar.get(t, 0.0) * math.exp(agg.get(("atk", t), 0.0))
+                  for t in AR_TYPES if ar.get(t, 0.0) > 0}
+
+        off_total, surv_total = 0.0, 0.0
+        vigor = self.base_stats.get("statVigor", 0) + agg.get(("stat", "statVigor"), 0.0)
+        hp_proxy = vigor * math.exp(agg.get(("hp",), 0.0))
+        for _name, npc, max_damage in self.targets:
+            off_total += damage.damage_vs_enemy(attack, npc)[0]
+            surv_total += hp_proxy / self._biggest_hit(agg, max_damage)
+        n = max(len(self.targets), 1)
+        return off_total / n, surv_total / n
+
+    def _biggest_hit(self, agg, max_damage):
+        """Largest incoming hit after negation, relic cuts and DoN scaling."""
+        worst = 0.0
+        for ttype, dmg in (max_damage or {}).items():
+            etype = TARGET_TYPE_TO_ENGINE.get(ttype)
+            if etype is None or not dmg:
+                continue
+            taken = dmg * self.negation.get(etype, 1.0) * self.don_attack_scale
+            taken *= math.exp(-agg.get(("cut", etype), 0.0))
+            # untyped ("neutral") relic cuts apply to physical sub-types too
+            if etype in ("slash", "blow", "thrust"):
+                taken *= math.exp(-agg.get(("cut", "phys"), 0.0))
+            worst = max(worst, taken)
+        return worst or 1.0
+
+    # ---- public ----
+    def score(self, parsed_relics):
+        off, surv = self._axes(aggregation.aggregate(parsed_relics))
+        off0, surv0 = self._baseline
+        w = self.weight
+        return w * (off / off0 if off0 else 0.0) + (1 - w) * (surv / surv0 if surv0 else 0.0)
+
+    def breakdown(self, parsed_relics):
+        """Human-readable summary of a build's score."""
+        agg = aggregation.aggregate(parsed_relics)
+        off, surv = self._axes(agg)
+        off0, surv0 = self._baseline
+        primary = max(self._ar(agg), key=self._ar(agg).get, default="phys")
+        per_key = _per_key(parsed_relics, ("atk", primary))
+        return {
+            "score": self.weight * (off / off0 if off0 else 0.0)
+                     + (1 - self.weight) * (surv / surv0 if surv0 else 0.0),
+            "offense": off, "offense_ratio": off / off0 if off0 else 0.0,
+            "survival_ratio": surv / surv0 if surv0 else 0.0,
+            "attack_multipliers": {t: math.exp(agg.get(("atk", t), 0.0)) for t in AR_TYPES},
+            "stat_bonuses": {f: agg.get(("stat", f), 0.0)
+                             for f in aggregation.STAT_ADD_FIELDS.values()
+                             if agg.get(("stat", f), 0.0)},
+            "top_effects": sorted(((k, math.exp(v)) for k, v in per_key.items()),
+                                  key=lambda kv: -kv[1])[:5],
+        }
+
+
+def _per_key(parsed_relics, dim):
+    """Per-key aggregated contribution on one dimension (for reporting)."""
+    sums, ones = {}, {}
+    for copies in parsed_relics:
+        for key, stacks, contrib in copies:
+            v = contrib.get(dim)
+            if not v:
+                continue
+            if stacks:
+                sums[key] = sums.get(key, 0.0) + v
+            else:
+                ones[key] = max(ones.get(key, 0.0), v)
+    return {**sums, **{k: max(v, sums.get(k, 0.0)) for k, v in ones.items()}}

@@ -9466,6 +9466,488 @@
   "is_debuff": false,
   "displayed_value": 0
  },
+ "7270100": {
+  "key": "ironeyeAdditionalCharacterSkillUse",
+  "text": "[Ironeye] +1 additional Character Skill use",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "additionalCharacterSkillUse": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 10020,
+   "value": 10200000,
+   "kind": "character",
+   "label": "Ironeye",
+   "dimension": "character"
+  },
+  "characters": [
+   "Ironeye"
+  ],
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6002701": {
+  "key": "improvedFireDamageNegationPlus2",
+  "text": "Improved Fire Damage Negation +2",
+  "magnitude": {
+   "fireDamageCutRate": 0.84,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30040,
+   "value": 400030,
+   "kind": "gameplay",
+   "label": "At low HP",
+   "dimension": "low_hp"
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6001600": {
+  "key": "fireAttackPowerUpPlus3",
+  "text": "Fire Attack Power Up +3",
+  "magnitude": {
+   "fireAttackRate": 1.105
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30020,
+   "value": 300030,
+   "kind": "gameplay",
+   "label": "Passive combat buff",
+   "dimension": null
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6002801": {
+  "key": "improvedLightningDamageNegationPlus2",
+  "text": "Improved Lightning Damage Negation +2",
+  "magnitude": {
+   "thunderDamageCutRate": 0.84,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30040,
+   "value": 400040,
+   "kind": "gameplay",
+   "label": "At low HP",
+   "dimension": "low_hp"
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6611102": {
+  "key": "improvedAffinityDamageNegationPlus2",
+  "text": "Improved Affinity Damage Negation +2",
+  "magnitude": {
+   "magicDamageCutRate": 0.88,
+   "fireDamageCutRate": 0.88,
+   "thunderDamageCutRate": 0.88,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.88
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30040,
+   "value": 400010,
+   "kind": "gameplay",
+   "label": "At low HP",
+   "dimension": "low_hp"
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6160000": {
+  "key": "hpRestorationUponThrustingCounterattackPlus1",
+  "text": "HP Restoration upon Thrusting Counterattack +1",
+  "magnitude": {
+   "changeHpRate": -3.3,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30060,
+   "value": 600030,
+   "kind": "gameplay",
+   "label": "FP / HP recovery",
+   "dimension": null
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6001700": {
+  "key": "lightningAttackPowerUpPlus3",
+  "text": "Lightning Attack Power Up +3",
+  "magnitude": {
+   "thunderAttackRate": 1.105
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30020,
+   "value": 300040,
+   "kind": "gameplay",
+   "label": "Passive combat buff",
+   "dimension": null
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6260300": {
+  "key": "attackPowerUpWhenFacingScarletRotAfflictedEnemyPlus1",
+  "text": "Attack power up when facing scarlet rot-afflicted enemy +1",
+  "magnitude": {
+   "physicsAttackRate": 1.16,
+   "magicAttackRate": 1.16,
+   "fireAttackRate": 1.16,
+   "thunderAttackRate": 1.16,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.16
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30070,
+   "value": 700050,
+   "kind": "gameplay",
+   "label": "Situational (guard / afflicted enemy)",
+   "dimension": "situational"
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6030800": {
+  "key": "artGaugeFillsModeratelyUponCriticalHitPlus1",
+  "text": "Art gauge fills moderately upon critical hit +1",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30010,
+   "value": 200030,
+   "kind": "gameplay",
+   "label": "Art / Ultimate gauge",
+   "dimension": null
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6001801": {
+  "key": "holyAttackPowerUpPlus4",
+  "text": "Holy Attack Power Up +4",
+  "magnitude": {
+   "darkAttackRate": 1.12
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30020,
+   "value": 300050,
+   "kind": "gameplay",
+   "label": "Passive combat buff",
+   "dimension": null
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6002601": {
+  "key": "improvedMagicDamageNegationPlus2",
+  "text": "Improved Magic Damage Negation +2",
+  "magnitude": {
+   "magicDamageCutRate": 0.84,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30040,
+   "value": 400020,
+   "kind": "gameplay",
+   "label": "At low HP",
+   "dimension": "low_hp"
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6260400": {
+  "key": "attackPowerUpWhenFacingFrostbiteAfflictedEnemyPlus1",
+  "text": "Attack power up when facing frostbite-afflicted enemy +1",
+  "magnitude": {
+   "physicsAttackRate": 1.16,
+   "magicAttackRate": 1.16,
+   "fireAttackRate": 1.16,
+   "thunderAttackRate": 1.16,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.16
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30070,
+   "value": 700060,
+   "kind": "gameplay",
+   "label": "Situational (guard / afflicted enemy)",
+   "dimension": "situational"
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6641000": {
+  "key": "guardianImprovedStrengthAndDexterityReducedVigor",
+  "text": "[Guardian] Improved Strength and Dexterity, Reduced Vigor",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 10010,
+   "value": 10100050,
+   "kind": "character",
+   "label": "Guardian",
+   "dimension": "character"
+  },
+  "characters": [
+   "Guardian"
+  ],
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6030600": {
+  "key": "artGaugeChargedFromSuccessfulGuardingPlus1",
+  "text": "Art gauge charged from successful guarding +1",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30010,
+   "value": 200040,
+   "kind": "gameplay",
+   "label": "Art / Ultimate gauge",
+   "dimension": null
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6641100": {
+  "key": "guardianImprovedMindAndFaithReducedVigor",
+  "text": "[Guardian] Improved Mind and Faith, Reduced Vigor",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 10010,
+   "value": 10100060,
+   "kind": "character",
+   "label": "Guardian",
+   "dimension": "character"
+  },
+  "characters": [
+   "Guardian"
+  ],
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6611201": {
+  "key": "improvedSorceriesPlus1",
+  "text": "Improved Sorceries +1",
+  "magnitude": {
+   "physicsAttackRate": 1.085,
+   "magicAttackRate": 1.085,
+   "fireAttackRate": 1.085,
+   "thunderAttackRate": 1.085,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.085
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30020,
+   "value": 300080,
+   "kind": "gameplay",
+   "label": "Passive combat buff",
+   "dimension": null
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6610500": {
+  "key": "increasedMaximumFP",
+  "text": "Increased Maximum FP",
+  "magnitude": {
+   "maxMpRate": 1.15,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30000,
+   "value": 100100,
+   "kind": "gameplay",
+   "label": "Stat bonus",
+   "dimension": null
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6002700": {
+  "key": "improvedFireDamageNegationPlus1",
+  "text": "Improved Fire Damage Negation +1",
+  "magnitude": {
+   "fireDamageCutRate": 0.85,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30040,
+   "value": 400030,
+   "kind": "gameplay",
+   "label": "At low HP",
+   "dimension": "low_hp"
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6600001": {
+  "key": "sleepInVicinityImprovesAttackPowerPlus1",
+  "text": "Sleep in Vicinity Improves Attack Power +1",
+  "magnitude": {
+   "dispIconNonactive": 1,
+   "bCurrHPIndependeMaxHP": 1,
+   "unknown_239h": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30070,
+   "value": 700090,
+   "kind": "gameplay",
+   "label": "Situational (guard / afflicted enemy)",
+   "dimension": "situational"
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6260001": {
+  "key": "attackPowerUpWhenFacingPoisonAfflictedEnemyPlus2",
+  "text": "Attack power up when facing poison-afflicted enemy +2",
+  "magnitude": {
+   "physicsAttackRate": 1.2,
+   "magicAttackRate": 1.2,
+   "fireAttackRate": 1.2,
+   "thunderAttackRate": 1.2,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.2
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30070,
+   "value": 700040,
+   "kind": "gameplay",
+   "label": "Situational (guard / afflicted enemy)",
+   "dimension": "situational"
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6610801": {
+  "key": "improvedAffinityAttackPowerPlus1",
+  "text": "Improved Affinity Attack Power +1",
+  "magnitude": {
+   "magicAttackRate": 1.08,
+   "fireAttackRate": 1.08,
+   "thunderAttackRate": 1.08,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.08
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30020,
+   "value": 300010,
+   "kind": "gameplay",
+   "label": "Passive combat buff",
+   "dimension": null
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6002800": {
+  "key": "improvedLightningDamageNegationPlus1",
+  "text": "Improved Lightning Damage Negation +1",
+  "magnitude": {
+   "thunderDamageCutRate": 0.85,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30040,
+   "value": 400040,
+   "kind": "gameplay",
+   "label": "At low HP",
+   "dimension": "low_hp"
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6611202": {
+  "key": "improvedSorceriesPlus2",
+  "text": "Improved Sorceries +2",
+  "magnitude": {
+   "physicsAttackRate": 1.1,
+   "magicAttackRate": 1.1,
+   "fireAttackRate": 1.1,
+   "thunderAttackRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30020,
+   "value": 300080,
+   "kind": "gameplay",
+   "label": "Passive combat buff",
+   "dimension": null
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6002901": {
+  "key": "improvedHolyDamageNegationPlus2",
+  "text": "Improved Holy Damage Negation +2",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.84
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30040,
+   "value": 400050,
+   "kind": "gameplay",
+   "label": "At low HP",
+   "dimension": "low_hp"
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
  "6001400": {
   "key": "physicalAttackUpPlus3",
   "text": "Physical Attack Up +3",
@@ -9476,6 +9958,105 @@
   "condition": {
    "category": 30020,
    "value": 300000,
+   "kind": "gameplay",
+   "label": "Passive combat buff",
+   "dimension": null
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6001601": {
+  "key": "fireAttackPowerUpPlus4",
+  "text": "Fire Attack Power Up +4",
+  "magnitude": {
+   "fireAttackRate": 1.12
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30020,
+   "value": 300030,
+   "kind": "gameplay",
+   "label": "Passive combat buff",
+   "dimension": null
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6030901": {
+  "key": "physicalAttackPowerIncreasesAfterUsingGreaseItemsPlus2",
+  "text": "Physical attack power increases after using grease items +2",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30020,
+   "value": 300200,
+   "kind": "gameplay",
+   "label": "Passive combat buff",
+   "dimension": null
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6611101": {
+  "key": "improvedAffinityDamageNegationPlus1",
+  "text": "Improved Affinity Damage Negation +1",
+  "magnitude": {
+   "magicDamageCutRate": 0.895,
+   "fireDamageCutRate": 0.895,
+   "thunderDamageCutRate": 0.895,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.895
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30040,
+   "value": 400010,
+   "kind": "gameplay",
+   "label": "At low HP",
+   "dimension": "low_hp"
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6001800": {
+  "key": "holyAttackPowerUpPlus3",
+  "text": "Holy Attack Power Up +3",
+  "magnitude": {
+   "darkAttackRate": 1.105
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30020,
+   "value": 300050,
+   "kind": "gameplay",
+   "label": "Passive combat buff",
+   "dimension": null
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6040101": {
+  "key": "improvedGuardCountersPlus2",
+  "text": "Improved Guard Counters +2",
+  "magnitude": {
+   "physicsAttackRate": 1.29,
+   "magicAttackRate": 1.29,
+   "fireAttackRate": 1.29,
+   "thunderAttackRate": 1.29,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.29
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30020,
+   "value": 300180,
    "kind": "gameplay",
    "label": "Passive combat buff",
    "dimension": null
@@ -9506,24 +10087,67 @@
   "is_debuff": false,
   "displayed_value": 0
  },
- "11000": {
-  "key": "wylderAdditionalCharacterSkillUse",
-  "text": "[Wylder] +1 additional Character Skill use",
+ "6260000": {
+  "key": "attackPowerUpWhenFacingPoisonAfflictedEnemyPlus1",
+  "text": "Attack power up when facing poison-afflicted enemy +1",
   "magnitude": {
+   "physicsAttackRate": 1.16,
+   "magicAttackRate": 1.16,
+   "fireAttackRate": 1.16,
+   "thunderAttackRate": 1.16,
    "bCurrHPIndependeMaxHP": 1,
-   "additionalCharacterSkillUse": 1
+   "darkAttackRate": 1.16
   },
   "on_hit": {},
   "condition": {
-   "category": 10000,
-   "value": 10000020,
-   "kind": "character",
-   "label": "Wylder",
-   "dimension": "character"
+   "category": 30070,
+   "value": 700040,
+   "kind": "gameplay",
+   "label": "Situational (guard / afflicted enemy)",
+   "dimension": "situational"
   },
-  "characters": [
-   "Wylder"
-  ],
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6260301": {
+  "key": "attackPowerUpWhenFacingScarletRotAfflictedEnemyPlus2",
+  "text": "Attack power up when facing scarlet rot-afflicted enemy +2",
+  "magnitude": {
+   "physicsAttackRate": 1.2,
+   "magicAttackRate": 1.2,
+   "fireAttackRate": 1.2,
+   "thunderAttackRate": 1.2,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.2
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30070,
+   "value": 700050,
+   "kind": "gameplay",
+   "label": "Situational (guard / afflicted enemy)",
+   "dimension": "situational"
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6030900": {
+  "key": "physicalAttackPowerIncreasesAfterUsingGreaseItemsPlus1",
+  "text": "Physical attack power increases after using grease items +1",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30020,
+   "value": 300200,
+   "kind": "gameplay",
+   "label": "Passive combat buff",
+   "dimension": null
+  },
+  "characters": "all",
   "is_debuff": false,
   "displayed_value": 0
  },
@@ -9542,6 +10166,110 @@
    "dimension": null
   },
   "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "7090300": {
+  "key": "defeatingEnemiesNearTotemStelaRestoresHP",
+  "text": "Defeating enemies near Totem Stela restores HP",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 10040,
+   "value": 10400020,
+   "kind": "character",
+   "label": "Raider",
+   "dimension": "character"
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6611002": {
+  "key": "improvedPhysicalDamageNegationPlus2",
+  "text": "Improved Physical Damage Negation +2",
+  "magnitude": {
+   "slashDamageCutRate": 0.88,
+   "blowDamageCutRate": 0.88,
+   "thrustDamageCutRate": 0.88,
+   "neutralDamageCutRate": 0.88,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30040,
+   "value": 400000,
+   "kind": "gameplay",
+   "label": "At low HP",
+   "dimension": "low_hp"
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6611302": {
+  "key": "improvedIncantationsPlus2",
+  "text": "Improved Incantations +2",
+  "magnitude": {
+   "physicsAttackRate": 1.1,
+   "magicAttackRate": 1.1,
+   "fireAttackRate": 1.1,
+   "thunderAttackRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 30020,
+   "value": 300090,
+   "kind": "gameplay",
+   "label": "Passive combat buff",
+   "dimension": null
+  },
+  "characters": "all",
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6642100": {
+  "key": "ironeyeImprovedVigorAndStrengthReducedDexterity",
+  "text": "[Ironeye] Improved Vigor and Strength, Reduced Dexterity",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 10020,
+   "value": 10200040,
+   "kind": "character",
+   "label": "Ironeye",
+   "dimension": "character"
+  },
+  "characters": [
+   "Ironeye"
+  ],
+  "is_debuff": false,
+  "displayed_value": 0
+ },
+ "7280000": {
+  "key": "ironeyeExtendsDurationOfWeakPoint",
+  "text": "[Ironeye] Extends duration of weak point",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "weakPointValue": 22
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 10020,
+   "value": 10200030,
+   "kind": "character",
+   "label": "Ironeye",
+   "dimension": "character"
+  },
+  "characters": [
+   "Ironeye"
+  ],
   "is_debuff": false,
   "displayed_value": 0
  }
