@@ -32,6 +32,7 @@ export default function App() {
           toggles: [],
           top: 3,
           beam: 12,
+          countDebuffs: true,
         });
       })
       .catch(() => setError("Impossible de charger les données (nr ui est-il lancé ?)"));

@@ -11,8 +11,11 @@ whenever `data/curated/` is regenerated (`nr data`). Exits non-zero on failure.
   INV-2  Within a group, key <-> (group, level) is a bijection carrying a
          single magnitude — "the effect of group g at level l" is well defined.
   INV-3  Contributions to the tracked multiplicative fields are nonnegative in
-         log space: no *AttackRate in (0,1), no *DamageCutRate > 1, on any
-         owned relic (deep included). Monotonicity in Proposition 1 needs this.
+         log space (no *AttackRate in (0,1), no *DamageCutRate > 1) on any
+         non-debuff effect. Deep-of-Night CURSES deliberately break this (they
+         are the malus); they are excluded here and handled signed by the
+         aggregation (dominance iterates the key union, search leans on beam +
+         exhaustive rather than the greedy monotonicity bound).
 
 Known quirks (reported, not fatal — the per-key model absorbs them):
   Q-1  A few keys carry several distinct magnitudes across their ids; the
@@ -83,7 +86,10 @@ cut_fields = sorted({f for info in EFFECTS.values()
 violations = []
 for r in RELICS:
     for e in r["effects"]:
-        m = (EFFECTS.get(str(e["id"])) or {}).get("magnitude") or {}
+        info = EFFECTS.get(str(e["id"])) or {}
+        if info.get("is_debuff"):
+            continue  # curses carry the malus by design (see INV-3 doc above)
+        m = info.get("magnitude") or {}
         for f in ATTACK_FIELDS:
             v = m.get(f)
             if isinstance(v, (int, float)) and 0 < v < 1:

@@ -41,10 +41,14 @@ STATUS_BUILDUP_FIELDS = {
     "sleepAttackPower": "sleep", "madnessAttackPower": "madness",
     "curseAttackPower": "curse",
 }
-# additive stat bonus fields -> hero_stats field they add to
+# additive stat bonus fields -> hero_stats field they add to. Only stats the
+# scorer actually consumes are tracked: the five AR scaling stats (Str/Dex/Int/
+# Fai/Arc — attack_rating.SCALING) plus Vigor (survival). Mind (FP) and Endurance
+# (stamina) touch neither axis and are deliberately left out.
 STAT_ADD_FIELDS = {
     "addStrengthStatus": "statStrength",
     "addDexterityStatus": "statDexterity",
+    "addMagicStatus": "statIntelligence",  # Magic = Intelligence; AR scales on it
     "addFaithStatus": "statFaith",
     "addLuckStatus": "statArcane",
     "addLifeForceStatus": "statVigor",
@@ -56,7 +60,7 @@ def parse_relic(relic, effects_db, context):
 
     Returns a list of (key, stacks, contrib) where contrib maps:
       ("atk", dtype, action) -> log multiplier  (offense; action "*" = every attack)
-      ("cut", dtype)  -> -log cut rate    (defense axis, >= 0)
+      ("cut", dtype)  -> -log cut rate    (defense axis; signed: curses go < 0)
       ("hp",)         -> log maxHpRate
       ("stat", field) -> flat stat bonus  (raw, additive)
       ("stbuild", status) -> flat status buildup per hit (raw, additive)
@@ -71,26 +75,34 @@ def parse_relic(relic, effects_db, context):
             continue
         magnitude = info.get("magnitude") or {}
         actions = info.get("actions") or ["*"]
+        is_debuff = info.get("is_debuff")
         contrib = {}
-        # INV-3 (asserted by validate_invariants.py): no tracked field carries a
-        # malus, so every log contribution below is > 0 — monotonicity holds.
+        # Multiplicative fields aggregate in LOG space, sign-correct by design
+        # ("higher = better" on every axis): buffs land on the good side of 1,
+        # Deep-of-Night curses on the bad side, and BOTH are admitted. The only
+        # load-bearing guard is the log domain (v > 0); the sign is carried by
+        # the monotone exp() downstream (scoring.py). INV-3 (no malus) is thus
+        # restricted to non-debuff keys — see validate_invariants.py.
         for field, dtype in ATTACK_RATE_FIELDS.items():
             v = magnitude.get(field)
-            if isinstance(v, (int, float)) and v > 1:
+            if isinstance(v, (int, float)) and v > 0 and v != 1:
                 for action in actions:
                     contrib[("atk", dtype, action)] = math.log(v)
         for field, dtype in CUT_RATE_FIELDS.items():
             v = magnitude.get(field)
-            if isinstance(v, (int, float)) and 0 < v < 1:
+            if isinstance(v, (int, float)) and v > 0 and v != 1:
                 contrib[("cut", dtype)] = -math.log(v)
         v = magnitude.get(MAX_HP_FIELD)
-        if isinstance(v, (int, float)) and v > 1:
+        if isinstance(v, (int, float)) and v > 0 and v != 1:
             contrib[("hp",)] = math.log(v)
-        on_hit = info.get("on_hit") or {}
-        for field, status in STATUS_BUILDUP_FIELDS.items():
-            v = (magnitude.get(field) or 0) + (on_hit.get(field) or 0)
-            if isinstance(v, (int, float)) and v > 0:
-                contrib[("stbuild", status)] = float(v)
+        # status buildup here is the ENEMY's (offense). A curse's *AttackPower is
+        # buildup inflicted on the PLAYER (out of axis) — never count it.
+        if not is_debuff:
+            on_hit = info.get("on_hit") or {}
+            for field, status in STATUS_BUILDUP_FIELDS.items():
+                v = (magnitude.get(field) or 0) + (on_hit.get(field) or 0)
+                if isinstance(v, (int, float)) and v > 0:
+                    contrib[("stbuild", status)] = float(v)
         for field, stat in STAT_ADD_FIELDS.items():
             v = magnitude.get(field)
             if isinstance(v, (int, float)) and v:
@@ -115,7 +127,9 @@ def aggregate(parsed_relics):
                     sums[(dim, key)] += v
                 else:
                     slot = (dim, key)
-                    ones[slot] = max(ones.get(slot, 0.0), v)
+                    # seed at the first occurrence, not 0.0: a non-stacking curse
+                    # carries v < 0, and max(0.0, v) would erase it.
+                    ones[slot] = v if slot not in ones else max(ones[slot], v)
     total = collections.defaultdict(float)
     for (dim, _key), v in sums.items():
         total[dim] += v
@@ -137,10 +151,17 @@ def profile(parsed_relic):
             if stacks:
                 prof[slot] += v
             else:
-                prof[slot] = max(prof[slot], v)
+                # seed at first occurrence (a curse slot can be negative)
+                prof[slot] = v if slot not in prof else max(prof[slot], v)
     return dict(prof)
 
 
 def dominates(profile_a, profile_b, eps=1e-12):
-    """profile_a >= profile_b on every dimension (within eps)."""
-    return all(profile_a.get(k, 0.0) >= v - eps for k, v in profile_b.items())
+    """profile_a >= profile_b on every dimension (within eps).
+
+    Iterates the UNION of keys: with signed contributions (curses), a key present
+    only in profile_a may be negative, so skipping it (iterating b alone) would
+    let a cursed relic falsely dominate a clean one — unsound for Theorem 2.
+    """
+    keys = set(profile_a) | set(profile_b)
+    return all(profile_a.get(k, 0.0) >= profile_b.get(k, 0.0) - eps for k in keys)

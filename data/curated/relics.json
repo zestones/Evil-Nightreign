@@ -70719,6 +70719,17 @@
     "level": 0,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820200,
+    "key": "takingDamageCausesFrostBuildup",
+    "text": "Taking Damage Causes Frost Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -70800,6 +70811,17 @@
     "level": 0,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820100,
+    "key": "takingDamageCausesRotBuildup",
+    "text": "Taking Damage Causes Rot Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -71061,6 +71083,28 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851700,
+    "key": "nearDeathReducesMaxHP",
+    "text": "Near Death Reduces Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6850700,
+    "key": "moreDamageTakenAfterEvasion",
+    "text": "More Damage Taken After Evasion",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -71097,6 +71141,17 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6840000,
+    "key": "reducedRuneAcquisition",
+    "text": "Reduced Rune Acquisition",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -71142,6 +71197,28 @@
     "level": null,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851300,
+    "key": "poisonBuildupWhenBelowMaxHP",
+    "text": "Poison Buildup When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6820500,
+    "key": "takingDamageCausesSleepBuildup",
+    "text": "Taking Damage Causes Sleep Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -71187,6 +71264,39 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6830000,
+    "key": "reducedStrengthAndIntelligence",
+    "text": "Reduced Strength and Intelligence",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6850700,
+    "key": "moreDamageTakenAfterEvasion",
+    "text": "More Damage Taken After Evasion",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6830200,
+    "key": "reducedIntelligenceAndDexterity",
+    "text": "Reduced Intelligence and Dexterity",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -71232,6 +71342,28 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850900,
+    "key": "reducedDamageNegationForFlaskUsages",
+    "text": "Reduced Damage Negation for Flask Usages",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6820500,
+    "key": "takingDamageCausesSleepBuildup",
+    "text": "Taking Damage Causes Sleep Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -71277,6 +71409,28 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6830300,
+    "key": "reducedFaithAndStrength",
+    "text": "Reduced Faith and Strength",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6850700,
+    "key": "moreDamageTakenAfterEvasion",
+    "text": "More Damage Taken After Evasion",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -71439,6 +71593,17 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820500,
+    "key": "takingDamageCausesSleepBuildup",
+    "text": "Taking Damage Causes Sleep Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -71529,6 +71694,39 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6830200,
+    "key": "reducedIntelligenceAndDexterity",
+    "text": "Reduced Intelligence and Dexterity",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6840100,
+    "key": "reducedFlaskHPRestoration",
+    "text": "Reduced Flask HP Restoration",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6850900,
+    "key": "reducedDamageNegationForFlaskUsages",
+    "text": "Reduced Damage Negation for Flask Usages",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -71574,6 +71772,17 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820200,
+    "key": "takingDamageCausesFrostBuildup",
+    "text": "Taking Damage Causes Frost Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -71619,6 +71828,28 @@
     "level": 3,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851300,
+    "key": "poisonBuildupWhenBelowMaxHP",
+    "text": "Poison Buildup When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6830100,
+    "key": "reducedDexterityAndFaith",
+    "text": "Reduced Dexterity and Faith",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -71700,6 +71931,28 @@
     "level": 1,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6830400,
+    "key": "reducedVigorAndArcane",
+    "text": "Reduced Vigor and Arcane",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6850800,
+    "key": "repeatedEvasionsLowerDamageNegation",
+    "text": "Repeated Evasions Lower Damage Negation",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -71745,6 +71998,39 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6840000,
+    "key": "reducedRuneAcquisition",
+    "text": "Reduced Rune Acquisition",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6840200,
+    "key": "ultimateArtChargingImpaired",
+    "text": "Ultimate Art Charging Impaired",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6840100,
+    "key": "reducedFlaskHPRestoration",
+    "text": "Reduced Flask HP Restoration",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -71790,6 +72076,17 @@
     "level": null,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6851200,
+    "key": "lowerAttackWhenBelowMaxHP",
+    "text": "Lower Attack When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -71961,6 +72258,28 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851400,
+    "key": "rotBuildupWhenBelowMaxHP",
+    "text": "Rot Buildup When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6830300,
+    "key": "reducedFaithAndStrength",
+    "text": "Reduced Faith and Strength",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -71997,6 +72316,17 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820100,
+    "key": "takingDamageCausesRotBuildup",
+    "text": "Taking Damage Causes Rot Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -72087,6 +72417,17 @@
     "level": null,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820400,
+    "key": "takingDamageCausesMadnessBuildup",
+    "text": "Taking Damage Causes Madness Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -72177,6 +72518,28 @@
     "level": null,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850500,
+    "key": "continuousHPLoss",
+    "text": "Continuous HP Loss",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6851700,
+    "key": "nearDeathReducesMaxHP",
+    "text": "Near Death Reduces Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -72222,6 +72585,17 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6840200,
+    "key": "ultimateArtChargingImpaired",
+    "text": "Ultimate Art Charging Impaired",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -72348,6 +72722,28 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851400,
+    "key": "rotBuildupWhenBelowMaxHP",
+    "text": "Rot Buildup When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6820600,
+    "key": "takingDamageCausesDeathBuildup",
+    "text": "Taking Damage Causes Death Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -72384,6 +72780,17 @@
     "level": 1,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6840200,
+    "key": "ultimateArtChargingImpaired",
+    "text": "Ultimate Art Charging Impaired",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -72429,6 +72836,39 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820400,
+    "key": "takingDamageCausesMadnessBuildup",
+    "text": "Taking Damage Causes Madness Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6851700,
+    "key": "nearDeathReducesMaxHP",
+    "text": "Near Death Reduces Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6850500,
+    "key": "continuousHPLoss",
+    "text": "Continuous HP Loss",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -72519,6 +72959,17 @@
     "level": 0,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820100,
+    "key": "takingDamageCausesRotBuildup",
+    "text": "Taking Damage Causes Rot Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -72564,6 +73015,39 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6840200,
+    "key": "ultimateArtChargingImpaired",
+    "text": "Ultimate Art Charging Impaired",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6820500,
+    "key": "takingDamageCausesSleepBuildup",
+    "text": "Taking Damage Causes Sleep Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6820200,
+    "key": "takingDamageCausesFrostBuildup",
+    "text": "Taking Damage Causes Frost Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -72609,6 +73093,28 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6840100,
+    "key": "reducedFlaskHPRestoration",
+    "text": "Reduced Flask HP Restoration",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6850800,
+    "key": "repeatedEvasionsLowerDamageNegation",
+    "text": "Repeated Evasions Lower Damage Negation",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -72735,6 +73241,28 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6830400,
+    "key": "reducedVigorAndArcane",
+    "text": "Reduced Vigor and Arcane",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6850500,
+    "key": "continuousHPLoss",
+    "text": "Continuous HP Loss",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -72771,6 +73299,17 @@
     "level": 1,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6850500,
+    "key": "continuousHPLoss",
+    "text": "Continuous HP Loss",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -72996,6 +73535,39 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6830000,
+    "key": "reducedStrengthAndIntelligence",
+    "text": "Reduced Strength and Intelligence",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6840000,
+    "key": "reducedRuneAcquisition",
+    "text": "Reduced Rune Acquisition",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6820300,
+    "key": "takingDamageCausesBloodLossBuildup",
+    "text": "Taking Damage Causes Blood Loss Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -73122,6 +73694,17 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851300,
+    "key": "poisonBuildupWhenBelowMaxHP",
+    "text": "Poison Buildup When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -73203,6 +73786,28 @@
     "level": null,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6830300,
+    "key": "reducedFaithAndStrength",
+    "text": "Reduced Faith and Strength",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6820100,
+    "key": "takingDamageCausesRotBuildup",
+    "text": "Taking Damage Causes Rot Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -73293,6 +73898,17 @@
     "level": 3,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851400,
+    "key": "rotBuildupWhenBelowMaxHP",
+    "text": "Rot Buildup When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -73383,6 +73999,28 @@
     "level": 4,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6830100,
+    "key": "reducedDexterityAndFaith",
+    "text": "Reduced Dexterity and Faith",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6820200,
+    "key": "takingDamageCausesFrostBuildup",
+    "text": "Taking Damage Causes Frost Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -73590,6 +74228,39 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851700,
+    "key": "nearDeathReducesMaxHP",
+    "text": "Near Death Reduces Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6851200,
+    "key": "lowerAttackWhenBelowMaxHP",
+    "text": "Lower Attack When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6830300,
+    "key": "reducedFaithAndStrength",
+    "text": "Reduced Faith and Strength",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -73635,6 +74306,17 @@
     "level": 0,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6820400,
+    "key": "takingDamageCausesMadnessBuildup",
+    "text": "Taking Damage Causes Madness Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -73725,6 +74407,17 @@
     "level": null,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820400,
+    "key": "takingDamageCausesMadnessBuildup",
+    "text": "Taking Damage Causes Madness Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -73770,6 +74463,17 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851300,
+    "key": "poisonBuildupWhenBelowMaxHP",
+    "text": "Poison Buildup When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -73896,6 +74600,17 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850500,
+    "key": "continuousHPLoss",
+    "text": "Continuous HP Loss",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -73932,6 +74647,17 @@
     "level": null,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820200,
+    "key": "takingDamageCausesFrostBuildup",
+    "text": "Taking Damage Causes Frost Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -73977,6 +74703,17 @@
     "level": null,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851200,
+    "key": "lowerAttackWhenBelowMaxHP",
+    "text": "Lower Attack When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -74022,6 +74759,17 @@
     "level": 0,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6851700,
+    "key": "nearDeathReducesMaxHP",
+    "text": "Near Death Reduces Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -74067,6 +74815,39 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6840200,
+    "key": "ultimateArtChargingImpaired",
+    "text": "Ultimate Art Charging Impaired",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6820100,
+    "key": "takingDamageCausesRotBuildup",
+    "text": "Taking Damage Causes Rot Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6830200,
+    "key": "reducedIntelligenceAndDexterity",
+    "text": "Reduced Intelligence and Dexterity",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -74112,6 +74893,39 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820500,
+    "key": "takingDamageCausesSleepBuildup",
+    "text": "Taking Damage Causes Sleep Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6850900,
+    "key": "reducedDamageNegationForFlaskUsages",
+    "text": "Reduced Damage Negation for Flask Usages",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6820000,
+    "key": "takingDamageCausesPoisonBuildup",
+    "text": "Taking Damage Causes Poison Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -74157,6 +74971,17 @@
     "level": 0,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820000,
+    "key": "takingDamageCausesPoisonBuildup",
+    "text": "Taking Damage Causes Poison Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -74283,6 +75108,28 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851400,
+    "key": "rotBuildupWhenBelowMaxHP",
+    "text": "Rot Buildup When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6851700,
+    "key": "nearDeathReducesMaxHP",
+    "text": "Near Death Reduces Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -74364,6 +75211,17 @@
     "level": 0,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6830400,
+    "key": "reducedVigorAndArcane",
+    "text": "Reduced Vigor and Arcane",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -74409,6 +75267,28 @@
     "level": null,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6851700,
+    "key": "nearDeathReducesMaxHP",
+    "text": "Near Death Reduces Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6850800,
+    "key": "repeatedEvasionsLowerDamageNegation",
+    "text": "Repeated Evasions Lower Damage Negation",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -74454,6 +75334,39 @@
     "level": null,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6830200,
+    "key": "reducedIntelligenceAndDexterity",
+    "text": "Reduced Intelligence and Dexterity",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6851700,
+    "key": "nearDeathReducesMaxHP",
+    "text": "Near Death Reduces Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6820200,
+    "key": "takingDamageCausesFrostBuildup",
+    "text": "Taking Damage Causes Frost Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -74499,6 +75412,17 @@
     "level": 3,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850500,
+    "key": "continuousHPLoss",
+    "text": "Continuous HP Loss",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -74544,6 +75468,28 @@
     "level": 0,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850900,
+    "key": "reducedDamageNegationForFlaskUsages",
+    "text": "Reduced Damage Negation for Flask Usages",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6840100,
+    "key": "reducedFlaskHPRestoration",
+    "text": "Reduced Flask HP Restoration",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -74706,6 +75652,17 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820600,
+    "key": "takingDamageCausesDeathBuildup",
+    "text": "Taking Damage Causes Death Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -74751,6 +75708,28 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820300,
+    "key": "takingDamageCausesBloodLossBuildup",
+    "text": "Taking Damage Causes Blood Loss Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6830300,
+    "key": "reducedFaithAndStrength",
+    "text": "Reduced Faith and Strength",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -74841,6 +75820,39 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851200,
+    "key": "lowerAttackWhenBelowMaxHP",
+    "text": "Lower Attack When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6851400,
+    "key": "rotBuildupWhenBelowMaxHP",
+    "text": "Rot Buildup When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6820500,
+    "key": "takingDamageCausesSleepBuildup",
+    "text": "Taking Damage Causes Sleep Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -74931,6 +75943,17 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6830300,
+    "key": "reducedFaithAndStrength",
+    "text": "Reduced Faith and Strength",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -75138,6 +76161,17 @@
     "level": 0,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820300,
+    "key": "takingDamageCausesBloodLossBuildup",
+    "text": "Taking Damage Causes Blood Loss Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -75183,6 +76217,28 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851300,
+    "key": "poisonBuildupWhenBelowMaxHP",
+    "text": "Poison Buildup When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6820600,
+    "key": "takingDamageCausesDeathBuildup",
+    "text": "Taking Damage Causes Death Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -75228,6 +76284,17 @@
     "level": null,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6850700,
+    "key": "moreDamageTakenAfterEvasion",
+    "text": "More Damage Taken After Evasion",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -75318,6 +76385,17 @@
     "level": null,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850700,
+    "key": "moreDamageTakenAfterEvasion",
+    "text": "More Damage Taken After Evasion",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -75444,6 +76522,17 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851200,
+    "key": "lowerAttackWhenBelowMaxHP",
+    "text": "Lower Attack When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -75525,6 +76614,17 @@
     "level": 3,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850200,
+    "key": "allResistancesDown",
+    "text": "All Resistances Down",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -75615,6 +76715,17 @@
     "level": null,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6820300,
+    "key": "takingDamageCausesBloodLossBuildup",
+    "text": "Taking Damage Causes Blood Loss Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -75660,6 +76771,17 @@
     "level": null,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851200,
+    "key": "lowerAttackWhenBelowMaxHP",
+    "text": "Lower Attack When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -75705,6 +76827,17 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820100,
+    "key": "takingDamageCausesRotBuildup",
+    "text": "Taking Damage Causes Rot Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -75750,6 +76883,39 @@
     "level": 1,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6820500,
+    "key": "takingDamageCausesSleepBuildup",
+    "text": "Taking Damage Causes Sleep Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6840200,
+    "key": "ultimateArtChargingImpaired",
+    "text": "Ultimate Art Charging Impaired",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6850800,
+    "key": "repeatedEvasionsLowerDamageNegation",
+    "text": "Repeated Evasions Lower Damage Negation",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -75795,6 +76961,39 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820500,
+    "key": "takingDamageCausesSleepBuildup",
+    "text": "Taking Damage Causes Sleep Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6830400,
+    "key": "reducedVigorAndArcane",
+    "text": "Reduced Vigor and Arcane",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6820000,
+    "key": "takingDamageCausesPoisonBuildup",
+    "text": "Taking Damage Causes Poison Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -75921,6 +77120,17 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850500,
+    "key": "continuousHPLoss",
+    "text": "Continuous HP Loss",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -76002,6 +77212,17 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6830000,
+    "key": "reducedStrengthAndIntelligence",
+    "text": "Reduced Strength and Intelligence",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -76047,6 +77268,17 @@
     "level": 0,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850500,
+    "key": "continuousHPLoss",
+    "text": "Continuous HP Loss",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -76092,6 +77324,28 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851700,
+    "key": "nearDeathReducesMaxHP",
+    "text": "Near Death Reduces Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6830300,
+    "key": "reducedFaithAndStrength",
+    "text": "Reduced Faith and Strength",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -76218,6 +77472,17 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851700,
+    "key": "nearDeathReducesMaxHP",
+    "text": "Near Death Reduces Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -76299,6 +77564,17 @@
     "level": null,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6840100,
+    "key": "reducedFlaskHPRestoration",
+    "text": "Reduced Flask HP Restoration",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -76344,6 +77620,17 @@
     "level": null,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6820500,
+    "key": "takingDamageCausesSleepBuildup",
+    "text": "Taking Damage Causes Sleep Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -76389,6 +77676,17 @@
     "level": null,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820000,
+    "key": "takingDamageCausesPoisonBuildup",
+    "text": "Taking Damage Causes Poison Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -76479,6 +77777,17 @@
     "level": 3,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6840200,
+    "key": "ultimateArtChargingImpaired",
+    "text": "Ultimate Art Charging Impaired",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -76605,6 +77914,17 @@
     "level": 1,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6820600,
+    "key": "takingDamageCausesDeathBuildup",
+    "text": "Taking Damage Causes Death Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -76641,6 +77961,17 @@
     "level": 3,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6830400,
+    "key": "reducedVigorAndArcane",
+    "text": "Reduced Vigor and Arcane",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -76731,6 +78062,17 @@
     "level": 3,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850900,
+    "key": "reducedDamageNegationForFlaskUsages",
+    "text": "Reduced Damage Negation for Flask Usages",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -76776,6 +78118,39 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6840200,
+    "key": "ultimateArtChargingImpaired",
+    "text": "Ultimate Art Charging Impaired",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6840000,
+    "key": "reducedRuneAcquisition",
+    "text": "Reduced Rune Acquisition",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6820200,
+    "key": "takingDamageCausesFrostBuildup",
+    "text": "Taking Damage Causes Frost Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -76821,6 +78196,17 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850200,
+    "key": "allResistancesDown",
+    "text": "All Resistances Down",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -76947,6 +78333,17 @@
     "level": null,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6830300,
+    "key": "reducedFaithAndStrength",
+    "text": "Reduced Faith and Strength",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -77028,6 +78425,17 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820600,
+    "key": "takingDamageCausesDeathBuildup",
+    "text": "Taking Damage Causes Death Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -77073,6 +78481,17 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851200,
+    "key": "lowerAttackWhenBelowMaxHP",
+    "text": "Lower Attack When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -77118,6 +78537,17 @@
     "level": null,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6851300,
+    "key": "poisonBuildupWhenBelowMaxHP",
+    "text": "Poison Buildup When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -77163,6 +78593,17 @@
     "level": 3,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6840000,
+    "key": "reducedRuneAcquisition",
+    "text": "Reduced Rune Acquisition",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -77289,6 +78730,17 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851700,
+    "key": "nearDeathReducesMaxHP",
+    "text": "Near Death Reduces Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -77325,6 +78777,17 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850800,
+    "key": "repeatedEvasionsLowerDamageNegation",
+    "text": "Repeated Evasions Lower Damage Negation",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -77370,6 +78833,39 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6830100,
+    "key": "reducedDexterityAndFaith",
+    "text": "Reduced Dexterity and Faith",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6820100,
+    "key": "takingDamageCausesRotBuildup",
+    "text": "Taking Damage Causes Rot Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6850800,
+    "key": "repeatedEvasionsLowerDamageNegation",
+    "text": "Repeated Evasions Lower Damage Negation",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -77415,6 +78911,39 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6840100,
+    "key": "reducedFlaskHPRestoration",
+    "text": "Reduced Flask HP Restoration",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6830400,
+    "key": "reducedVigorAndArcane",
+    "text": "Reduced Vigor and Arcane",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6820600,
+    "key": "takingDamageCausesDeathBuildup",
+    "text": "Taking Damage Causes Death Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -77460,6 +78989,17 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850700,
+    "key": "moreDamageTakenAfterEvasion",
+    "text": "More Damage Taken After Evasion",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -77505,6 +79045,17 @@
     "level": 0,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851300,
+    "key": "poisonBuildupWhenBelowMaxHP",
+    "text": "Poison Buildup When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -77550,6 +79101,17 @@
     "level": null,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6830400,
+    "key": "reducedVigorAndArcane",
+    "text": "Reduced Vigor and Arcane",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -77721,6 +79283,28 @@
     "level": 1,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6830100,
+    "key": "reducedDexterityAndFaith",
+    "text": "Reduced Dexterity and Faith",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6820400,
+    "key": "takingDamageCausesMadnessBuildup",
+    "text": "Taking Damage Causes Madness Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -77802,6 +79386,17 @@
     "level": 4,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6840000,
+    "key": "reducedRuneAcquisition",
+    "text": "Reduced Rune Acquisition",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -77937,6 +79532,39 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6830300,
+    "key": "reducedFaithAndStrength",
+    "text": "Reduced Faith and Strength",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6840200,
+    "key": "ultimateArtChargingImpaired",
+    "text": "Ultimate Art Charging Impaired",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6851300,
+    "key": "poisonBuildupWhenBelowMaxHP",
+    "text": "Poison Buildup When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -78063,6 +79691,17 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851300,
+    "key": "poisonBuildupWhenBelowMaxHP",
+    "text": "Poison Buildup When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -78099,6 +79738,17 @@
     "level": null,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6820500,
+    "key": "takingDamageCausesSleepBuildup",
+    "text": "Taking Damage Causes Sleep Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -78144,6 +79794,17 @@
     "level": 3,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850700,
+    "key": "moreDamageTakenAfterEvasion",
+    "text": "More Damage Taken After Evasion",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -78360,6 +80021,17 @@
     "level": 3,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820100,
+    "key": "takingDamageCausesRotBuildup",
+    "text": "Taking Damage Causes Rot Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -78396,6 +80068,28 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851300,
+    "key": "poisonBuildupWhenBelowMaxHP",
+    "text": "Poison Buildup When Below Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6830400,
+    "key": "reducedVigorAndArcane",
+    "text": "Reduced Vigor and Arcane",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -78441,6 +80135,17 @@
     "level": 2,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850900,
+    "key": "reducedDamageNegationForFlaskUsages",
+    "text": "Reduced Damage Negation for Flask Usages",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -78576,6 +80281,17 @@
     "level": 3,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820100,
+    "key": "takingDamageCausesRotBuildup",
+    "text": "Taking Damage Causes Rot Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -78657,6 +80373,28 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820000,
+    "key": "takingDamageCausesPoisonBuildup",
+    "text": "Taking Damage Causes Poison Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6820500,
+    "key": "takingDamageCausesSleepBuildup",
+    "text": "Taking Damage Causes Sleep Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -78702,6 +80440,28 @@
     "level": 0,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6851700,
+    "key": "nearDeathReducesMaxHP",
+    "text": "Near Death Reduces Max HP",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6840000,
+    "key": "reducedRuneAcquisition",
+    "text": "Reduced Rune Acquisition",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -78747,6 +80507,28 @@
     "level": null,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820400,
+    "key": "takingDamageCausesMadnessBuildup",
+    "text": "Taking Damage Causes Madness Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
+   },
+   {
+    "id": 6830400,
+    "key": "reducedVigorAndArcane",
+    "text": "Reduced Vigor and Arcane",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -78873,6 +80655,17 @@
     "level": 1,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6850700,
+    "key": "moreDamageTakenAfterEvasion",
+    "text": "More Damage Taken After Evasion",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -78909,6 +80702,28 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850700,
+    "key": "moreDamageTakenAfterEvasion",
+    "text": "More Damage Taken After Evasion",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6820300,
+    "key": "takingDamageCausesBloodLossBuildup",
+    "text": "Taking Damage Causes Blood Loss Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -79044,6 +80859,17 @@
     "level": 0,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6850200,
+    "key": "allResistancesDown",
+    "text": "All Resistances Down",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -79089,6 +80915,17 @@
     "level": 0,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820200,
+    "key": "takingDamageCausesFrostBuildup",
+    "text": "Taking Damage Causes Frost Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -79170,6 +81007,17 @@
     "level": null,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6830100,
+    "key": "reducedDexterityAndFaith",
+    "text": "Reduced Dexterity and Faith",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
    }
   ],
   "grid": [
@@ -79341,6 +81189,28 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6830000,
+    "key": "reducedStrengthAndIntelligence",
+    "text": "Reduced Strength and Intelligence",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6820000,
+    "key": "takingDamageCausesPoisonBuildup",
+    "text": "Taking Damage Causes Poison Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -79377,6 +81247,17 @@
     "level": 1,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820500,
+    "key": "takingDamageCausesSleepBuildup",
+    "text": "Taking Damage Causes Sleep Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [
@@ -79467,6 +81348,28 @@
     "level": 1,
     "stacks": false,
     "nightfarer": null
+   },
+   {
+    "id": 6850200,
+    "key": "allResistancesDown",
+    "text": "All Resistances Down",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 0
+   },
+   {
+    "id": 6830300,
+    "key": "reducedFaithAndStrength",
+    "text": "Reduced Faith and Strength",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 2
    }
   ],
   "grid": [
@@ -79557,6 +81460,17 @@
     "level": null,
     "stacks": true,
     "nightfarer": null
+   },
+   {
+    "id": 6820400,
+    "key": "takingDamageCausesMadnessBuildup",
+    "text": "Taking Damage Causes Madness Buildup",
+    "group": null,
+    "level": null,
+    "stacks": true,
+    "nightfarer": null,
+    "is_curse": true,
+    "pair": 1
    }
   ],
   "grid": [

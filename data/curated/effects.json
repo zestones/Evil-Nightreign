@@ -10187,6 +10187,27 @@
   "is_debuff": false,
   "displayed_value": 0
  },
+ "6820200": {
+  "key": "takingDamageCausesFrostBuildup",
+  "text": "Taking Damage Causes Frost Buildup",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "deleteCriteriaDamage": 12
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 40010,
+   "value": 30100080,
+   "kind": "curse",
+   "label": "Curse (combat event)",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
+  "displayed_value": 0
+ },
  "6090000": {
   "key": "defeatingEnemiesFillsMoreOfTheArtGaugePlus1",
   "text": "Defeating enemies fills more of the Art gauge +1",
@@ -10207,6 +10228,27 @@
   "state_gate": null,
   "characters": "all",
   "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6820100": {
+  "key": "takingDamageCausesRotBuildup",
+  "text": "Taking Damage Causes Rot Buildup",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "deleteCriteriaDamage": 12
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 40010,
+   "value": 30100060,
+   "kind": "curse",
+   "label": "Curse (combat event)",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
   "displayed_value": 0
  },
  "6644100": {
@@ -10305,6 +10347,57 @@
   "is_debuff": false,
   "displayed_value": 0
  },
+ "6851700": {
+  "key": "nearDeathReducesMaxHP",
+  "text": "Near Death Reduces Max HP",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "isIgnoreNoDamage": 1,
+   "unknown_239h": 1,
+   "effectEndurance": 60.0,
+   "maxHpRate": 0.75,
+   "isDestinedDeathHpMult": 1,
+   "displayIconForPermamentEffect": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "kind": "curse",
+   "label": "Deep of Night curse",
+   "dimension": "situational"
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
+  "displayed_value": 0
+ },
+ "6850700": {
+  "key": "moreDamageTakenAfterEvasion",
+  "text": "More Damage Taken After Evasion",
+  "magnitude": {
+   "slashDamageCutRate": 1.45,
+   "blowDamageCutRate": 1.45,
+   "thrustDamageCutRate": 1.45,
+   "neutralDamageCutRate": 1.45,
+   "magicDamageCutRate": 1.45,
+   "fireDamageCutRate": 1.45,
+   "thunderDamageCutRate": 1.45,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 1.45,
+   "displayIconForPermamentEffect": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "kind": "curse",
+   "label": "Deep of Night curse",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
+  "displayed_value": 0
+ },
  "6040100": {
   "key": "improvedGuardCountersPlus1",
   "text": "Improved Guard Counters +1",
@@ -10330,6 +10423,27 @@
   "state_gate": null,
   "characters": "all",
   "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6840000": {
+  "key": "reducedRuneAcquisition",
+  "text": "Reduced Rune Acquisition",
+  "magnitude": {
+   "soulRate": 0.9,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 40000,
+   "value": 30000050,
+   "kind": "curse",
+   "label": "Curse (passive)",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
   "displayed_value": 0
  },
  "6600101": {
@@ -10375,6 +10489,47 @@
   "is_debuff": false,
   "displayed_value": 0
  },
+ "6851300": {
+  "key": "poisonBuildupWhenBelowMaxHP",
+  "text": "Poison Buildup When Below Max HP",
+  "magnitude": {
+   "isPeriodicEffect": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 40020,
+   "value": 30200030,
+   "kind": "curse",
+   "label": "Curse (low HP)",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
+  "displayed_value": 0
+ },
+ "6820500": {
+  "key": "takingDamageCausesSleepBuildup",
+  "text": "Taking Damage Causes Sleep Buildup",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "deleteCriteriaDamage": 12
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 40010,
+   "value": 30100090,
+   "kind": "curse",
+   "label": "Curse (combat event)",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
+  "displayed_value": 0
+ },
  "6005600": {
   "key": "partialHPRestorationUponPostDamageAttacksPlus1",
   "text": "Partial HP Restoration upon Post-Damage Attacks +1",
@@ -10416,6 +10571,46 @@
   "is_debuff": false,
   "displayed_value": 0
  },
+ "6830000": {
+  "key": "reducedStrengthAndIntelligence",
+  "text": "Reduced Strength and Intelligence",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "addStrengthStatus": -3,
+   "addMagicStatus": -3
+  },
+  "on_hit": {},
+  "condition": {
+   "kind": "curse",
+   "label": "Deep of Night curse",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
+  "displayed_value": 0
+ },
+ "6830200": {
+  "key": "reducedIntelligenceAndDexterity",
+  "text": "Reduced Intelligence and Dexterity",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "addDexterityStatus": -3,
+   "addMagicStatus": -3
+  },
+  "on_hit": {},
+  "condition": {
+   "kind": "curse",
+   "label": "Deep of Night curse",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
+  "displayed_value": 0
+ },
  "6001500": {
   "key": "magicAttackPowerUpPlus3",
   "text": "Magic Attack Power Up +3",
@@ -10436,6 +10631,33 @@
   "is_debuff": false,
   "displayed_value": 0
  },
+ "6850900": {
+  "key": "reducedDamageNegationForFlaskUsages",
+  "text": "Reduced Damage Negation for Flask Usages",
+  "magnitude": {
+   "slashDamageCutRate": 1.45,
+   "blowDamageCutRate": 1.45,
+   "thrustDamageCutRate": 1.45,
+   "neutralDamageCutRate": 1.45,
+   "magicDamageCutRate": 1.45,
+   "fireDamageCutRate": 1.45,
+   "thunderDamageCutRate": 1.45,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 1.45,
+   "displayIconForPermamentEffect": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "kind": "curse",
+   "label": "Deep of Night curse",
+   "dimension": "situational"
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
+  "displayed_value": 0
+ },
  "6005601": {
   "key": "partialHPRestorationUponPostDamageAttacksPlus2",
   "text": "Partial HP Restoration upon Post-Damage Attacks +2",
@@ -10454,6 +10676,26 @@
   "state_gate": null,
   "characters": "all",
   "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6830300": {
+  "key": "reducedFaithAndStrength",
+  "text": "Reduced Faith and Strength",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "addStrengthStatus": -3,
+   "addFaithStatus": -3
+  },
+  "on_hit": {},
+  "condition": {
+   "kind": "curse",
+   "label": "Deep of Night curse",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
   "displayed_value": 0
  },
  "7270100": {
@@ -10541,6 +10783,27 @@
   "is_debuff": false,
   "displayed_value": 0
  },
+ "6840100": {
+  "key": "reducedFlaskHPRestoration",
+  "text": "Reduced Flask HP Restoration",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeHpEstusFlaskCorrectRate": 0.85
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 40020,
+   "value": 30200000,
+   "kind": "curse",
+   "label": "Curse (low HP)",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
+  "displayed_value": 0
+ },
  "6611102": {
   "key": "improvedAffinityDamageNegationPlus2",
   "text": "Improved Affinity Damage Negation +2",
@@ -10606,6 +10869,26 @@
   "is_debuff": false,
   "displayed_value": 0
  },
+ "6830100": {
+  "key": "reducedDexterityAndFaith",
+  "text": "Reduced Dexterity and Faith",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "addDexterityStatus": -3,
+   "addFaithStatus": -3
+  },
+  "on_hit": {},
+  "condition": {
+   "kind": "curse",
+   "label": "Deep of Night curse",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
+  "displayed_value": 0
+ },
  "6260300": {
   "key": "attackPowerUpWhenFacingScarletRotAfflictedEnemyPlus1",
   "text": "Attack power up when facing scarlet rot-afflicted enemy +1",
@@ -10629,6 +10912,58 @@
   "state_gate": null,
   "characters": "all",
   "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6830400": {
+  "key": "reducedVigorAndArcane",
+  "text": "Reduced Vigor and Arcane",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "addLifeForceStatus": -3,
+   "addLuckStatus": -3
+  },
+  "on_hit": {},
+  "condition": {
+   "kind": "curse",
+   "label": "Deep of Night curse",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
+  "displayed_value": 0
+ },
+ "6850800": {
+  "key": "repeatedEvasionsLowerDamageNegation",
+  "text": "Repeated Evasions Lower Damage Negation",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "isIgnoreNoDamage": 1,
+   "unknown_239h": 1,
+   "accumuOverFireId": 8800205,
+   "accumuOverVal": 7000000,
+   "effectEndurance": 15.0,
+   "slashDamageCutRate": 1.35,
+   "blowDamageCutRate": 1.35,
+   "thrustDamageCutRate": 1.35,
+   "neutralDamageCutRate": 1.35,
+   "magicDamageCutRate": 1.35,
+   "fireDamageCutRate": 1.35,
+   "thunderDamageCutRate": 1.35,
+   "darkDamageCutRate": 1.35,
+   "displayIconForPermamentEffect": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "kind": "curse",
+   "label": "Deep of Night curse",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
   "displayed_value": 0
  },
  "6030800": {
@@ -10692,6 +11027,51 @@
   "is_debuff": false,
   "displayed_value": 0
  },
+ "6840200": {
+  "key": "ultimateArtChargingImpaired",
+  "text": "Ultimate Art Charging Impaired",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "ultimateArtGaugeRate": 0.85,
+   "unk_00": 1062836634
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 40020,
+   "value": 30200010,
+   "kind": "curse",
+   "label": "Curse (low HP)",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
+  "displayed_value": 0
+ },
+ "6851200": {
+  "key": "lowerAttackWhenBelowMaxHP",
+  "text": "Lower Attack When Below Max HP",
+  "magnitude": {
+   "physicsAttackRate": 0.915,
+   "magicAttackRate": 0.915,
+   "fireAttackRate": 0.915,
+   "thunderAttackRate": 0.915,
+   "darkAttackRate": 0.915,
+   "displayIconForPermamentEffect": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "kind": "curse",
+   "label": "Deep of Night curse",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
+  "displayed_value": 0
+ },
  "6260400": {
   "key": "attackPowerUpWhenFacingFrostbiteAfflictedEnemyPlus1",
   "text": "Attack power up when facing frostbite-afflicted enemy +1",
@@ -10715,6 +11095,26 @@
   "state_gate": null,
   "characters": "all",
   "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6851400": {
+  "key": "rotBuildupWhenBelowMaxHP",
+  "text": "Rot Buildup When Below Max HP",
+  "magnitude": {
+   "isPeriodicEffect": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 40020,
+   "value": 30200040,
+   "kind": "curse",
+   "label": "Curse (low HP)",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
   "displayed_value": 0
  },
  "6641000": {
@@ -10757,6 +11157,27 @@
   "state_gate": null,
   "characters": "all",
   "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6820400": {
+  "key": "takingDamageCausesMadnessBuildup",
+  "text": "Taking Damage Causes Madness Buildup",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "deleteCriteriaDamage": 12
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 40010,
+   "value": 30100100,
+   "kind": "curse",
+   "label": "Curse (combat event)",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
   "displayed_value": 0
  },
  "6641100": {
@@ -10829,6 +11250,28 @@
   "is_debuff": false,
   "displayed_value": 0
  },
+ "6850500": {
+  "key": "continuousHPLoss",
+  "text": "Continuous HP Loss",
+  "magnitude": {
+   "changeHpPoint": 2,
+   "regainGaugeDamage": 1,
+   "isIgnoreNoDamage": 1
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 40010,
+   "value": 30100000,
+   "kind": "curse",
+   "label": "Curse (combat event)",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
+  "displayed_value": 0
+ },
  "6002700": {
   "key": "improvedFireDamageNegationPlus1",
   "text": "Improved Fire Damage Negation +1",
@@ -10848,6 +11291,27 @@
   "state_gate": null,
   "characters": "all",
   "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6820600": {
+  "key": "takingDamageCausesDeathBuildup",
+  "text": "Taking Damage Causes Death Buildup",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "deleteCriteriaDamage": 12
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 40010,
+   "value": 30100110,
+   "kind": "curse",
+   "label": "Curse (combat event)",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
   "displayed_value": 0
  },
  "6600001": {
@@ -10990,6 +11454,27 @@
   "is_debuff": false,
   "displayed_value": 0
  },
+ "6820300": {
+  "key": "takingDamageCausesBloodLossBuildup",
+  "text": "Taking Damage Causes Blood Loss Buildup",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "deleteCriteriaDamage": 12
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 40010,
+   "value": 30100070,
+   "kind": "curse",
+   "label": "Curse (combat event)",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
+  "displayed_value": 0
+ },
  "6001400": {
   "key": "physicalAttackUpPlus3",
   "text": "Physical Attack Up +3",
@@ -11121,6 +11606,27 @@
   "is_debuff": false,
   "displayed_value": 0
  },
+ "6820000": {
+  "key": "takingDamageCausesPoisonBuildup",
+  "text": "Taking Damage Causes Poison Buildup",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "deleteCriteriaDamage": 12
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 40010,
+   "value": 30100050,
+   "kind": "curse",
+   "label": "Curse (combat event)",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
+  "displayed_value": 0
+ },
  "6610802": {
   "key": "improvedAffinityAttackPowerPlus2",
   "text": "Improved Affinity Attack Power +2",
@@ -11213,6 +11719,33 @@
   "state_gate": null,
   "characters": "all",
   "is_debuff": false,
+  "displayed_value": 0
+ },
+ "6850200": {
+  "key": "allResistancesDown",
+  "text": "All Resistances Down",
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changePoisonResistPoint": -80,
+   "changeDiseaseResistPoint": -80,
+   "changeBloodResistPoint": -80,
+   "changeCurseResistPoint": -80,
+   "changeFreezeResistPoint": -80,
+   "changeSleepResistPoint": -80,
+   "changeMadnessResistPoint": -80
+  },
+  "on_hit": {},
+  "condition": {
+   "category": 40010,
+   "value": 30100010,
+   "kind": "curse",
+   "label": "Curse (combat event)",
+   "dimension": null
+  },
+  "actions": [],
+  "state_gate": null,
+  "characters": "all",
+  "is_debuff": true,
   "displayed_value": 0
  },
  "6001401": {

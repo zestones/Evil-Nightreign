@@ -17,7 +17,7 @@ Run: python3 -m nightreign data effects
 """
 import json
 
-from nightreign.resources import actions, conditions, constants
+from nightreign.resources import actions, conditions, constants, curses
 
 CHARACTERS = ["Wylder", "Guardian", "Ironeye", "Duchess", "Raider",
               "Revenant", "Recluse", "Executor", "Scholar", "Undertaker"]
@@ -49,6 +49,26 @@ def _magnitude(effect_params, *sp_ids):
         for k, v in (effect_params.get(str(sp_id)) or {}).items():
             if _meaningful(k, v):
                 out[k] = v
+    return out
+
+
+def _cycle_magnitude(effect_params, *sp_ids):
+    """Magnitude reached one hop down a cycleOccurrenceSpEffectId chain.
+
+    Some curses (nearDeathReducesMaxHP, repeatedEvasionsLowerDamageNegation) hold
+    no direct magnitude on their passive SpEffect — only replace/cycle pointers —
+    and their real value (maxHpRate, DamageCutRate) lives on the periodic-tick
+    effect. Followed only for the curses that resources/curses.py opts in, so no
+    other effect's magnitude changes.
+    """
+    out = {}
+    for sp_id in sp_ids:
+        if sp_id is None or sp_id < 0:
+            continue
+        row = effect_params.get(str(sp_id)) or {}
+        cyc = row.get("cycleOccurrenceSpEffectId", -1)
+        if isinstance(cyc, int) and cyc > 0:
+            out.update(_magnitude(effect_params, cyc))
     return out
 
 
@@ -126,11 +146,25 @@ def run():
             effect_params, ae.get("passiveSpEffectId_1"), ae.get("passiveSpEffectId_2"),
             ae.get("passiveSpEffectId_3"), ae.get("permanentSpEffectId"))
 
+        is_debuff = bool(ae.get("isDebuff"))
+        # Deep-of-Night curse: for the SCORED ones (resources/curses.py), resolve
+        # the cycle-hop magnitude and apply the explicit gate; drop any auto state
+        # gate. Display-only curses fall through unchanged (surfaced, not scored).
+        curse = curses.spec(key) if is_debuff else None
+        if curse:
+            if curse["follow_cycle"]:
+                magnitude = {**magnitude, **_cycle_magnitude(
+                    effect_params, ae.get("passiveSpEffectId_1"),
+                    ae.get("passiveSpEffectId_2"), ae.get("passiveSpEffectId_3"))}
+            condition = {"kind": "curse", "label": "Deep of Night curse",
+                         "dimension": curse["gate"]}
+            state_gate = None
+
         resolved[eid] = dict(
             key=key, text=text_by_id[eid],
             magnitude=magnitude, on_hit=on_hit, condition=condition,
             actions=acts, state_gate=state_gate,
-            characters=characters, is_debuff=bool(ae.get("isDebuff")),
+            characters=characters, is_debuff=is_debuff,
             displayed_value=ae.get("displayedModifierValue"),
         )
         with_mag += bool(magnitude or on_hit)

@@ -30,10 +30,17 @@ from nightreign.engine import attack_rating, damage
 from nightreign.optimize import aggregation
 from nightreign.resources import actions, statuses
 
-# nightlords.json attack / damage_multiplier naming -> engine damage types
+# nightlords.json INCOMING max_damage keys -> engine damage types. These are
+# ALREADY engine-typed (phys/mag/fire/thunder/dark — datagen/nightlords.py
+# _ATK_ELEMENTS), so they must map to themselves; the magic/lightning/holy
+# aliases cover the weakness-schema names should they ever appear. Before this,
+# mag/thunder/dark fell through get()->None and the whole magic/lightning/holy
+# incoming hit was silently dropped from survival (5 of 8 Nightlords lost their
+# biggest hit; pure-magic Gnoster fell back to biggest_hit=1).
 TARGET_TYPE_TO_ENGINE = {
     "phys": "phys", "slash": "slash", "blow": "blow", "thrust": "thrust",
-    "magic": "mag", "fire": "fire", "lightning": "thunder", "holy": "dark",
+    "mag": "mag", "fire": "fire", "thunder": "thunder", "dark": "dark",
+    "magic": "mag", "lightning": "thunder", "holy": "dark",
 }
 # character negation naming -> engine damage types
 NEGATION_TYPE_TO_ENGINE = {

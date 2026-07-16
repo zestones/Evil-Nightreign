@@ -23,9 +23,13 @@ class Context:
     weapon_type: str | None = None          # None -> weapon-gated effects stay off
     toggles: frozenset = field(default_factory=frozenset)
     don_level: int = 1                      # Deep of Night ladder (1 = no scaling)
+    count_debuffs: bool = True              # master switch for Deep-of-Night curses
 
     def effect_active(self, effect_info, relic_entry):
         """Is this effect instance active here? (optimizer_mathematical_formulation.md §1: cond(e))."""
+        # master switch: with curses off, no debuff is scored or shown active
+        if effect_info.get("is_debuff") and not self.count_debuffs:
+            return False
         nightfarer = relic_entry.get("nightfarer")
         if nightfarer and nightfarer != self.character:
             return False

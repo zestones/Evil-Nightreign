@@ -166,13 +166,28 @@ export function ContextPanel({
             <ChevronDown className={cn("h-4 w-4 transition", adv && "rotate-180")} /> Avancé
           </button>
           {adv && (
-            <div className="mt-2.5 grid grid-cols-2 gap-3">
-              <Field label="Builds affichés">
-                <input type="number" min={1} max={10} value={form.top} onChange={(e) => patch({ top: Number(e.target.value) })} className="w-full border border-line/70 bg-night-700/70 px-3 py-2 text-[14px] text-ink outline-none focus:border-frost/70" />
-              </Field>
-              <Field label="Largeur beam">
-                <input type="number" min={4} max={40} value={form.beam} onChange={(e) => patch({ beam: Number(e.target.value) })} className="w-full border border-line/70 bg-night-700/70 px-3 py-2 text-[14px] text-ink outline-none focus:border-frost/70" />
-              </Field>
+            <div className="mt-2.5 space-y-3">
+              <div className="grid grid-cols-2 gap-3">
+                <Field label="Builds affichés">
+                  <input type="number" min={1} max={10} value={form.top} onChange={(e) => patch({ top: Number(e.target.value) })} className="w-full border border-line/70 bg-night-700/70 px-3 py-2 text-[14px] text-ink outline-none focus:border-frost/70" />
+                </Field>
+                <Field label="Largeur beam">
+                  <input type="number" min={4} max={40} value={form.beam} onChange={(e) => patch({ beam: Number(e.target.value) })} className="w-full border border-line/70 bg-night-700/70 px-3 py-2 text-[14px] text-ink outline-none focus:border-frost/70" />
+                </Field>
+              </div>
+              <button
+                onClick={() => patch({ countDebuffs: !form.countDebuffs })}
+                title="Prendre en compte les malédictions des reliques Deep of Night dans le score (activé par défaut)"
+                className={cn(
+                  "flex w-full items-center gap-2.5 border px-3 py-2.5 text-left text-[12.5px] leading-tight transition",
+                  form.countDebuffs ? "border-frost/55 bg-frost/10 text-ink" : "border-line/55 bg-night-700/40 text-silver hover:border-line-bright hover:text-ink"
+                )}
+              >
+                <span className={cn("flex h-4 w-4 flex-none rotate-45 items-center justify-center border", form.countDebuffs ? "border-frost bg-frost/30 shadow-[0_0_7px_rgba(143,182,230,0.7)]" : "border-line")}>
+                  {form.countDebuffs && <Check className="h-2.5 w-2.5 -rotate-45 text-frost" strokeWidth={3} />}
+                </span>
+                Compter les malédictions (Deep of Night)
+              </button>
             </div>
           )}
         </div>

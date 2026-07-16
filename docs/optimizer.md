@@ -129,15 +129,51 @@ The output separates what you commit to *now* from what you look for *during* th
   mixes innate/upgrade/rolled effects and stays **disabled** until a
   player-visible affix source is identified (see the deferred note).
 
-**Deep-of-Night relic debuffs** (verified 2026-07-16): the aggregation only sums
-positive contributions (attackRate > 1, cutRate < 1, maxHpRate > 1). A data scan
-confirmed **no relic effect carries a multiplicative combat malus** (0 debuff-
-shaped magnitudes) — INV-3 holds, so this is safe, not a gap. The only "malus"
-effects are the Nightfarer stat trade-offs ("[Char] Improved X, Reduced Y"); their
-stat deltas live behind a game `stateInfo` state (not in the SpEffect params we
-read), so they are scored as **neutral** (neither the gain nor the loss counts —
-never over-valued). Inactive/character-mismatched effects are shown struck-through
-in the UI.
+**Deep-of-Night relic curses** (modelled 2026-07-16): deep relics carry debuffs
+in a **second effect array** of the save record (offsets 56/60/64, paired
+positionally to the buffs at 16/20/24 — `io/savefile.py`, validated against the
+in-game blue drawback lines). They are inseparable from their buff. The
+aggregation is now **sign-correct** rather than positive-only: the log-space
+representation already normalises every axis to "higher = better", so relaxing the
+`parse_relic` window guards to the log domain (`v > 0, != 1`) admits curses as
+signed contributions with no change to `scoring.py`. `dominates` iterates the
+**union** of profile keys (a curse key present only in the dominator may be
+negative — skipping it would be unsound for Theorem 2), and the σ=0 aggregation
+seeds at the first occurrence (`max(0, v)` would erase a non-stacking malus).
+INV-3 is therefore restricted to **non-debuff** keys; the search leans on beam +
+exhaustive verification rather than the greedy monotonicity bound (already the
+regime §4/§5.3 assign it).
+
+Only the curses that map onto an axis are scored (`resources/curses.py`, explicit
+per-key spec, real game magnitudes — nothing invented):
+- **always counted (worst-case)** — a downside biting in normal combat is never
+  discounted, so a cursed relic is never over-ranked: `lowerAttackWhenBelowMaxHP`
+  (×0.915 attack), the five `reduced{Stat}` swaps (−3/−3, real `add*Status`
+  deltas), `impairedAffinityDamageNegation` (×1.12 elemental). Their positive
+  twins stay gated — deliberately asymmetric.
+- **evasion window** (`moreDamageTakenAfterEvasion`, `repeatedEvasions*`, ×1.45
+  damage taken) — also **always counted (worst-case)**: every character dodges
+  (Duchess just dodges more), so the trigger is near-universal. Dodge *frequency*
+  is not in the data, but under a worst-case posture that is moot — the ceiling is
+  the same for all — so there is no per-character special-case.
+- **other windows** (post-flask, near-death, whose trigger is neither universal
+  nor grounded): gated on `situational` only — we gate, never invent an uptime.
+  `nearDeathReducesMaxHP` (×0.75 max HP) resolves its magnitude one hop down the
+  cycle chain.
+
+A master switch (`count_debuffs`, default on, exposed in the UI's Advanced panel)
+scores/shows all curses or none. Separately, relic **Intelligence** bonuses now
+feed AR: `addMagicStatus` was missing from the tracked stat adds even though the
+AR engine scales on `statIntelligence` — a fixed gap, so `+Int` buffs and the
+`−Int` curse halves now count (Mind/Endurance stay out, off both axes).
+- **display-only** — out of axis by definition (player status resistance, rune /
+  flask / ultimate economy, continuous chip): surfaced in the UI ("non chiffrée")
+  but never scored. A curse's `*AttackPower` is self-inflicted status and is
+  explicitly excluded from the enemy-buildup (offense) term.
+
+The UI renders each curse as the game does — a blue line under its paired buff —
+tagged "comptée" when it bites the score. Inactive/character-mismatched effects
+are shown struck-through.
 
 ## Game archive extraction (`nightreign/io/`)
 

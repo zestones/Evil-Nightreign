@@ -79,22 +79,37 @@ def run():
     print(f"  relics: reference data ({len(effect_by_id)} effects, {len(item_by_id)} items)")
 
     records = savefile.read_relic_records(set(item_by_id))
+
+    def entry(e, **extra):
+        meta = effect_by_id.get(e, {})
+        return dict(
+            id=e,
+            key=meta.get("key"),
+            text=text_by_key.get(meta.get("key"), str(e)),
+            group=meta.get("group"),
+            level=meta.get("level"),
+            stacks=meta.get("stacks", False),
+            nightfarer=meta.get("nightfarer"),
+            **extra,
+        )
+
     out = []
-    for record_id, (item_id, effect_ids, sort_key) in records.items():
+    n_curses = 0
+    for record_id, (item_id, effect_ids, curse_ids, sort_key) in records.items():
         item = item_by_id[item_id]
+        # buffs first (slots 0..n), then Deep-of-Night curses paired to their buff
+        effects = [entry(e) for e in effect_ids]
+        for slot, c in enumerate(curse_ids):
+            if c is None:
+                continue
+            effects.append(entry(c, is_curse=True, pair=slot))
+            n_curses += 1
         out.append(dict(
             record_id=record_id, item_id=item_id, name=item["key"],
             color=item["color"], type=item["type"], sort_key=sort_key,
-            effects=[dict(
-                id=e,
-                key=effect_by_id.get(e, {}).get("key"),
-                text=text_by_key.get(effect_by_id.get(e, {}).get("key"), str(e)),
-                group=effect_by_id.get(e, {}).get("group"),
-                level=effect_by_id.get(e, {}).get("level"),
-                stacks=effect_by_id.get(e, {}).get("stacks", False),
-                nightfarer=effect_by_id.get(e, {}).get("nightfarer"),
-            ) for e in effect_ids],
+            effects=effects,
         ))
     _assign_coordinates(out)
     json.dump(out, open(constants.DATA_CURATED / "relics.json", "w"), ensure_ascii=False, indent=1)
-    print(f"  relics: extracted {len(out)} relics (with grid coordinates)")
+    print(f"  relics: extracted {len(out)} relics (with grid coordinates), "
+          f"{n_curses} Deep-of-Night curses paired")

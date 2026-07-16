@@ -49,10 +49,21 @@ GAMEPLAY_CATEGORIES = {
 }
 
 
+# 40xxx: Deep of Night curse (debuff-only) filters. Gating for the SCORED curses
+# is set explicitly in resources/curses.py; these labels are for display. The
+# dimension is None here (curses are surfaced by default) — the scored ones get
+# their real gate (None worst-case / "situational") overridden in datagen.
+CURSE_CATEGORIES = {
+    40000: "Curse (passive)",
+    40010: "Curse (combat event)",
+    40020: "Curse (low HP)",
+}
+
+
 def describe(category):
     """Return {kind, label, dimension} for a condition category.
 
-    kind:      "weapon" | "character" | "gameplay"
+    kind:      "weapon" | "character" | "gameplay" | "curse"
     dimension: the user toggle this effect keys on (None = always on)
     """
     if category in WEAPON_CATEGORIES:
@@ -62,4 +73,6 @@ def describe(category):
     if category in GAMEPLAY_CATEGORIES:
         label, dimension = GAMEPLAY_CATEGORIES[category]
         return {"kind": "gameplay", "label": label, "dimension": dimension}
+    if category in CURSE_CATEGORIES:
+        return {"kind": "curse", "label": CURSE_CATEGORIES[category], "dimension": None}
     return {"kind": "unknown", "label": str(category), "dimension": None}

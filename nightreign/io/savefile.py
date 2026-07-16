@@ -3,8 +3,10 @@
 
 Save format (same scheme as Elden Ring): BND4 of 14 USER_DATA blocks, each
 AES-128-CBC (IV = leading 16 bytes, no padding). Decrypted "cleanData" drops the
-first 4 bytes. A relic is a 0xC0 / 80-byte record: id@0, itemId@4..6, four effect
-ids @16/20/24/28 (0xFFFFFFFF = empty). Ported from the nightreign-relic-browser.
+first 4 bytes. A relic is a 0xC0 / 80-byte record: id@0, itemId@4..6, up to four buff effect
+ids @16/20/24/28 and up to three Deep-of-Night curse (debuff) ids @56/60/64,
+paired positionally to the buffs (0xFFFFFFFF = empty). Curse slots decoded from
+the in-game display (validated); the relic-browser reads only the buff array.
 
 Name resolution lives in datagen/relics.py; this module only decodes raw records.
 Stdlib only.
@@ -46,10 +48,15 @@ def decrypt_slots(save_path=None):
 
 
 def scan_relics(buffer, valid_item_ids):
-    """Scan a decrypted block -> {record_id: (item_id, [effect_ids])}.
+    """Scan a decrypted block -> {record_id: (item_id, [effect_ids], [curse_ids])}.
 
     Validates on a known itemId (strong signal) and keeps every effect id so no
     relic is silently dropped, even if its effect is not in the reference DB.
+
+    A relic record carries TWO effect arrays: the buffs at 16/20/24/28 and the
+    Deep-of-Night curses (debuffs) at 56/60/64, paired positionally to the buffs
+    (buff slot k <-> curse slot k). `curses` is index-aligned to the buff slots
+    (None where a buff has no paired curse); trailing empties are trimmed.
     """
     found = {}
     length = len(buffer)
@@ -61,8 +68,12 @@ def scan_relics(buffer, valid_item_ids):
             item_id = record[4] | (record[5] << 8) | (record[6] << 16)
             effects = [struct.unpack_from("<I", record, o)[0] for o in (16, 20, 24, 28)]
             effects = [e for e in effects if e != 0xFFFFFFFF]
+            curses = [struct.unpack_from("<I", record, o)[0] for o in (56, 60, 64)]
+            curses = [c if c != 0xFFFFFFFF else None for c in curses]
+            while curses and curses[-1] is None:
+                curses.pop()
             if item_id in valid_item_ids and effects:
-                found[record_id] = (item_id, effects)
+                found[record_id] = (item_id, effects, curses)
                 i += 80
                 continue
         i += 1
@@ -83,9 +94,9 @@ def find_sort_key(buffer, record_id):
 
 
 def read_relic_records(valid_item_ids, save_path=None):
-    """All relic records across the save -> {record_id: (item_id, [effect_ids], sort_key)}."""
+    """All relic records across the save -> {record_id: (item_id, effects, curses, sort_key)}."""
     relics = {}
     for _index, buffer in decrypt_slots(save_path):
-        for record_id, (item_id, effects) in scan_relics(buffer, valid_item_ids).items():
-            relics[record_id] = (item_id, effects, find_sort_key(buffer, record_id))
+        for record_id, (item_id, effects, curses) in scan_relics(buffer, valid_item_ids).items():
+            relics[record_id] = (item_id, effects, curses, find_sort_key(buffer, record_id))
     return relics

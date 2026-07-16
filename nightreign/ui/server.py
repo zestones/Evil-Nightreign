@@ -21,7 +21,7 @@ from pathlib import Path
 
 from nightreign.optimize import runner
 from nightreign.optimize.context import Context
-from nightreign.resources import actions, weapon_types
+from nightreign.resources import actions, curses, weapon_types
 
 STATIC = Path(__file__).parent / "static"
 
@@ -75,6 +75,17 @@ def _is_tradeoff(text):
     return bool(_TRADEOFF_RE.search(text or ""))
 
 
+def _curse_note(key, active, scored):
+    """FR explanation of a Deep-of-Night curse's status in the score."""
+    if not scored:
+        return "Malédiction réelle, hors du modèle dégâts/survie (statut infligé / économie)"
+    gate = (curses.spec(key) or {}).get("gate")
+    if gate is None:
+        return "Malus compté dans le score (pire cas : toujours actif)"
+    return ("Malus compté (jeu situationnel engagé)" if active
+            else "Malus non compté ici — ne mord qu'en situationnel (post-fiole / PV critiques)")
+
+
 def _inactive_reason(ctx, effect_info, relic_entry, character):
     """Why an effect is inactive in this context (French), or None if it's active."""
     nf = relic_entry.get("nightfarer")
@@ -121,7 +132,7 @@ def _synergy(b):
 TOGGLES = {
     "caster": "Je lance des sorts (sorcelleries / incantations)",
     "low_hp": "Je joue à PV bas",
-    "situational": "Effets situationnels (garde, ennemis affligés)",
+    "situational": "Effets conditionnels : contre-garde, ennemi affligé, et malus post-fiole / PV critiques",
     "status_build": "Build orienté statuts",
     "starting_loadout": "Effets de loadout de départ",
     "coop": "Coop / alliés",
@@ -152,22 +163,29 @@ def _meta(data):
     }
 
 
-def _serialize(result, data, character, toggles, don):
+def _serialize(result, data, character, toggles, don, count_debuffs=True):
     """JSON view of a gameplan; each relic effect is flagged active/inactive
     in the result's own context so the UI can gray out what does nothing."""
-    ctx = Context(character, result["weapon_type"], frozenset(toggles), max(don, 1))
+    ctx = Context(character, result["weapon_type"], frozenset(toggles), max(don, 1), count_debuffs)
     picks = []
     for (kind, color), relic in result["picks"]:
         effects = []
         for e in relic["effects"]:
             info = data["effects"].get(str(e["id"])) or {}
             active = ctx.effect_active(info, e)
+            is_curse = bool(e.get("is_curse"))
+            scored = is_curse and curses.spec(e.get("key")) is not None
             effects.append({
                 "text": e["text"],
                 "active": active,
                 "icon": _effect_icon_url(data, e["id"]),
                 "reason": None if active else _inactive_reason(ctx, info, e, character),
-                "tradeoff": _is_tradeoff(e["text"]),
+                # curses have real drawback handling — don't also flag the regex tradeoff
+                "tradeoff": _is_tradeoff(e["text"]) and not is_curse,
+                "curse": is_curse,
+                "pair": e.get("pair"),
+                "scored": scored,
+                "note": _curse_note(e.get("key"), active, scored) if is_curse else None,
             })
         picks.append(
             {
@@ -278,8 +296,10 @@ def make_handler(data):
                     max_weapon_level=int(req.get("max_weapon_level", 25)),
                     play=play,
                     data=data,
+                    count_debuffs=bool(req.get("count_debuffs", True)),
                 )
                 toggles = req.get("toggles") or ()
+                count_debuffs = bool(req.get("count_debuffs", True))
                 self._send(
                     200,
                     {
@@ -296,6 +316,7 @@ def make_handler(data):
                                 ),
                                 toggles,
                                 int(req.get("don", 0)),
+                                count_debuffs,
                             )
                             for r in results
                         ],

@@ -21,6 +21,10 @@ export interface Effect {
   icon: string | null;
   reason: string | null;
   tradeoff: boolean;
+  curse?: boolean; // Deep of Night debuff (blue line under its paired buff)
+  pair?: number | null; // index of the buff this curse is paired to
+  scored?: boolean; // folded into the score (vs surfaced-only, out of axis)
+  note?: string | null; // FR explanation of the curse's status in the score
 }
 export interface Pick {
   kind: "normal" | "deep";
@@ -90,6 +94,7 @@ export interface OptimizeRequest {
   toggles: string[];
   top: number;
   beam: number;
+  count_debuffs: boolean;
 }
 
 export async function getMeta(): Promise<Meta> {

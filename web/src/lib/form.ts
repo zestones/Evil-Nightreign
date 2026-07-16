@@ -16,6 +16,7 @@ export interface FormState {
   toggles: string[];
   top: number;
   beam: number;
+  countDebuffs: boolean; // account for Deep of Night curses in the score
 }
 
 export function toRequest(f: FormState): OptimizeRequest {
@@ -32,5 +33,6 @@ export function toRequest(f: FormState): OptimizeRequest {
     toggles: f.toggles,
     top: f.top,
     beam: f.beam,
+    count_debuffs: f.countDebuffs,
   };
 }
