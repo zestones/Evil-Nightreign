@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Rite } from "./components/Rite";
 import { Verdict } from "./components/Verdict";
 import { TooltipRoot } from "./components/ui/Tooltip";
-import { getMeta, optimize, type Build, type Meta, type Mode } from "./lib/api";
+import { getMeta, optimize, bossArt, type Build, type Meta, type Mode } from "./lib/api";
 import { toRequest, type FormState } from "./lib/form";
 
 export default function App() {
@@ -33,6 +33,7 @@ export default function App() {
           top: 3,
           beam: 12,
           countDebuffs: true,
+          refusedCurses: [],
         });
       })
       .catch(() => setError("Impossible de charger les données (nr ui est-il lancé ?)"));
@@ -69,7 +70,7 @@ export default function App() {
             </motion.div>
           ) : (
             <motion.div key="verdict" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
-              <VerdictBackdrop />
+              <VerdictBackdrop boss={form.boss} character={form.character} />
               <Verdict results={results} mode={mode} character={form.character} don={snapDon} onBack={() => setView("rite")} />
             </motion.div>
           )}
@@ -90,17 +91,27 @@ export default function App() {
   );
 }
 
-function VerdictBackdrop() {
+function VerdictBackdrop({ boss, character }: { boss: string; character: string }) {
   return (
-    <div
-      className="fixed inset-0 -z-10"
-      style={{
-        background:
-          "radial-gradient(120% 80% at 50% -10%, rgba(56,78,128,0.18), transparent 55%)," +
-          "radial-gradient(100% 80% at 50% 120%, rgba(90,70,30,0.06), transparent 60%)," +
-          "linear-gradient(180deg, #070a12, #05070c)",
-      }}
-    />
+    <div className="fixed inset-0 -z-10 overflow-hidden" style={{ background: "linear-gradient(180deg,#070a12,#05070c)" }}>
+      {/* faint lore illustration (boss-themed) — kept a ghost so it lends
+          atmosphere without ever fighting the build text for legibility */}
+      <img
+        src={bossArt(boss, character.length)}
+        alt=""
+        onError={(e) => (e.currentTarget.style.display = "none")}
+        className="absolute right-[-4%] top-1/2 h-[112%] max-w-[62%] -translate-y-1/2 object-cover opacity-[0.26] mix-blend-screen"
+        style={{ maskImage: "radial-gradient(75% 75% at 62% 50%, #000 42%, transparent 88%)", WebkitMaskImage: "radial-gradient(75% 75% at 62% 50%, #000 42%, transparent 88%)" }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(120% 80% at 50% -10%, rgba(56,78,128,0.16), transparent 55%)," +
+            "linear-gradient(90deg, #070a12 16%, transparent 48%, rgba(7,10,18,0.35) 92%)",
+        }}
+      />
+    </div>
   );
 }
 

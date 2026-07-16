@@ -143,7 +143,7 @@ export const CHARACTER_LORE: Record<string, Lore> = {
 export const SHORT_TOGGLES: Record<string, string> = {
   caster: "Lanceur de sorts",
   low_hp: "Jeu à PV bas",
-  situational: "Contre-garde / affligé / post-fiole",
+  situational: "Contre-garde / ennemi affligé",
   status_build: "Build orienté statuts",
   starting_loadout: "Loadout de départ",
   coop: "Coop / alliés",

@@ -132,12 +132,36 @@ def _synergy(b):
 TOGGLES = {
     "caster": "Je lance des sorts (sorcelleries / incantations)",
     "low_hp": "Je joue à PV bas",
-    "situational": "Effets conditionnels : contre-garde, ennemi affligé, et malus post-fiole / PV critiques",
+    "situational": "Effets de garde et contre les ennemis affligés (poison, gel, saignement…)",
     "status_build": "Build orienté statuts",
     "starting_loadout": "Effets de loadout de départ",
     "coop": "Coop / alliés",
     "triple_loadout": "Je porte 3+ armes du même type",
 }
+
+
+def _curse_catalog(data):
+    """The Deep-of-Night curses present in the owned relics, for the acceptance
+    list: [{key, label, group, scored, count}] + the per-cursed-relic key sets
+    (so the UI can show a live 'N relics excluded' count)."""
+    present, text_by_key, cursed_sets = {}, {}, []
+    for r in data["relics"]:
+        ks = []
+        for e in r["effects"]:
+            if e.get("is_curse") and e.get("key"):
+                ks.append(e["key"])
+                text_by_key.setdefault(e["key"], e.get("text"))
+        if ks:
+            cursed_sets.append(sorted(set(ks)))
+            for k in set(ks):
+                present[k] = present.get(k, 0) + 1
+    catalog = []
+    for k, n in present.items():
+        label, group = curses.display(k, text_by_key.get(k))
+        catalog.append({"key": k, "label": label, "group": group,
+                        "scored": curses.spec(k) is not None, "count": n})
+    catalog.sort(key=lambda c: (curses.group_rank(c["group"]), -c["count"], c["label"]))
+    return catalog, cursed_sets
 
 
 def _meta(data):
@@ -152,6 +176,7 @@ def _meta(data):
         vessels = [v["name"] for v in data["vessels"].get(name, []) if v.get("owned")]
         if levels and vessels:
             heroes.append({"name": name, "levels": levels, "vessels": vessels})
+    curse_catalog, cursed_sets = _curse_catalog(data)
     return {
         "characters": heroes,
         "bosses": list(data["nightlords"]),
@@ -160,6 +185,8 @@ def _meta(data):
         "actions": actions.ACTION_CLASSES,
         "don_levels": [k for k in sorted(int(k) for k in data["scaling"]["deep_of_night"]) if k <= 5],
         "relic_count": len(data["relics"]),
+        "curses": curse_catalog,
+        "cursed_relic_curses": cursed_sets,
     }
 
 
@@ -175,11 +202,15 @@ def _serialize(result, data, character, toggles, don, count_debuffs=True):
             active = ctx.effect_active(info, e)
             is_curse = bool(e.get("is_curse"))
             scored = is_curse and curses.spec(e.get("key")) is not None
+            nf = e.get("nightfarer")
             effects.append({
                 "text": e["text"],
                 "active": active,
                 "icon": _effect_icon_url(data, e["id"]),
                 "reason": None if active else _inactive_reason(ctx, info, e, character),
+                # only a character lock strikes the effect through; every other
+                # inactive reason (unpicked toggle, weapon mismatch) is a soft mark.
+                "char_locked": bool(nf and nf != character),
                 # curses have real drawback handling — don't also flag the regex tradeoff
                 "tradeoff": _is_tradeoff(e["text"]) and not is_curse,
                 "curse": is_curse,
@@ -208,7 +239,11 @@ def _serialize(result, data, character, toggles, don, count_debuffs=True):
         "weapon": result["weapon"],
         "weapon_icon": _icon_url(data, "weapons", result.get("weapon_id")),
         "weapon_type": result["weapon_type"],
-        "weapon_alternatives": result.get("weapon_alternatives") or [],
+        "weapon_alternatives": [
+            {"name": name, "ratio": ratio, "icon": _icon_url(data, "weapons", wid)}
+            for (name, ratio, *rest) in (result.get("weapon_alternatives") or [])
+            for wid in [rest[0] if rest else None]
+        ],
         "vessel": result["vessel"],
         "targets": result["targets"],
         "picks": picks,
@@ -297,6 +332,7 @@ def make_handler(data):
                     play=play,
                     data=data,
                     count_debuffs=bool(req.get("count_debuffs", True)),
+                    refused_curses=tuple(req.get("refused_curses") or ()),
                 )
                 toggles = req.get("toggles") or ()
                 count_debuffs = bool(req.get("count_debuffs", True))

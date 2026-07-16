@@ -16,7 +16,8 @@ export interface FormState {
   toggles: string[];
   top: number;
   beam: number;
-  countDebuffs: boolean; // account for Deep of Night curses in the score
+  countDebuffs: boolean; // score the chiffrable Deep of Night curses (worst-case)
+  refusedCurses: string[]; // curse keys the player vetoes (exclude those relics)
 }
 
 export function toRequest(f: FormState): OptimizeRequest {
@@ -34,5 +35,6 @@ export function toRequest(f: FormState): OptimizeRequest {
     top: f.top,
     beam: f.beam,
     count_debuffs: f.countDebuffs,
+    refused_curses: f.refusedCurses,
   };
 }

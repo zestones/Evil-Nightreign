@@ -110,25 +110,32 @@ export function BuildCard({ b, index, mode }: { b: Build; index: number; mode: M
           </div>
           <div className="min-w-0">
             <div className="font-display text-[23px] font-semibold leading-tight text-ink">{b.weapon}</div>
-            <div className="mt-0.5 font-serif text-[15px] italic text-gold/85">{b.weapon_type}</div>
-            <div className="mt-1 text-[13px] leading-snug text-silver/70">vs {b.targets.join(", ")}</div>
+            <div className="mt-1 font-sans text-[13px] uppercase tracking-wide text-gold/85">{b.weapon_type}</div>
+            <div className="mt-1.5 text-[13px] leading-snug text-silver/70">vs {b.targets.join(", ")}</div>
           </div>
         </div>
 
         {b.weapon_alternatives.length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-2">
-            {b.weapon_alternatives.map(([n, r], i) => (
-              <span key={i} className="border border-line/60 bg-night-700/50 px-3 py-1.5 text-[13px] text-silver">
-                {n} <span className="font-sans tabular-nums text-dim">{pctDelta(r)}</span>
-              </span>
-            ))}
+          <div className="mt-4">
+            <div className="mb-2 font-sans text-[10.5px] uppercase tracking-widest text-silver/55">Alternatives</div>
+            <div className="flex gap-2">
+              {b.weapon_alternatives.map((a, i) => (
+                <div key={i} className="flex min-w-0 flex-1 flex-col items-center gap-1.5 rounded-sm border border-line/50 bg-night-900/45 px-2 py-2.5 transition hover:border-line-bright" title={a.name}>
+                  <div className="flex h-[46px] w-[46px] items-center justify-center rounded-sm border border-line/40 bg-night-800/70" style={{ boxShadow: "inset 0 0 12px rgba(0,0,0,0.6)" }}>
+                    {a.icon ? <img src={a.icon} alt="" onError={hide} className="h-[40px] w-[40px] object-contain" /> : <Swords className="h-5 w-5 text-line" />}
+                  </div>
+                  <div className="line-clamp-2 h-[28px] w-full text-center text-[11px] leading-tight text-silver">{a.name}</div>
+                  <div className="font-sans text-[12px] font-medium tabular-nums text-[#cf9074]">{pctDelta(a.ratio)}</div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
         {b.synergy.length > 0 && (
           <div className="mt-5">
             <SubHead>Synergies à chasser</SubHead>
-            <p className="mb-2 text-[11.5px] italic leading-snug text-silver/60">Sur les armes trouvées in-run, priorise l'affinité / les affixes :</p>
+            <p className="mb-2.5 text-[12.5px] leading-snug text-silver/75">Sur les armes trouvées en run, priorise l'affinité et les affixes :</p>
             <div className="flex flex-wrap gap-2">
               {b.synergy.map((s, i) => (
                 <SynergyChip key={i} s={s} />
@@ -208,7 +215,7 @@ export function BuildCard({ b, index, mode }: { b: Build; index: number; mode: M
             {b.ignored_effects.length > 0 && (
               <div>
                 <SubHead>Ignorés par ton profil</SubHead>
-                <p className="mb-2 text-[11.5px] italic leading-snug text-silver/55">Effets liés à une action que tu n'as pas déclarée (ex. critiques) — ils ne comptent pas ici.</p>
+                <p className="mb-2.5 text-[12.5px] leading-snug text-silver/70">Effets liés à une action que tu n'as pas déclarée (ex. critiques) — ils ne comptent pas ici.</p>
                 <div className="flex flex-wrap gap-2">
                   {b.ignored_effects.map((e, i) => (
                     <Chip key={i} ghost>{e.key} ×{e.mult.toFixed(2)}<span className="text-gold/70">{FR_ACTIONS[e.action] ?? e.action}</span></Chip>

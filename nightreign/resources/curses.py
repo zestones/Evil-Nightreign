@@ -43,15 +43,82 @@ CURSE_SPEC = {
     # --- scored, always counted (worst-case): every character dodges, so the
     #     evasion-window malus applies to everyone. Dodge FREQUENCY is not in the
     #     data (Duchess just dodges more), but under a worst-case posture that is
-    #     moot — the ceiling is the same for all. ---
+    #     moot — the ceiling is the same for all. Both are also in the acceptance
+    #     list, so a player who won't tolerate them can veto the relic. ---
     "moreDamageTakenAfterEvasion": {"gate": None, "follow_cycle": False},
     "repeatedEvasionsLowerDamageNegation": {"gate": None, "follow_cycle": True},
-    # --- scored, other transient windows (situational toggle only) ---
-    "reducedDamageNegationForFlaskUsages": {"gate": "situational", "follow_cycle": False},
-    "nearDeathReducesMaxHP": {"gate": "situational", "follow_cycle": True},
+    # NB: post-flask and near-death curses are intentionally NOT scored — their
+    # window correlates with safety/rarity and we don't invent an uptime. They
+    # are display-only and handled purely through the acceptance list (veto).
 }
 
 
 def spec(key):
     """Scoring spec for a curse key, or None if the curse is display-only."""
     return CURSE_SPEC.get(key)
+
+
+# UI acceptance list: FR label + concern group for every curse the save can carry.
+# group in {"combat", "survie", "utilitaire"}; the acceptance list is grouped by
+# it so concerns never mix. `spec()` tells whether a curse also weighs the score.
+CURSE_META = {
+    # combat — hurt damage / survival
+    "lowerAttackWhenBelowMaxHP": ("Attaque réduite à PV bas", "combat"),
+    "maxHPReducesAttackPower": ("Attaque réduite selon les PV max", "combat"),
+    "moreDamageTakenAfterEvasion": ("+ dégâts subis après une esquive", "combat"),
+    "repeatedEvasionsLowerDamageNegation": ("Négation réduite après esquives répétées", "combat"),
+    "reducedDamageNegationForFlaskUsages": ("Négation réduite après une fiole", "combat"),
+    "impairedAffinityDamageNegation": ("Négation d'affinité réduite", "combat"),
+    "nearDeathReducesMaxHP": ("PV max réduits près de la mort", "combat"),
+    "reducedStrengthAndIntelligence": ("Force et Intelligence réduites", "combat"),
+    "reducedDexterityAndFaith": ("Dextérité et Foi réduites", "combat"),
+    "reducedIntelligenceAndDexterity": ("Intelligence et Dextérité réduites", "combat"),
+    "reducedFaithAndStrength": ("Foi et Force réduites", "combat"),
+    "reducedVigorAndArcane": ("Vigueur et Arcane réduites", "combat"),
+    "reducedVigor": ("Vigueur réduite", "combat"),
+    "reducedEndurance": ("Endurance réduite", "combat"),
+    "reducedMaximumHP": ("PV max réduits", "combat"),
+    "reducedMaximumStamina": ("Endurance max réduite", "combat"),
+    "reducedMaximumFP": ("PP max réduits", "combat"),
+    "lowerStaminaImpairsDmgNegation": ("Négation réduite à faible endurance", "combat"),
+    "nearDeathReducesArtGauge": ("Jauge d'Art réduite près de la mort", "combat"),
+    "slowerArtGaugeWhenBelowMaxHP": ("Jauge d'Art plus lente à PV bas", "combat"),
+    "attacksImpairedOnOccasion": ("Attaques parfois entravées", "combat"),
+    "ailmentsCauseIncreasedDamage": ("Afflictions → dégâts subis accrus", "combat"),
+    "nightsTideDamageIncreased": ("Dégâts subis accrus (marée nocturne)", "combat"),
+    "damageIncreasedByNightsEncroachment": ("Dégâts subis accrus (nuit)", "combat"),
+    # survie / statut — self-inflicted ailments & resistances
+    "allResistancesDown": ("Toutes les résistances réduites", "survie"),
+    "takingDamageCausesPoisonBuildup": ("Dégâts subis → poison sur soi", "survie"),
+    "takingDamageCausesRotBuildup": ("Dégâts subis → pourriture sur soi", "survie"),
+    "takingDamageCausesFrostBuildup": ("Dégâts subis → gel sur soi", "survie"),
+    "takingDamageCausesBloodLossBuildup": ("Dégâts subis → hémorragie sur soi", "survie"),
+    "takingDamageCausesMadnessBuildup": ("Dégâts subis → folie sur soi", "survie"),
+    "takingDamageCausesSleepBuildup": ("Dégâts subis → sommeil sur soi", "survie"),
+    "takingDamageCausesDeathBuildup": ("Dégâts subis → fléau mortel sur soi", "survie"),
+    "poisonBuildupWhenBelowMaxHP": ("Poison sur soi à PV bas", "survie"),
+    "rotBuildupWhenBelowMaxHP": ("Pourriture sur soi à PV bas", "survie"),
+    "continuousHPLoss": ("Perte de PV continue", "survie"),
+    "nearDeathSpillsFlask": ("Fiole renversée près de la mort", "survie"),
+    "sleepBuildupForFlaskUsages": ("Sommeil sur soi après une fiole", "survie"),
+    "madnessBuildupForFlaskUsages": ("Folie sur soi après une fiole", "survie"),
+    # utilitaire — economy / stamina / gauges
+    "reducedRuneAcquisition": ("Moins de runes par ennemi", "utilitaire"),
+    "reducedFlaskHPRestoration": ("PV rendus par la fiole réduits", "utilitaire"),
+    "ultimateArtChargingImpaired": ("Charge d'Art ultime réduite", "utilitaire"),
+    "surgeSprintingDrainsMoreStamina": ("Sprint plus coûteux en endurance", "utilitaire"),
+    "increasedDrainOnStaminaForEvasion": ("Esquive plus coûteuse en endurance", "utilitaire"),
+}
+
+_GROUP_ORDER = {"combat": 0, "survie": 1, "utilitaire": 2}
+
+
+def display(key, fallback_text=None):
+    """(label_fr, group) for a curse key; falls back to its raw text / 'utilitaire'."""
+    if key in CURSE_META:
+        return CURSE_META[key]
+    return (fallback_text or key, "utilitaire")
+
+
+def group_rank(group):
+    return _GROUP_ORDER.get(group, 9)

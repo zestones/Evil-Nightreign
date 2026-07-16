@@ -161,7 +161,7 @@ def pick_weapon(data, stats, targets, wtype=None, agg=None, play=None,
     for dmg, _wid, _lvl, name, _label in ranked[1:]:
         if name not in seen:
             seen.add(name)
-            alts.append((name, dmg / best[0]))
+            alts.append((name, dmg / best[0], _wid))   # + weapon_id for its icon
         if len(alts) == 3:
             break
     return best[1], best[2], best[3], best[4], alts
@@ -188,6 +188,8 @@ def build_pools(data, context, include_deep):
     for relic in data["relics"]:
         kind = "deep" if relic["type"] == "DeepRelic" else "normal"
         if kind == "deep" and not include_deep:
+            continue
+        if context.relic_vetoed(relic):     # player refused a curse it carries
             continue
         parsed = aggregation.parse_relic(relic, data["effects"], context)
         if not parsed:
@@ -252,13 +254,14 @@ def affix_label(aid, affix):
 
 def _optimize_generic(data, character, stats, targets, weight, don, don_scale,
                       include_deep, toggles, play, beam_k, top, max_weapon_level,
-                      count_debuffs=True):
+                      count_debuffs=True, refused_curses=()):
     """Weapon-agnostic: optimize the relics you EQUIP with NO weapon type, so
     only generic effects score (type-gated ones like 'Improved Greatsword' stay
     off) — the loadout is robust to whatever weapon drops. A representative
     physical weapon supplies the AR baseline (relic multipliers, the thing being
     ranked, are weapon-independent). Output: relics + the affixes to hunt."""
-    context = Context(character, None, frozenset(toggles), max(don, 1), count_debuffs)
+    context = Context(character, None, frozenset(toggles), max(don, 1), count_debuffs,
+                      frozenset(refused_curses))
     pools = build_pools(data, context, include_deep)
     # reference weapon = the character's STARTING weapon ("arme de base"): a real
     # weapon you always have, so the absolute dmg/coup & dmg/s are concrete. The
@@ -317,7 +320,7 @@ def vessels_owned(data, character):
 
 def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
              don=0, toggles=(), beam_k=12, top=3, play=None, types_count=5,
-             max_weapon_level=25, data=None, count_debuffs=True):
+             max_weapon_level=25, data=None, count_debuffs=True, refused_curses=()):
     """Run the full engine loop; returns the `top` best gameplans (dicts).
 
     play: normalized {action: weight} play profile (resources/actions.py);
@@ -343,7 +346,7 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
     if weapon_type == GENERIC:
         return _optimize_generic(data, character, stats, targets, weight, don, don_scale,
                                  include_deep, toggles, play, beam_k, top, max_weapon_level,
-                                 count_debuffs)
+                                 count_debuffs, refused_curses)
 
     types_to_try = [weapon_type] if weapon_type else \
         best_weapon_types(data, stats, targets, types_count, max_weapon_level)
@@ -367,7 +370,8 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
 
     results = []
     for wtype in types_to_try:
-        context = Context(character, wtype, frozenset(toggles), max(don, 1), count_debuffs)
+        context = Context(character, wtype, frozenset(toggles), max(don, 1), count_debuffs,
+                          frozenset(refused_curses))
         pools = build_pools(data, context, include_deep)
         starts = [pick_weapon(data, stats, targets, wtype, play=play,
                               max_level=max_weapon_level)]
@@ -495,7 +499,7 @@ def format_report(results, weight):
         if r.get("weapon_alternatives"):
             lines.append("    alt  : " + "  ".join(
                 f"{name} ({100 * (ratio - 1):+.1f}%)"
-                for name, ratio in r["weapon_alternatives"]))
+                for name, ratio, *_ in r["weapon_alternatives"]))
         if r.get("affix_hunt"):
             lines.append("    AFFIXES à chercher : " + "  ".join(
                 f"{a['label']} (+{100*a['gain']:.1f}%)" for a in r["affix_hunt"]))

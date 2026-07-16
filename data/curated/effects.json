@@ -10353,17 +10353,15 @@
   "magnitude": {
    "bCurrHPIndependeMaxHP": 1,
    "isIgnoreNoDamage": 1,
-   "unknown_239h": 1,
-   "effectEndurance": 60.0,
-   "maxHpRate": 0.75,
-   "isDestinedDeathHpMult": 1,
-   "displayIconForPermamentEffect": 1
+   "unknown_239h": 1
   },
   "on_hit": {},
   "condition": {
+   "category": 40020,
+   "value": 30200050,
    "kind": "curse",
-   "label": "Deep of Night curse",
-   "dimension": "situational"
+   "label": "Curse (low HP)",
+   "dimension": null
   },
   "actions": [],
   "state_gate": null,
@@ -10648,9 +10646,11 @@
   },
   "on_hit": {},
   "condition": {
+   "category": 40010,
+   "value": 30100020,
    "kind": "curse",
-   "label": "Deep of Night curse",
-   "dimension": "situational"
+   "label": "Curse (combat event)",
+   "dimension": null
   },
   "actions": [],
   "state_gate": null,

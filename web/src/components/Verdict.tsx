@@ -33,53 +33,60 @@ export function Verdict({
 
   return (
     <div className="relative flex h-screen flex-col overflow-hidden px-14 pb-4 pt-3 sm:px-[72px]">
-      {/* top bar */}
-      <div className="flex flex-wrap items-center gap-3 pb-3">
+      {/* top bar — anchored to the page by a hairline; a clear title block + an
+          unmistakable build selector */}
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-3 border-b border-line/40 pb-3">
         <button
           onClick={onBack}
-          className="group flex items-center gap-1.5 border border-line/70 bg-night-700/50 px-3 py-2 font-display text-[11.5px] uppercase tracking-widest2 text-silver transition hover:border-frost/50 hover:text-ink"
+          className="group flex items-center gap-1.5 border border-line/70 bg-night-700/50 px-3 py-2 text-[11.5px] font-medium uppercase tracking-wider text-silver transition hover:border-frost/50 hover:text-ink"
         >
-          <ChevronLeft className="h-4 w-4 transition group-hover:-translate-x-0.5" /> Le Rite
+          <ChevronLeft className="h-4 w-4 transition group-hover:-translate-x-0.5" /> Retour
         </button>
-        <span className="relative h-10 w-10 overflow-hidden border border-line/60 bg-night-900">
-          <img
-            src={heroArt(character)}
-            alt=""
-            onError={(e) => (e.currentTarget.style.visibility = "hidden")}
-            className="h-full w-full scale-[1.8] object-cover object-[50%_10%]"
-          />
-        </span>
-        <div className="mr-1">
-          <div className="eyebrow text-silver/70">Le Verdict</div>
-          <div className="font-display text-[18px] leading-tight tracking-wide text-ink">
-            {character}
-            <span className="ml-2 font-serif text-[13px] italic text-silver/70">
-              {b.targets.length > 1 ? "généraliste" : `vs ${b.targets[0]}`}
-            </span>
+
+        <div className="flex items-center gap-3">
+          <span className="relative h-11 w-11 flex-none overflow-hidden rounded-sm border border-line/60 bg-night-900">
+            <img
+              src={heroArt(character)}
+              alt=""
+              onError={(e) => (e.currentTarget.style.visibility = "hidden")}
+              className="h-full w-full scale-[1.8] object-cover object-[50%_10%]"
+            />
+          </span>
+          <div>
+            <div className="font-sans text-[10px] uppercase tracking-[0.2em] text-gold/70">Le Verdict</div>
+            <div className="mt-0.5 flex items-center gap-2">
+              <span className="font-display text-[20px] leading-none tracking-wide text-ink">{character}</span>
+              <span className="rounded-sm border border-line/50 bg-night-800/60 px-2 py-0.5 text-[11px] font-medium text-silver/85">
+                {b.targets.length > 1 ? "Généraliste" : `vs ${b.targets[0]}`}
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* pager — switch between the top builds */}
-        <div className="ml-auto flex items-center gap-3">
-          <span className="hidden font-sans text-[11px] uppercase tracking-[0.16em] text-silver/70 md:block">Autres builds</span>
-          {results.map((r, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              className={cn(
-                "flex items-center gap-2 border px-4 py-2.5 transition",
-                i === active
-                  ? "border-gold/70 bg-gold/10 shadow-[0_0_20px_-6px_rgba(201,162,74,0.6)]"
-                  : "border-line/60 bg-night-700/40 hover:border-line-bright hover:bg-night-600/40"
-              )}
-            >
-              <span className={cn("font-display text-[13px] uppercase tracking-wider", i === active ? "text-gold-bright" : "text-silver")}>
-                #{i + 1}
-                {i === 0 ? "·Prime" : ""}
-              </span>
-              <span className={cn("font-sans text-[12.5px] tabular-nums", i === active ? "text-ink" : "text-dim")}>S {r.score.toFixed(3)}</span>
-            </button>
-          ))}
+        {/* build selector — a segmented control, obviously interactive */}
+        <div className="ml-auto flex items-center gap-2.5">
+          <span className="hidden text-[10.5px] uppercase tracking-[0.16em] text-silver/55 md:block">
+            Comparer les builds
+          </span>
+          <div className="flex items-center gap-1 rounded-sm border border-line/45 bg-night-900/50 p-1">
+            {results.map((r, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                title={`Build #${i + 1} — S ${r.score.toFixed(3)}`}
+                className={cn(
+                  "flex items-center gap-2 rounded-sm px-3 py-2 transition",
+                  i === active ? "bg-gold/12 shadow-[inset_0_0_0_1px_rgba(201,162,74,0.5)]" : "hover:bg-night-700/60"
+                )}
+              >
+                <span className={cn("font-display text-[13px] tracking-wide", i === active ? "text-gold-bright" : "text-silver/80")}>#{i + 1}</span>
+                {i === 0 && (
+                  <span className="rounded-sm bg-gold/20 px-1.5 py-px text-[9px] uppercase tracking-wider text-gold-bright">Prime</span>
+                )}
+                <span className={cn("text-[12.5px] font-medium tabular-nums", i === active ? "text-ink" : "text-dim")}>{r.score.toFixed(3)}</span>
+              </button>
+            ))}
+          </div>
           <Tip
             content={
               <div className="space-y-1.5">
@@ -92,7 +99,7 @@ export function Verdict({
               </div>
             }
           >
-            <button className="flex h-8 w-8 items-center justify-center border border-line/60 bg-night-700/40 text-silver transition hover:border-frost/50 hover:text-ink">
+            <button className="flex h-9 w-9 items-center justify-center rounded-sm border border-line/60 bg-night-700/40 text-silver transition hover:border-frost/50 hover:text-ink">
               <Info className="h-4 w-4" />
             </button>
           </Tip>

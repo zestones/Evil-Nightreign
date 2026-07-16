@@ -156,16 +156,29 @@ per-key spec, real game magnitudes — nothing invented):
   (Duchess just dodges more), so the trigger is near-universal. Dodge *frequency*
   is not in the data, but under a worst-case posture that is moot — the ceiling is
   the same for all — so there is no per-character special-case.
-- **other windows** (post-flask, near-death, whose trigger is neither universal
-  nor grounded): gated on `situational` only — we gate, never invent an uptime.
-  `nearDeathReducesMaxHP` (×0.75 max HP) resolves its magnitude one hop down the
-  cycle chain.
+- **other windows** (post-flask, near-death): their window correlates with
+  safety/rarity, so we do NOT invent an uptime — they are **display-only** (shown,
+  never scored) and handled purely through the acceptance list.
 
-A master switch (`count_debuffs`, default on, exposed in the UI's Advanced panel)
-scores/shows all curses or none. Separately, relic **Intelligence** bonuses now
-feed AR: `addMagicStatus` was missing from the tracked stat adds even though the
-AR engine scales on `statIntelligence` — a fixed gap, so `+Int` buffs and the
-`−Int` curse halves now count (Mind/Endurance stay out, off both axes).
+Two clean, separate malus controls (a curse is never gated by a *playstyle*
+engagement toggle — those activate buffs only):
+- **master switch** `count_debuffs` (default on): do the chiffrable combat curses
+  weigh the score (worst-case) or not.
+- **acceptance list** `refused_curses`: per-curse veto — refusing a curse
+  hard-excludes every relic carrying it (`Context.relic_vetoed`, filtered in
+  `build_pools`). Works for ALL curses, including the ones we never score
+  (economy, self-status, the safety-correlated windows) — this is where the
+  player supplies the tolerance the data can't. The UI (`CursesSection`, shown
+  only under Deep of Night) lists the curses present in the owned relics, grouped
+  by concern (combat / survie / utilitaire), labelled in French, with a live
+  "N relics excluded" count; `resources/curses.py:CURSE_META` holds the labels.
+
+Separately, relic **Intelligence** bonuses now feed AR: `addMagicStatus` was
+missing from the tracked stat adds even though the AR engine scales on
+`statIntelligence` — a fixed gap, so `+Int` buffs and the `−Int` curse halves now
+count (Mind/Endurance stay out, off both axes). The survival axis also had a
+type-key bug (`TARGET_TYPE_TO_ENGINE`): incoming magic/lightning/holy hits were
+dropped, so 5 of 8 Nightlords lost their biggest hit — now fixed.
 - **display-only** — out of axis by definition (player status resistance, rune /
   flask / ultimate economy, continuous chip): surfaced in the UI ("non chiffrée")
   but never scored. A curse's `*AttackPower` is self-inflicted status and is

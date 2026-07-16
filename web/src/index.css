@@ -12,7 +12,9 @@
     height: 100%;
   }
   body {
-    @apply bg-void text-ink font-serif antialiased;
+    /* body/data text is sans (Inter) for legibility; serif (EB Garamond) and
+       display (Cinzel) are opt-in per element for names and section titles. */
+    @apply bg-void text-ink font-sans antialiased;
     overflow-x: hidden;
   }
   ::selection {

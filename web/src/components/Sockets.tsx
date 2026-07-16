@@ -1,4 +1,4 @@
-import { Lock, AlertTriangle } from "lucide-react";
+import { Lock, AlertTriangle, Asterisk } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { RELIC_HEX } from "@/lib/labels";
 import type { Pick, Effect } from "@/lib/api";
@@ -53,7 +53,9 @@ function RelicCard({ p }: { p: Pick }) {
           {p.icon ? (
             <img src={p.icon} alt="" onError={hide} className="h-[100px] w-[100px] object-contain" />
           ) : (
-            <span className="text-4xl" style={{ color: c }}>◆</span>
+            // no extracted art for this relic (unique relics have no iconId) —
+            // a deliberate colour-keyed emblem rather than a broken-image gap
+            <span className="text-[46px] leading-none" style={{ color: c, textShadow: `0 0 18px ${c}, 0 0 4px ${c}` }}>◈</span>
           )}
         </div>
         <span className="absolute -bottom-1.5 -right-1.5 h-4 w-4 rotate-45 border border-night-900" style={{ background: slot, boxShadow: `0 0 9px ${slot}` }} title={`slot ${p.slot_color}`} />
@@ -71,11 +73,25 @@ function RelicCard({ p }: { p: Pick }) {
               <div className="flex items-start gap-3">
                 <EffectIcon url={e.icon} active={e.active} color={c} />
                 <span className="pt-0.5">
-                  <span className={cn(e.active ? "text-ink" : "text-faint line-through")}>{e.text}</span>
+                  {/* struck through ONLY when reserved to another Nightfarer; every
+                      other inactive reason keeps the text + a marker, and the whole
+                      text carries the tooltip so it is easy to hover */}
+                  <span
+                    title={!e.active && !e.char_locked && e.reason ? e.reason : undefined}
+                    className={cn(
+                      e.active ? "text-ink" : e.char_locked ? "text-faint line-through" : "text-silver/75",
+                      !e.active && !e.char_locked && e.reason && "cursor-help"
+                    )}
+                  >
+                    {e.text}
+                    {!e.active && !e.char_locked && e.reason && (
+                      <Asterisk className="ml-1 inline h-3 w-3 -translate-y-px text-frost/70" />
+                    )}
+                  </span>
                   {e.active && e.tradeoff && (
                     <AlertTriangle className="ml-1.5 inline h-3.5 w-3.5 -translate-y-px text-[#d8a03a]" aria-label="compromis" />
                   )}
-                  {!e.active && e.reason && (
+                  {!e.active && e.char_locked && e.reason && (
                     <span className="ml-1.5 text-[11.5px] italic text-dim/70">— {e.reason}</span>
                   )}
                 </span>

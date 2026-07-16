@@ -23,7 +23,19 @@ class Context:
     weapon_type: str | None = None          # None -> weapon-gated effects stay off
     toggles: frozenset = field(default_factory=frozenset)
     don_level: int = 1                      # Deep of Night ladder (1 = no scaling)
-    count_debuffs: bool = True              # master switch for Deep-of-Night curses
+    count_debuffs: bool = True              # master switch: score the chiffrable curses
+    refused_curses: frozenset = field(default_factory=frozenset)  # curse keys to veto
+
+    def relic_vetoed(self, relic):
+        """True if the relic carries a curse the player refused (exclude it).
+
+        With curses disabled entirely (count_debuffs off), vetoes don't apply —
+        the master switch governs the whole Deep-of-Night-curse concern.
+        """
+        if not self.count_debuffs or not self.refused_curses:
+            return False
+        return any(e.get("is_curse") and e.get("key") in self.refused_curses
+                   for e in relic["effects"])
 
     def effect_active(self, effect_info, relic_entry):
         """Is this effect instance active here? (optimizer_mathematical_formulation.md §1: cond(e))."""
