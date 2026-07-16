@@ -91,18 +91,33 @@ Key algorithmic points:
 
 All under `data/curated/` (regenerate with `nr data`), all real in-game values:
 
-| File                                 | Role                                                         |
-|--------------------------------------|--------------------------------------------------------------|
-| `relics.json`                        | owned relics: color, type (normal/deep/unique), grid coords  |
-| `effects.json`                       | 460 resolved effects: magnitude + condition + user dimension |
-| `weapons.json`                       | 2317 weapons incl. affinities: base damage + scaling → AR    |
-| `weapon_affixes.json`                | 263 possible in-run weapon affixes (rolls to hunt for)       |
-| `characters.json`                    | stats (via `hero_stats`), armor negation, ability metadata   |
-| `nightlords.json`                    | 8 Nightlords: weaknesses (damage + status) + attacks + poise |
-| `npcs.json`                          | 200 enemies for the generalist target                        |
+| File                                 | Role                                                                                                               |
+|--------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| `relics.json`                        | owned relics: color, type (normal/deep/unique), grid coords                                                        |
+| `effects.json`                       | 460 resolved effects: magnitude + condition + user dimension                                                       |
+| `weapons.json`                       | 2317 weapons incl. affinities: base damage + scaling → AR                                                          |
+| `weapon_affixes.json`                | 263 possible in-run weapon affixes (rolls to hunt for)                                                             |
+| `characters.json`                    | stats (via `hero_stats`), armor negation, ability metadata                                                         |
+| `nightlords.json`                    | 8 Nightlords: weaknesses (damage + status) + attacks + poise                                                       |
+| `npcs.json`                          | 200 enemies for the generalist target                                                                              |
 | `vessels.json`                       | chalices: 3 normal + 3 deep colored slots + `owned` (save-derived; the unobtainable "Chalices" are `owned: false`) |
-| `mode_scaling.json`                  | Deep of Night ladder (x1.0 → x1.45)                          |
-| `nightreign/resources/conditions.py` | condition taxonomy → the user toggles                        |
+| `mode_scaling.json`                  | Deep of Night ladder (x1.0 → x1.45)                                                                                |
+| `nightreign/resources/conditions.py` | condition taxonomy → the user toggles                                                                              |
+
+## EQUIP (certain) vs HUNT (found in-run)
+
+The output separates what you commit to *now* from what you look for *during* the run — matching how the game works (relics are equipped from your owned pool; the weapon is a randomized drop):
+
+- **EQUIP** — the vessel + relics. This is the fixed loadout. Fixing a weapon
+  type (`--weapon-type`) optimizes these relics *for that type* without tying
+  them to one specific weapon (relic multipliers are weapon-independent, so the
+  set is stable across weapons of the type — you don't need to know which drops).
+- **HUNT** — the weapon type + best weapons of it (with in-run fallbacks), plus
+  the **affixes to hunt** (`optimize/affixes.py`): every in-run weapon roll
+  (`weapon_affixes.json`, same magnitude shape as relic effects) is ranked by the
+  extra offense it would add to *your* build, best-of-each-family. A holy build
+  vs a holy-weak boss surfaces "+Sacré"; the universal "+Attaque (tous types)"
+  roll tops most builds. Shown on the AFFIXES line (CLI) / affix row (UI).
 
 ## Game archive extraction (`nightreign/io/`)
 

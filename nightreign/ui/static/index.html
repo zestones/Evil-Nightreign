@@ -110,7 +110,10 @@
       <div><label>Deep of Night</label><select id="don"><option value="0">Non (expédition normale)</option></select></div>
     </div>
     <label>Type d'arme</label>
-    <select id="wtype"><option value="">Auto (explore les meilleurs types)</option></select>
+    <select id="wtype">
+      <option value="">Auto (explore les meilleurs types)</option>
+      <option value="__generic__">Générique — reliques pour toute arme</option>
+    </select>
     <div class="note" style="margin-top:3px">Classement inter-types = <b>DPS</b> (dégâts/coup × cadence de la classe). Fixe un type pour le meilleur gameplan de ce style.</div>
 
     <h2>Objectif</h2>
@@ -295,6 +298,7 @@ function render(results, req, mode) {
         <span class="weapon">${esc(r.weapon)}</span> <span class="wtype">(${r.weapon_type})</span>
         <span class="wtype">— vs ${r.targets.join(", ")}</span>
         ${alts ? `<div class="alts">replis in-run : ${alts}</div>` : ""}
+        ${(r.affix_hunt && r.affix_hunt.length) ? `<div class="alts"><b>affixes à chasser :</b> ${r.affix_hunt.map(a => `${esc(a.label)} (+${(100*a.gain).toFixed(1)}%)`).join("  ·  ")}</div>` : ""}
       </div>
       <div class="section">
         <span class="tag">Vessel</span> <b>${esc(r.vessel)}</b>

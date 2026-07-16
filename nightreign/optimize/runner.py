@@ -15,7 +15,7 @@ candidates at the character's stats — that pick is also the HUNT advice.
 import json
 
 from nightreign.engine import attack_rating, damage
-from nightreign.optimize import aggregation, motion, pruning, scoring, search
+from nightreign.optimize import affixes, aggregation, motion, pruning, scoring, search
 from nightreign.optimize.context import Context
 from nightreign.resources import constants, weapon_types
 
@@ -23,6 +23,7 @@ HERO_ORDER = ["Wylder", "Guardian", "Ironeye", "Duchess", "Raider",
               "Revenant", "Recluse", "Executor", "Scholar", "Undertaker"]
 WEAPON_RARITIES = ("[Common]", "[Uncommon]", "[Rare]", "[Legendary]")
 NORMAL_TYPES = ("Relic", "UniqueRelic")
+GENERIC = "__generic__"  # weapon-agnostic mode: relics good with ANY weapon
 
 
 def load_data():
@@ -39,6 +40,7 @@ def load_data():
         "relics": curated("relics.json"), "effects": curated("effects.json"),
         "vessels": curated("vessels.json"), "characters": curated("characters.json"),
         "nightlords": curated("nightlords.json"), "scaling": curated("mode_scaling.json"),
+        "affixes": curated("weapon_affixes.json"),
         "weapons": raw("weapons.json"), "npc_params": raw("npc_params.json"),
         "hero_stats": raw("hero_stats.json"), "weapon_names": names,
         "custom_weapons": raw("custom_weapons.json"),
@@ -221,6 +223,81 @@ def pick_weapon_elemental(data, stats, targets, wtype, element, play, max_level=
     return None if best is None else (best[1], best[2], best[3], best[4], [])
 
 
+
+_DTYPE_FR = {"phys": "Physique", "mag": "Magie", "fire": "Feu", "thunder": "Foudre", "dark": "Sacré"}
+_STATUS_FR = {"bleed": "Saignement", "poison": "Poison", "rot": "Écarlate", "frost": "Gel"}
+
+
+def affix_label(aid, affix):
+    """Human label for an affix, e.g. '+12% Feu', '+31% Attaque (tous types)'."""
+    m = affix.get("magnitude") or {}
+    boosted = [dt for field, dt in aggregation.ATTACK_RATE_FIELDS.items() if m.get(field, 1) > 1]
+    if boosted:
+        pct = affix.get("display_value", 0)
+        if len(boosted) >= 5:
+            return f"+{pct}% Attaque (tous types)"
+        return f"+{pct}% {' / '.join(_DTYPE_FR.get(dt, dt) for dt in boosted)}"
+    for field, st in aggregation.STATUS_BUILDUP_FIELDS.items():
+        if m.get(field, 0) > 0:
+            return f"+{_STATUS_FR.get(st, st)}"
+    cond = affix.get("condition") or {}
+    return cond.get("label") or f"affixe {aid}"
+
+
+
+def _optimize_generic(data, character, stats, targets, weight, don, don_scale,
+                      include_deep, toggles, play, beam_k, top, max_weapon_level):
+    """Weapon-agnostic: optimize the relics you EQUIP with NO weapon type, so
+    only generic effects score (type-gated ones like 'Improved Greatsword' stay
+    off) — the loadout is robust to whatever weapon drops. A representative
+    physical weapon supplies the AR baseline (relic multipliers, the thing being
+    ranked, are weapon-independent). Output: relics + the affixes to hunt."""
+    context = Context(character, None, frozenset(toggles), max(don, 1))
+    pools = build_pools(data, context, include_deep)
+    # reference weapon: the strongest droppable physical weapon (pure phys AR
+    # so no affinity bias) at the character's stats
+    ref = max(weapon_candidates(data, max_level=max_weapon_level),
+              key=lambda c: sum(attack_rating.attack_rating(c[0], c[1], stats,
+                                                            data["ar_tables"]).values()))
+    scorer = scoring.Scorer(ref[0], stats, data["characters"][character]["defense"],
+                            targets, weight, don_scale, data["ar_tables"], play=play,
+                            reinforce=ref[1])
+    results = []
+    for vessel in vessels_owned(data, character):
+        slots = [("normal", c) for c in vessel["normal_slots"]]
+        if include_deep:
+            slots += [("deep", c) for c in vessel["deep_slots"]]
+        pruned = {}
+        for (kind, color), entries in pools.items():
+            vslots = vessel["normal_slots"] if kind == "normal" else vessel["deep_slots"]
+            s_c = pruning.slots_accepting(vslots, color)
+            if s_c:
+                pruned[(kind, color)] = pruning.prune_pool(entries, s_c)
+        score, picks = search.beam_search(slots, pruned, scorer.score, beam_k)
+        build_parsed = [_parsed_of(pools, r) for _slot, r in picks]
+        results.append({
+            "score": score, "character": character, "weapon_type": "toute arme",
+            "weapon": "Générique — n'importe quelle arme", "weapon_id": ref[0],
+            "weapon_alternatives": [], "vessel": vessel["name"], "picks": picks,
+            "breakdown": scorer.breakdown(build_parsed),
+            "targets": [t[0] for t in targets],
+            "_scorer": scorer, "_parsed": build_parsed, "_context": context,
+        })
+    # keep the best distinct relic set
+    results.sort(key=lambda r: -r["score"])
+    seen, unique = set(), []
+    for r in results:
+        key = frozenset(relic["record_id"] for _s, relic in r["picks"])
+        if key not in seen:
+            seen.add(key)
+            unique.append(r)
+    return _finalize(unique[:top], data)
+
+
+def vessels_owned(data, character):
+    return [v for v in data["vessels"].get(character, []) if v.get("owned")]
+
+
 def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
              don=0, toggles=(), beam_k=12, top=3, play=None, types_count=5,
              max_weapon_level=25, data=None):
@@ -245,6 +322,11 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
     don_scale = don_row.get("attack", 1.0)
     targets = resolve_targets(data, boss, don_row.get("hp", 1.0))
     vessels = [v for v in data["vessels"].get(character, []) if v.get("owned")]
+
+    if weapon_type == GENERIC:
+        return _optimize_generic(data, character, stats, targets, weight, don, don_scale,
+                                 include_deep, toggles, play, beam_k, top, max_weapon_level)
+
     types_to_try = [weapon_type] if weapon_type else \
         best_weapon_types(data, stats, targets, types_count, max_weapon_level)
     elem = weak_element(targets)
@@ -310,6 +392,7 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
                 breakdown = scorer.breakdown([p for _slot, r in picks
                                               for p in [_parsed_of(pools, r)]])
                 cad = weapon_types.cadence(data["weapons"][weapon_id])
+                build_parsed = [_parsed_of(pools, r) for _slot, r in picks]
                 results.append({
                     "score": score, "character": character, "weapon_type": wlabel,
                     "weapon": weapon_name, "weapon_id": weapon_id,
@@ -320,6 +403,7 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
                     "cadence": cad,
                     "absolute_dps": breakdown["offense"] * cad,
                     "targets": [t[0] for t in targets],
+                    "_scorer": scorer, "_parsed": build_parsed, "_context": context,
                 })
     # S is the improvement over the type's own bare weapon: comparable within a
     # type, NOT across types. Fixed type: top builds by S. Free exploration:
@@ -334,14 +418,25 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
             if key not in seen:
                 seen.add(key)
                 unique.append(r)
-        return unique[:top]
+        return _finalize(unique[:top], data)
     champions = {}
     for r in results:
         cur = champions.get(r["weapon_type"])
         if cur is None or r["score"] > cur["score"]:
             champions[r["weapon_type"]] = r
     ranked = sorted(champions.values(), key=lambda r: -r["absolute_dps"])
-    return ranked[:top]
+    return _finalize(ranked[:top], data)
+
+
+
+def _finalize(results, data):
+    """Attach the affix hunt list to the returned builds and drop transients."""
+    for r in results:
+        scorer, parsed, ctx = r.pop("_scorer"), r.pop("_parsed"), r.pop("_context")
+        r["affix_hunt"] = [{"label": lbl, "gain": gain}
+                           for _aid, lbl, gain in affixes.rank(
+                               scorer, parsed, data["affixes"], ctx, affix_label, top=5)]
+    return results
 
 
 def _parsed_of(pools, relic):
@@ -380,6 +475,9 @@ def format_report(results, weight):
             lines.append("    alt  : " + "  ".join(
                 f"{name} ({100 * (ratio - 1):+.1f}%)"
                 for name, ratio in r["weapon_alternatives"]))
+        if r.get("affix_hunt"):
+            lines.append("    AFFIXES à chercher : " + "  ".join(
+                f"{a['label']} (+{100*a['gain']:.1f}%)" for a in r["affix_hunt"]))
         lines.append(f"    EQUIP: {r['vessel']}")
         for (kind, color), relic in r["picks"]:
             grid = relic.get("grid_by_color") or relic.get("grid") or ["?", "?"]

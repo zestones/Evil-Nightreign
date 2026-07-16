@@ -70,8 +70,11 @@ def cmd_data(args):
 def cmd_optimize(args):
     from nightreign.optimize import runner
     from nightreign.resources import actions
+    wtype = args.weapon_type
+    if wtype and wtype.lower() in ("generic", "générique", "any", "toute"):
+        wtype = runner.GENERIC
     results = runner.optimize(
-        args.character, boss=args.boss, weapon_type=args.weapon_type,
+        args.character, boss=args.boss, weapon_type=wtype,
         level=args.level, weight=args.weight, don=args.don,
         toggles=tuple(args.toggle or ()), beam_k=args.beam, top=args.top,
         play=actions.parse_play_profile(args.play), types_count=args.types,
@@ -108,8 +111,9 @@ def main(argv=None):
     p_opt.add_argument("character", help="Nightfarer (e.g. Wylder, Duchess)")
     p_opt.add_argument("boss", nargs="?",
                        help="target Nightlord (omit = generalist vs all 8)")
-    p_opt.add_argument("--weapon-type", help='fix the weapon type (e.g. "Greatsword"); '
-                                             "default: try the 3 best types")
+    p_opt.add_argument("--weapon-type", help='fix the weapon type (e.g. "Greatsword"), '
+                                             '"generic" for a weapon-agnostic relic '
+                                             "build, or omit to try the best types")
     p_opt.add_argument("--level", type=int, default=15, help="character level (default 15)")
     p_opt.add_argument("--weight", type=float, default=0.5,
                        help="offense<->survival slider, 1.0 = pure offense (default 0.5)")

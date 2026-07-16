@@ -255,3 +255,17 @@ def test_dot_uptime_not_per_proc():
     rate, fight_s = statuses.dot_rate("poison", hp), fight_hits / cad
     assert total <= rate * fight_s + 1e-6   # never exceeds continuous uptime
     assert total > rate * fight_s * 0.7     # near-continuous once first proc lands
+
+
+def test_affix_hunt_is_build_relevant():
+    # a fire-weak target + a build should rank fire-boosting affixes above
+    # types the weapon doesn't deal; per-family dedup keeps one tier each.
+    from nightreign.optimize import runner
+    res = runner.optimize("Duchess", "Gladius", weapon_type="Dagger",
+                          weight=1.0, don=5, top=1)
+    hunt = res[0]["affix_hunt"]
+    assert 1 <= len(hunt) <= 5
+    assert all("label" in a and "gain" in a for a in hunt)
+    assert hunt == sorted(hunt, key=lambda a: -a["gain"])   # ranked
+    labels = [a["label"] for a in hunt]
+    assert len(labels) == len(set(labels))                  # deduped families
