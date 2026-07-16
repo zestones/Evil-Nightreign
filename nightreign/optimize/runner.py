@@ -38,8 +38,10 @@ def load_data():
              if e.get("Entries") and e["Entries"][0]}
     icons_path = constants.DATA_CURATED / "icons.json"
     icons = json.load(open(icons_path)) if icons_path.exists() else {"weapons": {}, "relics": {}}
+    eff_icons_path = constants.DATA_CURATED / "effect_icons.json"
+    effect_icons = json.load(open(eff_icons_path)) if eff_icons_path.exists() else {}
     return {
-        "icons": icons,
+        "icons": icons, "effect_icons": effect_icons,
         "relics": curated("relics.json"), "effects": curated("effects.json"),
         "vessels": curated("vessels.json"), "characters": curated("characters.json"),
         "nightlords": curated("nightlords.json"), "scaling": curated("mode_scaling.json"),

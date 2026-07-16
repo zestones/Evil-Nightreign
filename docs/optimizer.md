@@ -120,11 +120,24 @@ The output separates what you commit to *now* from what you look for *during* th
   them to one specific weapon (relic multipliers are weapon-independent, so the
   set is stable across weapons of the type — you don't need to know which drops).
 - **HUNT** — the weapon type + best weapons of it (with in-run fallbacks), plus
-  the **affixes to hunt** (`optimize/affixes.py`): every in-run weapon roll
-  (`weapon_affixes.json`, same magnitude shape as relic effects) is ranked by the
-  extra offense it would add to *your* build, best-of-each-family. A holy build
-  vs a holy-weak boss surfaces "+Sacré"; the universal "+Attaque (tous types)"
-  roll tops most builds. Shown on the AFFIXES line (CLI) / affix row (UI).
+  a **synergy hint** (`ui/server._synergy`, "Synergies à chasser" in the web UI):
+  what to prioritise on a found weapon, derived from the build's OWN aggregated
+  state — the damage type(s) it amplifies most (hunt that affinity / +type%), the
+  status it applies (hunt that buildup), the stat it boosts (hunt that scaling).
+  This is reliable because it comes straight from the relic multipliers, not from
+  the raw weapon-affix pool (`optimize/affixes.py`, `weapon_affixes.json`) which
+  mixes innate/upgrade/rolled effects and stays **disabled** until a
+  player-visible affix source is identified (see the deferred note).
+
+**Deep-of-Night relic debuffs** (verified 2026-07-16): the aggregation only sums
+positive contributions (attackRate > 1, cutRate < 1, maxHpRate > 1). A data scan
+confirmed **no relic effect carries a multiplicative combat malus** (0 debuff-
+shaped magnitudes) — INV-3 holds, so this is safe, not a gap. The only "malus"
+effects are the Nightfarer stat trade-offs ("[Char] Improved X, Reduced Y"); their
+stat deltas live behind a game `stateInfo` state (not in the SpEffect params we
+read), so they are scored as **neutral** (neither the gain nor the loss counts —
+never over-valued). Inactive/character-mismatched effects are shown struck-through
+in the UI.
 
 ## Game archive extraction (`nightreign/io/`)
 

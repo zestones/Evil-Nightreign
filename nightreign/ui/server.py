@@ -13,6 +13,7 @@ Game data is loaded once at startup and shared read-only across requests.
 """
 
 import json
+import re
 import threading
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -51,6 +52,71 @@ def _icon_url(data, kind, key):
         return None
     iid = (data.get("icons") or {}).get(kind, {}).get(str(key))
     return f"/assets/icons/{iid}.webp" if iid else None
+
+
+def _effect_icon_url(data, effect_id):
+    """`/assets/effect-icons/<statusIconId>.webp` for a relic effect, or None."""
+    sid = (data.get("effect_icons") or {}).get(str(effect_id))
+    return f"/assets/effect-icons/{sid}.webp" if sid else None
+
+
+# a relic effect that trades a real drawback for its upside (Nightfarer stat
+# swaps, HP drains, "but not for self"). Their exact values live behind a game
+# state we don't decode, so the optimizer scores them as neutral — we surface a
+# warning instead of silently over-valuing the upside.
+_TRADEOFF_RE = re.compile(
+    r"\breduced\b[^.]*\b(vigor|strength|dexterity|intelligence|faith|mind|endurance|arcane)\b"
+    r"|drains?\s+hp|but\s+not\s+for\s+self|boosts?\s+attack\s+but",
+    re.I,
+)
+
+
+def _is_tradeoff(text):
+    return bool(_TRADEOFF_RE.search(text or ""))
+
+
+def _inactive_reason(ctx, effect_info, relic_entry, character):
+    """Why an effect is inactive in this context (French), or None if it's active."""
+    nf = relic_entry.get("nightfarer")
+    if nf and nf != character:
+        return f"Réservé au personnage {nf}"
+    state = effect_info.get("state_gate")
+    if state and state not in ctx.toggles:
+        return f"Nécessite l'engagement : {TOGGLES.get(state, state)}"
+    cond = effect_info.get("condition") or {}
+    dim = cond.get("dimension")
+    if dim == "weapon_type" and cond.get("label") != ctx.weapon_type:
+        return f"Seulement avec une arme : {cond.get('label')}"
+    if dim == "character" and cond.get("label") != character:
+        return f"Seulement pour {cond.get('label')}"
+    if dim and dim != "weapon_type" and dim != "character" and dim not in ctx.toggles:
+        return f"Nécessite l'engagement : {TOGGLES.get(dim, dim)}"
+    return "Inactif dans ce contexte"
+
+
+def _synergy(b):
+    """What to prioritise on weapons/items found in-run, derived from the build's
+    OWN amplification (reliable — straight from the aggregated relic state, not
+    from the disabled affix pool):
+      * the damage type(s) the build amplifies most -> hunt that affinity / +type%
+      * the status(es) the build applies -> hunt weapons with that buildup
+      * the stat the build boosts most -> hunt weapons that scale with it
+    """
+    out = []
+    mults = b.get("attack_multipliers") or {}
+    ranked = sorted(((t, m) for t, m in mults.items() if m > 1.03), key=lambda x: -x[1])
+    if ranked:
+        spread = ranked[0][1] - ranked[-1][1]
+        if spread < 0.02 and len(ranked) >= 4:
+            out.append({"kind": "all", "mult": round(ranked[0][1], 3)})
+        else:
+            out += [{"kind": "damage", "type": t, "mult": round(m, 3)} for t, m in ranked[:3]]
+    out += [{"kind": "status", "type": st} for st in (b.get("status") or {})]
+    stats = {f: v for f, v in (b.get("stat_bonuses") or {}).items() if v > 0}
+    if stats:
+        f, v = max(stats.items(), key=lambda x: x[1])
+        out.append({"kind": "stat", "type": f, "value": v})
+    return out
 
 TOGGLES = {
     "caster": "Je lance des sorts (sorcelleries / incantations)",
@@ -92,13 +158,17 @@ def _serialize(result, data, character, toggles, don):
     ctx = Context(character, result["weapon_type"], frozenset(toggles), max(don, 1))
     picks = []
     for (kind, color), relic in result["picks"]:
-        effects = [
-            {
+        effects = []
+        for e in relic["effects"]:
+            info = data["effects"].get(str(e["id"])) or {}
+            active = ctx.effect_active(info, e)
+            effects.append({
                 "text": e["text"],
-                "active": ctx.effect_active(data["effects"].get(str(e["id"])) or {}, e),
-            }
-            for e in relic["effects"]
-        ]
+                "active": active,
+                "icon": _effect_icon_url(data, e["id"]),
+                "reason": None if active else _inactive_reason(ctx, info, e, character),
+                "tradeoff": _is_tradeoff(e["text"]),
+            })
         picks.append(
             {
                 "kind": kind,
@@ -132,6 +202,7 @@ def _serialize(result, data, character, toggles, don):
         "stat_bonuses": b["stat_bonuses"],
         "status": b.get("status") or {},
         "affix_hunt": result.get("affix_hunt") or [],
+        "synergy": _synergy(b),
         "actions_hit": b.get("actions_hit") or {},
         "top_effects": [
             {"key": runner.pretty_name(k), "mult": m, "action": a}

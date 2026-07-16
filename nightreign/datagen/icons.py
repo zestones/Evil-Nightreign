@@ -27,8 +27,37 @@ from nightreign.resources import constants
 ATLAS_TPF = "/menu/01_common_h.tpf.dcx"
 ATLAS_SBL = "/menu/01_common_h.sblytbnd.dcx"
 SUBTEX = "MENU_ItemIcon_{:05d}.png"
+STATUS_SUBTEX = "MENU_StatusIcon_{}.png"  # per-effect category icon
 OUT_DIR = constants.PACKAGE / "ui" / "static" / "assets" / "icons"
-SIZE = 128  # output icon edge (px)
+EFF_DIR = constants.PACKAGE / "ui" / "static" / "assets" / "effect-icons"
+ELEM_DIR = constants.PACKAGE / "ui" / "static" / "assets" / "element-icons"
+SIZE = 128  # output item-icon edge (px)
+EFF_SIZE = 64  # output effect-icon edge (px)
+
+# the game's per-affinity damage icons (SB_PropertyIcon; phys uses the plain
+# attack sword from SB_StatusIcon). Confirmed by eye from the atlas.
+ELEMENT_SUBTEX = {
+    "phys": "MENU_StatusIcon_20206.png",
+    "mag": "MENU_PropertyIcon_40146.png",
+    "fire": "MENU_PropertyIcon_40148.png",
+    "thunder": "MENU_PropertyIcon_40150.png",
+    "dark": "MENU_PropertyIcon_40145.png",
+}
+
+
+def _effect_icon_map():
+    """{effect_id: statusIconId} for every relic effect that has a category icon
+    (AttachEffectParam.statusIconId)."""
+    attach = json.load(open(constants.DATA_RAW / "attach_effect.json"))
+    relics = json.load(open(constants.DATA_CURATED / "relics.json"))
+    out = {}
+    for r in relics:
+        for e in r["effects"]:
+            row = attach.get(str(e["id"]))
+            sid = row.get("statusIconId") if row else None
+            if isinstance(sid, int) and sid > 0:
+                out[str(e["id"])] = sid
+    return out
 
 
 def _decode(name, params):
@@ -101,3 +130,33 @@ def run():
           f"{total/1e6:.1f} MB -> {OUT_DIR}")
     print(f"  manifest -> data/curated/icons.json "
           f"({len(manifest['weapons'])} weapons, {len(manifest['relics'])} relics)")
+
+    # per-effect category icons (like the game's relic screen)
+    eff_map = _effect_icon_map()
+    EFF_DIR.mkdir(parents=True, exist_ok=True)
+    eff_saved = set()
+    for sid in sorted(set(eff_map.values())):
+        rect = rects.get(STATUS_SUBTEX.format(sid))
+        if not rect:
+            continue
+        pg, x, y, w, h = rect
+        icon = page(pg).crop((x, y, x + w, y + h)).resize((EFF_SIZE, EFF_SIZE), Image.Resampling.LANCZOS)
+        icon.save(EFF_DIR / f"{sid}.webp", "WEBP", quality=90, method=6)
+        eff_saved.add(sid)
+    eff_manifest = {eid: sid for eid, sid in eff_map.items() if sid in eff_saved}
+    json.dump(eff_manifest, open(constants.DATA_CURATED / "effect_icons.json", "w"))
+    print(f"  effect icons: {len(eff_saved)} WebP -> {EFF_DIR} "
+          f"({len(eff_manifest)} effects mapped -> data/curated/effect_icons.json)")
+
+    # per-affinity damage icons (fire/magic/lightning/holy + physical)
+    ELEM_DIR.mkdir(parents=True, exist_ok=True)
+    n_elem = 0
+    for elem, sub in ELEMENT_SUBTEX.items():
+        rect = rects.get(sub)
+        if not rect:
+            continue
+        pg, x, y, w, h = rect
+        icon = page(pg).crop((x, y, x + w, y + h)).resize((EFF_SIZE, EFF_SIZE), Image.Resampling.LANCZOS)
+        icon.save(ELEM_DIR / f"{elem}.webp", "WEBP", quality=90, method=6)
+        n_elem += 1
+    print(f"  element icons: {n_elem} WebP -> {ELEM_DIR}")

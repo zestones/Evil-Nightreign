@@ -11,8 +11,11 @@ data/raw/*
 # Regenerate locally with `nr data icons` (needs Pillow + a copy of the game).
 # icons.json is the paired manifest (built by the same step) — kept together.
 nightreign/ui/static/assets/icons/
+nightreign/ui/static/assets/effect-icons/
+nightreign/ui/static/assets/element-icons/
 nightreign/ui/static/assets/art/
 data/curated/icons.json
+data/curated/effect_icons.json
 
 
 # Web SPA (web/) — node deps + build output.

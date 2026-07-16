@@ -44,11 +44,30 @@ export const FR_STATUS: Record<string, string> = {
   frost: "Gel",
 };
 
+export const ELEMENT_HEX: Record<string, string> = {
+  phys: "#c3cede",
+  mag: "#5f93cf",
+  fire: "#cd6a5e",
+  thunder: "#d8b657",
+  dark: "#e8cf8a",
+};
+
 export const STATUS_COLOR: Record<string, string> = {
   bleed: "#cd6a5e",
   poison: "#5fa878",
   rot: "#d8b657",
   frost: "#5f93cf",
+};
+
+export const FR_STATS: Record<string, string> = {
+  statStrength: "Force",
+  statDexterity: "Dextérité",
+  statFaith: "Foi",
+  statArcane: "Arcane",
+  statVigor: "Vigueur",
+  statMind: "Esprit",
+  statIntelligence: "Intelligence",
+  statEndurance: "Endurance",
 };
 
 export const RELIC_HEX: Record<string, string> = {

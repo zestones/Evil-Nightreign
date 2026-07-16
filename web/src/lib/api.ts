@@ -18,6 +18,9 @@ export interface Meta {
 export interface Effect {
   text: string;
   active: boolean;
+  icon: string | null;
+  reason: string | null;
+  tradeoff: boolean;
 }
 export interface Pick {
   kind: "normal" | "deep";
@@ -60,10 +63,16 @@ export interface Build {
   stat_bonuses: Record<string, number>;
   status: Record<string, StatusInfo>;
   affix_hunt: { label: string; gain: number }[];
+  synergy: Synergy[];
   actions_hit: Record<string, number>;
   top_effects: EffectRow[];
   ignored_effects: EffectRow[];
 }
+export type Synergy =
+  | { kind: "damage"; type: string; mult: number }
+  | { kind: "all"; mult: number }
+  | { kind: "status"; type: string }
+  | { kind: "stat"; type: string; value: number };
 export type Mode = "auto" | "generic" | "fixed";
 export interface OptimizeResponse {
   mode: Mode;

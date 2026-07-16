@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ChevronLeft, Info } from "lucide-react";
+import { ChevronLeft, ChevronRight, Info } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { BuildCard } from "./BuildCard";
 import { Tip } from "./ui/Tooltip";
@@ -32,7 +32,7 @@ export function Verdict({
       : "S = amélioration vs l'arme nue du type. Effets barrés = inactifs dans ce contexte.";
 
   return (
-    <div className="relative flex h-screen flex-col overflow-hidden px-4 pb-4 pt-3 sm:px-6">
+    <div className="relative flex h-screen flex-col overflow-hidden px-14 pb-4 pt-3 sm:px-[72px]">
       {/* top bar */}
       <div className="flex flex-wrap items-center gap-3 pb-3">
         <button
@@ -51,32 +51,33 @@ export function Verdict({
         </span>
         <div className="mr-1">
           <div className="eyebrow text-silver/70">Le Verdict</div>
-          <div className="font-display text-[15px] leading-tight tracking-wide text-ink">
+          <div className="font-display text-[18px] leading-tight tracking-wide text-ink">
             {character}
-            <span className="ml-2 font-serif text-[12.5px] italic text-dim">
+            <span className="ml-2 font-serif text-[13px] italic text-silver/70">
               {b.targets.length > 1 ? "généraliste" : `vs ${b.targets[0]}`}
             </span>
           </div>
         </div>
 
-        {/* pager */}
-        <div className="ml-auto flex items-center gap-2">
+        {/* pager — switch between the top builds */}
+        <div className="ml-auto flex items-center gap-3">
+          <span className="hidden font-sans text-[11px] uppercase tracking-[0.16em] text-silver/70 md:block">Autres builds</span>
           {results.map((r, i) => (
             <button
               key={i}
               onClick={() => setActive(i)}
               className={cn(
-                "flex items-center gap-2 border px-3 py-1.5 font-sans text-[12px] tabular-nums transition",
+                "flex items-center gap-2 border px-4 py-2.5 transition",
                 i === active
-                  ? "border-gold/70 bg-gold/10 text-gold-bright shadow-[0_0_18px_-6px_rgba(201,162,74,0.6)]"
-                  : "border-line/60 bg-night-700/40 text-silver hover:border-line-bright"
+                  ? "border-gold/70 bg-gold/10 shadow-[0_0_20px_-6px_rgba(201,162,74,0.6)]"
+                  : "border-line/60 bg-night-700/40 hover:border-line-bright hover:bg-night-600/40"
               )}
             >
-              <span className={cn("font-display text-[12px] uppercase tracking-wider", i === 0 && "text-gold-bright")}>
+              <span className={cn("font-display text-[13px] uppercase tracking-wider", i === active ? "text-gold-bright" : "text-silver")}>
                 #{i + 1}
                 {i === 0 ? "·Prime" : ""}
               </span>
-              <span className="text-dim">S {r.score.toFixed(3)}</span>
+              <span className={cn("font-sans text-[12.5px] tabular-nums", i === active ? "text-ink" : "text-dim")}>S {r.score.toFixed(3)}</span>
             </button>
           ))}
           <Tip
@@ -98,14 +99,8 @@ export function Verdict({
         </div>
       </div>
 
-      {don === 0 && (
-        <div className="mb-2.5 border border-[#5a4a2a] bg-[#2a2210]/40 px-3 py-1.5 text-[12px] text-[#d8c79a]">
-          ⚠ Expédition normale (Deep of Night « Non ») — 3 reliques seulement. Choisis un niveau ≥ 1 pour un build à 6.
-        </div>
-      )}
-
       {/* the active build fills the rest, no page scroll */}
-      <div className="min-h-0 flex-1">
+      <div className="relative min-h-0 flex-1">
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
@@ -115,10 +110,36 @@ export function Verdict({
             exit={{ opacity: 0, x: -14 }}
             transition={{ duration: 0.28, ease: [0.2, 0.7, 0.3, 1] }}
           >
-            <BuildCard b={b} index={active} mode={mode} fill />
+            <BuildCard b={b} index={active} mode={mode} />
           </motion.div>
         </AnimatePresence>
       </div>
+
+      {/* carousel arrows — obvious build navigation */}
+      {results.length > 1 && (
+        <>
+          <ArrowBtn side="left" label="Build précédent" onClick={() => setActive((active - 1 + results.length) % results.length)} />
+          <ArrowBtn side="right" label="Build suivant" onClick={() => setActive((active + 1) % results.length)} />
+        </>
+      )}
     </div>
+  );
+}
+
+function ArrowBtn({ side, label, onClick }: { side: "left" | "right"; label: string; onClick: () => void }) {
+  const Icon = side === "left" ? ChevronLeft : ChevronRight;
+  return (
+    <button
+      onClick={onClick}
+      aria-label={label}
+      title={label}
+      className={cn(
+        "group absolute top-1/2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-line/60 bg-night-900/80 text-silver backdrop-blur-md transition",
+        "hover:border-gold/60 hover:text-gold-bright hover:shadow-[0_0_26px_-6px_rgba(201,162,74,0.6)]",
+        side === "left" ? "left-2" : "right-2"
+      )}
+    >
+      <Icon className={cn("h-6 w-6 transition", side === "left" ? "group-hover:-translate-x-0.5" : "group-hover:translate-x-0.5")} />
+    </button>
   );
 }
