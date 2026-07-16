@@ -249,8 +249,8 @@ function render(results, req, mode) {
     ? `<div class="mode-note"><b>Mode générique</b> : reliques à équiper pour <b>n'importe quelle
        arme</b> (les effets « épée uniquement » sont exclus). Ce qui compte ici, c'est la ligne
        <b>MULTIPLICATEURS</b> (le boost que ces reliques donnent à toute arme). Les
-       « dmg/coup » sont indicatifs, calculés sur une arme physique de référence — les vrais
-       dégâts dépendront de l'arme que tu trouveras.</div>`
+       « dmg/coup » et « dmg/s » marqués d'un <b>*</b> sont indicatifs, calculés sur une arme
+       physique de référence — les vrais dégâts dépendront de l'arme que tu trouveras.</div>`
     : `<div class="mode-note">S = amélioration par rapport à l'arme nue du type
        (« que rapportent les reliques »). Effets barrés = inactifs dans ce contexte.</div>`;
   const deepNote = +req.don === 0
@@ -292,10 +292,9 @@ function render(results, req, mode) {
       <div class="card-head">
         <span class="rank">#${i + 1}</span>
         <span class="score" title="amélioration vs l'arme nue du type">S = ${r.score.toFixed(3)}</span>
-        ${r.generic
-          ? `<span class="abs" title="boost des reliques sur toute arme (weapon-agnostic)">boost ×${r.offense_ratio.toFixed(2)}</span>`
-          : `<span class="abs" title="dégâts par coup vs la cible">≈ ${Math.round(r.absolute_offense)} dmg/coup</span>`
-            + (r.absolute_dps ? `<span class="abs" title="DPS = dégâts/coup × cadence de la classe">≈ ${Math.round(r.absolute_dps)} dmg/s</span>` : "")}
+        ${r.generic ? `<span class="abs" title="boost des reliques sur toute arme (weapon-agnostic)">boost ×${r.offense_ratio.toFixed(2)}</span>` : ""}
+        <span class="abs" title="${r.generic ? 'sur l\\'arme de référence ' + (r.ref_weapon||'') : 'dégâts par coup vs la cible'}">≈ ${Math.round(r.absolute_offense)} dmg/coup${r.generic ? '*' : ''}</span>
+        ${r.absolute_dps ? `<span class="abs" title="DPS = dégâts/coup × cadence de la classe${r.generic ? ' (arme de référence)' : ''}">≈ ${Math.round(r.absolute_dps)} dmg/s${r.generic ? '*' : ''}</span>` : ""}
         <div class="bars">
           <span>Offense</span><div class="bar"><i class="off" style="width:${Math.min(100, r.offense_ratio / 3 * 100)}%"></i></div><span>×${r.offense_ratio.toFixed(2)}</span>
           <span>Survie</span><div class="bar"><i class="srv" style="width:${Math.min(100, r.survival_ratio / 3 * 100)}%"></i></div><span>×${r.survival_ratio.toFixed(2)}</span>

@@ -118,7 +118,7 @@ def main(argv=None):
     p_opt.add_argument("--weight", type=float, default=0.5,
                        help="offense<->survival slider, 1.0 = pure offense (default 0.5)")
     p_opt.add_argument("--don", type=int, default=0,
-                       help="Deep of Night level 1-7 (0 = normal expedition, no deep slots)")
+                       help="Deep of Night level 1-5 (0 = normal expedition, no deep slots)")
     p_opt.add_argument("--toggle", action="append",
                        help="commit a playstyle toggle: caster, low_hp, situational, "
                             "status_build, starting_loadout, coop, triple_loadout "

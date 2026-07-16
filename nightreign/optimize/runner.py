@@ -254,14 +254,20 @@ def _optimize_generic(data, character, stats, targets, weight, don, don_scale,
     ranked, are weapon-independent). Output: relics + the affixes to hunt."""
     context = Context(character, None, frozenset(toggles), max(don, 1))
     pools = build_pools(data, context, include_deep)
-    # reference weapon: the strongest droppable physical weapon (pure phys AR
-    # so no affinity bias) at the character's stats
-    ref = max(weapon_candidates(data, max_level=max_weapon_level),
-              key=lambda c: sum(attack_rating.attack_rating(c[0], c[1], stats,
-                                                            data["ar_tables"]).values()))
+    # reference weapon = the character's STARTING weapon ("arme de base"): a real
+    # weapon you always have, so the absolute dmg/coup & dmg/s are concrete. The
+    # relic MULTIPLIERS (the weapon-agnostic quantity being ranked) don't depend
+    # on this choice; only the absolute numbers do.
+    sw = str(data["characters"][character].get("starting_weapon"))
+    w = data["weapons"].get(sw)
+    ref_name = (data["weapon_names"].get(int(sw), "arme de départ").split("] ", 1)[-1]
+                if w else "arme de départ")
+    ref = (sw, 0, ref_name, weapon_types.weapon_type(w) if w else None)
+    ref_cad = weapon_types.cadence(w) if w else 1.0
     scorer = scoring.Scorer(ref[0], stats, data["characters"][character]["defense"],
                             targets, weight, don_scale, data["ar_tables"], play=play,
-                            reinforce=ref[1])
+                            reinforce=ref[1], weapon_status=data["weapons"][ref[0]].get("status"),
+                            weapon_mv=mv_profile(data, ref[0]), cadence=ref_cad)
     results = []
     for vessel in vessels_owned(data, character):
         slots = [("normal", c) for c in vessel["normal_slots"]]
@@ -275,11 +281,16 @@ def _optimize_generic(data, character, stats, targets, weight, don, don_scale,
                 pruned[(kind, color)] = pruning.prune_pool(entries, s_c)
         score, picks = search.beam_search(slots, pruned, scorer.score, beam_k)
         build_parsed = [_parsed_of(pools, r) for _slot, r in picks]
+        breakdown = scorer.breakdown(build_parsed)
         results.append({
             "score": score, "character": character, "weapon_type": "toute arme",
             "weapon": "Générique — n'importe quelle arme", "weapon_id": ref[0],
             "weapon_alternatives": [], "vessel": vessel["name"], "picks": picks,
-            "breakdown": scorer.breakdown(build_parsed),
+            "breakdown": breakdown,
+            "absolute_offense": breakdown["offense"],
+            "cadence": ref_cad,
+            "absolute_dps": breakdown["offense"] * ref_cad,
+            "ref_weapon": ref[2],
             "targets": [t[0] for t in targets], "generic": True,
             "_scorer": scorer, "_parsed": build_parsed, "_context": context,
         })
@@ -432,10 +443,13 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
 def _finalize(results, data):
     """Attach the affix hunt list to the returned builds and drop transients."""
     for r in results:
-        scorer, parsed, ctx = r.pop("_scorer"), r.pop("_parsed"), r.pop("_context")
-        r["affix_hunt"] = [{"label": lbl, "gain": gain}
-                           for _aid, lbl, gain in affixes.rank(
-                               scorer, parsed, data["affixes"], ctx, affix_label, top=5)]
+        r.pop("_scorer", None); r.pop("_parsed", None); r.pop("_context", None)
+        # affix hunt DISABLED: the extracted affix pool (weapon_affixes.json)
+        # mixes innate weapon properties (e.g. Coded Sword's +31%) and upgrade
+        # effects with real rolls, and doesn't match what players see in game
+        # (verified 2026-07-16). Needs the correct player-visible affix source
+        # before it can advise reliably. Kept: optimize/affixes.py + the data.
+        r["affix_hunt"] = []
     return results
 
 

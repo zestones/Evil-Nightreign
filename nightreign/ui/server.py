@@ -53,7 +53,7 @@ def _meta(data):
         "weapon_types": sorted(set(weapon_types.WEPMOTION_TO_TYPE.values())),
         "toggles": TOGGLES,
         "actions": actions.ACTION_CLASSES,
-        "don_levels": sorted(int(k) for k in data["scaling"]["deep_of_night"]),
+        "don_levels": [k for k in sorted(int(k) for k in data["scaling"]["deep_of_night"]) if k <= 5],
         "relic_count": len(data["relics"]),
     }
 
@@ -95,6 +95,8 @@ def _serialize(result, data, character, toggles, don):
         "targets": result["targets"],
         "picks": picks,
         "offense_ratio": b["offense_ratio"], "generic": result.get("generic", False),
+        "ref_weapon": result.get("ref_weapon"),
+        "cadence": result.get("cadence"),
         "survival_ratio": b["survival_ratio"],
         "attack_multipliers": b["attack_multipliers"],
         "stat_bonuses": b["stat_bonuses"],
