@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-void text-ink font-serif antialiased;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: rgba(143, 182, 230, 0.25);
+  }
+  /* thin cold scrollbars */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #25324a transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: #1c2740;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: #2f405c;
+    background-clip: padding-box;
+  }
+}
+
+@layer components {
+  /* small-caps inscriptional label */
+  .eyebrow {
+    @apply font-display uppercase tracking-widest2 text-[11px] text-silver/80;
+  }
+  /* framed panel with faint inner border + corner ticks (see <Frame/>) */
+  .panel {
+    @apply relative border border-line/70 bg-night-800/70 backdrop-blur-md;
+    box-shadow:
+      0 24px 60px -30px rgba(0, 0, 0, 0.9),
+      inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+  .hairline {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(157, 175, 200, 0.35) 45%,
+      rgba(157, 175, 200, 0.5) 50%,
+      rgba(157, 175, 200, 0.35) 55%,
+      transparent
+    );
+  }
+  .goldline {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(201, 162, 74, 0.5) 50%,
+      transparent
+    );
+  }
+  .text-glow-cold {
+    text-shadow: 0 0 22px rgba(143, 182, 230, 0.35);
+  }
+  .text-glow-gold {
+    text-shadow: 0 0 22px rgba(201, 162, 74, 0.28);
+  }
+}

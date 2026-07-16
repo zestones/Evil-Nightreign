@@ -66,8 +66,14 @@ Implemented in `nightreign/optimize/` behind `nr optimize`:
 nr optimize <character> [boss] [--weapon-type T] [--weight W] [--don N]
             [--toggle dim]... [--play "melee=0.7,crit=0.3"] [--types N]
             [--level N] [--beam K] [--top N]
-nr ui                # the same engine behind a local web UI (stdlib http.server,
-                     # offline, French labels) — every option as a form control
+nr ui                # local web UI for the same engine (stdlib http.server,
+                     # offline, French). Serves a built SPA (web/ — Vite + React
+                     # + Tailwind + Three.js) styled after Nightreign's own menus:
+                     # cold navy/silver palette, a Nightfarer character-select
+                     # (full-body renders in a gothic arch), a WebGL ember
+                     # atmosphere, and every weapon & relic shown with its real
+                     # in-game icon. Build once: `npm --prefix web run build`.
+                     # Extract the visuals first: `nr data icons art`.
 ```
 
 ```
@@ -102,6 +108,7 @@ All under `data/curated/` (regenerate with `nr data`), all real in-game values:
 | `npcs.json`                          | 200 enemies for the generalist target                                                                              |
 | `vessels.json`                       | chalices: 3 normal + 3 deep colored slots + `owned` (save-derived; the unobtainable "Chalices" are `owned: false`) |
 | `mode_scaling.json`                  | Deep of Night ladder (x1.0 → x1.45)                                                                                |
+| `icons.json`                         | weapon_id → iconId and relic item_id → iconId (built by `nr data icons`; feeds the web UI's real game icons)        |
 | `nightreign/resources/conditions.py` | condition taxonomy → the user toggles                                                                              |
 
 ## EQUIP (certain) vs HUNT (found in-run)
@@ -130,6 +137,30 @@ BDT → `io/dcx.py` decompresses the DCX (Oodle Kraken, block-by-block, or ZSTD)
 animations` writes `data/raw/animation_durations.json` (10,755 attack-animation
 play lengths across 506 categories). This unlocks all packed content (motion
 values live here too, though those came from the params).
+
+**Menu icons** (`nr data icons` — `datagen/icons.py`, `io/tpf.py`, `io/atlas.py`):
+the item-icon atlas `/menu/01_common_h.tpf.dcx` holds 26 BC7 pages (4096²); the
+paired `01_common_h.sblytbnd.dcx` maps every `MENU_ItemIcon_{id}` to a rect on a
+page. Real archive paths are recovered by hashing the community Nightreign
+filelist (`inputs/nightreign_dictionary.txt`) against our BHD5 index; we decode
+only the pages we touch (Pillow, build-time only — `pip install .[assets]`), crop
+each weapon/relic icon and save a small WebP named by iconId. iconIds come from
+`EquipParamWeapon.iconId` (weapons) and `EquipParamAntique.iconId` (relics).
+Output: `nightreign/ui/static/assets/icons/*.webp` (gitignored, regenerable) +
+`data/curated/icons.json`. The runtime UI just serves the files — runtime stays
+stdlib; the offline web fonts (Cinzel, EB Garamond, OFL) are bundled under
+`ui/static/assets/fonts/`.
+
+**Character renders + illustrations** (`nr data art` — `datagen/art.py`, `io/bxf.py`):
+`/menu/00_solo_h.tpfbhd`+`.tpfbdt` is a split **BXF4** bundle (1200+ menu
+textures). It holds `MENU_Character_49{C}{G}0` — full-body Nightfarer renders on
+transparent backgrounds (C = index in `runner.HERO_ORDER`, G = garb) — and
+`MENU_ScenarioIllust_*` ink-on-parchment lore art. We read the BXF4 with
+`io/bxf.read_bxf4`, decode the base-garb render per character + every
+illustration, trim and downscale to WebP under
+`ui/static/assets/art/{heroes,illust}/` (gitignored). These drive the SPA's
+character-select. (No clean 2D Nightlord portrait exists — the bosses are
+rendered in 3D in-game.)
 
 ## Deferred (non-blocking, absolute-number only)
 

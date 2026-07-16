@@ -20,6 +20,10 @@ from nightreign.resources import constants
 # Ordered so dependencies come first (effects need params+relics; rosters need npc_params).
 DATA_STEPS = ["relics", "params", "effects", "weapons", "motion_values", "weapon_affixes",
               "characters", "nightlords", "npcs", "vessels", "scaling", "animations"]
+# opt-in steps, excluded from the default "nr data" run (need extra tooling):
+#   icons -> game item icons for the web UI (needs Pillow; writes gitignored assets)
+#   art   -> hero renders + scenario illustrations for the web UI (needs Pillow)
+EXTRA_STEPS = ["icons", "art"]
 
 
 def cmd_setup(args):
@@ -52,11 +56,11 @@ def cmd_setup(args):
 def cmd_data(args):
     from nightreign.datagen import (params, weapons, relics, nightlords, npcs,
                                     vessels, effects, scaling, characters,
-                                    weapon_affixes, motion_values, animations)
+                                    weapon_affixes, motion_values, animations, icons, art)
     runners = {"relics": relics.run, "params": params.run, "effects": effects.run,
                "weapons": weapons.run, "weapon_affixes": weapon_affixes.run,
                "motion_values": motion_values.run,
-               "animations": animations.run,
+               "animations": animations.run, "icons": icons.run, "art": art.run,
                "characters": characters.run, "nightlords": nightlords.run,
                "npcs": npcs.run, "vessels": vessels.run, "scaling": scaling.run}
     steps = [args.step] if args.step else DATA_STEPS
@@ -104,7 +108,8 @@ def main(argv=None):
     p_setup.set_defaults(func=cmd_setup)
 
     p_data = sub.add_parser("data", help="regenerate data/ (all or one step)")
-    p_data.add_argument("step", nargs="?", choices=DATA_STEPS, help="a single step (default: all)")
+    p_data.add_argument("step", nargs="?", choices=DATA_STEPS + EXTRA_STEPS,
+                        help="a single step (default: all standard steps; 'icons' is opt-in)")
     p_data.set_defaults(func=cmd_data)
 
     p_opt = sub.add_parser("optimize", help="find the best relic build")

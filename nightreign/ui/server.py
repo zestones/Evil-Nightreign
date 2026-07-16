@@ -24,6 +24,34 @@ from nightreign.resources import actions, weapon_types
 
 STATIC = Path(__file__).parent / "static"
 
+CONTENT_TYPES = {
+    ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8",
+    ".js": "application/javascript; charset=utf-8", ".json": "application/json",
+    ".woff2": "font/woff2", ".webp": "image/webp", ".png": "image/png",
+    ".svg": "image/svg+xml", ".webmanifest": "application/manifest+json",
+}
+
+
+BUILD_HINT = (
+    "<!doctype html><meta charset=utf-8>"
+    "<title>EvilNightreign — build the UI</title>"
+    "<body style='background:#05070c;color:#cbd6e6;font:16px/1.6 Georgia,serif;"
+    "display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center'>"
+    "<div><h1 style='color:#c9a24a;font-weight:600'>Interface non construite</h1>"
+    "<p>La SPA doit être compilée une fois :</p>"
+    "<pre style='color:#8fb6e6;background:#0d121d;padding:14px 18px;display:inline-block;text-align:left'>"
+    "npm --prefix web install\nnpm --prefix web run build</pre>"
+    "<p style='color:#6f7f99'>puis relance <code>nr ui</code>.</p></div></body>"
+).encode()
+
+
+def _icon_url(data, kind, key):
+    """`/assets/icons/<iconId>.webp` for a weapon_id / relic item_id, or None."""
+    if key is None:
+        return None
+    iid = (data.get("icons") or {}).get(kind, {}).get(str(key))
+    return f"/assets/icons/{iid}.webp" if iid else None
+
 TOGGLES = {
     "caster": "Je lance des sorts (sorcelleries / incantations)",
     "low_hp": "Je joue à PV bas",
@@ -80,6 +108,7 @@ def _serialize(result, data, character, toggles, don):
                 "unique": relic["type"] == "UniqueRelic",
                 "grid": relic.get("grid"),
                 "grid_by_color": relic.get("grid_by_color"),
+                "icon": _icon_url(data, "relics", relic.get("item_id")),
                 "effects": effects,
             }
         )
@@ -89,6 +118,7 @@ def _serialize(result, data, character, toggles, don):
         "absolute_offense": result.get("absolute_offense", b["offense"]),
         "absolute_dps": result.get("absolute_dps"),
         "weapon": result["weapon"],
+        "weapon_icon": _icon_url(data, "weapons", result.get("weapon_id")),
         "weapon_type": result["weapon_type"],
         "weapon_alternatives": result.get("weapon_alternatives") or [],
         "vessel": result["vessel"],
@@ -128,16 +158,28 @@ def make_handler(data):
             self.wfile.write(payload)
 
         def do_GET(self):
-            if self.path in ("/", "/index.html"):
-                self._send(
-                    200,
-                    (STATIC / "index.html").read_bytes(),
-                    "text/html; charset=utf-8",
-                )
-            elif self.path == "/api/meta":
-                self._send(200, _meta(data))
-            else:
-                self._send(404, {"error": "not found"})
+            path = self.path.split("?", 1)[0]
+            if path in ("/", "/index.html"):
+                # the SPA is built from web/ into static/app (npm run build)
+                spa = STATIC / "app" / "index.html"
+                if spa.exists():
+                    return self._serve_file(spa)
+                return self._send(200, BUILD_HINT, "text/html; charset=utf-8")
+            if path == "/api/meta":
+                return self._send(200, _meta(data))
+            return self._serve_static(path)
+
+        def _serve_file(self, target):
+            ctype = CONTENT_TYPES.get(target.suffix, "application/octet-stream")
+            self._send(200, target.read_bytes(), ctype)
+
+        def _serve_static(self, path):
+            """Serve a file under static/ (css, js, fonts, icons); no traversal."""
+            target = (STATIC / path.lstrip("/")).resolve()
+            root = STATIC.resolve()
+            if root in target.parents and target.is_file():
+                return self._serve_file(target)
+            self._send(404, {"error": "not found"})
 
         def do_POST(self):
             if self.path != "/api/optimize":

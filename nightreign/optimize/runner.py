@@ -36,7 +36,10 @@ def load_data():
     names = {e["ID"]: e["Entries"][0]
              for e in json.load(open(constants.NAMES / "EquipParamWeapon.json"))["Entries"]
              if e.get("Entries") and e["Entries"][0]}
+    icons_path = constants.DATA_CURATED / "icons.json"
+    icons = json.load(open(icons_path)) if icons_path.exists() else {"weapons": {}, "relics": {}}
     return {
+        "icons": icons,
         "relics": curated("relics.json"), "effects": curated("effects.json"),
         "vessels": curated("vessels.json"), "characters": curated("characters.json"),
         "nightlords": curated("nightlords.json"), "scaling": curated("mode_scaling.json"),

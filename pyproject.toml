@@ -7,7 +7,11 @@ name = "nightreign"
 version = "0.1.0"
 description = "Elden Ring Nightreign relic build optimizer (save + game-data driven)"
 requires-python = ">=3.10"
-dependencies = []  # pure stdlib (uses system openssl + libzstd via ctypes)
+dependencies = []  # pure stdlib runtime (uses system openssl + libzstd via ctypes)
+
+[project.optional-dependencies]
+# build-time only: `nr data icons` decodes BC7 game textures into web-UI assets.
+assets = ["pillow>=10"]
 
 [project.scripts]
 nr = "nightreign.cli:main"
@@ -18,5 +22,10 @@ dev = ["pytest>=8"]
 [tool.setuptools]
 packages = ["nightreign"]
 
+# The web UI (web/) is a Vite SPA built into ui/static/app (gitignored); the
+# offline fonts are bundled. Icons/art are extracted locally (nr data icons|art).
 [tool.setuptools.package-data]
-nightreign = ["io/defs/*.xml", "resources/names/*.json", "ui/static/*.html", "io/oodle/*"]
+nightreign = [
+    "io/defs/*.xml", "resources/names/*.json", "io/oodle/*",
+    "ui/static/assets/fonts/*.woff2", "ui/static/assets/fonts/*.css",
+]

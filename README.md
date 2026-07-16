@@ -14,13 +14,26 @@ The project uses [`uv`](https://docs.astral.sh/uv/) — it creates the venv and 
 
 ```bash
 uv run nr setup                     # copy regulation.bin (+ save) into inputs/
-uv run nr data                      # (re)generate data/ (relics, params, weapons, rosters) — ~6s
+uv run nr data                      # (re)generate data/ (relics, params, weapons, rosters)
+uv run nr ui                        # local web UI — Nightreign-themed
+uv run nr optimize Wylder caligo    # CLI: best relics for this build
 uv run nr demo pipeline             # demo: Duchess + weapon + relics -> damage vs the Nightlords
-uv run nr optimize duchess caligo   # (coming) best relics for this build
 uv run pytest                       # validation (AR vs real in-game readings)
 ```
 
 Regenerate a single step: `uv run nr data {relics|params|weapons|nightlords|npcs|vessels}`.
+
+**The web UI** — a Nightreign-styled SPA (Vite + React + Tailwind + Three.js) with a Nightfarer character-select and every weapon/relic shown with its real in-game icon. It needs the extracted visuals (Pillow + your copy of the game) and one build:
+
+```bash
+uv pip install -e '.[assets]'                 # Pillow (build-time only)
+uv run nr data icons                          # weapon & relic icons  (BC7 atlas -> WebP)
+uv run nr data art                            # Nightfarer face icons + full renders + illustrations
+npm --prefix web install && npm --prefix web run build   # build the SPA
+uv run nr ui                                  # serve it, offline
+```
+
+All extracted visuals (`nightreign/ui/static/assets/{icons,art}`) and the built SPA (`nightreign/ui/static/app`) are gitignored — nothing game-owned is committed. Without the extraction step the UI still runs; missing icons/portraits fall back to sigils.
 
 > [!NOTE]
 > You bring your own game files. `nr setup` auto-detects `regulation.bin` from common Steam locations — or pass yours: `nr setup "/path/to/ELDEN RING NIGHTREIGN/Game"`. Then drop your `NR0000.sl2` save into `inputs/`. Nothing is redistributed here.

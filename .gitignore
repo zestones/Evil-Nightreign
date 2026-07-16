@@ -7,6 +7,20 @@ inputs/*
 data/raw/*
 !data/raw/.gitkeep
 
+# Extracted game item icons for the web UI — copyright + large.
+# Regenerate locally with `nr data icons` (needs Pillow + a copy of the game).
+# icons.json is the paired manifest (built by the same step) — kept together.
+nightreign/ui/static/assets/icons/
+nightreign/ui/static/assets/art/
+data/curated/icons.json
+
+
+# Web SPA (web/) — node deps + build output.
+# Build once with: npm --prefix web install && npm --prefix web run build
+web/node_modules/
+web/dist/
+nightreign/ui/static/app/
+
 # Python
 __pycache__/
 *.pyc
