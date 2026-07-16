@@ -280,7 +280,7 @@ def _optimize_generic(data, character, stats, targets, weight, don, don_scale,
             "weapon": "Générique — n'importe quelle arme", "weapon_id": ref[0],
             "weapon_alternatives": [], "vessel": vessel["name"], "picks": picks,
             "breakdown": scorer.breakdown(build_parsed),
-            "targets": [t[0] for t in targets],
+            "targets": [t[0] for t in targets], "generic": True,
             "_scorer": scorer, "_parsed": build_parsed, "_context": context,
         })
     # keep the best distinct relic set

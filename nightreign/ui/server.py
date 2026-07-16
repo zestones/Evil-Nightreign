@@ -94,7 +94,7 @@ def _serialize(result, data, character, toggles, don):
         "vessel": result["vessel"],
         "targets": result["targets"],
         "picks": picks,
-        "offense_ratio": b["offense_ratio"],
+        "offense_ratio": b["offense_ratio"], "generic": result.get("generic", False),
         "survival_ratio": b["survival_ratio"],
         "attack_multipliers": b["attack_multipliers"],
         "stat_bonuses": b["stat_bonuses"],
@@ -168,7 +168,8 @@ def make_handler(data):
                 self._send(
                     200,
                     {
-                        "mode": "fixed" if req.get("weapon_type") else "auto",
+                        "mode": ("generic" if req.get("weapon_type") == "__generic__"
+                             else "fixed" if req.get("weapon_type") else "auto"),
                         "results": [
                             _serialize(
                                 r,
