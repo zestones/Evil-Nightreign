@@ -29,6 +29,7 @@ import math
 from nightreign.engine import attack_rating, damage
 from nightreign.optimize import aggregation
 from nightreign.resources import actions, statuses
+from nightreign.resources import constants as constants_module
 
 # nightlords.json INCOMING max_damage keys -> engine damage types. These are
 # ALREADY engine-typed (phys/mag/fire/thunder/dark — datagen/nightlords.py
@@ -56,7 +57,8 @@ class Scorer:
     def __init__(self, weapon_id, hero_stats, char_defense, targets,
                  weight=0.5, don_attack_scale=1.0, ar_tables=None, play=None,
                  reinforce=3, off_baseline=None, weapon_status=None,
-                 weapon_mv=None, cadence=1.0):
+                 weapon_mv=None, cadence=1.0, sources=None, fp_pool=None,
+                 phys_subtype=None, weapon_flat=None, weak_point=False):
         """targets: list of (name, npc_row, attacks_max_damage_dict).
         play: normalized {action: weight} — default pure-melee benchmark.
         off_baseline: offense normalizer shared by every weapon of a type (the
@@ -65,12 +67,21 @@ class Scorer:
         weapons on inflated ratios. None = this weapon's own bare damage.
         reinforce: weapon upgrade level, clamped per weapon (Nightreign caps
         at +3) — +0 sits in the harshest zone of the defense curve and
-        distorts weapon rankings, so the endgame level is the default."""
+        distorts weapon rankings, so the endgame level is the default.
+        sources: {action: engine.sources.DamageSource} — actions with their
+        OWN attack-power base (spells, character skill/ult, arts). Empty/None
+        keeps every action on the weapon-AR path, bit-identical to before.
+        fp_pool: max FP available; with FP-costed sources it pre-clamps the
+        play profile to what the pool sustains (clamp_play_for_fp). None =
+        constraint inert (the Mind->FP curve is not yet anchored)."""
         self.weapon_id = str(weapon_id)
         self.reinforce = reinforce
         self.weapon_status = weapon_status or {}
         self.weapon_mv = weapon_mv or {}
         self.cadence = cadence
+        self.phys_subtype = phys_subtype
+        self.weapon_flat = weapon_flat or {}
+        self.weak_point = weak_point
         self.base_stats = dict(hero_stats)
         self.negation = {NEGATION_TYPE_TO_ENGINE[k]: v
                          for k, v in (char_defense.get("negation") or {}).items()
@@ -78,31 +89,72 @@ class Scorer:
         self.targets = targets
         self.weight = weight
         self.play = play or {"melee": 1.0}
+        self.sources = sources or {}
         self.don_attack_scale = don_attack_scale
         self.tables = ar_tables or attack_rating.load_tables()
         self._ar_cache = {}
+        self._source_cache = {}
+        self._fp_clamp_info = {}
+        self._fp_pool = fp_pool
+        if self.sources and fp_pool is not None:
+            # FP clamp against the REAL fight length: requested-profile bare
+            # offense -> actions to kill the targets -> sustainable cast share
+            agg0 = aggregation.aggregate([])
+            off_req = offense(self._ar(agg0), agg0, self.play, self.targets,
+                              self.weapon_status, self.weapon_mv, self.cadence,
+                              source_power=self._source_power(agg0),
+                              phys_subtype=self.phys_subtype, weapon_flat=self.weapon_flat, weak_point=self.weak_point)
+            nominal = estimate_fight_actions(off_req, self.targets)
+            self.play, self._fp_clamp_info = clamp_play_for_fp(
+                self.play, self.sources, fp_pool, nominal)
+        # profile-blended tempo: DoT uptime math must run at the declared
+        # mix's pace, not the raw weapon-class cadence (matrix finding #5)
+        self.cadence = effective_cadence(self.cadence, self.play, self.sources)
         self._baseline = None
         off0, surv0 = self._axes(aggregation.aggregate([]))
         self._baseline = (off_baseline or off0, surv0)
 
-    # ---- axes ----
+    # ---- stat feedback (memoized on the relic stat-bonus key) ----
+    def _stat_bonus_key(self, agg):
+        return tuple(sorted((f, agg.get(("stat", f), 0.0))
+                            for f in aggregation.STAT_ADD_FIELDS.values()))
+
+    def _effective_stats(self, bonuses):
+        stats = dict(self.base_stats)
+        for field, add in bonuses:
+            stats[field] = stats.get(field, 0) + add
+        return stats
+
     def _ar(self, agg):
         """Weapon AR with relic stat bonuses folded in (memoized)."""
-        bonuses = tuple(sorted((f, agg.get(("stat", f), 0.0))
-                               for f in aggregation.STAT_ADD_FIELDS.values()))
+        bonuses = self._stat_bonus_key(agg)
         cached = self._ar_cache.get(bonuses)
         if cached is None:
-            stats = dict(self.base_stats)
-            for field, add in bonuses:
-                stats[field] = stats.get(field, 0) + add
-            cached = attack_rating.attack_rating(self.weapon_id, self.reinforce, stats, self.tables)
+            cached = attack_rating.attack_rating(
+                self.weapon_id, self.reinforce, self._effective_stats(bonuses), self.tables)
             self._ar_cache[bonuses] = cached
+        return cached
+
+    def _source_power(self, agg):
+        """{action: {dtype: power}} for sourced actions, stat-fed like _ar —
+        a +Int relic updates weapon AR AND spell/skill bases in one pass
+        (the §6.5 fixed point, second instance). {} when no sources."""
+        if not self.sources:
+            return {}
+        bonuses = self._stat_bonus_key(agg)
+        cached = self._source_cache.get(bonuses)
+        if cached is None:
+            stats_eff = self._effective_stats(bonuses)
+            cached = {a: s.compute(stats_eff) for a, s in self.sources.items()}
+            self._source_cache[bonuses] = cached
         return cached
 
     def _axes(self, agg):
         """(offense, survival) raw values for an aggregated state."""
         off_total = offense(self._ar(agg), agg, self.play, self.targets,
-                            self.weapon_status, self.weapon_mv, self.cadence)
+                            self.weapon_status, self.weapon_mv, self.cadence,
+                            source_power=self._source_power(agg),
+                            phys_subtype=self.phys_subtype, weapon_flat=self.weapon_flat, weak_point=self.weak_point)
         surv_total = 0.0
         vigor = self.base_stats.get("statVigor", 0) + agg.get(("stat", "statVigor"), 0.0)
         hp_proxy = vigor * math.exp(agg.get(("hp",), 0.0))
@@ -117,9 +169,16 @@ class Scorer:
         the whole fight (the threshold escalates after each — ResistCorrectParam)."""
         agg = aggregation.aggregate(parsed_relics)
         ar = self._ar(agg)
+        # same weapon-hit share as offense(): sourced actions don't carry the
+        # weapon's innate buildup — keeps the DISPLAYED proc estimates in
+        # agreement with what is actually scored (matrix audit finding #1)
+        sp = self._source_power(agg)
+        hitting_share = sum(p for a, p in self.play.items()
+                            if a not in sp and self._attack_for_action(agg, ar, a))
         out = {}
         for status in statuses.PROC:
-            buildup = self.weapon_status.get(status, 0) + agg.get(("stbuild", status), 0.0)
+            buildup = (self.weapon_status.get(status, 0) * hitting_share
+                       + agg.get(("stbuild", status), 0.0))
             if not buildup:
                 continue
             procvals, firsts, fprocs = [], [], []
@@ -130,7 +189,9 @@ class Scorer:
                 procvals.append(statuses.proc_damage(status, max_hp))
                 firsts.append(resist / buildup)
                 direct = sum(p * damage.damage_vs_enemy(
-                    self._attack_for_action(agg, ar, a), npc)[0] for a, p in self.play.items())
+                    self._attack_for_action(agg, ar, a), npc,
+                    phys_subtype=self.phys_subtype if a not in sp else None)[0]
+                    for a, p in self.play.items())
                 fh = min(300.0, max(8.0, max_hp / direct)) if direct else 30.0
                 thr = (escal or {}).get(status)
                 fprocs.append(statuses._proc_count(fh * buildup, thr) if thr else fh * buildup / resist)
@@ -143,10 +204,18 @@ class Scorer:
 
     def _attack_for_action(self, agg, ar, action):
         classes = actions.classes_applying_to(action)
-        mv = self.weapon_mv.get(action, 1.0)
-        return {t: ar.get(t, 0.0) * mv
-                   * math.exp(sum(agg.get(("atk", t, c), 0.0) for c in classes))
-                for t in AR_TYPES if ar.get(t, 0.0) > 0}
+        base = self._source_power(agg).get(action)
+        if base is None:
+            if action.startswith(("sorcery_", "incant_")) \
+                    or action in actions.NON_WEAPON_ACTIONS:
+                base = {}   # no resolved source -> the action deals nothing
+            else:
+                mv = self.weapon_mv.get(action, 1.0)
+                flat = self.weapon_flat.get(action) or {}
+                base = {t: ar.get(t, 0.0) * mv + flat.get(t, 0.0)
+                        for t in AR_TYPES if ar.get(t, 0.0) > 0 or flat.get(t, 0.0) > 0}
+        return {t: p * math.exp(sum(agg.get(("atk", t, c), 0.0) for c in classes))
+                for t, p in base.items() if p > 0}
 
     def _biggest_hit(self, agg, max_damage):
         """Largest incoming hit after negation, relic cuts and DoN scaling."""
@@ -195,12 +264,95 @@ class Scorer:
             "ignored_effects": ignored[:3],
             "status": self.status_report(parsed_relics),
             "actions_hit": {a: offense(ar, agg, {a: 1.0}, self.targets,
-                                       self.weapon_status, self.weapon_mv, self.cadence)
+                                       self.weapon_status, self.weapon_mv, self.cadence,
+                                       source_power=self._source_power(agg),
+                                       phys_subtype=self.phys_subtype, weapon_flat=self.weapon_flat, weak_point=self.weak_point)
                             for a in self.play},
+            "sources": {a: {"label": s.label, "fp_cost": s.fp_cost,
+                            "confidence": s.meta.get("confidence"),
+                            "guaranteed": s.meta.get("guaranteed", True),
+                            "spell_factor_calibrated": constants_module.SPELL_FACTOR_CALIBRATED}
+                        for a, s in self.sources.items()},
+            "fp": self._fp_clamp_info,
+            "fp_pool": self._fp_pool,
+            "play": dict(self.play),   # EFFECTIVE profile (post FP clamp)
         }
 
 
-def offense(ar, agg, play, targets, weapon_status=None, weapon_mv=None, cadence=1.0):
+# Fallback fight length for the FP sustain pre-clamp when no target-derived
+# estimate is available. Kept for API stability; every engine call site now
+# derives the REAL fight length from the targets (estimate_fight_actions) —
+# a fixed 150 was melee-calibrated and over-clamped casters ~5× (a Nightlord
+# fight is ~10-20 actions at real damage), crushing expensive spells and
+# handing weapon rankings to cheap-spell or raw-AR candidates (user-caught
+# 2026-07-17).
+NOMINAL_FIGHT_HITS = 150.0
+
+
+def estimate_fight_actions(per_action_offense, targets):
+    """Mean fight length in ACTIONS across the targets, from real HP pools —
+    the same [8, 300] band offense() uses per target. per_action_offense: the
+    profile's average damage per action (bare relics, requested profile);
+    if the requested profile is FP-unsustainable this is optimistic, making
+    the estimate short and the clamp LENIENT — the conservative direction
+    (never over-clamps a sustainable profile)."""
+    if not per_action_offense or per_action_offense <= 0:
+        return NOMINAL_FIGHT_HITS
+    lengths = [min(300.0, max(8.0, (t[3] or 0) / per_action_offense))
+               for t in targets if t[3]]
+    return sum(lengths) / len(lengths) if lengths else NOMINAL_FIGHT_HITS
+
+
+def effective_cadence(weapon_cadence, play, sources):
+    """Play-weighted uses/second for the cross-type DPS ranking.
+
+    Weapon-family actions keep the class cadence; sourced actions use their
+    own rate_hz. Unknown rates (None — e.g. ultimate arts, uncalibrated cast
+    times) are EXCLUDED and the mixture renormalizes over what is known —
+    conservative, never a silent invented rate. Reduces to weapon_cadence
+    exactly when sources is empty (the melee default)."""
+    if not sources:
+        return weapon_cadence
+    weapon_weight = sum(p for a, p in play.items() if a not in sources)
+    known = [(weapon_weight, weapon_cadence)] if weapon_weight > 0 else []
+    known += [(play[a], s.rate_hz) for a, s in sources.items()
+              if a in play and s.rate_hz]
+    total_p = sum(p for p, _r in known)
+    if not total_p:
+        return weapon_cadence
+    return sum(p * r for p, r in known) / total_p
+
+
+def clamp_play_for_fp(play, sources, fp_pool, nominal_fight_hits=NOMINAL_FIGHT_HITS):
+    """Cap each FP-costed action's declared weight at what fp_pool sustains
+    over a nominal fight (NO passive FP regen in Nightreign — verified).
+    Freed weight falls back onto MELEE (added if absent): an FP-dry caster
+    swings the weapon — that is the real gameplay, not idle time. Returns
+    (clamped_play, info) with info[action] = {requested, sustainable}
+    ({} = nothing capped). Runs ONCE at Scorer construction — never inside
+    the beam loop."""
+    info = {}
+    capped = dict(play)
+    freed = 0.0
+    for action, p in play.items():
+        src = sources.get(action)
+        cost = src.fp_cost if src else 0.0
+        if not cost:
+            continue
+        max_casts = fp_pool / cost
+        wanted_casts = p * nominal_fight_hits
+        if wanted_casts > max_casts:
+            p_max = max_casts / nominal_fight_hits
+            info[action] = {"requested": round(p, 4), "sustainable": round(p_max, 4)}
+            freed += p - p_max
+            capped[action] = p_max
+    if freed and info:
+        capped["melee"] = capped.get("melee", 0.0) + freed
+    return capped, info
+
+
+def offense(ar, agg, play, targets, weapon_status=None, weapon_mv=None, cadence=1.0,
+            source_power=None, phys_subtype=None, weapon_flat=None, weak_point=False):
     """Play-profile-weighted average damage of a weapon AR under an Agg state.
 
     Shared by the Scorer and the weapon re-pick of the coordinate ascent: the
@@ -208,34 +360,67 @@ def offense(ar, agg, play, targets, weapon_status=None, weapon_mv=None, cadence=
     Adds the expected STATUS damage per hit: (weapon buildup + relic on-hit
     buildup) / target resistance x proc damage (statuses.py, game-calibrated).
     Targets: (name, npc_row, max_damage, max_hp, status_resistance).
+
+    source_power: optional {action: {dtype: power}} — resolved, stat-fed
+    attack power for actions with their OWN base (spells, character skills,
+    arts). An action absent from it keeps the weapon-AR × motion-value
+    formula verbatim, so every existing call site (which passes nothing)
+    remains bit-identical.
     """
     attacks = {}
     weapon_mv = weapon_mv or {}
+    source_power = source_power or {}
     for action in play:
         classes = actions.classes_applying_to(action)
-        mv = weapon_mv.get(action, 1.0)   # motion value of this action's hits
+        base = source_power.get(action)
+        if base is None:
+            if action.startswith(("sorcery_", "incant_")) \
+                    or action in actions.NON_WEAPON_ACTIONS:
+                # no resolved source -> deals NOTHING. A cast needs a catalyst
+                # carrying the spell; a pot/knife/perfume/roar is not a weapon
+                # swing (matrix audit finding #3) — weapon-AR fallback here
+                # scored a Ballista as a "caster" and a pot as a melee hit.
+                base = {}
+            else:
+                mv = weapon_mv.get(action, 1.0)   # motion value of this action's hits
+                flat = (weapon_flat or {}).get(action) or {}
+                base = {t: ar.get(t, 0.0) * mv + flat.get(t, 0.0)
+                        for t in AR_TYPES if ar.get(t, 0.0) > 0 or flat.get(t, 0.0) > 0}
         attacks[action] = {
-            t: ar.get(t, 0.0) * mv
-               * math.exp(sum(agg.get(("atk", t, c), 0.0) for c in classes))
-            for t in AR_TYPES if ar.get(t, 0.0) > 0}
+            t: p * math.exp(sum(agg.get(("atk", t, c), 0.0) for c in classes))
+            for t, p in base.items() if p > 0}
     weapon_status = weapon_status or {}
+    # status buildup rides on WEAPON HITS: only the play share whose action
+    # both lands damage AND swings the equipped weapon applies it. Sourced
+    # actions (spells, character skill/ult) deal their own damage but do NOT
+    # carry the weapon's innate buildup (matrix audit finding #1 — an 80/20
+    # melee/skill profile applies katana bleed at x0.8, not x1.0).
+    hitting_share = sum(p for a, p in play.items()
+                        if attacks.get(a) and a not in source_power)
     total = 0.0
     for tgt in targets:
         npc, max_hp, resists, escal = tgt[1], tgt[3], tgt[4] or {}, (tgt[5] if len(tgt) > 5 else {}) or {}
-        direct = sum(p * damage.damage_vs_enemy(attacks[a], npc)[0]
+        # the weapon's physical sub-type (slash/blow/thrust) applies to its
+        # OWN swings only — sourced actions (spells/skills) hit neutral
+        direct = sum(p * damage.damage_vs_enemy(
+                        attacks[a], npc,
+                        phys_subtype=phys_subtype if a not in source_power else None,
+                        weak_point=weak_point)[0]
                      for a, p in play.items())
         # fight length: hits to deplete HP at the direct rate (status is
         # front-loaded, so amortizing over the whole fight is what matters)
         fight_hits = min(300.0, max(8.0, max_hp / direct)) if (max_hp and direct) else None
         t_total = direct
         for status in statuses.PROC:
-            buildup = weapon_status.get(status, 0) + agg.get(("stbuild", status), 0.0)
-            if buildup and max_hp:
+            buildup = (weapon_status.get(status, 0) * hitting_share
+                       + agg.get(("stbuild", status), 0.0))
+            if buildup and max_hp and direct:
                 t_total += statuses.expected_per_hit(
                     buildup, resists.get(status, 0), status, max_hp,
                     escal.get(status), fight_hits, cadence)
         # frost also debuffs the target: damage taken x1.15 while procced
-        frost = weapon_status.get("frost", 0) + agg.get(("stbuild", "frost"), 0.0)
+        frost = (weapon_status.get("frost", 0) * hitting_share
+                 + agg.get(("stbuild", "frost"), 0.0))
         if frost and 0 < resists.get("frost", 0) < 999:
             t_total *= statuses.FROST_DEBUFF
         total += t_total
