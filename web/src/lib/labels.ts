@@ -1,47 +1,49 @@
 export const FR_ACTIONS: Record<string, string> = {
-  melee: "Mêlée",
-  initial: "Première attaque",
-  skill: "Art d'arme",
-  crit: "Coups critiques",
-  guard_counter: "Guard counter",
-  throwing_knife: "Couteaux de lancer",
-  throwing_pot: "Pots de lancer",
-  glintstone_stones: "Pierres (glintstone/gravité)",
-  perfume: "Arts de parfum",
-  roar_breath: "Rugissements & souffles",
-  chain_finisher: "Finisher de chaîne",
-  stance_break: "Déséquilibre",
-  sorcery_any: "Sorcelleries (toutes)",
-  incant_any: "Incantations (toutes)",
-  sorcery_carian: "Sorcellerie carienne",
-  sorcery_glintblade: "Sorcellerie lame-scintillante",
-  sorcery_stonedigger: "Sorcellerie fouilleuse",
-  sorcery_crystalian: "Sorcellerie cristalline",
-  sorcery_thorn: "Sorcellerie épineuse",
-  sorcery_gravity: "Sorcellerie gravitationnelle",
-  sorcery_invisibility: "Sorcellerie d'invisibilité",
-  incant_godslayer: "Incant. tueuse de dieux",
-  incant_giants_flame: "Incant. flamme des géants",
-  incant_dragon_cult: "Incant. culte draconique",
-  incant_bestial: "Incant. bestiale",
-  incant_fundamentalist: "Incant. fondamentaliste",
-  incant_dragon_communion: "Incant. communion draconique",
-  incant_frenzied_flame: "Incant. flamme frénétique",
+  melee: "Melee",
+  char_skill: "Character Skill",
+  ultimate_art: "Ultimate Art",
+  initial: "First Hit",
+  skill: "Weapon Skill",
+  crit: "Critical Hits",
+  guard_counter: "Guard Counter",
+  throwing_knife: "Throwing Knives",
+  throwing_pot: "Throwing Pots",
+  glintstone_stones: "Glintstone / Gravity Stones",
+  perfume: "Perfume Arts",
+  roar_breath: "Roars & Breaths",
+  chain_finisher: "Chain Finisher",
+  stance_break: "Stance Break",
+  sorcery_any: "Sorceries (all)",
+  incant_any: "Incantations (all)",
+  sorcery_carian: "Carian Sorcery",
+  sorcery_glintblade: "Glintblade Sorcery",
+  sorcery_stonedigger: "Stonedigger Sorcery",
+  sorcery_crystalian: "Crystalian Sorcery",
+  sorcery_thorn: "Thorn Sorcery",
+  sorcery_gravity: "Gravity Sorcery",
+  sorcery_invisibility: "Invisibility Sorcery",
+  incant_godslayer: "Godslayer Incant.",
+  incant_giants_flame: "Giants' Flame Incant.",
+  incant_dragon_cult: "Dragon Cult Incant.",
+  incant_bestial: "Bestial Incant.",
+  incant_fundamentalist: "Fundamentalist Incant.",
+  incant_dragon_communion: "Dragon Communion Incant.",
+  incant_frenzied_flame: "Frenzied Flame Incant.",
 };
 
 export const FR_TYPES: Record<string, string> = {
-  phys: "Physique",
-  mag: "Magie",
-  fire: "Feu",
-  thunder: "Foudre",
-  dark: "Sacré",
+  phys: "Physical",
+  mag: "Magic",
+  fire: "Fire",
+  thunder: "Lightning",
+  dark: "Holy",
 };
 
 export const FR_STATUS: Record<string, string> = {
-  bleed: "Saignement",
+  bleed: "Bleed",
   poison: "Poison",
-  rot: "Écarlate",
-  frost: "Gel",
+  rot: "Rot",
+  frost: "Frost",
 };
 
 export const ELEMENT_HEX: Record<string, string> = {
@@ -60,12 +62,12 @@ export const STATUS_COLOR: Record<string, string> = {
 };
 
 export const FR_STATS: Record<string, string> = {
-  statStrength: "Force",
-  statDexterity: "Dextérité",
-  statFaith: "Foi",
+  statStrength: "Strength",
+  statDexterity: "Dexterity",
+  statFaith: "Faith",
   statArcane: "Arcane",
-  statVigor: "Vigueur",
-  statMind: "Esprit",
+  statVigor: "Vigor",
+  statMind: "Mind",
   statIntelligence: "Intelligence",
   statEndurance: "Endurance",
 };
@@ -84,70 +86,71 @@ export interface Lore {
   line: string;
 }
 
-// Evocative French flavour for the roster (kept lore-accurate but light).
+// Evocative flavour for the roster (lore-accurate but light).
 export const CHARACTER_LORE: Record<string, Lore> = {
   Wylder: {
-    title: "Le Rôdeur",
-    role: "Équilibré · Épées",
-    line: "Un traqueur aguerri, grappin au poing. Trompe la mort une fois — puis frappe fort.",
+    title: "The Wylder",
+    role: "Balanced · Swords",
+    line: "A seasoned tracker, grapple in hand. Cheats death once — then hits hard.",
   },
   Guardian: {
-    title: "Le Gardien",
-    role: "Tank · Hallebardes",
-    line: "Guerrier ailé qui abrite ses alliés sous la tempête et brise les assauts.",
+    title: "The Guardian",
+    role: "Tank · Halberds",
+    line: "A winged warrior who shelters allies from the storm and breaks every assault.",
   },
   Ironeye: {
-    title: "Œil-de-Fer",
-    role: "Distance · Arcs",
-    line: "Archer implacable : il révèle les failles de l'ennemi et ne rate jamais.",
+    title: "Ironeye",
+    role: "Ranged · Bows",
+    line: "A relentless archer: he exposes the enemy's weakness and never misses.",
   },
   Duchess: {
-    title: "La Duchesse",
-    role: "Vélocité · Dagues",
-    line: "Lame véloce et voilée. Elle rejoue les blessures infligées et s'efface dans l'ombre.",
+    title: "The Duchess",
+    role: "Speed · Daggers",
+    line: "A swift, veiled blade. She replays the wounds she deals and fades into shadow.",
   },
   Raider: {
-    title: "Le Pillard",
-    role: "Brute · Armes lourdes",
-    line: "Colosse qui encaisse la nuit et rend chaque coup au centuple.",
+    title: "The Raider",
+    role: "Brute · Heavy weapons",
+    line: "A colossus who soaks the night and returns every blow a hundredfold.",
   },
   Revenant: {
-    title: "La Revenante",
-    role: "Invocation · Soutien",
-    line: "Elle appelle les esprits des défunts pour submerger et soutenir la traque.",
+    title: "The Revenant",
+    role: "Summoner · Support",
+    line: "She calls the spirits of the dead to overwhelm and sustain the hunt.",
   },
   Recluse: {
-    title: "La Recluse",
-    role: "Mage · Sorts",
-    line: "Tisseuse de magies élémentaires, elle draine la puissance des affres qu'elle inflige.",
+    title: "The Recluse",
+    role: "Mage · Spells",
+    line: "A weaver of elemental magic, draining power from the afflictions she inflicts.",
   },
   Executor: {
-    title: "L'Exécuteur",
-    role: "Duelliste · Katanas",
-    line: "Épéiste possédé : il pare, contre, et libère la bête tapie en lui.",
+    title: "The Executor",
+    role: "Duelist · Katanas",
+    line: "A possessed swordsman: he parries, counters, and unleashes the beast within.",
   },
   Scholar: {
-    title: "L'Érudit",
-    role: "Savant · Sorts",
-    line: "Chercheur des arcanes oubliés de la Nuit.",
+    title: "The Scholar",
+    role: "Savant · Spells",
+    line: "A seeker of the Night's forgotten arcana.",
   },
   Undertaker: {
-    title: "Le Fossoyeur",
-    role: "Sombre · Polyvalent",
-    line: "Gardien des tombes, il marche entre la vie et le trépas.",
+    title: "The Undertaker",
+    role: "Dark · Versatile",
+    line: "Keeper of the graves, walking between life and death.",
   },
 };
 
-// Short, scannable labels for the "Engagements" toggles (the server sends long
-// descriptive ones; these keep the panel clean).
+// Short, scannable labels for the "Commitments" toggles (the server sends the
+// long descriptive ones; these keep the panel clean).
 export const SHORT_TOGGLES: Record<string, string> = {
-  caster: "Lanceur de sorts",
-  low_hp: "Jeu à PV bas",
-  situational: "Contre-garde / ennemi affligé",
-  status_build: "Build orienté statuts",
-  starting_loadout: "Loadout de départ",
-  coop: "Coop / alliés",
-  triple_loadout: "3+ armes du même type",
+  weak_point: "I aim for weak points",
+  caster: "Spellcaster",
+  low_hp: "Low-HP play",
+  situational: "Counter-guard / afflicted enemy",
+  status_build: "Status-focused build",
+  starting_loadout: "Starting loadout",
+  coop: "Co-op / allies",
+  triple_loadout: "3+ weapons of the same type",
 };
 
 export const pctDelta = (x: number) =>

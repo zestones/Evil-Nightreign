@@ -12,6 +12,19 @@ export interface CurseMeta {
   scored: boolean; // also weighs the score (worst-case) vs display-only
   count: number; // owned relics carrying it
 }
+export interface Archetype {
+  name: string;
+  play: Record<string, number>;
+  toggles?: string[];
+  weapon?: string; // weapon type the preset implies (e.g. "Dagger"); "" = auto
+}
+export interface KitMeta {
+  passive: string | null;
+  skill_paradigm: "strike" | "replay" | "utility";
+  ultimate_paradigm: "strike" | "replay" | "utility";
+  favored_sources: string[];
+  archetypes: Archetype[];
+}
 export interface Meta {
   characters: HeroMeta[];
   bosses: string[];
@@ -22,6 +35,7 @@ export interface Meta {
   relic_count: number;
   curses: CurseMeta[];
   cursed_relic_curses: string[][]; // per cursed relic: its curse keys (for exclusion count)
+  kits: Record<string, KitMeta>; // per-Nightfarer kit sheet (archetype presets)
 }
 
 export interface Effect {
@@ -61,6 +75,7 @@ export interface WeaponAlt {
   name: string;
   ratio: number; // damage ratio vs the picked weapon (< 1 = weaker)
   icon: string | null;
+  spell: string | null; // the spell this catalyst would cast under the profile
 }
 export interface Build {
   score: number;
@@ -86,6 +101,25 @@ export interface Build {
   actions_hit: Record<string, number>;
   top_effects: EffectRow[];
   ignored_effects: EffectRow[];
+  // multi-source engine surface
+  sources: Record<string, SourceInfo>; // per sourced action (spells, skill, ult)
+  fp: Record<string, FpClamp>; // FP-clamped actions ({} = profile sustainable)
+  fp_pool: number | null; // the character's max FP (for the human-readable note)
+  play: Record<string, number>; // EFFECTIVE profile (post FP clamp)
+  kit: { factor: number; details: Record<string, { factor: number; source: string }> } | null;
+  stamina: { pool: number; r1_cost: number; hits_per_bar: number } | null; // stamina economy (info)
+  accessory_hunt: { id: string; name: string; gain: number; icon: string | null }[]; // talisman recos
+}
+export interface SourceInfo {
+  label: string; // e.g. the resolved spell's name
+  fp_cost: number;
+  confidence: string | null; // params | params_interval | params_deferred | assumed
+  guaranteed: boolean; // true = guaranteed slot-1 spell; false = needs a slot-2 roll
+  spell_factor_calibrated: boolean; // false -> absolute numbers are theoretical
+}
+export interface FpClamp {
+  requested: number;
+  sustainable: number;
 }
 export type Synergy =
   | { kind: "damage"; type: string; mult: number }

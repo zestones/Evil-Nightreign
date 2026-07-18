@@ -11,7 +11,7 @@ export interface FormState {
   level: number;
   don: number;
   weaponType: string;
-  weight: number; // 0..100 (offense→survival)
+  weight: number; // 0..100 slider position, left→right = offense→survival (0 = full offense)
   play: PlayRow[];
   toggles: string[];
   top: number;
@@ -29,7 +29,10 @@ export function toRequest(f: FormState): OptimizeRequest {
     weapon_type: f.weaponType,
     level: f.level,
     don: f.don,
-    weight: f.weight / 100,
+    // backend `weight` multiplies the OFFENSE ratio (scoring.py): 1 = full
+    // offense, 0 = full survival. The slider is offense→survival (0 = full
+    // offense on the left), so the offense weight is (100 - position).
+    weight: 1 - f.weight / 100,
     play: Object.keys(play).length ? play : { melee: 1 },
     toggles: f.toggles,
     top: f.top,

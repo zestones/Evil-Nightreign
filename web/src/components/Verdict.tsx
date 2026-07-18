@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { BuildCard } from "./BuildCard";
 import { Tip } from "./ui/Tooltip";
 import { cn } from "@/lib/cn";
-import { heroArt, type Build, type Mode } from "@/lib/api";
+import { faceArt, type Build, type Mode } from "@/lib/api";
 
 export function Verdict({
   results,
@@ -26,10 +26,10 @@ export function Verdict({
 
   const modeNote =
     mode === "auto"
-      ? "Exploration libre : meilleur build par type d'arme, classés par DPS (dégâts/coup × cadence). Le score S mesure le gain vs l'arme nue du même type."
+      ? "Free exploration: the best build per weapon type, ranked by DPS (damage/hit × cadence). The S score measures the gain over the bare weapon of the same type."
       : mode === "generic"
-      ? "Mode générique : reliques pour n'importe quelle arme. Regarde les Multiplicateurs ; les valeurs marquées * sont indicatives (arme physique de référence)."
-      : "S = amélioration vs l'arme nue du type. Effets barrés = inactifs dans ce contexte.";
+      ? "Generic mode: relics for any weapon. Read the Multipliers; values marked * are indicative (a reference physical weapon)."
+      : "S = improvement over the bare weapon of the type. Struck-through effects are inactive in this context.";
 
   return (
     <div className="relative flex h-screen flex-col overflow-hidden px-14 pb-4 pt-3 sm:px-[72px]">
@@ -40,24 +40,25 @@ export function Verdict({
           onClick={onBack}
           className="group flex items-center gap-1.5 border border-line/70 bg-night-700/50 px-3 py-2 text-[11.5px] font-medium uppercase tracking-wider text-silver transition hover:border-frost/50 hover:text-ink"
         >
-          <ChevronLeft className="h-4 w-4 transition group-hover:-translate-x-0.5" /> Retour
+          <ChevronLeft className="h-4 w-4 transition group-hover:-translate-x-0.5" /> Back
         </button>
 
         <div className="flex items-center gap-3">
           <span className="relative h-11 w-11 flex-none overflow-hidden rounded-sm border border-line/60 bg-night-900">
+            <span className="absolute inset-0 flex items-center justify-center font-display text-sm text-silver/30">{character[0]}</span>
             <img
-              src={heroArt(character)}
+              src={faceArt(character)}
               alt=""
-              onError={(e) => (e.currentTarget.style.visibility = "hidden")}
-              className="h-full w-full scale-[1.8] object-cover object-[50%_10%]"
+              onError={(e) => e.currentTarget.remove()}
+              className="relative h-full w-full object-cover object-[50%_28%]"
             />
           </span>
           <div>
-            <div className="font-sans text-[10px] uppercase tracking-[0.2em] text-gold/70">Le Verdict</div>
+            <div className="font-sans text-[10px] uppercase tracking-[0.2em] text-gold/70">The Verdict</div>
             <div className="mt-0.5 flex items-center gap-2">
               <span className="font-display text-[20px] leading-none tracking-wide text-ink">{character}</span>
               <span className="rounded-sm border border-line/50 bg-night-800/60 px-2 py-0.5 text-[11px] font-medium text-silver/85">
-                {b.targets.length > 1 ? "Généraliste" : `vs ${b.targets[0]}`}
+                {b.targets.length > 1 ? "Generalist" : `vs ${b.targets[0]}`}
               </span>
             </div>
           </div>
@@ -66,7 +67,7 @@ export function Verdict({
         {/* build selector — a segmented control, obviously interactive */}
         <div className="ml-auto flex items-center gap-2.5">
           <span className="hidden text-[10.5px] uppercase tracking-[0.16em] text-silver/55 md:block">
-            Comparer les builds
+            Compare builds
           </span>
           <div className="flex items-center gap-1 rounded-sm border border-line/45 bg-night-900/50 p-1">
             {results.map((r, i) => (
@@ -93,7 +94,7 @@ export function Verdict({
                 <div>{modeNote}</div>
                 {don === 0 && (
                   <div className="text-[#d8c79a]">
-                    ⚠ Expédition normale : les 3 slots profonds ne sont pas inclus (choisis Deep of Night ≥ 1).
+                    ⚠ Normal expedition: the 3 deep slots are not included (pick Deep of Night ≥ 1).
                   </div>
                 )}
               </div>
@@ -117,7 +118,7 @@ export function Verdict({
             exit={{ opacity: 0, x: -14 }}
             transition={{ duration: 0.28, ease: [0.2, 0.7, 0.3, 1] }}
           >
-            <BuildCard b={b} index={active} mode={mode} />
+            <BuildCard b={b} index={active} mode={mode} character={character} />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -125,8 +126,8 @@ export function Verdict({
       {/* carousel arrows — obvious build navigation */}
       {results.length > 1 && (
         <>
-          <ArrowBtn side="left" label="Build précédent" onClick={() => setActive((active - 1 + results.length) % results.length)} />
-          <ArrowBtn side="right" label="Build suivant" onClick={() => setActive((active + 1) % results.length)} />
+          <ArrowBtn side="left" label="Previous build" onClick={() => setActive((active - 1 + results.length) % results.length)} />
+          <ArrowBtn side="right" label="Next build" onClick={() => setActive((active + 1) % results.length)} />
         </>
       )}
     </div>

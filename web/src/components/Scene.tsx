@@ -103,17 +103,25 @@ function useSpriteTex() {
   );
 }
 
-/* ---------- the hero billboard (full, uncropped, crossfaded) ---------------- */
+/* ---------- the hero billboard (full, uncropped) ---------------------------
+   Two overlapping layers cross-fade: the incoming portrait fades IN while the
+   outgoing one fades OUT at the same time, so the stage is never empty. The old
+   code faded fully to 0, THEN loaded and faded back up — that produced the
+   "blink" to an empty arch on every character switch. */
+type Layer = { tex: THREE.Texture; aspect: number };
 function Hero({ name, groundY, targetH }: { name: string; groundY: number; targetH: number }) {
-  const matRef = useRef<THREE.MeshBasicMaterial>(null!);
-  const [layer, setLayer] = useState<{ tex: THREE.Texture; aspect: number } | null>(null);
-  const pending = useRef<{ tex: THREE.Texture; aspect: number } | null>(null);
-  const opacity = useRef(0);
-  const targetO = useRef(0);
+  const matA = useRef<THREE.MeshBasicMaterial>(null!);
+  const matB = useRef<THREE.MeshBasicMaterial>(null!);
+  const [slotA, setSlotA] = useState<Layer | null>(null);
+  const [slotB, setSlotB] = useState<Layer | null>(null);
+  const opA = useRef(0);
+  const opB = useRef(0);
+  const tgtA = useRef(0);
+  const tgtB = useRef(0);
+  const incoming = useRef<"A" | "B">("A"); // which slot the next portrait lands in
 
   useEffect(() => {
     let alive = true;
-    targetO.current = 0; // fade out current
     const loader = new THREE.TextureLoader();
     loader.load(
       heroArt(name),
@@ -124,12 +132,28 @@ function Hero({ name, groundY, targetH }: { name: string; groundY: number; targe
         t.minFilter = THREE.LinearMipmapLinearFilter;
         t.magFilter = THREE.LinearFilter;
         const img = t.image as HTMLImageElement;
-        pending.current = { tex: t, aspect: img.width / img.height };
+        const layer = { tex: t, aspect: img.width / img.height };
+        // new portrait enters the free slot and fades up; the other fades out
+        if (incoming.current === "A") {
+          setSlotA(layer);
+          opA.current = 0;
+          tgtA.current = 1;
+          tgtB.current = 0;
+          incoming.current = "B";
+        } else {
+          setSlotB(layer);
+          opB.current = 0;
+          tgtB.current = 1;
+          tgtA.current = 0;
+          incoming.current = "A";
+        }
       },
       undefined,
       () => {
-        // no portrait for this character (e.g. Scholar/Undertaker)
-        if (alive) pending.current = null;
+        // no portrait for this character (e.g. Scholar/Undertaker): fade both out
+        if (!alive) return;
+        tgtA.current = 0;
+        tgtB.current = 0;
       }
     );
     return () => {
@@ -138,25 +162,30 @@ function Hero({ name, groundY, targetH }: { name: string; groundY: number; targe
   }, [name]);
 
   useFrame((_, dt) => {
-    const d = Math.min(dt, 0.05);
-    // when faded out, swap in the pending texture and fade back up
-    if (opacity.current < 0.05 && pending.current) {
-      setLayer(pending.current);
-      pending.current = null;
-      targetO.current = 1;
-    }
-    opacity.current += (targetO.current - opacity.current) * d * 7;
-    if (matRef.current) matRef.current.opacity = Math.max(0, opacity.current);
+    const d = Math.min(dt, 0.05) * 6;
+    opA.current += (tgtA.current - opA.current) * d;
+    opB.current += (tgtB.current - opB.current) * d;
+    if (matA.current) matA.current.opacity = Math.max(0, opA.current);
+    if (matB.current) matB.current.opacity = Math.max(0, opB.current);
   });
 
-  if (!layer) return null;
-  const h = targetH;
-  const w = h * layer.aspect;
+  const plane = (slot: Layer | null, matRef: React.RefObject<THREE.MeshBasicMaterial>, z: number) => {
+    if (!slot) return null;
+    const h = targetH;
+    const w = h * slot.aspect;
+    return (
+      <mesh position={[0, groundY + h / 2, z]}>
+        <planeGeometry args={[w, h]} />
+        <meshBasicMaterial ref={matRef} map={slot.tex} transparent opacity={0} toneMapped={false} depthWrite={false} />
+      </mesh>
+    );
+  };
+
   return (
-    <mesh position={[0, groundY + h / 2, 0.2]}>
-      <planeGeometry args={[w, h]} />
-      <meshBasicMaterial ref={matRef} map={layer.tex} transparent opacity={0} toneMapped={false} depthWrite={false} />
-    </mesh>
+    <>
+      {plane(slotA, matA, 0.2)}
+      {plane(slotB, matB, 0.21)}
+    </>
   );
 }
 

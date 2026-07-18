@@ -6,8 +6,8 @@ import type { FormState } from "@/lib/form";
 
 const GROUPS: { key: string; label: string; icon: typeof Swords }[] = [
   { key: "combat", label: "Combat", icon: Swords },
-  { key: "survie", label: "Survie & statut", icon: Droplet },
-  { key: "utilitaire", label: "Utilitaire", icon: Coins },
+  { key: "survie", label: "Survival & status", icon: Droplet },
+  { key: "utilitaire", label: "Utility", icon: Coins },
 ];
 
 // The Deep-of-Night curse controls — a concern of its own, shown only under Deep
@@ -41,7 +41,7 @@ export function CursesSection({ meta, form, patch }: {
     <section>
       <div className="mb-2.5 flex items-center gap-2">
         <Skull className="h-4 w-4 text-gold" />
-        <span className="font-display text-[12px] uppercase tracking-widest2 text-gold">Malédictions</span>
+        <span className="font-display text-[12px] uppercase tracking-widest2 text-gold">Curses</span>
         <span className="font-sans text-[10px] uppercase tracking-[0.13em] text-silver/45">Deep of Night</span>
         <span className="h-px flex-1 bg-gradient-to-r from-gold-deep/50 to-transparent" />
       </div>
@@ -49,7 +49,7 @@ export function CursesSection({ meta, form, patch }: {
         {/* master switch — governs the whole concern (score + veto) */}
         <button
           onClick={() => patch({ countDebuffs: !on })}
-          title="Prendre en compte les malédictions : score des malus chiffrables (pire cas) + exclusion des malus refusés"
+          title="Account for curses: score of the scored debuffs (worst case) + exclusion of the refused debuffs"
           className={cn(
             "flex w-full items-center gap-2.5 border px-3 py-2.5 text-left text-[13px] leading-tight transition",
             on ? "border-frost/55 bg-frost/10 text-ink" : "border-line/55 bg-night-700/40 text-silver hover:border-line-bright hover:text-ink"
@@ -58,13 +58,13 @@ export function CursesSection({ meta, form, patch }: {
           <span className={cn("flex h-4 w-4 flex-none rotate-45 items-center justify-center border", on ? "border-frost bg-frost/30 shadow-[0_0_7px_rgba(143,182,230,0.7)]" : "border-line")}>
             {on && <Check className="h-2.5 w-2.5 -rotate-45 text-frost" strokeWidth={3} />}
           </span>
-          Prendre en compte les malédictions
+          Account for curses
         </button>
 
         {on ? (
           <>
             <p className="mt-2.5 text-[12px] leading-snug text-dim">
-              Les malus <span className="text-frost/80">chiffrables</span> pèsent le score ; refuse ceux que tu ne tolères pas pour exclure leurs reliques.
+              The <span className="text-frost/80">scored</span> debuffs weigh on the score; refuse the ones you can't tolerate to exclude their relics.
             </p>
 
             {GROUPS.map(({ key: g, label, icon: Icon }) => {
@@ -79,14 +79,14 @@ export function CursesSection({ meta, form, patch }: {
                       <ChevronDown className={cn("h-4 w-4 flex-none text-silver/60 transition", isOpen && "rotate-180")} />
                       <Icon className="h-4 w-4 flex-none text-silver/80" />
                       <span className="font-sans text-[12.5px] font-medium text-silver">{label}</span>
-                      <span className="text-[11px] text-dim/70">{list.length}{rc > 0 && <span className="text-[#d99]"> · {rc} refusé{rc > 1 ? "s" : ""}</span>}</span>
+                      <span className="text-[11px] text-dim/70">{list.length}{rc > 0 && <span className="text-[#d99]"> · {rc} refused{rc > 1 ? "s" : ""}</span>}</span>
                     </button>
                     {isOpen && (
                       <button
                         onClick={() => refuseAll(g, rc < list.length)}
                         className="flex-none text-[11px] text-silver/60 underline-offset-2 hover:text-silver hover:underline"
                       >
-                        {rc < list.length ? "tout refuser" : "tout accepter"}
+                        {rc < list.length ? "refuse all" : "accept all"}
                       </button>
                     )}
                   </div>
@@ -98,7 +98,7 @@ export function CursesSection({ meta, form, patch }: {
                           <button
                             key={c.key}
                             onClick={() => toggleCurse(c.key)}
-                            title={off ? "Refusé — reliques exclues (clique pour accepter)" : c.scored ? "Compté dans le score (pire cas). Clique pour refuser." : "Affiché, non chiffré. Clique pour refuser."}
+                            title={off ? "Refused — relics excluded (click to accept)" : c.scored ? "Counted in the score (worst case). Click to refuse." : "Shown, not scored. Click to refuse."}
                             className={cn(
                               "flex items-center gap-1.5 rounded-sm border px-2 py-1 text-[12px] leading-tight transition",
                               off
@@ -109,7 +109,7 @@ export function CursesSection({ meta, form, patch }: {
                             {off ? <Ban className="h-3 w-3 flex-none text-[#c97b7b]" /> : <Check className="h-3 w-3 flex-none text-frost/70" />}
                             <span className="no-underline">{c.label}</span>
                             {c.scored && !off && (
-                              <span className="rounded-sm bg-frost/15 px-1 py-px text-[8.5px] uppercase tracking-wide text-frost/80">chiffré</span>
+                              <span className="rounded-sm bg-frost/15 px-1 py-px text-[8.5px] uppercase tracking-wide text-frost/80">scored</span>
                             )}
                             <span className="text-[10px] text-dim/50">×{c.count}</span>
                           </button>
@@ -124,13 +124,13 @@ export function CursesSection({ meta, form, patch }: {
             {excluded > 0 && (
               <div className="mt-3.5 flex items-center gap-2 border-t border-line/40 pt-2.5 text-[12.5px] text-[#d8a878]">
                 <AlertTriangle className="h-4 w-4 flex-none" />
-                {excluded} relique{excluded > 1 ? "s" : ""} exclue{excluded > 1 ? "s" : ""} du pool
+                {excluded} relic{excluded > 1 ? "s" : ""} excluded{excluded > 1 ? "s" : ""} from the pool
               </div>
             )}
           </>
         ) : (
           <p className="mt-2.5 text-[12px] italic leading-snug text-dim/70">
-            Malédictions ignorées — ni comptées dans le score, ni exclues. Réactive pour gérer les malus.
+            Curses ignored — neither counted in the score, nor excluded. Re-enable to manage the debuffs.
           </p>
         )}
       </div>

@@ -21,7 +21,7 @@ from pathlib import Path
 
 from nightreign.optimize import runner
 from nightreign.optimize.context import Context
-from nightreign.resources import actions, curses, weapon_types
+from nightreign.resources import actions, curses, kits, weapon_types
 
 STATIC = Path(__file__).parent / "static"
 
@@ -38,11 +38,11 @@ BUILD_HINT = (
     "<title>EvilNightreign — build the UI</title>"
     "<body style='background:#05070c;color:#cbd6e6;font:16px/1.6 Georgia,serif;"
     "display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center'>"
-    "<div><h1 style='color:#c9a24a;font-weight:600'>Interface non construite</h1>"
-    "<p>La SPA doit être compilée une fois :</p>"
+    "<div><h1 style='color:#c9a24a;font-weight:600'>Interface not built</h1>"
+    "<p>The SPA must be compiled once:</p>"
     "<pre style='color:#8fb6e6;background:#0d121d;padding:14px 18px;display:inline-block;text-align:left'>"
     "npm --prefix web install\nnpm --prefix web run build</pre>"
-    "<p style='color:#6f7f99'>puis relance <code>nr ui</code>.</p></div></body>"
+    "<p style='color:#6f7f99'>then restart <code>nr ui</code>.</p></div></body>"
 ).encode()
 
 
@@ -76,33 +76,33 @@ def _is_tradeoff(text):
 
 
 def _curse_note(key, active, scored):
-    """FR explanation of a Deep-of-Night curse's status in the score."""
+    """Explanation of a Deep-of-Night curse's status in the score."""
     if not scored:
-        return "Malédiction réelle, hors du modèle dégâts/survie (statut infligé / économie)"
+        return "Real curse, outside the damage/survival model (inflicted status / economy)"
     gate = (curses.spec(key) or {}).get("gate")
     if gate is None:
-        return "Malus compté dans le score (pire cas : toujours actif)"
-    return ("Malus compté (jeu situationnel engagé)" if active
-            else "Malus non compté ici — ne mord qu'en situationnel (post-fiole / PV critiques)")
+        return "Malus counted in the score (worst case: always active)"
+    return ("Malus counted (situational play engaged)" if active
+            else "Malus not counted here — only bites situationally (post-flask / critical HP)")
 
 
 def _inactive_reason(ctx, effect_info, relic_entry, character):
     """Why an effect is inactive in this context (French), or None if it's active."""
     nf = relic_entry.get("nightfarer")
     if nf and nf != character:
-        return f"Réservé au personnage {nf}"
+        return f"Reserved for the character {nf}"
     state = effect_info.get("state_gate")
     if state and state not in ctx.toggles:
-        return f"Nécessite l'engagement : {TOGGLES.get(state, state)}"
+        return f"Requires the commitment: {TOGGLES.get(state, state)}"
     cond = effect_info.get("condition") or {}
     dim = cond.get("dimension")
     if dim == "weapon_type" and cond.get("label") != ctx.weapon_type:
-        return f"Seulement avec une arme : {cond.get('label')}"
+        return f"Only with a weapon: {cond.get('label')}"
     if dim == "character" and cond.get("label") != character:
-        return f"Seulement pour {cond.get('label')}"
+        return f"Only for {cond.get('label')}"
     if dim and dim != "weapon_type" and dim != "character" and dim not in ctx.toggles:
-        return f"Nécessite l'engagement : {TOGGLES.get(dim, dim)}"
-    return "Inactif dans ce contexte"
+        return f"Requires the commitment: {TOGGLES.get(dim, dim)}"
+    return "Inactive in this context"
 
 
 def _synergy(b):
@@ -130,13 +130,14 @@ def _synergy(b):
     return out
 
 TOGGLES = {
-    "caster": "Je lance des sorts (sorcelleries / incantations)",
-    "low_hp": "Je joue à PV bas",
-    "situational": "Effets de garde et contre les ennemis affligés (poison, gel, saignement…)",
-    "status_build": "Build orienté statuts",
-    "starting_loadout": "Effets de loadout de départ",
-    "coop": "Coop / alliés",
-    "triple_loadout": "Je porte 3+ armes du même type",
+    "weak_point": "I aim for weak points (the target's weak-point multiplier)",
+    "caster": "I cast spells (sorceries / incantations)",
+    "low_hp": "I play at low HP",
+    "situational": "Guard effects and effects vs afflicted enemies (poison, frost, bleed…)",
+    "status_build": "Status-focused build",
+    "starting_loadout": "Starting-loadout effects",
+    "coop": "Co-op / allies",
+    "triple_loadout": "I carry 3+ weapons of the same type",
 }
 
 
@@ -180,14 +181,41 @@ def _meta(data):
     return {
         "characters": heroes,
         "bosses": list(data["nightlords"]),
-        "weapon_types": sorted(set(weapon_types.WEPMOTION_TO_TYPE.values())),
+        "weapon_types": sorted(set(weapon_types.WEPMOTION_TO_TYPE.values())
+                               | set(weapon_types.CATALYST_TYPES)),
         "toggles": TOGGLES,
         "actions": actions.ACTION_CLASSES,
         "don_levels": [k for k in sorted(int(k) for k in data["scaling"]["deep_of_night"]) if k <= 5],
         "relic_count": len(data["relics"]),
         "curses": curse_catalog,
         "cursed_relic_curses": cursed_sets,
+        # per-Nightfarer kit sheets (phase C): archetype presets + paradigms
+        # for the future profile-first UI; figures carry their sources
+        "kits": {name: {
+            "passive": (kits.kit(name).get("passive") or {}).get("name"),
+            "skill_paradigm": kits.kit(name).get("skill_paradigm"),
+            "ultimate_paradigm": kits.kit(name).get("ultimate_paradigm"),
+            "favored_sources": kits.kit(name).get("favored_sources", []),
+            "archetypes": kits.kit(name).get("archetypes", []),
+        } for name in runner.HERO_ORDER if kits.kit(name)},
     }
+
+
+def _alt_spell(data, wid, play):
+    """The resolved spell an alternative catalyst would use under the build's
+    profile — so the user sees WHY one staff outranks another (the spell is
+    the payload, not the stick)."""
+    if wid is None:
+        return None
+    cast_actions = [a for a in play if a.startswith(("sorcery_", "incant_"))]
+    if not cast_actions:
+        return None
+    entry = data.get("catalyst_spells", {}).get(str(wid))
+    hit = runner._match_spell(data, entry, cast_actions[0])
+    if not hit:
+        return None
+    _sid, spell, _guaranteed = hit
+    return spell.get("name", "").replace("Sorcery: ", "").replace("Incantation: ", "")
 
 
 def _serialize(result, data, character, toggles, don, count_debuffs=True):
@@ -240,7 +268,8 @@ def _serialize(result, data, character, toggles, don, count_debuffs=True):
         "weapon_icon": _icon_url(data, "weapons", result.get("weapon_id")),
         "weapon_type": result["weapon_type"],
         "weapon_alternatives": [
-            {"name": name, "ratio": ratio, "icon": _icon_url(data, "weapons", wid)}
+            {"name": name, "ratio": ratio, "icon": _icon_url(data, "weapons", wid),
+             "spell": _alt_spell(data, wid, b.get("play") or {})}
             for (name, ratio, *rest) in (result.get("weapon_alternatives") or [])
             for wid in [rest[0] if rest else None]
         ],
@@ -264,6 +293,19 @@ def _serialize(result, data, character, toggles, don, count_debuffs=True):
         "ignored_effects": [
             {"key": runner.pretty_name(k), "mult": m, "action": a}
             for k, m, a in b.get("ignored_effects", [])
+        ],
+        # multi-source engine surface (phase D/E UI): per-action sources with
+        # their calibration flag, the FP clamp report, the kit factor, and the
+        # talisman hunt (marginal-gain recommendations)
+        "sources": b.get("sources") or {},
+        "fp": b.get("fp") or {},
+        "fp_pool": b.get("fp_pool"),
+        "play": b.get("play") or {},
+        "kit": result.get("kit"),
+        "stamina": result.get("stamina"),
+        "accessory_hunt": [
+            {**a, "icon": _icon_url(data, "accessories", a.get("id"))}
+            for a in (result.get("accessory_hunt") or [])
         ],
     }
 

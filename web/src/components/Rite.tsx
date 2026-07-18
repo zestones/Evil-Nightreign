@@ -7,26 +7,31 @@ import { CHARACTER_LORE } from "@/lib/labels";
 import type { Meta } from "@/lib/api";
 import type { FormState } from "@/lib/form";
 
+// Identity plate — CENTERED over the stage (the area left of the side panel),
+// so it sits just left of the hero and never slides under the panel where the
+// lore line used to be clipped.
 function HeroName({ name }: { name: string }) {
   const lore = CHARACTER_LORE[name] ?? { title: name, role: "", line: "" };
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={name}
-        className="pointer-events-none absolute bottom-7 left-1/2 z-10 w-[min(560px,44vw)] -translate-x-1/2 text-center"
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -8 }}
-        transition={{ duration: 0.4 }}
-      >
-        <div className="eyebrow text-gold/75">{lore.role}</div>
-        <h2 className="mt-1 font-display text-[clamp(30px,3.6vw,48px)] font-semibold leading-none tracking-wider text-ink text-glow-cold">
-          {name}
-        </h2>
-        <div className="mt-1.5 font-serif text-[15px] italic text-silver/80">{lore.title}</div>
-        <p className="mx-auto mt-1.5 max-w-md text-[12.5px] leading-relaxed text-dim">{lore.line}</p>
-      </motion.div>
-    </AnimatePresence>
+    <div className="pointer-events-none absolute inset-x-0 bottom-8 right-[484px] z-10 flex justify-center px-6">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={name}
+          className="w-[min(540px,100%)] text-center"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.4 }}
+        >
+          <div className="eyebrow text-gold/75">{lore.role}</div>
+          <h2 className="mt-1 font-display text-[clamp(30px,3.6vw,48px)] font-semibold leading-none tracking-wider text-ink text-glow-cold">
+            {name}
+          </h2>
+          <div className="mt-1.5 font-serif text-[15px] italic text-silver/80">{lore.title}</div>
+          <p className="mx-auto mt-1.5 max-w-md text-[12.5px] leading-relaxed text-dim">{lore.line}</p>
+        </motion.div>
+      </AnimatePresence>
+    </div>
   );
 }
 
@@ -60,9 +65,6 @@ export function Rite({
           <span className="bg-gradient-to-b from-[#f0e6c8] via-gold to-gold-deep bg-clip-text text-transparent">EVIL</span>
           <span className="bg-gradient-to-b from-[#dfe6f2] via-silver to-[#5b6c86] bg-clip-text text-transparent">NIGHTREIGN</span>
         </h1>
-        <p className="mt-1 font-sans text-[11px] tracking-wide text-dim">
-          {meta.relic_count} reliques scellées · optimiseur hors-ligne
-        </p>
       </div>
 
       {/* roster (left) — compact character-select grid */}

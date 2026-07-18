@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Rite } from "./components/Rite";
 import { Verdict } from "./components/Verdict";
+import { ThemedTooltip } from "./components/ThemedTooltip";
 import { TooltipRoot } from "./components/ui/Tooltip";
 import { getMeta, optimize, bossArt, type Build, type Meta, type Mode } from "./lib/api";
 import { toRequest, type FormState } from "./lib/form";
@@ -36,7 +37,7 @@ export default function App() {
           refusedCurses: [],
         });
       })
-      .catch(() => setError("Impossible de charger les données (nr ui est-il lancé ?)"));
+      .catch(() => setError("Failed to load data (is nr ui running?)"));
   }, []);
 
   const patch = (p: Partial<FormState>) => setForm((f) => (f ? { ...f, ...p } : f));
@@ -52,7 +53,7 @@ export default function App() {
       setSnapDon(form.don);
       setView("verdict");
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Échec de l'invocation");
+      setError(e instanceof Error ? e.message : "Summon failed");
     } finally {
       setBusy(false);
     }
@@ -78,6 +79,8 @@ export default function App() {
       )}
 
       <AnimatePresence>{busy && <Invoking />}</AnimatePresence>
+
+      <ThemedTooltip />
 
       {error && meta && (
         <div className="fixed bottom-5 left-1/2 z-50 -translate-x-1/2 border border-[#6e3733] bg-[#3a1a1a]/95 px-5 py-3 text-[13.5px] text-[#f3c0bb] shadow-xl backdrop-blur">
@@ -123,13 +126,15 @@ function Splash({ error }: { error: string | null }) {
       ) : (
         <>
           <div className="h-12 w-12 animate-spin rounded-full border-2 border-line border-t-gold border-r-gold-deep" />
-          <div className="font-display text-[12px] uppercase tracking-widest2 text-silver/80">Éveil du rite…</div>
+          <div className="font-display text-[12px] uppercase tracking-widest2 text-silver/80">Awakening the rite…</div>
         </>
       )}
     </div>
   );
 }
 
+// The original loading — a small centered ring with a rotating inner diamond
+// and the "Summoning the build…" line (restored on request).
 function Invoking() {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-void/70 backdrop-blur-sm">
@@ -137,7 +142,7 @@ function Invoking() {
         <div className="absolute inset-0 animate-spin rounded-full border-2 border-line border-t-gold border-r-gold-deep shadow-[0_0_24px_-4px_rgba(201,162,74,0.6)]" />
         <div className="absolute inset-2 rotate-45 animate-breathe border border-frost/40" />
       </div>
-      <div className="mt-5 animate-breathe font-display text-[13px] uppercase tracking-widest2 text-gold">Invocation du build…</div>
+      <div className="mt-5 animate-breathe font-display text-[13px] uppercase tracking-widest2 text-gold">Summoning the build…</div>
     </motion.div>
   );
 }

@@ -15,9 +15,9 @@ function EffectIcon({ url, active, color }: { url: string | null; active: boolea
 }
 
 // Deep of Night curse — the blue drawback the game shows under its paired buff.
-// A curse that is scored AND applied here bites the score ("comptée"); an
-// out-of-axis one is surfaced but not counted ("non chiffrée"); a situational
-// one that isn't engaged shows plainly (its note explains when it would bite).
+// A curse that is scored AND applied here bites the score (counted); an
+// out-of-axis one is surfaced but not counted; a situational one that isn't
+// engaged shows plainly (its note explains when it would bite).
 function CurseLine({ e }: { e: Effect }) {
   const counts = !!e.scored && e.active;
   return (
@@ -27,10 +27,10 @@ function CurseLine({ e }: { e: Effect }) {
         {e.text}
         {counts && (
           <span className="ml-1.5 rounded-sm bg-[#2b3a55]/50 px-1 py-px align-middle text-[9.5px] uppercase tracking-wide text-[#9fc0ec] ring-1 ring-inset ring-[#3a557f]/50">
-            comptée
+            counted
           </span>
         )}
-        {!e.scored && <span className="ml-1.5 align-middle text-[10px] not-italic text-dim/55">· non chiffrée</span>}
+        {!e.scored && <span className="ml-1.5 align-middle text-[10px] not-italic text-dim/55">· not scored</span>}
       </span>
     </div>
   );
@@ -89,7 +89,7 @@ function RelicCard({ p }: { p: Pick }) {
                     )}
                   </span>
                   {e.active && e.tradeoff && (
-                    <AlertTriangle className="ml-1.5 inline h-3.5 w-3.5 -translate-y-px text-[#d8a03a]" aria-label="compromis" />
+                    <AlertTriangle className="ml-1.5 inline h-3.5 w-3.5 -translate-y-px text-[#d8a03a]" aria-label="tradeoff" />
                   )}
                   {!e.active && e.char_locked && e.reason && (
                     <span className="ml-1.5 text-[11.5px] italic text-dim/70">— {e.reason}</span>
@@ -113,7 +113,7 @@ function LockedCard() {
   return (
     <div className="flex h-full items-center justify-center gap-3 rounded-sm border border-dashed border-line/40 bg-night-900/25 px-5 py-8">
       <Lock className="h-6 w-6 flex-none text-faint" />
-      <span className="text-[13px] text-dim">Deep of Night ≥ 1 pour débloquer</span>
+      <span className="text-[13px] text-dim">Deep of Night ≥ 1 to unlock</span>
     </div>
   );
 }
