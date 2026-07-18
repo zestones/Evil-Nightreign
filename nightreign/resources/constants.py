@@ -53,3 +53,39 @@ REGULATION_KEY = "9A8EE90C4C01A43168A17D9D75E4A7D02107EBCF43D5ACB0554F941601B579
 # Duchess Dagger measured at every level 1..15 plus Reduvia/Black Knife (<0.4% drift).
 # See tests/test_attack_rating.py for the ground-truth fixtures.
 AR_FACTOR = 0.596
+
+# Spell-attack factor (engine/attack_rating.spell_attack). CALIBRATED
+# 2026-07-17 by a mono-hit in-game measure (Glintstone Arc through the base
+# Glintstone Staff, Recluse 15, no relics): 141 displayed = 148 base ×
+# 1.59 displayed scaling × 0.599 — the spell constant IS the weapon AR_FACTOR.
+# Cross-checked: Stars of Ruin 480 ⇒ 12 connected stars, Rancorcall 342 ⇒ ~6
+# hits, both consistent at this factor (data/ground_truth/spell_scaling.json).
+SPELL_FACTOR = AR_FACTOR
+SPELL_FACTOR_CALIBRATED = True
+
+# Residual correction of our internal stat-scaling term for spells. CALIBRATED
+# over the FULL INT range 2026-07-17: a Recluse Glintstone Pebble/Arc damage
+# curve measured at every level 1..15 (INT 5->51, no relics) gives a FLAT
+# least-squares constant 0.9027 (the "correction needed" stays 0.896..0.906
+# across all levels — so our softcap curve, calcCorrectGraph, is CORRECT; only
+# this flat multiplier was off). Full curve reproduced to <1 damage at all 15
+# levels once stats are linearly interpolated (see runner.hero_stats_row).
+SPELL_SCALING_CORRECTION = 0.9027
+
+# Max FP from Mind. Derived by exact linear fit on four independent
+# community-reported level-15 pools (Duchess 180 @ Mind 27, Revenant 200 @ 31,
+# Recluse 195 @ 30, Wylder 140 @ 19) — over-determined and consistent. One
+# in-game menu reading during the calibration session will confirm it.
+FP_BASE = 45
+FP_PER_MIND = 5
+
+# Max Stamina from Endurance. Stamina = 48 + 2*Endurance — CONFIRMED 2026-07-17
+# (two Nightreign sources + game8 per-character table: Duchess 84 @ END18,
+# Recluse 94 @ 23, Raider 122 @ 37, Guardian 124 @ 38, all exact). Per-attack
+# stamina COSTS are extracted per weapon (motion.stamina_costs, from
+# BehaviorParam: dagger R1 9, greatsword 15, colossal/greataxe 20). The one
+# missing piece for a full sustain constraint is the REGEN rate (no reliable
+# online source; one in-game chrono needed) — until then stamina is surfaced
+# as info (hits-per-bar), not scored.
+STAMINA_BASE = 48
+STAMINA_PER_END = 2

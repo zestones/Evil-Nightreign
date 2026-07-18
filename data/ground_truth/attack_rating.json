@@ -1,0 +1,15 @@
+{
+ "mechanic": "attack_rating",
+ "notes": "In-game Attack Rating readings (equip screen), Duchess. Dagger measured at every breakpoint level; Reduvia/Black Knife at lv15. Anchors the global AR_FACTOR=0.596 (nightreign/resources/constants.py) — ratio game/raw drifted <0.4% across levels 1-15.",
+ "measured_on": "2026-07-14",
+ "regulation_md5": "39a05bbf7598ce34ff61a2957d7d696c",
+ "tolerance_ar": 1.5,
+ "measurements": [
+  {"weapon_id": "1750000", "weapon": "Duchess' Dagger", "hero_stats_id": "40000", "level": 1, "value": 38},
+  {"weapon_id": "1750000", "weapon": "Duchess' Dagger", "hero_stats_id": "40001", "level": 2, "value": 46},
+  {"weapon_id": "1750000", "weapon": "Duchess' Dagger", "hero_stats_id": "40002", "level": 12, "value": 67},
+  {"weapon_id": "1750000", "weapon": "Duchess' Dagger", "hero_stats_id": "40003", "level": 15, "value": 72},
+  {"weapon_id": "1040000", "weapon": "Reduvia", "hero_stats_id": "40003", "level": 15, "value": 94},
+  {"weapon_id": "1010000", "weapon": "Black Knife", "hero_stats_id": "40003", "level": 15, "value": 122}
+ ]
+}

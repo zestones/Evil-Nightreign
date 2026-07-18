@@ -18,12 +18,18 @@ Two proc shapes:
     last application's duration runs out). Damage = uptime_seconds x tick_rate;
     uptime and the hits->seconds conversion use the weapon's class cadence.
 
-Proc value calibration (2026-07-15):
+Proc value calibration:
   * bleed  — 15% max HP. LOCKED by a player-measured proc of 371 (day-3 troll)
-    and the engine's canonical hemorrhage row (SpEffectParam 1612).
-  * frost  — 5% (SpEffectParam 1611, structural twin of bleed). To confirm.
-  * poison — DoT 40s, 1.3s ticks, 10 HP + 0.10% max HP per tick. Structural.
-  * rot    — DoT 40s, 1.3s ticks, 15 HP + 0.15% per tick. Structural.
+    and the engine's canonical hemorrhage row (SpEffectParam 1612). NOTE
+    2026-07-17: this magnitude is base-Elden-Ring-derived; no Nightreign source
+    publishes the Blood Loss %-of-HP, so treat as provisional pending an NR
+    proc measurement on a known-HP target.
+  * frost  — 5% proc HP damage (SpEffectParam 1611, structural twin of bleed) —
+    UNCONFIRMED for Nightreign. The +15% damage-taken debuff IS NR-confirmed.
+  * poison — DoT 40s, 1.3s ticks, 10 HP + 0.10% max HP per tick — NIGHTREIGN-
+    CONFIRMED 2026-07-17 (matches the reported total ~3.1% HP + 308).
+  * rot    — 6% max HP + 600 total over 40s — NIGHTREIGN-CONFIRMED 2026-07-17;
+    reproduced with 15 HP + 0.15% per tick at a FASTER 1.0s cadence.
   * sleep / madness / curse — no damage term (control / human-only / niche).
 """
 
@@ -43,8 +49,8 @@ BUILDUP_FIELDS = {
 PROC = {
     "bleed": ("burst", 0.15),
     "frost": ("burst", 0.05),
-    "poison": ("dot", 40.0, 1.3, 10.0, 0.0010),
-    "rot": ("dot", 40.0, 1.3, 15.0, 0.0015),
+    "poison": ("dot", 40.0, 1.3, 10.0, 0.0010),   # NR-confirmed: ~3.1% HP + 308 total
+    "rot": ("dot", 40.0, 1.0, 15.0, 0.0015),       # NR-confirmed: 6% HP + 600 total (faster ticks)
 }
 
 #: frost proc also applies "damage taken x1.15 for 30s" (SpEffectParam family

@@ -1,0 +1,24 @@
+{
+ "mechanic": "spell_scaling_display",
+ "notes": "In-game 'Sorcery Scaling' readings from user screenshots (2026-07-17). Character: Recluse, level 13 (badge visible). Weapon: Lusat's Glintstone Staff. CONTRADICTS our _scaling_factor (168 computed vs 221 displayed at +0; our +1 row shows NO change vs 243 in-game -> two bugs: (a) the scaling formula misses a term or an AEC gate (likely Faith also scales byMagic on this staff), (b) the staff reinforce ladder lookup returns the +0 row for +1). ALSO: the same staff model dropped with DIFFERENT slot-2 spells (Stars of Ruin + Full Moon on one copy, + Rykard's Rancor on another) — neither slot-2 spell appears in our 6 custom instances of Lusat's (Gavel/Cannon of Haima, Night Maiden's Mist): the real slot-2 roll pool is WIDER than the custom-instance list; likely resolved through ItemLotParam (loot backlog).",
+ "measured_on": "2026-07-17",
+ "regulation_md5": "39a05bbf7598ce34ff61a2957d7d696c",
+ "measurements": [
+  {"weapon": "Lusat's Glintstone Staff", "reinforce": 0, "character": "Recluse", "level": 13, "stat": "sorcery_scaling_display", "value": 221},
+  {"weapon": "Lusat's Glintstone Staff", "reinforce": 1, "character": "Recluse", "level": 13, "stat": "sorcery_scaling_display", "value": 243},
+  {"weapon": "Lusat's Glintstone Staff", "observation": "slot2_spell_pool", "seen": ["Rennala's Full Moon", "Rykard's Rancor", "Glintstone Arc"], "our_instances_list": ["Gavel of Haima", "Cannon of Haima", "Night Maiden's Mist"], "verdict": "slot-2 rolls from a wider pool than our custom instances"},
+
+  {"note": "CLEAN SESSION (2026-07-17 evening): Recluse level 15, ZERO relics equipped, R1 casts on a target. Our computed scaling factor is 177 for BOTH staves (correctMagic=100 each, ladders rate=1.0) yet the game shows 223 vs 211 -> a PER-STAFF term we don't model (likely the staff's resident SpEffect passive, e.g. Lusat's sorcery boost via spEffectBehaviorId). Damage model check pending a MONO-HIT spell measure (Pebble, checklist A1) — multi-hit totals can't isolate SPELL_FACTOR (unknown how many projectiles connected)."},
+  {"weapon": "Lusat's Glintstone Staff", "reinforce": 0, "character": "Recluse", "level": 15, "stat": "sorcery_scaling_display", "value": 223},
+  {"weapon": "Prince of Death's Staff", "reinforce": 0, "character": "Recluse", "level": 15, "stat": "sorcery_scaling_display", "value": 211},
+  {"spell": "Stars of Ruin", "staff": "Lusat's (223)", "stat": "displayed_total_damage_on_target", "value": 480, "our_base": 420, "our_hits": 14, "confidence": "assumed"},
+  {"spell": "Rancorcall", "staff": "Prince of Death's (211)", "stat": "displayed_total_damage_on_target", "value": 342, "our_base": 180, "our_hits": 4, "confidence": "params"},
+  {"spell": "UNIDENTIFIED gravity sorcery (user: 'gravitationnel')", "stat": "displayed_total_damage_on_target", "value": 321, "todo": "identify exact spell + staff"},
+
+  {"note": "GOLDEN MEASURE (2026-07-17 late): Glintstone Arc (mono-hit, base 148) R2 through the base Glintstone Staff (displayed Sorcery Scaling 159, ladder rate 1.0), Recluse 15, no relics -> 141 displayed. F = 141/(148*1.59) = 0.599 ~= AR_FACTOR 0.596: THE SPELL CONSTANT IS THE WEAPON CONSTANT. Also fixes the internal stat term: our _scaling_factor 177 vs true 159 -> SPELL_SCALING_CORRECTION=0.897 (single-point at INT51/FAI51). Cross-checks at this F: Stars of Ruin 480 => 12 connected stars (the spell fires 12), Rancorcall 342 => ~6 hits (our count of 4 is low), Night Comet 123 => effective base ~153 (our 237 is wrong — resolver bug on that spell's tree). SPELL_FACTOR_CALIBRATED=True."},
+  {"weapon": "Glintstone Staff", "reinforce": 0, "character": "Recluse", "level": 15, "stat": "sorcery_scaling_display", "value": 159},
+  {"spell": "Glintstone Arc", "staff": "Glintstone Staff (159)", "stat": "displayed_damage_on_target_R2_single_hit", "value": 141, "our_base": 148, "verdict": "F = 0.599 ~= AR_FACTOR"},
+  {"weapon": "Carian Regal Scepter", "reinforce": 0, "character": "Recluse", "level": 15, "stat": "sorcery_scaling_display", "value": 250, "ladder_rate_in_params": 1.5675, "note": "rate predicted 1.572 from displays — 0.3% off"},
+  {"spell": "Glintstone Arc", "staff": "Carian Regal Scepter (250)", "stat": "displayed_damage_on_target_R2_single_hit", "value": 222, "our_pipeline_prediction": 220, "verdict": "MODEL VALIDATED on a second independent point (0.9% off)"}
+ ]
+}

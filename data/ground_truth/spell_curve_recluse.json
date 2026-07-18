@@ -1,0 +1,27 @@
+{
+ "mechanic": "spell_damage_curve_by_level",
+ "notes": "Recluse, ZERO relics, base Glintstone Staff (Bâton d'éclat, sorcery scaling display 159, ladder rate 1.0). R1 = Glintstone Pebble (base 152), R2 = Glintstone Arc (base 148) — both mono-hit. Displayed on-target damage at every character level 1..15. THIS DUAL CURVE calibrated two things at once: (a) SPELL_SCALING_CORRECTION = 0.9027 (flat least-squares over the 8 breakpoint points, INT 5..51 — the softcap curve itself is correct), and (b) proved the game grows stats LINEARLY between the 4 breakpoints -> runner.hero_stats_row now interpolates (was: freeze at last breakpoint). Full curve reproduced to <1 damage at all 15 levels.",
+ "measured_on": "2026-07-17",
+ "regulation_md5": "39a05bbf7598ce34ff61a2957d7d696c",
+ "weapon": "Glintstone Staff (base)",
+ "character": "Recluse",
+ "spells": {"R1": {"name": "Glintstone Pebble", "base": 152}, "R2": {"name": "Glintstone Arc", "base": 148}},
+ "tolerance_damage": 3,
+ "measurements": [
+  {"level": 1,  "R1": 88,  "R2": 85},
+  {"level": 2,  "R1": 100, "R2": 98},
+  {"level": 3,  "R1": 104, "R2": 101},
+  {"level": 4,  "R1": 108, "R2": 105},
+  {"level": 5,  "R1": 111, "R2": 108},
+  {"level": 6,  "R1": 115, "R2": 112},
+  {"level": 7,  "R1": 119, "R2": 116},
+  {"level": 8,  "R1": 123, "R2": 119},
+  {"level": 9,  "R1": 126, "R2": 123},
+  {"level": 10, "R1": 130, "R2": 127},
+  {"level": 11, "R1": 134, "R2": 130},
+  {"level": 12, "R1": 138, "R2": 134},
+  {"level": 13, "R1": 140, "R2": 136},
+  {"level": 14, "R1": 143, "R2": 139},
+  {"level": 15, "R1": 145, "R2": 141}
+ ]
+}
