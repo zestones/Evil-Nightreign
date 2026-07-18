@@ -66,12 +66,15 @@ def _decode(name, params):
 
 
 def _icon_maps():
-    """{weapon_id: iconId}, {item_id: iconId} for everything the UI can name."""
+    """{weapon_id: iconId}, {item_id: iconId}, {accessory_id: iconId} for
+    everything the UI can name (talismans use the same item-icon atlas)."""
     params = regulation.load_params()
     weap = _decode("EquipParamWeapon", params)
     antq = _decode("EquipParamAntique", params)
+    acc = _decode("EquipParamAccessory", params)
     weapons = json.load(open(constants.DATA_RAW / "weapons.json"))
     relics = json.load(open(constants.DATA_CURATED / "relics.json"))
+    accessories = json.load(open(constants.DATA_CURATED / "accessories.json"))
 
     w_icons = {}
     for wid in weapons:
@@ -83,7 +86,12 @@ def _icon_maps():
         row = antq.get(r["item_id"])
         if row and row.get("iconId"):
             r_icons[str(r["item_id"])] = row["iconId"]
-    return w_icons, r_icons
+    a_icons = {}
+    for aid in accessories:
+        row = acc.get(int(aid))
+        if row and row.get("iconId"):
+            a_icons[str(aid)] = row["iconId"]
+    return w_icons, r_icons, a_icons
 
 
 def run():
@@ -93,8 +101,9 @@ def run():
     rects = atlas.parse_layouts(dcx.decompress(a.get(ATLAS_SBL)))
     blobs = tpf.parse_tpf(dcx.decompress(a.get(ATLAS_TPF)))
 
-    w_icons, r_icons = _icon_maps()
-    wanted = sorted({*w_icons.values(), *(int(v) for v in r_icons.values())})
+    w_icons, r_icons, a_icons = _icon_maps()
+    wanted = sorted({*w_icons.values(), *(int(v) for v in r_icons.values()),
+                     *a_icons.values()})
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     pages = {}  # page_name -> decoded RGBA (lazy: only pages we crop from)
@@ -122,6 +131,7 @@ def run():
     manifest = {
         "weapons": {k: v for k, v in w_icons.items() if v in saved},
         "relics": {k: v for k, v in r_icons.items() if int(v) in saved},
+        "accessories": {k: v for k, v in a_icons.items() if v in saved},
     }
     json.dump(manifest, open(constants.DATA_CURATED / "icons.json", "w"))
     missing = len(wanted) - len(saved)
@@ -129,7 +139,8 @@ def run():
     print(f"  icons: {len(saved)} WebP written ({missing} ids without an atlas rect), "
           f"{total/1e6:.1f} MB -> {OUT_DIR}")
     print(f"  manifest -> data/curated/icons.json "
-          f"({len(manifest['weapons'])} weapons, {len(manifest['relics'])} relics)")
+          f"({len(manifest['weapons'])} weapons, {len(manifest['relics'])} relics, "
+          f"{len(manifest['accessories'])} talismans)")
 
     # per-effect category icons (like the game's relic screen)
     eff_map = _effect_icon_map()

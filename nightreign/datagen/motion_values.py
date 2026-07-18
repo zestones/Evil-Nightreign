@@ -45,12 +45,29 @@ def run():
         if not a:
             continue
         mv = {t: a.get(f) for f, t in MV_FIELDS.items() if a.get(f)}
-        if not mv:
-            continue
+        flat = {}
+        if a.get("isAddBaseAtk"):
+            flat = {t: a.get(f.replace("Correction", "")) for f, t in MV_FIELDS.items()
+                    if a.get(f.replace("Correction", ""))}
+        if not mv and not flat:
+            continue   # neither a motion value nor a flat payload: inert row
         subs = sorted(a.get(f"subCategory{i}") for i in range(1, 6)
                       if a.get(f"subCategory{i}"))
         var, judge = r.get("variationId"), r.get("behaviorJudgeId")
-        out.setdefault(str(var), {})[str(judge)] = {"mv": mv, "subs": subs}
+        row = {"mv": mv, "subs": subs}
+        # per-attack stamina cost lives on the BEHAVIOR row (discovered
+        # 2026-07-17: dagger-class R1 = 9, Ruins Greatsword R1 = 30 — the
+        # weapon-row staminaConsumptionRate is inert at 1.0). Pool & regen
+        # are NOT in the params (calibration items); costs are exact.
+        if (r.get("stamina") or 0) > 0:
+            row["stamina"] = r["stamina"]
+        # ranged shots (bows/crossbows/ballistae): the attack row carries a
+        # FLAT damage on top of the weapon AR (isAddBaseAtk=1, e.g. bow shot
+        # +71 phys/mag) — without it every shot is undervalued by ~70-80
+        if flat:
+            row["flat"] = flat
+            row["add_base"] = True
+        out.setdefault(str(var), {})[str(judge)] = row
 
     json.dump(out, open(constants.DATA_RAW / "motion_values.json", "w"),
               ensure_ascii=False)

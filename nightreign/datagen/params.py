@@ -81,7 +81,8 @@ def run():
 
     _, atk_layout, _ = paramdef.parse_def(constants.DEFS / "AtkParam.xml")
     atk = paramdef.decode_param(params["AtkParam_Npc"], atk_layout)
-    atk_fields = ("atkPhys", "atkMag", "atkFire", "atkThun", "atkDark", "atkStam", "atkSuperArmor")
+    atk_fields = ("atkPhys", "atkMag", "atkFire", "atkThun", "atkDark", "atkStam",
+                  "atkSuperArmor", "atkAttribute")
     atk_out = {rid: d for rid, f in atk.items()
                if (d := {k: _sanitize(f[k]) for k in atk_fields if f.get(k)})}
     json.dump(atk_out, open(constants.DATA_RAW / "atk_npc.json", "w"),

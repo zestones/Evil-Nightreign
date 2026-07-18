@@ -1,0 +1,953 @@
+{
+ "0": {
+  "name": "art 0"
+ },
+ "1": {
+  "name": "No Skill"
+ },
+ "2": {
+  "name": "art 2"
+ },
+ "10": {
+  "name": "No Skill",
+  "fp": -1
+ },
+ "100": {
+  "name": "Lion's Claw",
+  "fp": 20
+ },
+ "101": {
+  "name": "Impaling Thrust",
+  "fp": 9
+ },
+ "102": {
+  "name": "Piercing Fang",
+  "fp": 16
+ },
+ "103": {
+  "name": "Spinning Slash",
+  "fp": 12
+ },
+ "104": {
+  "name": "art 104",
+  "fp": 14
+ },
+ "105": {
+  "name": "Charge Forth",
+  "fp": 16
+ },
+ "106": {
+  "name": "Stamp (Upward Cut)",
+  "fp": 8
+ },
+ "107": {
+  "name": "Stamp (Sweep)",
+  "fp": 8
+ },
+ "108": {
+  "name": "Blood Tax",
+  "fp": 14
+ },
+ "109": {
+  "name": "Repeating Thrust",
+  "fp": 7
+ },
+ "110": {
+  "name": "Wild Strikes",
+  "fp": 15
+ },
+ "111": {
+  "name": "Spinning Strikes",
+  "fp": 15
+ },
+ "112": {
+  "name": "Double Slash",
+  "fp": 6
+ },
+ "113": {
+  "name": "Prelate's Charge",
+  "fp": 7,
+  "damage": {
+   "fire": 35
+  }
+ },
+ "114": {
+  "name": "Unsheathe",
+  "fp": 15
+ },
+ "115": {
+  "name": "Square Off",
+  "fp": 8
+ },
+ "116": {
+  "name": "Giant Hunt",
+  "fp": 16
+ },
+ "117": {
+  "name": "Torch Attack"
+ },
+ "118": {
+  "name": "Loretta's Slash",
+  "fp": 14,
+  "damage": {
+   "mag": 30
+  }
+ },
+ "119": {
+  "name": "Poison Moth Flight",
+  "fp": 7
+ },
+ "120": {
+  "name": "Spinning Weapon",
+  "fp": 12
+ },
+ "121": {
+  "name": "art 121",
+  "fp": 14
+ },
+ "122": {
+  "name": "Storm Assault",
+  "fp": 22
+ },
+ "123": {
+  "name": "Stormcaller",
+  "fp": 11
+ },
+ "124": {
+  "name": "Sword Dance",
+  "fp": 6
+ },
+ "125": {
+  "name": "Spinning Chain",
+  "fp": 10
+ },
+ "200": {
+  "name": "Glintblade Phalanx",
+  "fp": 10,
+  "damage": {
+   "mag": 51
+  },
+  "super_armor": 5.0
+ },
+ "201": {
+  "name": "Sacred Blade",
+  "fp": 19,
+  "damage": {
+   "dark": 180
+  },
+  "super_armor": 13.0
+ },
+ "202": {
+  "name": "Ice Spear",
+  "fp": 15,
+  "damage": {
+   "mag": 230
+  },
+  "super_armor": 25.0
+ },
+ "203": {
+  "name": "Glintstone Pebble",
+  "fp": 8,
+  "damage": {
+   "mag": 137
+  },
+  "super_armor": 3.0
+ },
+ "204": {
+  "name": "Bloody Slash",
+  "fp": 6,
+  "damage": {
+   "phys": 345
+  }
+ },
+ "205": {
+  "name": "Lifesteal Fist",
+  "fp": 14,
+  "damage": {
+   "mag": 40
+  }
+ },
+ "207": {
+  "name": "Eruption",
+  "fp": 14,
+  "damage": {
+   "fire": 20
+  }
+ },
+ "208": {
+  "name": "Prayerful Strike",
+  "fp": 20
+ },
+ "209": {
+  "name": "Gravitas",
+  "fp": 13,
+  "damage": {
+   "mag": 60
+  }
+ },
+ "210": {
+  "name": "Storm Blade",
+  "fp": 10,
+  "damage": {
+   "phys": 150
+  },
+  "super_armor": 7.5
+ },
+ "212": {
+  "name": "Earthshaker",
+  "fp": 10
+ },
+ "213": {
+  "name": "Golden Land",
+  "fp": 16
+ },
+ "214": {
+  "name": "Flaming Strike",
+  "fp": 10,
+  "damage": {
+   "fire": 138
+  },
+  "super_armor": 10.0
+ },
+ "216": {
+  "name": "Thunderbolt",
+  "fp": 10,
+  "damage": {
+   "thunder": 120
+  },
+  "super_armor": 5.0
+ },
+ "217": {
+  "name": "Lightning Slash",
+  "fp": 10
+ },
+ "218": {
+  "name": "Carian Grandeur",
+  "fp": 26,
+  "damage": {
+   "mag": 220
+  },
+  "super_armor": 20.0
+ },
+ "219": {
+  "name": "Carian Greatsword",
+  "fp": 16,
+  "damage": {
+   "mag": 220
+  },
+  "super_armor": 20.0
+ },
+ "220": {
+  "name": "Vacuum Slice",
+  "fp": 14,
+  "damage": {
+   "phys": 200
+  },
+  "super_armor": 20.0
+ },
+ "221": {
+  "name": "Black Flame Tornado",
+  "fp": 30,
+  "damage": {
+   "fire": 65
+  },
+  "super_armor": 6.0
+ },
+ "222": {
+  "name": "Sacred Ring of Light",
+  "fp": 9,
+  "damage": {
+   "dark": 125
+  },
+  "super_armor": 3.0
+ },
+ "223": {
+  "name": "Firebreather",
+  "fp": 8
+ },
+ "224": {
+  "name": "Blood Blade",
+  "fp": 3,
+  "damage": {
+   "phys": 115
+  }
+ },
+ "225": {
+  "name": "Phantom Slash",
+  "fp": 8
+ },
+ "226": {
+  "name": "Spectral Lance",
+  "fp": 9,
+  "damage": {
+   "phys": 183
+  }
+ },
+ "227": {
+  "name": "Chilling Mist",
+  "fp": 14
+ },
+ "228": {
+  "name": "Poisonous Mist",
+  "fp": 14
+ },
+ "300": {
+  "name": "Shield Bash",
+  "fp": 10
+ },
+ "301": {
+  "name": "Barricade Shield",
+  "fp": 12
+ },
+ "302": {
+  "name": "Parry"
+ },
+ "303": {
+  "name": "Buckler Parry"
+ },
+ "305": {
+  "name": "Carian Retaliation",
+  "fp": 8
+ },
+ "306": {
+  "name": "Storm Wall",
+  "fp": 3
+ },
+ "307": {
+  "name": "Golden Parry",
+  "fp": 4
+ },
+ "308": {
+  "name": "Shield Crash",
+  "fp": 12
+ },
+ "309": {
+  "name": "Thops's Barrier"
+ },
+ "400": {
+  "name": "Through and Through",
+  "fp": 9
+ },
+ "401": {
+  "name": "Barrage",
+  "fp": 2
+ },
+ "402": {
+  "name": "Mighty Shot",
+  "fp": 6
+ },
+ "404": {
+  "name": "Enchanted Shot",
+  "fp": 8
+ },
+ "405": {
+  "name": "Sky Shot",
+  "fp": 3
+ },
+ "406": {
+  "name": "Rain of Arrows",
+  "fp": 20
+ },
+ "407": {
+  "name": "art 407",
+  "fp": 8
+ },
+ "501": {
+  "name": "Hoarfrost Stomp",
+  "fp": 10
+ },
+ "502": {
+  "name": "Storm Stomp",
+  "fp": 6,
+  "damage": {
+   "phys": 50
+  },
+  "super_armor": 10.0
+ },
+ "503": {
+  "name": "Kick",
+  "damage": {
+   "phys": 30
+  },
+  "super_armor": 6.0
+ },
+ "504": {
+  "name": "Lightning Ram",
+  "fp": 5,
+  "damage": {
+   "phys": 40,
+   "thunder": 95
+  },
+  "super_armor": 6.0
+ },
+ "505": {
+  "name": "Flame of the Redmanes",
+  "fp": 14,
+  "damage": {
+   "fire": 180
+  },
+  "super_armor": 10.0
+ },
+ "506": {
+  "name": "Ground Slam",
+  "fp": 14,
+  "damage": {
+   "phys": 264
+  },
+  "super_armor": 36.0
+ },
+ "507": {
+  "name": "Golden Slam",
+  "fp": 22,
+  "damage": {
+   "phys": 308
+  },
+  "super_armor": 36.0
+ },
+ "508": {
+  "name": "Waves of Darkness",
+  "fp": 16,
+  "damage": {
+   "mag": 60
+  }
+ },
+ "509": {
+  "name": "Hoarah Loux's Earthshaker",
+  "fp": 16,
+  "damage": {
+   "phys": 220
+  },
+  "super_armor": 20.0
+ },
+ "600": {
+  "name": "Determination",
+  "fp": 10
+ },
+ "601": {
+  "name": "Royal Knight's Resolve",
+  "fp": 15
+ },
+ "602": {
+  "name": "Assassin's Gambit",
+  "fp": 5
+ },
+ "603": {
+  "name": "Golden Vow",
+  "fp": 40
+ },
+ "604": {
+  "name": "Sacred Order",
+  "fp": 18
+ },
+ "605": {
+  "name": "Shared Order",
+  "fp": 20
+ },
+ "606": {
+  "name": "Seppuku",
+  "fp": 4
+ },
+ "607": {
+  "name": "Cragblade",
+  "fp": 16
+ },
+ "650": {
+  "name": "Barbaric Roar",
+  "fp": 16
+ },
+ "651": {
+  "name": "War Cry",
+  "fp": 16
+ },
+ "652": {
+  "name": "Beast's Roar",
+  "fp": 10,
+  "super_armor": 6.0
+ },
+ "653": {
+  "name": "Troll's Roar",
+  "fp": 16,
+  "damage": {
+   "phys": 195
+  },
+  "super_armor": 40.0
+ },
+ "654": {
+  "name": "Braggart's Roar",
+  "fp": 16
+ },
+ "700": {
+  "name": "Endure",
+  "fp": 9
+ },
+ "701": {
+  "name": "Vow of the Indomitable",
+  "fp": 20
+ },
+ "702": {
+  "name": "Holy Ground",
+  "fp": 30
+ },
+ "800": {
+  "name": "Quickstep",
+  "fp": 3
+ },
+ "801": {
+  "name": "Bloodhound's Step",
+  "fp": 5
+ },
+ "802": {
+  "name": "Raptor of the Mists",
+  "fp": 6
+ },
+ "850": {
+  "name": "White Shadow's Lure",
+  "fp": 15
+ },
+ "1000": {
+  "name": "Surge of Faith",
+  "fp": 15
+ },
+ "1001": {
+  "name": "Flame Spit",
+  "fp": 28,
+  "damage": {
+   "fire": 385
+  }
+ },
+ "1002": {
+  "name": "Tongues of Fire",
+  "fp": 5,
+  "damage": {
+   "fire": 150
+  },
+  "super_armor": 13.0
+ },
+ "1003": {
+  "name": "Oracular Bubble",
+  "fp": 6,
+  "damage": {
+   "dark": 110
+  }
+ },
+ "1004": {
+  "name": "Bubble Shower",
+  "fp": 16,
+  "damage": {
+   "dark": 32
+  },
+  "super_armor": 1.9
+ },
+ "1005": {
+  "name": "Great Oracular Bubble",
+  "fp": 16,
+  "damage": {
+   "dark": 315
+  },
+  "super_armor": 10.0
+ },
+ "1006": {
+  "name": "Sea of Magma",
+  "fp": 5
+ },
+ "1007": {
+  "name": "Viper Bite",
+  "fp": 8
+ },
+ "1008": {
+  "name": "Moonlight Greatsword",
+  "fp": 32
+ },
+ "1009": {
+  "name": "Siluria's Woe",
+  "fp": 25
+ },
+ "1010": {
+  "name": "Rallying Standard",
+  "fp": 30
+ },
+ "1011": {
+  "name": "Bear Witness!",
+  "fp": 20
+ },
+ "1012": {
+  "name": "Eochaid's Dancing Blade",
+  "fp": 15
+ },
+ "1013": {
+  "name": "Soul Stifler",
+  "fp": 12
+ },
+ "1014": {
+  "name": "Taker's Flames",
+  "fp": 30
+ },
+ "1015": {
+  "name": "Shriek of Milos",
+  "fp": 30
+ },
+ "1016": {
+  "name": "Reduvia Blood Blade",
+  "fp": 6
+ },
+ "1017": {
+  "name": "Glintstone Dart",
+  "fp": 10,
+  "damage": {
+   "mag": 190
+  },
+  "super_armor": 5.5
+ },
+ "1018": {
+  "name": "Flowing Form",
+  "fp": 9
+ },
+ "1019": {
+  "name": "Night-and-Flame Stance",
+  "fp": 32
+ },
+ "1020": {
+  "name": "Wave of Gold",
+  "fp": 42
+ },
+ "1021": {
+  "name": "Ruinous Ghostflame",
+  "fp": 20
+ },
+ "1022": {
+  "name": "Establish Order",
+  "fp": 20
+ },
+ "1023": {
+  "name": "Mists of Slumber",
+  "fp": 20
+ },
+ "1024": {
+  "name": "Spearcall Ritual",
+  "fp": 20
+ },
+ "1025": {
+  "name": "Wolf's Assault",
+  "fp": 20,
+  "damage": {
+   "mag": 50
+  }
+ },
+ "1026": {
+  "name": "Thundercloud Form",
+  "fp": 28,
+  "damage": {
+   "thunder": 20
+  }
+ },
+ "1027": {
+  "name": "Cursed-Blood Slice",
+  "fp": 20,
+  "damage": {
+   "fire": 50
+  }
+ },
+ "1028": {
+  "name": "Waterfowl Dance",
+  "fp": 12
+ },
+ "1029": {
+  "name": "Gold Breaker",
+  "fp": 26
+ },
+ "1030": {
+  "name": "I Command Thee, Kneel!",
+  "fp": 15
+ },
+ "1031": {
+  "name": "Regal Roar",
+  "fp": 25
+ },
+ "1032": {
+  "name": "Starcaller Cry",
+  "fp": 20,
+  "damage": {
+   "mag": 50
+  },
+  "super_armor": 15.0
+ },
+ "1033": {
+  "name": "Wave of Destruction",
+  "fp": 25
+ },
+ "1034": {
+  "name": "Bloodboon Ritual",
+  "fp": 20
+ },
+ "1035": {
+  "name": "Flowing Form",
+  "fp": 16
+ },
+ "1036": {
+  "name": "Blade of Death",
+  "fp": 25,
+  "damage": {
+   "dark": 230
+  },
+  "super_armor": 10.0
+ },
+ "1037": {
+  "name": "Blade of Gold",
+  "fp": 17,
+  "damage": {
+   "dark": 260
+  },
+  "super_armor": 10.0
+ },
+ "1038": {
+  "name": "Destined Death",
+  "fp": 40
+ },
+ "1039": {
+  "name": "Spinning Wheel",
+  "fp": 3
+ },
+ "1040": {
+  "name": "Alabaster Lords' Pull",
+  "fp": 15
+ },
+ "1041": {
+  "name": "Onyx Lords' Repulsion",
+  "fp": 27
+ },
+ "1042": {
+  "name": "Oath of Vengeance",
+  "fp": 20
+ },
+ "1043": {
+  "name": "Ice Lightning Sword",
+  "fp": 25
+ },
+ "1044": {
+  "name": "Regal Beastclaw",
+  "fp": 20
+ },
+ "1045": {
+  "name": "Flame Dance",
+  "fp": 25
+ },
+ "1046": {
+  "name": "Claw Flick",
+  "fp": 14
+ },
+ "1047": {
+  "name": "Nebula",
+  "fp": 25
+ },
+ "1048": {
+  "name": "Ghostflame Ignition",
+  "fp": 15
+ },
+ "1049": {
+  "name": "Ancient Lightning Spear",
+  "fp": 24,
+  "damage": {
+   "thunder": 75
+  },
+  "super_armor": 5.0
+ },
+ "1050": {
+  "name": "Frenzyflame Thrust",
+  "fp": 14
+ },
+ "1051": {
+  "name": "Miquella's Ring of Light",
+  "fp": 11
+ },
+ "1052": {
+  "name": "Golden Tempering",
+  "fp": 24
+ },
+ "1053": {
+  "name": "Last Rites",
+  "fp": 25
+ },
+ "1054": {
+  "name": "Unblockable Blade",
+  "fp": 18
+ },
+ "1055": {
+  "name": "Eochaid's Dancing Blade",
+  "fp": 15
+ },
+ "1056": {
+  "name": "Magic Dagger",
+  "fp": 7
+ },
+ "1165": {
+  "name": "Loretta's Slash",
+  "fp": 14,
+  "damage": {
+   "mag": 34
+  }
+ },
+ "1166": {
+  "name": "Spinning Slash",
+  "fp": 17
+ },
+ "1167": {
+  "name": "Corpse Wax Cutter",
+  "fp": 16,
+  "damage": {
+   "dark": 300
+  },
+  "super_armor": 20.0
+ },
+ "1168": {
+  "name": "Zamor Ice Storm",
+  "fp": 15,
+  "damage": {
+   "mag": 110
+  },
+  "super_armor": 2.0
+ },
+ "1169": {
+  "name": "Radahn's Rain",
+  "fp": 32
+ },
+ "1170": {
+  "name": "The Queen's Black Flame",
+  "fp": 15
+ },
+ "1171": {
+  "name": "Dynast's Finesse",
+  "fp": 7
+ },
+ "1172": {
+  "name": "Magma Shower",
+  "fp": 12
+ },
+ "1173": {
+  "name": "Nebula",
+  "fp": 20
+ },
+ "1174": {
+  "name": "Death Flare",
+  "fp": 16
+ },
+ "1175": {
+  "name": "Bloodhound's Finesse",
+  "fp": 12
+ },
+ "1176": {
+  "name": "Magma Guillotine",
+  "fp": 20
+ },
+ "1177": {
+  "name": "Corpse Piler",
+  "fp": 17
+ },
+ "1178": {
+  "name": "Transient Moonlight",
+  "fp": 20,
+  "damage": {
+   "mag": 140
+  }
+ },
+ "1179": {
+  "name": "Bloodblade Dance",
+  "fp": 11
+ },
+ "1180": {
+  "name": "art 1180",
+  "fp": 15
+ },
+ "1181": {
+  "name": "art 1181",
+  "fp": 15
+ },
+ "1182": {
+  "name": "Knowledge Above All",
+  "fp": 35
+ },
+ "1183": {
+  "name": "Devourer of Worlds",
+  "fp": 35
+ },
+ "1184": {
+  "name": "Familial Rancor",
+  "fp": 25
+ },
+ "1185": {
+  "name": "Rosus's Summons",
+  "fp": 15
+ },
+ "1186": {
+  "name": "Thunderstorm",
+  "fp": 19,
+  "damage": {
+   "thunder": 95
+  }
+ },
+ "1187": {
+  "name": "Sacred Phalanx",
+  "fp": 12
+ },
+ "1188": {
+  "name": "Great-Serpent Hunt",
+  "fp": 20,
+  "damage": {
+   "phys": 100
+  }
+ },
+ "1189": {
+  "name": "Angel's Wings",
+  "fp": 17
+ },
+ "1190": {
+  "name": "Storm Kick",
+  "fp": 6
+ },
+ "1191": {
+  "name": "Unblockable Blade",
+  "fp": 17
+ },
+ "1192": {
+  "name": "Sorcery of the Crozier",
+  "fp": 15,
+  "damage": {
+   "mag": 30
+  }
+ },
+ "1193": {
+  "name": "Erdtree Slam",
+  "fp": 19,
+  "damage": {
+   "phys": 120,
+   "dark": 142
+  },
+  "super_armor": 36.0
+ },
+ "1194": {
+  "name": "Gravity Bolt",
+  "fp": 13
+ },
+ "1195": {
+  "name": "Fires of Slumber",
+  "fp": 15
+ },
+ "1196": {
+  "name": "Golden Retaliation",
+  "fp": 4
+ },
+ "1197": {
+  "name": "Contagious Fury",
+  "fp": 9
+ },
+ "1198": {
+  "name": "Ordovis's Vortex",
+  "fp": 15
+ },
+ "1200": {
+  "name": "art 1200",
+  "fp": 18
+ },
+ "9999": {
+  "name": "art 9999"
+ }
+}

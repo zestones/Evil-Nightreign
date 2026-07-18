@@ -22,6 +22,16 @@ WEAPON_FIELDS = [
     "properStrength", "properAgility", "properMagic", "properFaith", "properLuck",
     "weight", "wepmotionCategory", "isDualBlade", "originEquipWep",
     "behaviorVariationId", "swordArtsParamId",
+    # catalysts cast their attached spells (R1 = slot 1, R2 = slot 2)
+    "equippedSpell_R1", "equippedSpell_R2",
+    # ultimate-art charge generation + posture (stance) damage of the weapon
+    "ultChargeB", "ultChargeExponent", "saWeaponDamage",
+    # guard: physical block absorption (Guardian's Steel Guard multiplies it)
+    "physGuardCutRate",
+    # physical sub-type of the weapon's strikes (0=slash 1=blow 2=thrust
+    # 3=neutral); attack rows carry 253 "depends on weapon" — the weapon
+    # decides. atkAttribute2 = the secondary (charged/R2) attribute.
+    "atkAttribute", "atkAttribute2",
 ]
 
 
@@ -87,13 +97,36 @@ def run():
     # tables + isCursed for Deep of Night gear). Every EquipParamWeapon id
     # outside this table (e.g. "Sacred Bloodstained Dagger") is engine-only
     # and must never be recommended — verified in game 2026-07-15.
+    #
+    # Catalyst instances carry their spells via magicTableId_1/2 ->
+    # MagicTableParam, ONE row per table id (verified on all referenced ids
+    # 2026-07-17): {magicId, chanceWeight}. The weight's semantics are NOT
+    # established: most rows sit at 100, but referenced rows also carry 90,
+    # 50, 35, 10 — and 110, which refutes the "probability %" reading. The
+    # raw value is kept verbatim as `weight` (no interpretation); the engine
+    # treats every listed spell as equipped until an in-game drop check
+    # settles what the weight means.
     customs = decode("EquipParamCustomWeapon")
-    dump({rid: {"weapon_id": r.get("targetWeaponId"),
+    magic_table = decode("MagicTableParam")
+
+    def spells_of(r):
+        out = []
+        for field in ("magicTableId_1", "magicTableId_2"):
+            row = magic_table.get(r.get(field) or -1)
+            if row and (row.get("magicId") or -1) > 0:
+                out.append({"id": row["magicId"], "weight": row.get("chanceWeight", 100)})
+        return out
+
+    dump({rid: {k: v for k, v in {
+                "weapon_id": r.get("targetWeaponId"),
                 "level": r.get("weaponLevel"),
                 "sword_arts_table": r.get("swordArtsTableId"),
                 "affix_tables": [r.get(f"attachEffectTableId_{i}") for i in range(1, 7)
                                  if (r.get(f"attachEffectTableId_{i}") or -1) > 0],
-                "is_cursed": bool(r.get("isCursed"))}
+                "spells": spells_of(r) or None,
+                "is_cursed": bool(r.get("isCursed"))}.items() if v is not None}
           for rid, r in customs.items() if r.get("targetWeaponId")},
          "custom_weapons.json")
-    print(f"  weapons: EquipParamCustomWeapon -> {len(customs)} droppable instances")
+    n_spells = sum(1 for r in customs.values() if r.get("targetWeaponId") and spells_of(r))
+    print(f"  weapons: EquipParamCustomWeapon -> {len(customs)} droppable instances "
+          f"({n_spells} catalysts with rolled spells)")

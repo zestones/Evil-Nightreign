@@ -1,0 +1,1530 @@
+{
+ "1000": {
+  "name": "Crimson Amber Medallion",
+  "sp_effect": 310000,
+  "rarity": 1,
+  "group": 1000,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.12,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "1010": {
+  "name": "Cerulean Amber Medallion",
+  "sp_effect": 310100,
+  "rarity": 1,
+  "group": 1010,
+  "is_drop": true,
+  "magnitude": {
+   "maxMpRate": 1.12,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "1020": {
+  "name": "Viridian Amber Medallion",
+  "sp_effect": 310200,
+  "rarity": 1,
+  "group": 1020,
+  "is_drop": true,
+  "magnitude": {
+   "maxStaminaRate": 1.12,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "1040": {
+  "name": "Erdtree's Favor",
+  "sp_effect": 310400,
+  "rarity": 1,
+  "group": 1040,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.07,
+   "maxStaminaRate": 1.07,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "1100": {
+  "name": "Silver Scarab",
+  "sp_effect": 311000,
+  "rarity": 1,
+  "group": 1100,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "itemDropRate": 0.4
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 66
+  }
+ },
+ "1110": {
+  "name": "Gold Scarab",
+  "sp_effect": 311100,
+  "rarity": 1,
+  "group": 1110,
+  "is_drop": true,
+  "magnitude": {
+   "soulRate": 1.15,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 76
+  }
+ },
+ "1150": {
+  "name": "Green Turtle Talisman",
+  "sp_effect": 311500,
+  "rarity": 1,
+  "group": 1150,
+  "is_drop": true,
+  "magnitude": {
+   "staminaRecoverChangeSpeed": 8,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 75
+  }
+ },
+ "1160": {
+  "name": "Stalwart Horn Charm",
+  "sp_effect": 311600,
+  "rarity": 1,
+  "group": 1160,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeBloodResistPoint": 75,
+   "changeFreezeResistPoint": 75
+  }
+ },
+ "1170": {
+  "name": "Immunizing Horn Charm",
+  "sp_effect": 311700,
+  "rarity": 1,
+  "group": 1170,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changePoisonResistPoint": 75,
+   "changeDiseaseResistPoint": 75
+  }
+ },
+ "1180": {
+  "name": "Clarifying Horn Charm",
+  "sp_effect": 311800,
+  "rarity": 1,
+  "group": 1180,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeSleepResistPoint": 75,
+   "changeMadnessResistPoint": 75
+  }
+ },
+ "1190": {
+  "name": "Prince of Death's Pustule",
+  "sp_effect": 311900,
+  "rarity": 1,
+  "group": 1190,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeCurseResistPoint": 75
+  }
+ },
+ "1200": {
+  "name": "Mottled Necklace",
+  "sp_effect": 312000,
+  "rarity": 1,
+  "group": 1200,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changePoisonResistPoint": 40,
+   "changeDiseaseResistPoint": 40,
+   "changeBloodResistPoint": 40,
+   "changeFreezeResistPoint": 40,
+   "changeSleepResistPoint": 40,
+   "changeMadnessResistPoint": 40
+  }
+ },
+ "1210": {
+  "name": "Bull-Goat's Talisman",
+  "sp_effect": 312100,
+  "rarity": 1,
+  "group": 1210,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "toughnessDamageCutRate": 0.75
+  }
+ },
+ "1230": {
+  "name": "Warrior Jar Shard",
+  "sp_effect": 312300,
+  "rarity": 1,
+  "group": 1230,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.15,
+   "magicAttackRate": 1.15,
+   "fireAttackRate": 1.15,
+   "thunderAttackRate": 1.15,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.15
+  },
+  "conditional": true,
+  "gate": {
+   "magicSubCategoryChange1": 112,
+   "magicSubCategoryChange2": 111
+  }
+ },
+ "1250": {
+  "name": "Millicent's Prosthesis",
+  "sp_effect": 312500,
+  "rarity": 1,
+  "group": 1250,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "addDexterityStatus": 5
+  }
+ },
+ "2000": {
+  "name": "Magic Scorpion Charm",
+  "sp_effect": 320000,
+  "rarity": 1,
+  "group": 2000,
+  "is_drop": true,
+  "magnitude": {
+   "slashDamageCutRate": 1.03,
+   "blowDamageCutRate": 1.03,
+   "thrustDamageCutRate": 1.03,
+   "neutralDamageCutRate": 1.03,
+   "magicAttackRate": 1.15,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "2010": {
+  "name": "Lightning Scorpion Charm",
+  "sp_effect": 320100,
+  "rarity": 1,
+  "group": 2010,
+  "is_drop": true,
+  "magnitude": {
+   "slashDamageCutRate": 1.03,
+   "blowDamageCutRate": 1.03,
+   "thrustDamageCutRate": 1.03,
+   "neutralDamageCutRate": 1.03,
+   "thunderAttackRate": 1.15,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "2020": {
+  "name": "Fire Scorpion Charm",
+  "sp_effect": 320200,
+  "rarity": 1,
+  "group": 2020,
+  "is_drop": true,
+  "magnitude": {
+   "slashDamageCutRate": 1.03,
+   "blowDamageCutRate": 1.03,
+   "thrustDamageCutRate": 1.03,
+   "neutralDamageCutRate": 1.03,
+   "fireAttackRate": 1.15,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "2030": {
+  "name": "Sacred Scorpion Charm",
+  "sp_effect": 320300,
+  "rarity": 1,
+  "group": 2030,
+  "is_drop": true,
+  "magnitude": {
+   "slashDamageCutRate": 1.03,
+   "blowDamageCutRate": 1.03,
+   "thrustDamageCutRate": 1.03,
+   "neutralDamageCutRate": 1.03,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.15
+  }
+ },
+ "2040": {
+  "name": "Red-Feathered Branchsword",
+  "sp_effect": 320400,
+  "rarity": 1,
+  "group": 2040,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.2,
+   "magicAttackRate": 1.2,
+   "fireAttackRate": 1.2,
+   "thunderAttackRate": 1.2,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.2,
+   "displayIconForPermamentEffect": 1
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 48,
+   "conditionHp": 40.0
+  }
+ },
+ "2050": {
+  "name": "Ritual Sword Talisman",
+  "sp_effect": 320500,
+  "rarity": 1,
+  "group": 2050,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.1,
+   "magicAttackRate": 1.1,
+   "fireAttackRate": 1.1,
+   "thunderAttackRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.1,
+   "displayIconForPermamentEffect": 1
+  },
+  "conditional": true,
+  "gate": {
+   "conditionHpRate": 100.0
+  }
+ },
+ "2060": {
+  "name": "Spear Talisman",
+  "sp_effect": 320600,
+  "rarity": 1,
+  "group": 2060,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.2,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 197
+  }
+ },
+ "2070": {
+  "name": "Hammer Talisman",
+  "sp_effect": 320700,
+  "rarity": 1,
+  "group": 2070,
+  "is_drop": true,
+  "magnitude": {
+   "staminaAttackRate": 1.5,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "2080": {
+  "name": "Winged Sword Insignia",
+  "sp_effect": 320800,
+  "rarity": 1,
+  "group": 2080,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "accumuOverFireId": 320804,
+   "accumuOverVal": 17
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 303
+  }
+ },
+ "2090": {
+  "name": "Dagger Talisman",
+  "sp_effect": 320900,
+  "rarity": 1,
+  "group": 2090,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.24,
+   "magicAttackRate": 1.24,
+   "fireAttackRate": 1.24,
+   "thunderAttackRate": 1.24,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.24
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 367
+  }
+ },
+ "2100": {
+  "name": "Arrow's Reach Talisman",
+  "sp_effect": 321000,
+  "rarity": 1,
+  "group": 2100,
+  "is_drop": true,
+  "magnitude": {
+   "bowDistRate": 50,
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 168
+  }
+ },
+ "2120": {
+  "name": "Twinblade Talisman",
+  "sp_effect": 321200,
+  "rarity": 1,
+  "group": 2120,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.15,
+   "magicAttackRate": 1.15,
+   "fireAttackRate": 1.15,
+   "thunderAttackRate": 1.15,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.15
+  },
+  "conditional": true,
+  "gate": {
+   "magicSubCategoryChange1": 104
+  }
+ },
+ "2130": {
+  "name": "Axe Talisman",
+  "sp_effect": 321300,
+  "rarity": 1,
+  "group": 2130,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.12,
+   "magicAttackRate": 1.12,
+   "fireAttackRate": 1.12,
+   "thunderAttackRate": 1.12,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.12
+  },
+  "conditional": true,
+  "gate": {
+   "magicSubCategoryChange1": 100
+  }
+ },
+ "2150": {
+  "name": "Arrow's Sting Talisman",
+  "sp_effect": 321500,
+  "rarity": 1,
+  "group": 2150,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.14,
+   "magicAttackRate": 1.14,
+   "fireAttackRate": 1.14,
+   "thunderAttackRate": 1.14,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.14
+  },
+  "conditional": true,
+  "gate": {
+   "magicSubCategoryChange1": 105,
+   "magicSubCategoryChange2": 113,
+   "magicSubCategoryChange3": 118
+  }
+ },
+ "2160": {
+  "name": "Lord of Blood's Exultation",
+  "sp_effect": 321600,
+  "rarity": 1,
+  "group": 2160,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "unknown_239h": 1
+  }
+ },
+ "2170": {
+  "name": "Kindred of Rot's Exultation",
+  "sp_effect": 321700,
+  "rarity": 1,
+  "group": 2170,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "unknown_239h": 1
+  }
+ },
+ "2180": {
+  "name": "Claw Talisman",
+  "sp_effect": 321800,
+  "rarity": 1,
+  "group": 2180,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.12,
+   "magicAttackRate": 1.12,
+   "fireAttackRate": 1.12,
+   "thunderAttackRate": 1.12,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.12
+  },
+  "conditional": true,
+  "gate": {
+   "magicSubCategoryChange1": 102
+  }
+ },
+ "2190": {
+  "name": "Roar Medallion",
+  "sp_effect": 321900,
+  "rarity": 1,
+  "group": 2190,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.2,
+   "magicAttackRate": 1.2,
+   "fireAttackRate": 1.2,
+   "thunderAttackRate": 1.2,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.2
+  },
+  "conditional": true,
+  "gate": {
+   "magicSubCategoryChange1": 106,
+   "magicSubCategoryChange2": 116,
+   "magicSubCategoryChange3": 107
+  }
+ },
+ "2200": {
+  "name": "Curved Sword Talisman",
+  "sp_effect": 322000,
+  "rarity": 1,
+  "group": 2200,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.2,
+   "magicAttackRate": 1.2,
+   "fireAttackRate": 1.2,
+   "thunderAttackRate": 1.2,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.2
+  },
+  "conditional": true,
+  "gate": {
+   "magicSubCategoryChange1": 103
+  }
+ },
+ "2210": {
+  "name": "Companion Jar",
+  "sp_effect": 322100,
+  "rarity": 1,
+  "group": 2210,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.2,
+   "magicAttackRate": 1.2,
+   "fireAttackRate": 1.2,
+   "thunderAttackRate": 1.2,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.2
+  },
+  "conditional": true,
+  "gate": {
+   "magicSubCategoryChange1": 108
+  }
+ },
+ "2220": {
+  "name": "Perfumer's Talisman",
+  "sp_effect": 322200,
+  "rarity": 1,
+  "group": 2220,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.2,
+   "magicAttackRate": 1.2,
+   "fireAttackRate": 1.2,
+   "thunderAttackRate": 1.2,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.2
+  },
+  "conditional": true,
+  "gate": {
+   "magicSubCategoryChange1": 109
+  }
+ },
+ "3000": {
+  "name": "Graven-School Talisman",
+  "sp_effect": 330000,
+  "rarity": 1,
+  "group": 3000,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.11,
+   "magicAttackRate": 1.11,
+   "fireAttackRate": 1.11,
+   "thunderAttackRate": 1.11,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.11
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 71
+  }
+ },
+ "3040": {
+  "name": "Faithful's Canvas Talisman",
+  "sp_effect": 330400,
+  "rarity": 1,
+  "group": 3040,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.11,
+   "magicAttackRate": 1.11,
+   "fireAttackRate": 1.11,
+   "thunderAttackRate": 1.11,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.11
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 71
+  }
+ },
+ "3060": {
+  "name": "Old Lord's Talisman",
+  "sp_effect": 330600,
+  "rarity": 2,
+  "group": 3060,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "extendLifeRate": 1.3
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 193
+  }
+ },
+ "3070": {
+  "name": "Radagon Icon",
+  "sp_effect": 330700,
+  "rarity": 2,
+  "group": 3070,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "dexterityCancelSystemOnlyAddDexterity": 60
+  }
+ },
+ "3080": {
+  "name": "Primal Glintstone Blade",
+  "sp_effect": 330800,
+  "rarity": 1,
+  "group": 3080,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 0.94,
+   "bCurrHPIndependeMaxHP": 1,
+   "magicConsumptionRate": 0.75,
+   "shamanConsumptionRate": 0.75,
+   "miracleConsumptionRate": 0.75
+  }
+ },
+ "3090": {
+  "name": "Godfrey Icon",
+  "sp_effect": 330900,
+  "rarity": 2,
+  "group": 3090,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.18,
+   "magicAttackRate": 1.18,
+   "fireAttackRate": 1.18,
+   "thunderAttackRate": 1.18,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkAttackRate": 1.18
+  },
+  "conditional": true,
+  "gate": {
+   "magicSubCategoryChange1": 110,
+   "magicSubCategoryChange2": 111
+  }
+ },
+ "4000": {
+  "name": "Dragoncrest Shield Talisman",
+  "sp_effect": 340000,
+  "rarity": 1,
+  "group": 4000,
+  "is_drop": true,
+  "magnitude": {
+   "slashDamageCutRate": 0.85,
+   "blowDamageCutRate": 0.85,
+   "thrustDamageCutRate": 0.85,
+   "neutralDamageCutRate": 0.85,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "4010": {
+  "name": "Spelldrake Talisman",
+  "sp_effect": 340100,
+  "rarity": 1,
+  "group": 4010,
+  "is_drop": true,
+  "magnitude": {
+   "magicDamageCutRate": 0.8,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "4020": {
+  "name": "Flamedrake Talisman",
+  "sp_effect": 340200,
+  "rarity": 1,
+  "group": 4020,
+  "is_drop": true,
+  "magnitude": {
+   "fireDamageCutRate": 0.8,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "4030": {
+  "name": "Boltdrake Talisman",
+  "sp_effect": 340300,
+  "rarity": 1,
+  "group": 4030,
+  "is_drop": true,
+  "magnitude": {
+   "thunderDamageCutRate": 0.8,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "4040": {
+  "name": "Haligdrake Talisman",
+  "sp_effect": 340400,
+  "rarity": 1,
+  "group": 4040,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.8
+  }
+ },
+ "4050": {
+  "name": "Pearldrake Talisman",
+  "sp_effect": 340500,
+  "rarity": 1,
+  "group": 4050,
+  "is_drop": true,
+  "magnitude": {
+   "magicDamageCutRate": 0.9,
+   "fireDamageCutRate": 0.9,
+   "thunderDamageCutRate": 0.9,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.9
+  }
+ },
+ "4070": {
+  "name": "Crucible Feather Talisman",
+  "sp_effect": 340700,
+  "rarity": 1,
+  "group": 4070,
+  "is_drop": true,
+  "magnitude": {
+   "slashDamageCutRate": 1.05,
+   "blowDamageCutRate": 1.05,
+   "thrustDamageCutRate": 1.05,
+   "neutralDamageCutRate": 1.05,
+   "magicDamageCutRate": 1.05,
+   "fireDamageCutRate": 1.05,
+   "thunderDamageCutRate": 1.05,
+   "categoryPriority": 1,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 1.05,
+   "unknown_240": 100
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 290
+  }
+ },
+ "4080": {
+  "name": "Blue-Feathered Branchsword",
+  "sp_effect": 340800,
+  "rarity": 1,
+  "group": 4080,
+  "is_drop": true,
+  "magnitude": {
+   "slashDamageCutRate": 0.6,
+   "blowDamageCutRate": 0.6,
+   "thrustDamageCutRate": 0.6,
+   "neutralDamageCutRate": 0.6,
+   "magicDamageCutRate": 0.6,
+   "fireDamageCutRate": 0.6,
+   "thunderDamageCutRate": 0.6,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.6,
+   "displayIconForPermamentEffect": 1
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 49,
+   "conditionHp": 40.0
+  }
+ },
+ "4090": {
+  "name": "Ritual Shield Talisman",
+  "sp_effect": 340900,
+  "rarity": 1,
+  "group": 4090,
+  "is_drop": true,
+  "magnitude": {
+   "slashDamageCutRate": 0.7,
+   "blowDamageCutRate": 0.7,
+   "thrustDamageCutRate": 0.7,
+   "neutralDamageCutRate": 0.7,
+   "magicDamageCutRate": 0.7,
+   "fireDamageCutRate": 0.7,
+   "thunderDamageCutRate": 0.7,
+   "bCurrHPIndependeMaxHP": 1,
+   "darkDamageCutRate": 0.7,
+   "displayIconForPermamentEffect": 1
+  },
+  "conditional": true,
+  "gate": {
+   "conditionHpRate": 100.0
+  }
+ },
+ "4100": {
+  "name": "Greatshield Talisman",
+  "sp_effect": 341000,
+  "rarity": 1,
+  "group": 4100,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "guardStaminaMult": 0.8
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 158
+  }
+ },
+ "5000": {
+  "name": "Crimson Seed Talisman",
+  "sp_effect": 350000,
+  "rarity": 1,
+  "group": 5000,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "changeHpEstusFlaskCorrectRate": 1.2
+  }
+ },
+ "5020": {
+  "name": "Blessed Dew Talisman",
+  "sp_effect": 350200,
+  "rarity": 1,
+  "group": 5020,
+  "is_drop": true,
+  "magnitude": {
+   "changeHpPoint": -2,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "5030": {
+  "name": "Taker's Cameo",
+  "sp_effect": 350300,
+  "rarity": 1,
+  "group": 5030,
+  "is_drop": true,
+  "magnitude": {
+   "applyIdOnKillSp": 350302,
+   "bCurrHPIndependeMaxHP": 1,
+   "applyIdOnGetSoul": 350301
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 199
+  }
+ },
+ "5040": {
+  "name": "Godskin Swaddling Cloth",
+  "sp_effect": 350400,
+  "rarity": 1,
+  "group": 5040,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "accumuOverFireId": 350401,
+   "accumuOverVal": 32
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 304
+  }
+ },
+ "5050": {
+  "name": "Assassin's Crimson Dagger",
+  "sp_effect": 350500,
+  "rarity": 1,
+  "group": 5050,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "5060": {
+  "name": "Assassin's Cerulean Dagger",
+  "sp_effect": 350600,
+  "rarity": 1,
+  "group": 5060,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "6020": {
+  "name": "Carian Filigreed Crest",
+  "sp_effect": 360200,
+  "rarity": 1,
+  "group": 6020,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1,
+   "artsConsumptionRate": 0.75
+  }
+ },
+ "6070": {
+  "name": "Sacrificial Twig",
+  "sp_effect": 360700,
+  "rarity": 2,
+  "group": 6070,
+  "is_drop": true,
+  "magnitude": {
+   "bCurrHPIndependeMaxHP": 1
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 159
+  }
+ },
+ "6110": {
+  "name": "Ancestral Spirit's Horn",
+  "sp_effect": 361100,
+  "rarity": 2,
+  "group": 6110,
+  "is_drop": true,
+  "magnitude": {
+   "applyIdOnKillSp": 361102,
+   "bCurrHPIndependeMaxHP": 1,
+   "applyIdOnGetSoul": 361101
+  },
+  "conditional": true,
+  "gate": {
+   "stateInfo": 199
+  }
+ },
+ "7000": {
+  "name": "Symbol of Avarice",
+  "sp_effect": 370000,
+  "rarity": 9,
+  "group": 7000,
+  "is_drop": true
+ },
+ "9000": {
+  "name": "talisman 9000",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9000,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9010": {
+  "name": "talisman 9010",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9010,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9011": {
+  "name": "talisman 9011",
+  "sp_effect": 8100000,
+  "rarity": 1,
+  "group": 9011,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06
+  }
+ },
+ "9012": {
+  "name": "talisman 9012",
+  "sp_effect": 8410100,
+  "rarity": 1,
+  "group": 9012,
+  "is_drop": true,
+  "conditional": true,
+  "gate": {
+   "stateInfo": 2050
+  }
+ },
+ "9020": {
+  "name": "talisman 9020",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9020,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9021": {
+  "name": "talisman 9021",
+  "sp_effect": 8100000,
+  "rarity": 1,
+  "group": 9021,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06
+  }
+ },
+ "9022": {
+  "name": "talisman 9022",
+  "sp_effect": 8410100,
+  "rarity": 1,
+  "group": 9022,
+  "is_drop": true,
+  "conditional": true,
+  "gate": {
+   "stateInfo": 2050
+  }
+ },
+ "9100": {
+  "name": "talisman 9100",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9100,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9110": {
+  "name": "talisman 9110",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9110,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9111": {
+  "name": "talisman 9111",
+  "sp_effect": 8100000,
+  "rarity": 1,
+  "group": 9111,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06
+  }
+ },
+ "9112": {
+  "name": "talisman 9112",
+  "sp_effect": 8410100,
+  "rarity": 1,
+  "group": 9112,
+  "is_drop": true,
+  "conditional": true,
+  "gate": {
+   "stateInfo": 2050
+  }
+ },
+ "9120": {
+  "name": "talisman 9120",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9120,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9121": {
+  "name": "talisman 9121",
+  "sp_effect": 8100000,
+  "rarity": 1,
+  "group": 9121,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06
+  }
+ },
+ "9122": {
+  "name": "talisman 9122",
+  "sp_effect": 8410100,
+  "rarity": 1,
+  "group": 9122,
+  "is_drop": true,
+  "conditional": true,
+  "gate": {
+   "stateInfo": 2050
+  }
+ },
+ "9200": {
+  "name": "talisman 9200",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9200,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9210": {
+  "name": "talisman 9210",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9210,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9211": {
+  "name": "talisman 9211",
+  "sp_effect": 8100000,
+  "rarity": 1,
+  "group": 9211,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06
+  }
+ },
+ "9212": {
+  "name": "talisman 9212",
+  "sp_effect": 8410100,
+  "rarity": 1,
+  "group": 9212,
+  "is_drop": true,
+  "conditional": true,
+  "gate": {
+   "stateInfo": 2050
+  }
+ },
+ "9220": {
+  "name": "talisman 9220",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9220,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9221": {
+  "name": "talisman 9221",
+  "sp_effect": 8100000,
+  "rarity": 1,
+  "group": 9221,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06
+  }
+ },
+ "9222": {
+  "name": "talisman 9222",
+  "sp_effect": 8410100,
+  "rarity": 1,
+  "group": 9222,
+  "is_drop": true,
+  "conditional": true,
+  "gate": {
+   "stateInfo": 2050
+  }
+ },
+ "9300": {
+  "name": "talisman 9300",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9300,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9310": {
+  "name": "talisman 9310",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9310,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9311": {
+  "name": "talisman 9311",
+  "sp_effect": 8100000,
+  "rarity": 1,
+  "group": 9311,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06
+  }
+ },
+ "9312": {
+  "name": "talisman 9312",
+  "sp_effect": 8410100,
+  "rarity": 1,
+  "group": 9312,
+  "is_drop": true,
+  "conditional": true,
+  "gate": {
+   "stateInfo": 2050
+  }
+ },
+ "9320": {
+  "name": "talisman 9320",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9320,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9321": {
+  "name": "talisman 9321",
+  "sp_effect": 8100000,
+  "rarity": 1,
+  "group": 9321,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06
+  }
+ },
+ "9322": {
+  "name": "talisman 9322",
+  "sp_effect": 8410100,
+  "rarity": 1,
+  "group": 9322,
+  "is_drop": true,
+  "conditional": true,
+  "gate": {
+   "stateInfo": 2050
+  }
+ },
+ "9400": {
+  "name": "talisman 9400",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9400,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9410": {
+  "name": "talisman 9410",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9410,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9411": {
+  "name": "talisman 9411",
+  "sp_effect": 8100000,
+  "rarity": 1,
+  "group": 9411,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06
+  }
+ },
+ "9412": {
+  "name": "talisman 9412",
+  "sp_effect": 8410100,
+  "rarity": 1,
+  "group": 9412,
+  "is_drop": true,
+  "conditional": true,
+  "gate": {
+   "stateInfo": 2050
+  }
+ },
+ "9420": {
+  "name": "talisman 9420",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9420,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9421": {
+  "name": "talisman 9421",
+  "sp_effect": 8100000,
+  "rarity": 1,
+  "group": 9421,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06
+  }
+ },
+ "9422": {
+  "name": "talisman 9422",
+  "sp_effect": 8410100,
+  "rarity": 1,
+  "group": 9422,
+  "is_drop": true,
+  "conditional": true,
+  "gate": {
+   "stateInfo": 2050
+  }
+ },
+ "9500": {
+  "name": "talisman 9500",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9500,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9510": {
+  "name": "talisman 9510",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9510,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9511": {
+  "name": "talisman 9511",
+  "sp_effect": 8100000,
+  "rarity": 1,
+  "group": 9511,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06
+  }
+ },
+ "9512": {
+  "name": "talisman 9512",
+  "sp_effect": 8410100,
+  "rarity": 1,
+  "group": 9512,
+  "is_drop": true,
+  "conditional": true,
+  "gate": {
+   "stateInfo": 2050
+  }
+ },
+ "9520": {
+  "name": "talisman 9520",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9520,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9521": {
+  "name": "talisman 9521",
+  "sp_effect": 8100000,
+  "rarity": 1,
+  "group": 9521,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06
+  }
+ },
+ "9522": {
+  "name": "talisman 9522",
+  "sp_effect": 8410100,
+  "rarity": 1,
+  "group": 9522,
+  "is_drop": true,
+  "conditional": true,
+  "gate": {
+   "stateInfo": 2050
+  }
+ },
+ "9600": {
+  "name": "talisman 9600",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9600,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9610": {
+  "name": "talisman 9610",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9610,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9611": {
+  "name": "talisman 9611",
+  "sp_effect": 8100000,
+  "rarity": 1,
+  "group": 9611,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06
+  }
+ },
+ "9612": {
+  "name": "talisman 9612",
+  "sp_effect": 8410100,
+  "rarity": 1,
+  "group": 9612,
+  "is_drop": true,
+  "conditional": true,
+  "gate": {
+   "stateInfo": 2050
+  }
+ },
+ "9620": {
+  "name": "talisman 9620",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9620,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9621": {
+  "name": "talisman 9621",
+  "sp_effect": 8100000,
+  "rarity": 1,
+  "group": 9621,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06
+  }
+ },
+ "9622": {
+  "name": "talisman 9622",
+  "sp_effect": 8410100,
+  "rarity": 1,
+  "group": 9622,
+  "is_drop": true,
+  "conditional": true,
+  "gate": {
+   "stateInfo": 2050
+  }
+ },
+ "9700": {
+  "name": "talisman 9700",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9700,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9710": {
+  "name": "talisman 9710",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9710,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9711": {
+  "name": "talisman 9711",
+  "sp_effect": 8100000,
+  "rarity": 1,
+  "group": 9711,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06
+  }
+ },
+ "9712": {
+  "name": "talisman 9712",
+  "sp_effect": 8410100,
+  "rarity": 1,
+  "group": 9712,
+  "is_drop": true,
+  "conditional": true,
+  "gate": {
+   "stateInfo": 2050
+  }
+ },
+ "9720": {
+  "name": "talisman 9720",
+  "sp_effect": 8000000,
+  "rarity": 1,
+  "group": 9720,
+  "is_drop": true,
+  "magnitude": {
+   "maxHpRate": 1.1,
+   "bCurrHPIndependeMaxHP": 1
+  }
+ },
+ "9721": {
+  "name": "talisman 9721",
+  "sp_effect": 8100000,
+  "rarity": 1,
+  "group": 9721,
+  "is_drop": true,
+  "magnitude": {
+   "physicsAttackRate": 1.06
+  }
+ },
+ "9722": {
+  "name": "talisman 9722",
+  "sp_effect": 8410100,
+  "rarity": 1,
+  "group": 9722,
+  "is_drop": true,
+  "conditional": true,
+  "gate": {
+   "stateInfo": 2050
+  }
+ }
+}

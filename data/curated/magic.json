@@ -1,0 +1,2993 @@
+{
+ "4000": {
+  "name": "Sorcery: Glintstone Pebble",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 7,
+  "stamina": 20,
+  "damage": {
+   "mag": 152.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 3.0
+ },
+ "4001": {
+  "name": "Sorcery: Great Glintstone Shard",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 12,
+  "stamina": 26,
+  "damage": {
+   "mag": 190.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 5.5
+ },
+ "4010": {
+  "name": "Sorcery: Swift Glintstone Shard",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 5,
+  "stamina": 9,
+  "damage": {
+   "mag": 114.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 2.0
+ },
+ "4020": {
+  "name": "Sorcery: Glintstone Cometshard",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 6,
+  "fp": 17,
+  "stamina": 30,
+  "fp_charge": 17,
+  "damage": {
+   "mag": 275.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 5.5,
+  "charged": {
+   "damage": {
+    "mag": 380.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 10.175
+  }
+ },
+ "4021": {
+  "name": "Sorcery: Comet",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 6,
+  "fp": 24,
+  "stamina": 35,
+  "fp_charge": 24,
+  "damage": {
+   "mag": 285.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 7.0,
+  "charged": {
+   "damage": {
+    "mag": 780.0
+   },
+   "hits": 2.0,
+   "confidence": "params",
+   "super_armor": 25.9
+  }
+ },
+ "4030": {
+  "name": "Sorcery: Shard Spiral",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 14,
+  "stamina": 28,
+  "fp_charge": 14,
+  "damage": {
+   "mag": 969.0
+  },
+  "hits": 17.0,
+  "confidence": "params_interval",
+  "super_armor": 34.0,
+  "charged": {
+   "damage": {
+    "mag": 1139.0
+   },
+   "hits": 17.0,
+   "confidence": "params_interval",
+   "super_armor": 62.9
+  }
+ },
+ "4040": {
+  "name": "Sorcery: Glintstone Stars",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 7,
+  "fp": 12,
+  "stamina": 21,
+  "fp_charge": 12,
+  "damage": {
+   "mag": 1045.714258
+  },
+  "hits": 13.714285,
+  "confidence": "assumed",
+  "super_armor": 27.428571,
+  "charged": {
+   "damage": {
+    "mag": 1182.857111
+   },
+   "hits": 13.714285,
+   "confidence": "assumed",
+   "super_armor": 50.742856
+  }
+ },
+ "4050": {
+  "name": "Sorcery: Star Shower",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 7,
+  "fp": 23,
+  "stamina": 26,
+  "fp_charge": 23,
+  "damage": {
+   "mag": 754.285694
+  },
+  "hits": 15.428571,
+  "confidence": "assumed",
+  "super_armor": 15.428571,
+  "charged": {
+   "damage": {
+    "mag": 831.428549
+   },
+   "hits": 15.428571,
+   "confidence": "assumed",
+   "super_armor": 28.542856
+  }
+ },
+ "4060": {
+  "name": "Sorcery: Crystal Barrage",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 14,
+  "stamina": 26,
+  "fp_charge": 2,
+  "damage": {
+   "mag": 15.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 0.5,
+  "channel": {
+   "fp_per_s": 2,
+   "confidence": "assumed"
+  }
+ },
+ "4070": {
+  "name": "Sorcery: Glintstone Arc",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 9,
+  "stamina": 18,
+  "damage": {
+   "mag": 148.0
+  },
+  "hits": 1.0,
+  "confidence": "params_interval",
+  "super_armor": 5.0
+ },
+ "4080": {
+  "name": "Sorcery: Cannon of Haima",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 38,
+  "stamina": 42,
+  "fp_charge": 38,
+  "damage": {
+   "mag": 338.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 16.113501
+ },
+ "4090": {
+  "name": "Sorcery: Crystal Burst",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 14,
+  "stamina": 9,
+  "fp_charge": 14,
+  "damage": {
+   "mag": 150.0
+  },
+  "hits": 5.0,
+  "confidence": "params",
+  "super_armor": 5.0,
+  "charged": {
+   "damage": {
+    "mag": 120.0
+   },
+   "hits": 4.0,
+   "confidence": "params",
+   "super_armor": 4.0
+  }
+ },
+ "4100": {
+  "name": "Sorcery: Shatter Earth",
+  "action": "sorcery_stonedigger",
+  "incant": false,
+  "school_id": 4,
+  "fp": 10,
+  "stamina": 22,
+  "damage": {
+   "mag": 252.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 10.175,
+  "charged": {
+   "damage": {
+    "mag": 275.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 10.175
+  }
+ },
+ "4110": {
+  "name": "Sorcery: Rock Blaster",
+  "action": "sorcery_stonedigger",
+  "incant": false,
+  "school_id": 4,
+  "fp": 22,
+  "stamina": 35,
+  "fp_charge": 5,
+  "damage": {
+   "mag": 64.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 2.0,
+  "charged": {
+   "damage": {
+    "mag": 260.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 16.113501
+  },
+  "channel": {
+   "fp_per_s": 5,
+   "confidence": "assumed"
+  }
+ },
+ "4120": {
+  "name": "Sorcery: Gavel of Haima",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 22,
+  "stamina": 46,
+  "damage": {
+   "mag": 365
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 22.511999
+ },
+ "4130": {
+  "name": "Sorcery: Terra Magicus",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 20,
+  "stamina": 12
+ },
+ "4200": {
+  "name": "Sorcery: Comet Azur",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 14,
+  "fp": 40,
+  "stamina": 34,
+  "fp_charge": 10,
+  "damage": {
+   "mag": 70.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 1.0,
+  "charged": {
+   "damage": {
+    "mag": 36.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 0.5
+  },
+  "channel": {
+   "fp_per_s": 10,
+   "hits_per_s": 5.0,
+   "damage_per_s": {
+    "mag": 349.999995
+   },
+   "confidence": "params"
+  }
+ },
+ "4210": {
+  "name": "Sorcery: Founding Rain of Stars",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 27,
+  "stamina": 37,
+  "fp_charge": 32,
+  "damage": {
+   "mag": 49
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 0.5
+ },
+ "4220": {
+  "name": "Sorcery: Stars of Ruin",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 15,
+  "fp": 32,
+  "stamina": 33,
+  "fp_charge": 32,
+  "damage": {
+   "mag": 420.0
+  },
+  "hits": 14.0,
+  "confidence": "assumed",
+  "super_armor": 7.0,
+  "charged": {
+   "damage": {
+    "mag": 490.0
+   },
+   "hits": 14.0,
+   "confidence": "assumed",
+   "super_armor": 12.95
+  }
+ },
+ "4300": {
+  "name": "Sorcery: Glintblade Phalanx",
+  "action": "sorcery_glintblade",
+  "incant": false,
+  "school_id": 3,
+  "fp": 18,
+  "stamina": 12,
+  "damage": {
+   "mag": 520.0
+  },
+  "hits": 10.0,
+  "confidence": "params",
+  "super_armor": 10.0
+ },
+ "4301": {
+  "name": "Sorcery: Carian Phalanx",
+  "action": "sorcery_glintblade",
+  "incant": false,
+  "school_id": 3,
+  "fp": 24,
+  "stamina": 16,
+  "damage": {
+   "mag": 612.0
+  },
+  "hits": 18.0,
+  "confidence": "params",
+  "super_armor": 18.0
+ },
+ "4302": {
+  "name": "Sorcery: Greatblade Phalanx",
+  "action": "sorcery_glintblade",
+  "incant": false,
+  "school_id": 3,
+  "fp": 30,
+  "stamina": 20,
+  "damage": {
+   "mag": 672.0
+  },
+  "hits": 6.0,
+  "confidence": "params",
+  "super_armor": 61.05
+ },
+ "4360": {
+  "name": "Sorcery: Rennala's Full Moon",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 1,
+  "fp": 47,
+  "stamina": 32,
+  "damage": {
+   "mag": 508.0
+  },
+  "hits": 1.0,
+  "confidence": "params_interval",
+  "super_armor": 13.6345
+ },
+ "4361": {
+  "name": "Sorcery: Ranni's Dark Moon",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 1,
+  "fp": 57,
+  "stamina": 32,
+  "damage": {
+   "mag": 470.0
+  },
+  "hits": 1.0,
+  "confidence": "params_interval",
+  "super_armor": 13.6345,
+  "status": {
+   "frost": 150.0
+  }
+ },
+ "4370": {
+  "name": "Sorcery: Magic Downpour",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 18,
+  "stamina": 17,
+  "fp_charge": 18,
+  "damage": {
+   "mag": 728.0
+  },
+  "hits": 14.0,
+  "confidence": "params_interval",
+  "super_armor": 7.0,
+  "charged": {
+   "damage": {
+    "mag": 312.0
+   },
+   "hits": 6.0,
+   "confidence": "params_interval",
+   "super_armor": 3.0
+  }
+ },
+ "4380": {
+  "name": "Sorcery: Loretta's Greatbow",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 24,
+  "stamina": 30,
+  "fp_charge": 24,
+  "damage": {
+   "mag": 308.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 7.0,
+  "charged": {
+   "damage": {
+    "mag": 308.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 7.0
+  }
+ },
+ "4381": {
+  "name": "Sorcery: Loretta's Mastery",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 39,
+  "stamina": 33,
+  "fp_charge": 39,
+  "damage": {
+   "mag": 432.0
+  },
+  "hits": 4.0,
+  "confidence": "params",
+  "super_armor": 20.0,
+  "charged": {
+   "damage": {
+    "mag": 432.0
+   },
+   "hits": 4.0,
+   "confidence": "params",
+   "super_armor": 20.0
+  }
+ },
+ "4390": {
+  "name": "Sorcery: Magic Glintblade",
+  "action": "sorcery_glintblade",
+  "incant": false,
+  "school_id": 3,
+  "fp": 12,
+  "stamina": 22,
+  "fp_charge": 12,
+  "damage": {
+   "mag": 182
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 5.0,
+  "charged": {
+   "damage": {
+    "mag": 364.0
+   },
+   "hits": 2.0,
+   "confidence": "params",
+   "super_armor": 10.0
+  }
+ },
+ "4400": {
+  "name": "Sorcery: Glintstone Icecrag",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 13,
+  "fp": 12,
+  "stamina": 26,
+  "damage": {
+   "mag": 182.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 5.5,
+  "status": {
+   "frost": 60.0
+  }
+ },
+ "4410": {
+  "name": "Sorcery: Zamor Ice Storm",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 13,
+  "fp": 17,
+  "stamina": 27,
+  "fp_charge": 17,
+  "damage": {
+   "mag": 64
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 2.0
+ },
+ "4420": {
+  "name": "Sorcery: Freezing Mist",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 13,
+  "fp": 20,
+  "stamina": 13,
+  "fp_charge": 20
+ },
+ "4430": {
+  "name": "Sorcery: Carian Greatsword",
+  "action": "sorcery_carian",
+  "incant": false,
+  "school_id": 2,
+  "fp": 12,
+  "stamina": 22,
+  "damage": {
+   "mag": 268
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 10.175
+ },
+ "4431": {
+  "name": "Sorcery: Adula's Moonblade",
+  "action": "sorcery_carian",
+  "incant": false,
+  "school_id": 2,
+  "fp": 22,
+  "stamina": 22,
+  "damage": {
+   "mag": 120
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 7.0
+ },
+ "4440": {
+  "name": "Sorcery: Carian Slicer",
+  "action": "sorcery_carian",
+  "incant": false,
+  "school_id": 2,
+  "fp": 4,
+  "stamina": 12,
+  "damage": {
+   "mag": 170
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 3.0
+ },
+ "4450": {
+  "name": "Sorcery: Carian Piercer",
+  "action": "sorcery_carian",
+  "incant": false,
+  "school_id": 2,
+  "fp": 17,
+  "stamina": 25,
+  "fp_charge": 17,
+  "damage": {
+   "mag": 367
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 10.175
+ },
+ "4460": {
+  "name": "Sorcery: Scholar's Armament",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 25,
+  "stamina": 10
+ },
+ "4470": {
+  "name": "Sorcery: Scholar's Shield",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 30,
+  "stamina": 10
+ },
+ "4490": {
+  "name": "Sorcery: Frozen Armament",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 13,
+  "fp": 20,
+  "stamina": 10
+ },
+ "4500": {
+  "name": "Sorcery: Shattering Crystal",
+  "action": "sorcery_crystalian",
+  "incant": false,
+  "school_id": 5,
+  "fp": 27,
+  "stamina": 35,
+  "fp_charge": 38,
+  "damage": {
+   "mag": 144.0
+  },
+  "hits": 2.0,
+  "confidence": "params",
+  "super_armor": 5.6,
+  "charged": {
+   "damage": {
+    "mag": 144.0
+   },
+   "hits": 2.0,
+   "confidence": "params",
+   "super_armor": 5.6
+  }
+ },
+ "4510": {
+  "name": "Sorcery: Crystal Release",
+  "action": "sorcery_crystalian",
+  "incant": false,
+  "school_id": 5,
+  "fp": 34,
+  "stamina": 26,
+  "damage": {
+   "mag": 1476.862745
+  },
+  "hits": 14.0,
+  "confidence": "params_interval",
+  "super_armor": 36.4,
+  "charged": {
+   "damage": {
+    "mag": 1470.0
+   },
+   "hits": 14.0,
+   "confidence": "params_interval",
+   "super_armor": 36.4
+  }
+ },
+ "4520": {
+  "name": "Sorcery: Crystal Torrent",
+  "action": "sorcery_crystalian",
+  "incant": false,
+  "school_id": 5,
+  "fp": 20,
+  "stamina": 30,
+  "fp_charge": 5,
+  "damage": {
+   "mag": 76.0
+  },
+  "hits": 2.0,
+  "confidence": "params",
+  "super_armor": 1.0,
+  "charged": {
+   "damage": {
+    "mag": 76.0
+   },
+   "hits": 2.0,
+   "confidence": "params",
+   "super_armor": 1.0
+  },
+  "channel": {
+   "fp_per_s": 5,
+   "hits_per_s": 4.0,
+   "damage_per_s": {
+    "mag": 304.0
+   },
+   "confidence": "params"
+  }
+ },
+ "4600": {
+  "name": "Sorcery: Ambush Shard",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 13,
+  "stamina": 15,
+  "damage": {
+   "mag": 146.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 3.0
+ },
+ "4610": {
+  "name": "Sorcery: Night Shard",
+  "action": "sorcery_invisibility",
+  "incant": false,
+  "school_id": 12,
+  "fp": 7,
+  "stamina": 9,
+  "damage": {
+   "mag": 116.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 2.0
+ },
+ "4620": {
+  "name": "Sorcery: Night Comet",
+  "action": "sorcery_invisibility",
+  "incant": false,
+  "school_id": 12,
+  "fp": 21,
+  "stamina": 30,
+  "fp_charge": 21,
+  "damage": {
+   "mag": 237.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 5.5,
+  "charged": {
+   "damage": {
+    "mag": 285.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 10.175
+  }
+ },
+ "4630": {
+  "name": "Sorcery: Thops's Barrier",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 7,
+  "stamina": 10,
+  "channel": {
+   "fp_per_s": 7,
+   "confidence": "assumed"
+  }
+ },
+ "4640": {
+  "name": "Sorcery: Carian Retaliation",
+  "action": "sorcery_glintblade",
+  "incant": false,
+  "school_id": 3,
+  "fp": 8,
+  "stamina": 15
+ },
+ "4641": {
+  "name": "Sorcery: Carian Retaliation (Unused 1)",
+  "action": "sorcery_glintblade",
+  "incant": false,
+  "school_id": 3,
+  "fp": 8,
+  "stamina": 15
+ },
+ "4642": {
+  "name": "Sorcery: Carian Retaliation (Unused 2)",
+  "action": "sorcery_glintblade",
+  "incant": false,
+  "school_id": 3,
+  "fp": 8,
+  "stamina": 15
+ },
+ "4650": {
+  "name": "Sorcery: Eternal Darkness",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 6,
+  "fp": 25,
+  "stamina": 15
+ },
+ "4700": {
+  "name": "Sorcery: Meteorite",
+  "action": "sorcery_gravity",
+  "incant": false,
+  "school_id": 11,
+  "fp": 30,
+  "stamina": 35,
+  "fp_charge": 10,
+  "damage": {
+   "phys": 270.0,
+   "mag": 210.0
+  },
+  "hits": 2.0,
+  "confidence": "params",
+  "super_armor": 15.26,
+  "charged": {
+   "damage": {
+    "phys": 270.0,
+    "mag": 210.0
+   },
+   "hits": 2.0,
+   "confidence": "params",
+   "super_armor": 15.26
+  },
+  "channel": {
+   "fp_per_s": 10,
+   "hits_per_s": 0.333333,
+   "damage_per_s": {
+    "phys": 45.0,
+    "mag": 35.0
+   },
+   "confidence": "params"
+  }
+ },
+ "4701": {
+  "name": "Sorcery: Meteorite of Astel",
+  "action": "sorcery_gravity",
+  "incant": false,
+  "school_id": 11,
+  "fp": 60,
+  "stamina": 40,
+  "fp_charge": 12,
+  "damage": {
+   "phys": 145,
+   "mag": 105
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 7.63,
+  "channel": {
+   "fp_per_s": 12,
+   "confidence": "assumed"
+  }
+ },
+ "4710": {
+  "name": "Sorcery: Rock Sling",
+  "action": "sorcery_gravity",
+  "incant": false,
+  "school_id": 11,
+  "fp": 18,
+  "stamina": 29,
+  "damage": {
+   "phys": 102.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 9.5,
+  "charged": {
+   "damage": {
+    "phys": 102.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 9.5
+  }
+ },
+ "4720": {
+  "name": "Sorcery: Gravity Well",
+  "action": "sorcery_gravity",
+  "incant": false,
+  "school_id": 11,
+  "fp": 12,
+  "stamina": 20,
+  "fp_charge": 12,
+  "damage": {
+   "mag": 248.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 5.0
+ },
+ "4721": {
+  "name": "Sorcery: Collapsing Stars",
+  "action": "sorcery_gravity",
+  "incant": false,
+  "school_id": 11,
+  "fp": 18,
+  "stamina": 27,
+  "fp_charge": 18,
+  "damage": {
+   "mag": 608.0
+  },
+  "hits": 16.0,
+  "confidence": "params",
+  "super_armor": 24.0,
+  "charged": {
+   "damage": {
+    "mag": 76.0
+   },
+   "hits": 2.0,
+   "confidence": "params",
+   "super_armor": 3.0
+  }
+ },
+ "4800": {
+  "name": "Sorcery: Magma Shot",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 8,
+  "fp": 16,
+  "stamina": 21,
+  "fp_charge": 16,
+  "damage": {
+   "fire": 589.363649
+  },
+  "hits": 12.181819,
+  "confidence": "params_interval",
+  "super_armor": 5.0,
+  "charged": {
+   "damage": {
+    "fire": 890.432429
+   },
+   "hits": 17.0,
+   "confidence": "params_interval",
+   "super_armor": 8.5
+  }
+ },
+ "4810": {
+  "name": "Sorcery: Gelmir's Fury",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 8,
+  "fp": 16,
+  "stamina": 38,
+  "fp_charge": 3,
+  "damage": {
+   "fire": 375.0
+  },
+  "hits": 3.0,
+  "confidence": "params",
+  "super_armor": 6.0,
+  "charged": {
+   "damage": {
+    "fire": 375.0
+   },
+   "hits": 3.0,
+   "confidence": "params",
+   "super_armor": 6.0
+  },
+  "channel": {
+   "fp_per_s": 3,
+   "hits_per_s": 0.555556,
+   "damage_per_s": {
+    "fire": 138.888893
+   },
+   "confidence": "params"
+  }
+ },
+ "4820": {
+  "name": "Sorcery: Roiling Magma",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 8,
+  "fp": 28,
+  "stamina": 27,
+  "fp_charge": 28,
+  "damage": {
+   "fire": 552.0
+  },
+  "hits": 2.0,
+  "confidence": "assumed",
+  "super_armor": 15.175,
+  "charged": {
+   "damage": {
+    "fire": 715.0
+   },
+   "hits": 2.0,
+   "confidence": "assumed",
+   "super_armor": 27.25
+  }
+ },
+ "4830": {
+  "name": "Sorcery: Rykard's Rancor",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 8,
+  "fp": 23,
+  "stamina": 36,
+  "damage": {
+   "fire": 666.0
+  },
+  "hits": 6.0,
+  "confidence": "assumed",
+  "super_armor": 30.0
+ },
+ "4900": {
+  "name": "Sorcery: Briars of Sin",
+  "action": "sorcery_thorn",
+  "incant": false,
+  "school_id": 9,
+  "fp": 6,
+  "stamina": 26,
+  "damage": {
+   "mag": 280.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 7.0,
+  "status": {
+   "bleed": 110.0
+  },
+  "charged": {
+   "damage": {
+    "mag": 290.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 7.5,
+   "status": {
+    "bleed": 110.0
+   }
+  }
+ },
+ "4910": {
+  "name": "Sorcery: Briars of Punishment",
+  "action": "sorcery_thorn",
+  "incant": false,
+  "school_id": 9,
+  "fp": 9,
+  "stamina": 22,
+  "damage": {
+   "mag": 655.00001
+  },
+  "hits": 2.5,
+  "confidence": "params_interval",
+  "super_armor": 17.5,
+  "status": {
+   "bleed": 200.000003
+  }
+ },
+ "5000": {
+  "name": "Sorcery: Rancorcall",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 10,
+  "fp": 12,
+  "stamina": 21,
+  "fp_charge": 12,
+  "damage": {
+   "mag": 180.0
+  },
+  "hits": 4.0,
+  "confidence": "params",
+  "super_armor": 4.0,
+  "charged": {
+   "damage": {
+    "mag": 180.0
+   },
+   "hits": 4.0,
+   "confidence": "params",
+   "super_armor": 4.0
+  }
+ },
+ "5001": {
+  "name": "Sorcery: Ancient Death Rancor",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 10,
+  "fp": 21,
+  "stamina": 27,
+  "fp_charge": 24,
+  "damage": {
+   "mag": 108.0
+  },
+  "hits": 3.0,
+  "confidence": "params",
+  "super_armor": 4.5,
+  "charged": {
+   "damage": {
+    "mag": 108.0
+   },
+   "hits": 3.0,
+   "confidence": "params",
+   "super_armor": 4.5
+  }
+ },
+ "5010": {
+  "name": "Sorcery: Explosive Ghostflame",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 10,
+  "fp": 29,
+  "stamina": 45,
+  "damage": {
+   "mag": 340.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 16.113501,
+  "status": {
+   "frost": 50.0
+  },
+  "charged": {
+   "damage": {
+    "mag": 594.0
+   },
+   "hits": 9.0,
+   "confidence": "assumed",
+   "super_armor": 9.0,
+   "status": {
+    "frost": 252.0
+   }
+  }
+ },
+ "5030": {
+  "name": "Sorcery: Tibia's Summons",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": 10,
+  "fp": 17,
+  "stamina": 27,
+  "damage": {
+   "mag": 540.0
+  },
+  "hits": 3.0,
+  "confidence": "params",
+  "super_armor": 15.0
+ },
+ "5040": {
+  "name": "Sorcery: Death Lightning",
+  "action": "incant_dragon_cult",
+  "incant": false,
+  "school_id": 22,
+  "fp": 28,
+  "stamina": 32,
+  "fp_charge": 28,
+  "damage": {
+   "thunder": 513
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 5.0
+ },
+ "5100": {
+  "name": "Sorcery: Oracle Bubbles",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 12,
+  "stamina": 18,
+  "fp_charge": 12,
+  "damage": {
+   "mag": 306.0
+  },
+  "hits": 6.0,
+  "confidence": "params",
+  "super_armor": 14.4,
+  "charged": {
+   "damage": {
+    "mag": 354.0
+   },
+   "hits": 6.0,
+   "confidence": "params",
+   "super_armor": 21.0
+  }
+ },
+ "5110": {
+  "name": "Sorcery: Great Oracular Bubble",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 16,
+  "stamina": 27,
+  "fp_charge": 16,
+  "damage": {
+   "mag": 426.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 14.4,
+  "charged": {
+   "damage": {
+    "mag": 495.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 20.0
+  }
+ },
+ "6000": {
+  "name": "Incantation: Catch Flame",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 10,
+  "stamina": 17,
+  "damage": {
+   "fire": 225.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 7.0,
+  "charged": {
+   "damage": {
+    "fire": 225.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 7.0
+  }
+ },
+ "6001": {
+  "name": "Incantation: O, Flame!",
+  "action": "incant_giants_flame",
+  "incant": true,
+  "school_id": 21,
+  "fp": 16,
+  "stamina": 24,
+  "fp_charge": 16,
+  "damage": {
+   "fire": 280.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 10.175,
+  "charged": {
+   "damage": {
+    "fire": 351.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 14.4
+  }
+ },
+ "6010": {
+  "name": "Incantation: Flame Sling",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 11,
+  "stamina": 22,
+  "fp_charge": 11,
+  "damage": {
+   "fire": 213.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 5.0,
+  "charged": {
+   "damage": {
+    "fire": 267.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 9.25
+  }
+ },
+ "6020": {
+  "name": "Incantation: Flame Fall Upon Them",
+  "action": "incant_giants_flame",
+  "incant": true,
+  "school_id": 21,
+  "fp": 16,
+  "stamina": 10,
+  "fp_charge": 16,
+  "damage": {
+   "fire": 115.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 4.0,
+  "charged": {
+   "damage": {
+    "fire": 148.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 6.0
+  }
+ },
+ "6030": {
+  "name": "Incantation: Whirl, O Flame",
+  "action": "incant_giants_flame",
+  "incant": true,
+  "school_id": 21,
+  "fp": 19,
+  "stamina": 26,
+  "fp_charge": 19,
+  "damage": {
+   "fire": 121.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 1.0,
+  "charged": {
+   "damage": {
+    "fire": 141.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 1.85
+  }
+ },
+ "6050": {
+  "name": "Incantation: Flame Grant Me Strength",
+  "action": "incant_giants_flame",
+  "incant": true,
+  "school_id": 21,
+  "fp": 28,
+  "stamina": 16
+ },
+ "6060": {
+  "name": "Incantation: Flame Protect Me",
+  "action": "incant_giants_flame",
+  "incant": true,
+  "school_id": 21,
+  "fp": 30,
+  "stamina": 20
+ },
+ "6100": {
+  "name": "Incantation: Giantsflame Take Thee",
+  "action": "incant_giants_flame",
+  "incant": true,
+  "school_id": 21,
+  "fp": 30,
+  "stamina": 34,
+  "fp_charge": 30,
+  "damage": {
+   "fire": 325.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 13.6345,
+  "charged": {
+   "damage": {
+    "fire": 389.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 15.0
+  }
+ },
+ "6110": {
+  "name": "Incantation: Flame of The Fell God",
+  "action": "incant_giants_flame",
+  "incant": true,
+  "school_id": 21,
+  "fp": 34,
+  "stamina": 42,
+  "damage": {
+   "fire": 415
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 13.6345
+ },
+ "6120": {
+  "name": "Incantation: Burn, O Flame!",
+  "action": "incant_giants_flame",
+  "incant": true,
+  "school_id": 21,
+  "fp": 26,
+  "stamina": 36,
+  "fp_charge": 30,
+  "damage": {
+   "fire": 864.0
+  },
+  "hits": 3.0,
+  "confidence": "params_interval",
+  "super_armor": 27.75,
+  "charged": {
+   "damage": {
+    "fire": 864.0
+   },
+   "hits": 3.0,
+   "confidence": "params_interval",
+   "super_armor": 27.75
+  }
+ },
+ "6210": {
+  "name": "Incantation: Black Flame",
+  "action": "incant_godslayer",
+  "incant": true,
+  "school_id": 20,
+  "fp": 18,
+  "stamina": 25,
+  "fp_charge": 18,
+  "damage": {
+   "fire": 210.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 9.1,
+  "charged": {
+   "damage": {
+    "fire": 270.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 11.83
+  }
+ },
+ "6220": {
+  "name": "Incantation: Surge, O Flame",
+  "action": "incant_giants_flame",
+  "incant": true,
+  "school_id": 21,
+  "fp": 1,
+  "stamina": 2,
+  "damage": {
+   "fire": 40.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 1.0,
+  "channel": {
+   "fp_per_s": 1,
+   "hits_per_s": 2.857143,
+   "damage_per_s": {
+    "fire": 114.285716
+   },
+   "confidence": "params"
+  }
+ },
+ "6230": {
+  "name": "Incantation: Scouring Black Flame",
+  "action": "incant_godslayer",
+  "incant": true,
+  "school_id": 20,
+  "fp": 21,
+  "stamina": 29,
+  "fp_charge": 21,
+  "damage": {
+   "fire": 255.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 9.25,
+  "charged": {
+   "damage": {
+    "fire": 255.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 9.25
+  }
+ },
+ "6240": {
+  "name": "Incantation: Black Flame Ritual",
+  "action": "incant_godslayer",
+  "incant": true,
+  "school_id": 20,
+  "fp": 30,
+  "stamina": 39,
+  "fp_charge": 30,
+  "damage": {
+   "fire": 330.0
+  },
+  "hits": 5.0,
+  "confidence": "params_interval",
+  "super_armor": 25.0,
+  "charged": {
+   "damage": {
+    "fire": 345.0
+   },
+   "hits": 5.0,
+   "confidence": "params_interval",
+   "super_armor": 32.5
+  }
+ },
+ "6250": {
+  "name": "Incantation: Black Flame Blade",
+  "action": "incant_godslayer",
+  "incant": true,
+  "school_id": 20,
+  "fp": 15,
+  "stamina": 10
+ },
+ "6260": {
+  "name": "Incantation: Black Flame's Protection",
+  "action": "incant_godslayer",
+  "incant": true,
+  "school_id": 20,
+  "fp": 30,
+  "stamina": 13
+ },
+ "6270": {
+  "name": "Incantation: Noble Presence",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": 27,
+  "fp": 20,
+  "stamina": 35,
+  "fp_charge": 20,
+  "damage": {
+   "fire": 239
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 16.799999
+ },
+ "6300": {
+  "name": "Incantation: Bloodflame Talons",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 12,
+  "stamina": 21,
+  "damage": {
+   "fire": 236.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 10.175
+ },
+ "6310": {
+  "name": "Incantation: Bloodboon",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 13,
+  "stamina": 34,
+  "damage": {
+   "fire": 1265.0
+  },
+  "hits": 11.0,
+  "confidence": "params",
+  "super_armor": 33.0,
+  "charged": {
+   "damage": {
+    "fire": 1265.0
+   },
+   "hits": 11.0,
+   "confidence": "params",
+   "super_armor": 33.0
+  }
+ },
+ "6320": {
+  "name": "Incantation: Bloodflame Blade",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 20,
+  "stamina": 10
+ },
+ "6330": {
+  "name": "Incantation: Barrier of Gold",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 30,
+  "stamina": 13
+ },
+ "6340": {
+  "name": "Incantation: Protection of The Erdtree",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 30,
+  "stamina": 50
+ },
+ "6400": {
+  "name": "Incantation: Rejection",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 9,
+  "stamina": 24,
+  "fp_charge": 9
+ },
+ "6410": {
+  "name": "Incantation: Wrath of Gold",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 32,
+  "stamina": 44,
+  "fp_charge": 32,
+  "damage": {
+   "dark": 420.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 12.025,
+  "charged": {
+   "damage": {
+    "dark": 567.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 16.799999
+  }
+ },
+ "6420": {
+  "name": "Incantation: Urgent Heal",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 16,
+  "stamina": 30
+ },
+ "6421": {
+  "name": "Incantation: Heal",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 32,
+  "stamina": 35
+ },
+ "6422": {
+  "name": "Incantation: Great Heal",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 45,
+  "stamina": 40
+ },
+ "6423": {
+  "name": "Incantation: Lord's Heal",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 55,
+  "stamina": 45
+ },
+ "6424": {
+  "name": "Incantation: Erdtree Heal",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 65,
+  "stamina": 50
+ },
+ "6430": {
+  "name": "Incantation: Blessing's Boon",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 30,
+  "stamina": 30
+ },
+ "6431": {
+  "name": "Incantation: Blessing of The Erdtree",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 60,
+  "stamina": 50
+ },
+ "6450": {
+  "name": "Incantation: Flame Fortification",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 20,
+  "stamina": 13
+ },
+ "6460": {
+  "name": "Incantation: Magic Fortification",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 20,
+  "stamina": 13
+ },
+ "6470": {
+  "name": "Incantation: Lightning Fortification",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 20,
+  "stamina": 13
+ },
+ "6480": {
+  "name": "Incantation: Divine Fortification",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 20,
+  "stamina": 13
+ },
+ "6490": {
+  "name": "Incantation: Lord's Divine Fortification",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 30,
+  "stamina": 20
+ },
+ "6500": {
+  "name": "Incantation: Night Maiden's Mist",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 20,
+  "stamina": 20,
+  "fp_charge": 20,
+  "damage": {
+   "phys": 2.0
+  },
+  "hits": 2.0,
+  "confidence": "params"
+ },
+ "6520": {
+  "name": "Incantation: Shadow Bait",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 15,
+  "stamina": 14
+ },
+ "6530": {
+  "name": "Incantation: Darkness",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 24,
+  "stamina": 24
+ },
+ "6600": {
+  "name": "Incantation: Golden Vow",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 47,
+  "stamina": 50
+ },
+ "6700": {
+  "name": "Incantation: Discus of Light",
+  "action": "incant_fundamentalist",
+  "incant": true,
+  "school_id": 24,
+  "fp": 3,
+  "stamina": 20,
+  "damage": {
+   "dark": 450.0
+  },
+  "hits": 3.0,
+  "confidence": "params",
+  "super_armor": 6.0
+ },
+ "6701": {
+  "name": "Incantation: Triple Rings of Light",
+  "action": "incant_fundamentalist",
+  "incant": true,
+  "school_id": 24,
+  "fp": 23,
+  "stamina": 28,
+  "damage": {
+   "dark": 620.0
+  },
+  "hits": 4.0,
+  "confidence": "params_interval",
+  "super_armor": 12.0
+ },
+ "6710": {
+  "name": "Incantation: Radagon's Rings of Light",
+  "action": "incant_fundamentalist",
+  "incant": true,
+  "school_id": 24,
+  "fp": 21,
+  "stamina": 37,
+  "fp_charge": 21,
+  "damage": {
+   "dark": 390.0
+  },
+  "hits": 1.0,
+  "confidence": "params_interval",
+  "super_armor": 10.175
+ },
+ "6720": {
+  "name": "Incantation: Elden Stars",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 41,
+  "stamina": 48,
+  "damage": {
+   "dark": 2804.999959
+  },
+  "hits": 164.999998,
+  "confidence": "assumed",
+  "super_armor": 82.499999
+ },
+ "6730": {
+  "name": "Incantation: Law of Regression",
+  "action": "incant_fundamentalist",
+  "incant": true,
+  "school_id": 24,
+  "fp": 55,
+  "stamina": 50
+ },
+ "6740": {
+  "name": "Incantation: Immutable Shield",
+  "action": "incant_fundamentalist",
+  "incant": true,
+  "school_id": 24,
+  "fp": 15,
+  "stamina": 10
+ },
+ "6750": {
+  "name": "Incantation: Litany of Proper Death",
+  "action": "incant_fundamentalist",
+  "incant": true,
+  "school_id": 24,
+  "fp": 17,
+  "stamina": 28,
+  "damage": {
+   "dark": 84.0
+  },
+  "hits": 1.0,
+  "confidence": "assumed",
+  "super_armor": 5.0
+ },
+ "6760": {
+  "name": "Incantation: Law of Causality",
+  "action": "incant_fundamentalist",
+  "incant": true,
+  "school_id": 24,
+  "fp": 22,
+  "stamina": 20
+ },
+ "6770": {
+  "name": "Incantation: Order's Blade",
+  "action": "incant_fundamentalist",
+  "incant": true,
+  "school_id": 24,
+  "fp": 22,
+  "stamina": 10
+ },
+ "6800": {
+  "name": "Incantation: Bestial Sling",
+  "action": "incant_bestial",
+  "incant": true,
+  "school_id": 23,
+  "fp": 7,
+  "stamina": 19,
+  "damage": {
+   "phys": 87.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 5.0,
+  "charged": {
+   "damage": {
+    "phys": 87.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 5.0
+  }
+ },
+ "6810": {
+  "name": "Incantation: Stone of Gurranq",
+  "action": "incant_bestial",
+  "incant": true,
+  "school_id": 23,
+  "fp": 15,
+  "stamina": 37,
+  "damage": {
+   "phys": 320.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 14.4
+ },
+ "6820": {
+  "name": "Incantation: Beast Claw",
+  "action": "incant_bestial",
+  "incant": true,
+  "school_id": 23,
+  "fp": 13,
+  "stamina": 27,
+  "fp_charge": 13,
+  "damage": {
+   "phys": 646.0
+  },
+  "hits": 2.0,
+  "confidence": "assumed",
+  "super_armor": 14.0,
+  "charged": {
+   "damage": {
+    "phys": 362.0
+   },
+   "hits": 1.0,
+   "confidence": "assumed",
+   "super_armor": 12.95
+  }
+ },
+ "6830": {
+  "name": "Incantation: Gurranq's Beast Claw",
+  "action": "incant_bestial",
+  "incant": true,
+  "school_id": 23,
+  "fp": 21,
+  "stamina": 42,
+  "damage": {
+   "phys": 330.0
+  },
+  "hits": 1.0,
+  "confidence": "assumed",
+  "super_armor": 12.0,
+  "charged": {
+   "damage": {
+    "phys": 330.0
+   },
+   "hits": 1.0,
+   "confidence": "assumed",
+   "super_armor": 12.0
+  }
+ },
+ "6840": {
+  "name": "Incantation: Bestial Vitality",
+  "action": "incant_bestial",
+  "incant": true,
+  "school_id": 23,
+  "fp": 18,
+  "stamina": 10
+ },
+ "6900": {
+  "name": "Incantation: Lightning Spear",
+  "action": "incant_dragon_cult",
+  "incant": true,
+  "school_id": 22,
+  "fp": 18,
+  "stamina": 28,
+  "fp_charge": 18,
+  "damage": {
+   "thunder": 334.0
+  },
+  "hits": 3.0,
+  "confidence": "params",
+  "super_armor": 9.0,
+  "charged": {
+   "damage": {
+    "thunder": 680.0
+   },
+   "hits": 2.0,
+   "confidence": "assumed",
+   "super_armor": 18.5
+  }
+ },
+ "6910": {
+  "name": "Incantation: Ancient Dragons' Light Strike",
+  "action": "incant_dragon_cult",
+  "incant": true,
+  "school_id": 22,
+  "fp": 36,
+  "stamina": 31,
+  "fp_charge": 36,
+  "damage": {
+   "thunder": 480.0
+  },
+  "hits": 4.0,
+  "confidence": "assumed",
+  "super_armor": 20.0,
+  "charged": {
+   "damage": {
+    "thunder": 480.0
+   },
+   "hits": 4.0,
+   "confidence": "assumed",
+   "super_armor": 20.0
+  }
+ },
+ "6920": {
+  "name": "Incantation: Lightning Strike",
+  "action": "incant_dragon_cult",
+  "incant": true,
+  "school_id": 22,
+  "fp": 19,
+  "stamina": 32,
+  "damage": {
+   "thunder": 772.799971
+  },
+  "hits": 2.4,
+  "confidence": "assumed",
+  "super_armor": 12.0,
+  "charged": {
+   "damage": {
+    "thunder": 772.799971
+   },
+   "hits": 2.4,
+   "confidence": "assumed",
+   "super_armor": 12.0
+  }
+ },
+ "6921": {
+  "name": "Incantation: Frozen Lightning Spear",
+  "action": "incant_dragon_cult",
+  "incant": true,
+  "school_id": 22,
+  "fp": 29,
+  "stamina": 39,
+  "damage": {
+   "thunder": 480.0
+  },
+  "hits": 2.0,
+  "confidence": "assumed",
+  "super_armor": 10.0,
+  "status": {
+   "frost": 180.0
+  }
+ },
+ "6930": {
+  "name": "Incantation: Honed Bolt",
+  "action": "incant_dragon_cult",
+  "incant": true,
+  "school_id": 22,
+  "fp": 12,
+  "stamina": 29,
+  "damage": {
+   "thunder": 265.0
+  },
+  "hits": 1.0,
+  "confidence": "assumed",
+  "super_armor": 5.0
+ },
+ "6940": {
+  "name": "Incantation: Ancient Dragons' Light Spear",
+  "action": "incant_dragon_cult",
+  "incant": true,
+  "school_id": 22,
+  "fp": 25,
+  "stamina": 29,
+  "damage": {
+   "thunder": 161.785714
+  },
+  "hits": 1.0,
+  "confidence": "assumed",
+  "super_armor": 6.685714
+ },
+ "6941": {
+  "name": "Incantation: Fortissax's Light Spear",
+  "action": "incant_dragon_cult",
+  "incant": true,
+  "school_id": 22,
+  "fp": 35,
+  "stamina": 42,
+  "damage": {
+   "thunder": 269.6875
+  },
+  "hits": 2.0,
+  "confidence": "assumed",
+  "super_armor": 11.475,
+  "charged": {
+   "damage": {
+    "thunder": 271.125
+   },
+   "hits": 2.0,
+   "confidence": "assumed",
+   "super_armor": 11.475
+  }
+ },
+ "6950": {
+  "name": "Incantation: Lansseax's Glaive",
+  "action": "incant_dragon_cult",
+  "incant": true,
+  "school_id": 22,
+  "fp": 22,
+  "stamina": 45,
+  "damage": {
+   "thunder": 167.0
+  },
+  "hits": 1.0,
+  "confidence": "assumed",
+  "super_armor": 5.0
+ },
+ "6960": {
+  "name": "Incantation: Electrify Armament",
+  "action": "incant_dragon_cult",
+  "incant": true,
+  "school_id": 22,
+  "fp": 27,
+  "stamina": 10
+ },
+ "6971": {
+  "name": "Incantation: Dragonbolt Blessing",
+  "action": "incant_dragon_cult",
+  "incant": true,
+  "school_id": 22,
+  "fp": 20,
+  "stamina": 20
+ },
+ "7000": {
+  "name": "Incantation: Dragonfire",
+  "action": "incant_dragon_communion",
+  "incant": true,
+  "school_id": 25,
+  "fp": 28,
+  "stamina": 40,
+  "fp_charge": 4,
+  "damage": {
+   "fire": 100
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 4.0,
+  "charged": {
+   "damage": {
+    "fire": 300.0
+   },
+   "hits": 3.0,
+   "confidence": "params",
+   "super_armor": 12.0
+  },
+  "channel": {
+   "fp_per_s": 4,
+   "hits_per_s": 2.0,
+   "damage_per_s": {
+    "fire": 600.0
+   },
+   "confidence": "params"
+  }
+ },
+ "7001": {
+  "name": "Incantation: Agheel's Flame",
+  "action": "incant_dragon_communion",
+  "incant": true,
+  "school_id": 25,
+  "fp": 36,
+  "stamina": 60,
+  "fp_charge": 6,
+  "damage": {
+   "fire": 150
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 4.0,
+  "charged": {
+   "damage": {
+    "fire": 450.0
+   },
+   "hits": 3.0,
+   "confidence": "params",
+   "super_armor": 12.0
+  },
+  "channel": {
+   "fp_per_s": 6,
+   "hits_per_s": 2.0,
+   "damage_per_s": {
+    "fire": 300.0
+   },
+   "confidence": "params"
+  }
+ },
+ "7010": {
+  "name": "Incantation: Magma Breath",
+  "action": "incant_dragon_communion",
+  "incant": true,
+  "school_id": 25,
+  "fp": 30,
+  "stamina": 40,
+  "damage": {
+   "fire": 460.0
+  },
+  "hits": 4.0,
+  "confidence": "assumed",
+  "super_armor": 24.05,
+  "charged": {
+   "damage": {
+    "fire": 200.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 12.025
+  }
+ },
+ "7011": {
+  "name": "Incantation: Theodorix's Magma",
+  "action": "incant_dragon_communion",
+  "incant": true,
+  "school_id": 25,
+  "fp": 45,
+  "stamina": 60,
+  "damage": {
+   "fire": 640.0
+  },
+  "hits": 4.0,
+  "confidence": "assumed",
+  "super_armor": 33.599998,
+  "charged": {
+   "damage": {
+    "fire": 270.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 16.799999
+  }
+ },
+ "7020": {
+  "name": "Incantation: Dragonice",
+  "action": "incant_dragon_communion",
+  "incant": true,
+  "school_id": 25,
+  "fp": 36,
+  "stamina": 48,
+  "fp_charge": 4,
+  "damage": {
+   "mag": 85
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 4.0,
+  "charged": {
+   "damage": {
+    "mag": 255.0
+   },
+   "hits": 3.0,
+   "confidence": "params",
+   "super_armor": 12.0,
+   "status": {
+    "frost": 240.0
+   }
+  },
+  "channel": {
+   "fp_per_s": 4,
+   "hits_per_s": 2.0,
+   "damage_per_s": {
+    "mag": 510.0
+   },
+   "confidence": "params"
+  }
+ },
+ "7021": {
+  "name": "Incantation: Borealis's Mist",
+  "action": "incant_dragon_communion",
+  "incant": true,
+  "school_id": 25,
+  "fp": 48,
+  "stamina": 60,
+  "fp_charge": 6,
+  "damage": {
+   "mag": 95
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 4.0,
+  "charged": {
+   "damage": {
+    "mag": 285.0
+   },
+   "hits": 3.0,
+   "confidence": "params",
+   "super_armor": 12.0,
+   "status": {
+    "frost": 255.0
+   }
+  },
+  "channel": {
+   "fp_per_s": 6,
+   "hits_per_s": 2.0,
+   "damage_per_s": {
+    "mag": 190.0
+   },
+   "confidence": "params"
+  }
+ },
+ "7030": {
+  "name": "Incantation: Rotten Breath",
+  "action": "incant_dragon_communion",
+  "incant": true,
+  "school_id": 25,
+  "fp": 36,
+  "stamina": 48,
+  "fp_charge": 4,
+  "damage": {
+   "phys": 85
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 4.0,
+  "charged": {
+   "damage": {
+    "phys": 255.0
+   },
+   "hits": 3.0,
+   "confidence": "params",
+   "super_armor": 12.0,
+   "status": {
+    "rot": 195.0
+   }
+  },
+  "channel": {
+   "fp_per_s": 4,
+   "hits_per_s": 2.0,
+   "damage_per_s": {
+    "phys": 510.0
+   },
+   "confidence": "params"
+  }
+ },
+ "7031": {
+  "name": "Incantation: Ekzykes's Decay",
+  "action": "incant_dragon_communion",
+  "incant": true,
+  "school_id": 25,
+  "fp": 48,
+  "stamina": 60,
+  "fp_charge": 6,
+  "damage": {
+   "phys": 95
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 4.0,
+  "charged": {
+   "damage": {
+    "phys": 285.0
+   },
+   "hits": 3.0,
+   "confidence": "params",
+   "super_armor": 12.0,
+   "status": {
+    "rot": 195.0
+   }
+  },
+  "channel": {
+   "fp_per_s": 6,
+   "hits_per_s": 2.0,
+   "damage_per_s": {
+    "phys": 190.0
+   },
+   "confidence": "params"
+  }
+ },
+ "7040": {
+  "name": "Incantation: Glintstone Breath",
+  "action": "incant_dragon_communion",
+  "incant": true,
+  "school_id": 25,
+  "fp": 28,
+  "stamina": 40,
+  "fp_charge": 4,
+  "damage": {
+   "mag": 100
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 4.0,
+  "charged": {
+   "damage": {
+    "mag": 300.0
+   },
+   "hits": 3.0,
+   "confidence": "params",
+   "super_armor": 12.0
+  },
+  "channel": {
+   "fp_per_s": 4,
+   "hits_per_s": 2.0,
+   "damage_per_s": {
+    "mag": 600.0
+   },
+   "confidence": "params"
+  }
+ },
+ "7041": {
+  "name": "Incantation: Smarag's Glint Breath",
+  "action": "incant_dragon_communion",
+  "incant": true,
+  "school_id": 25,
+  "fp": 36,
+  "stamina": 60,
+  "fp_charge": 6,
+  "damage": {
+   "mag": 150
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 4.0,
+  "charged": {
+   "damage": {
+    "mag": 450.0
+   },
+   "hits": 3.0,
+   "confidence": "params",
+   "super_armor": 12.0
+  },
+  "channel": {
+   "fp_per_s": 6,
+   "hits_per_s": 2.0,
+   "damage_per_s": {
+    "mag": 300.0
+   },
+   "confidence": "params"
+  }
+ },
+ "7050": {
+  "name": "Incantation: Placidusax's Ruin",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 62,
+  "stamina": 75,
+  "damage": {
+   "fire": 330.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 20.0,
+  "charged": {
+   "damage": {
+    "fire": 330.0
+   },
+   "hits": 1.0,
+   "confidence": "params_interval",
+   "super_armor": 20.0
+  }
+ },
+ "7060": {
+  "name": "Incantation: Dragonclaw",
+  "action": "incant_dragon_communion",
+  "incant": true,
+  "school_id": 25,
+  "fp": 24,
+  "stamina": 35,
+  "damage": {
+   "phys": 395
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 30.0
+ },
+ "7080": {
+  "name": "Incantation: Dragonmaw",
+  "action": "incant_dragon_communion",
+  "incant": true,
+  "school_id": 25,
+  "fp": 34,
+  "stamina": 50,
+  "damage": {
+   "phys": 628
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 45.0
+ },
+ "7090": {
+  "name": "Incantation: Greyoll's Roar",
+  "action": "incant_dragon_communion",
+  "incant": true,
+  "school_id": 25,
+  "fp": 50,
+  "stamina": 72,
+  "damage": {
+   "phys": 320.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 16.113501
+ },
+ "7200": {
+  "name": "Incantation: Pest Threads",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 19,
+  "stamina": 29,
+  "damage": {
+   "phys": 144.0
+  },
+  "hits": 4.0,
+  "confidence": "params",
+  "super_armor": 4.0,
+  "charged": {
+   "damage": {
+    "phys": 144.0
+   },
+   "hits": 4.0,
+   "confidence": "params",
+   "super_armor": 4.0
+  }
+ },
+ "7210": {
+  "name": "Incantation: Swarm of Flies",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 14,
+  "stamina": 24,
+  "damage": {
+   "phys": 67.0
+  },
+  "hits": 2.0,
+  "confidence": "params",
+  "super_armor": 2.0,
+  "status": {
+   "bleed": 20.0
+  }
+ },
+ "7220": {
+  "name": "Incantation: Poison Mist",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": 126,
+  "fp": 18,
+  "stamina": 10
+ },
+ "7230": {
+  "name": "Incantation: Poison Armament",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 15,
+  "stamina": 10
+ },
+ "7240": {
+  "name": "Incantation: Scarlet Aeonia",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 48,
+  "stamina": 66,
+  "charged": {
+   "damage": {
+    "phys": 422.0
+   },
+   "hits": 2.0,
+   "confidence": "params",
+   "super_armor": 10.0,
+   "status": {
+    "rot": 100.0
+   }
+  }
+ },
+ "7310": {
+  "name": "Incantation: The Flame of Frenzy",
+  "action": "incant_frenzied_flame",
+  "incant": true,
+  "school_id": 26,
+  "fp": 16,
+  "stamina": 30,
+  "fp_charge": 16,
+  "damage": {
+   "fire": 182.0
+  },
+  "hits": 2.0,
+  "confidence": "params",
+  "super_armor": 10.0,
+  "status": {
+   "madness": 40.0
+  },
+  "charged": {
+   "damage": {
+    "fire": 248.0
+   },
+   "hits": 2.0,
+   "confidence": "params",
+   "super_armor": 13.88,
+   "status": {
+    "madness": 50.0
+   }
+  }
+ },
+ "7311": {
+  "name": "Incantation: Unendurable Frenzy",
+  "action": "incant_frenzied_flame",
+  "incant": true,
+  "school_id": 26,
+  "fp": 22,
+  "stamina": 40,
+  "fp_charge": 6,
+  "damage": {
+   "fire": 75
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 5.0,
+  "charged": {
+   "damage": {
+    "fire": 150.0
+   },
+   "hits": 2.0,
+   "confidence": "params",
+   "super_armor": 10.0,
+   "status": {
+    "madness": 60.0
+   }
+  },
+  "channel": {
+   "fp_per_s": 6,
+   "hits_per_s": 1.666667,
+   "damage_per_s": {
+    "fire": 124.999995
+   },
+   "confidence": "params"
+  }
+ },
+ "7320": {
+  "name": "Incantation: Frenzied Burst",
+  "action": "incant_frenzied_flame",
+  "incant": true,
+  "school_id": 26,
+  "fp": 24,
+  "stamina": 33,
+  "fp_charge": 24,
+  "damage": {
+   "fire": 357.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 5.0,
+  "status": {
+   "madness": 80.0
+  },
+  "charged": {
+   "damage": {
+    "fire": 420.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 9.25,
+   "status": {
+    "madness": 90.0
+   }
+  }
+ },
+ "7330": {
+  "name": "Incantation: Howl of Shabriri",
+  "action": "incant_frenzied_flame",
+  "incant": true,
+  "school_id": 26,
+  "fp": 21,
+  "stamina": 38,
+  "damage": {
+   "phys": 22.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "status": {
+   "madness": 16.0
+  }
+ },
+ "7500": {
+  "name": "Incantation: Aspects of the Crucible: Tail",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": 28,
+  "fp": 20,
+  "stamina": 32,
+  "fp_charge": 20,
+  "damage": {
+   "phys": 270
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 13.0
+ },
+ "7510": {
+  "name": "Incantation: Aspects of the Crucible: Horns",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": 28,
+  "fp": 18,
+  "stamina": 38,
+  "fp_charge": 18,
+  "damage": {
+   "phys": 397
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 16.113501
+ },
+ "7520": {
+  "name": "Incantation: Aspects of the Crucible: Breath",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": 28,
+  "fp": 28,
+  "stamina": 40,
+  "fp_charge": 4,
+  "damage": {
+   "fire": 196.0
+  },
+  "hits": 2.0,
+  "confidence": "params",
+  "super_armor": 8.0,
+  "channel": {
+   "fp_per_s": 4,
+   "hits_per_s": 2.0,
+   "damage_per_s": {
+    "fire": 980.0
+   },
+   "confidence": "params"
+  }
+ },
+ "7530": {
+  "name": "Incantation: Black Blade",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 26,
+  "stamina": 51,
+  "damage": {
+   "dark": 290
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "super_armor": 10.0,
+  "charged": {
+   "damage": {
+    "dark": 1008.0
+   },
+   "hits": 4.0,
+   "confidence": "params_interval",
+   "super_armor": 28.0
+  }
+ },
+ "7900": {
+  "name": "Incantation: Fire's Deadly Sin",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 26,
+  "stamina": 28,
+  "fp_charge": 26,
+  "damage": {
+   "fire": 5
+  },
+  "hits": 1,
+  "confidence": "params_deferred",
+  "charged": {
+   "damage": {
+    "fire": 300.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 7.0
+  }
+ },
+ "7903": {
+  "name": "Incantation: Golden Light Fortification",
+  "action": "incant_any",
+  "incant": true,
+  "school_id": null,
+  "fp": 30,
+  "stamina": 20
+ },
+ "8000": {
+  "name": "Recluse: Whirlwind of Flame",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 0,
+  "stamina": 15,
+  "damage": {
+   "fire": 325.0
+  },
+  "hits": 7.0,
+  "confidence": "params",
+  "super_armor": 11.0
+ },
+ "8001": {
+  "name": "Recluse: Magic Kernel",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 0,
+  "stamina": 15,
+  "damage": {
+   "mag": 143.0
+  },
+  "hits": 2.0,
+  "confidence": "assumed",
+  "super_armor": 4.0
+ },
+ "8002": {
+  "name": "Recluse: Lightning Step",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 0,
+  "stamina": 15,
+  "damage": {
+   "thunder": 350.0
+  },
+  "hits": 1.0,
+  "confidence": "assumed",
+  "super_armor": 5.0
+ },
+ "8003": {
+  "name": "Recluse: Divine Shield",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 0,
+  "stamina": 15
+ },
+ "8010": {
+  "name": "Recluse: Homing Wraith Flame",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 0,
+  "stamina": 25,
+  "damage": {
+   "fire": 175.0
+  },
+  "hits": 5.0,
+  "confidence": "assumed",
+  "super_armor": 10.0,
+  "charged": {
+   "damage": {
+    "fire": 180.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 10.0
+  }
+ },
+ "8011": {
+  "name": "Recluse: Magic Blade",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 0,
+  "stamina": 25,
+  "damage": {
+   "thunder": 600.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 10.0
+ },
+ "8012": {
+  "name": "Recluse: Cerulean Veil",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 0,
+  "stamina": 25
+ },
+ "8013": {
+  "name": "Recluse: Flamebolt",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 0,
+  "stamina": 25,
+  "damage": {
+   "thunder": 14425.000344
+  },
+  "hits": 25.000001,
+  "confidence": "params_interval",
+  "super_armor": 250.000006
+ },
+ "8014": {
+  "name": "Recluse: Warming Torch",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 0,
+  "stamina": 25
+ },
+ "8015": {
+  "name": "Recluse: Lightning Parry",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 0,
+  "stamina": 25
+ },
+ "8020": {
+  "name": "Recluse: Gravity Explosion",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 0,
+  "stamina": 35,
+  "damage": {
+   "mag": 816.666634
+  },
+  "hits": 6.666666,
+  "confidence": "assumed",
+  "super_armor": 13.333333
+ },
+ "8021": {
+  "name": "Recluse: Elemental Breath",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 0,
+  "stamina": 35,
+  "damage": {
+   "fire": 339.0
+  },
+  "hits": 3.0,
+  "confidence": "params",
+  "super_armor": 12.0
+ },
+ "8022": {
+  "name": "Recluse: Ice Cacoon",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 0,
+  "stamina": 35
+ },
+ "8023": {
+  "name": "Recluse: Lightning Rod",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 0,
+  "stamina": 35,
+  "damage": {
+   "mag": 41.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 1.0,
+  "status": {
+   "frost": 29.0
+  },
+  "charged": {
+   "damage": {
+    "mag": 41.0
+   },
+   "hits": 1.0,
+   "confidence": "params",
+   "super_armor": 1.0,
+   "status": {
+    "frost": 29.0
+   }
+  }
+ },
+ "8100": {
+  "name": "spell 8100",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 0,
+  "stamina": 15,
+  "damage": {
+   "fire": 325.0
+  },
+  "hits": 7.0,
+  "confidence": "params",
+  "super_armor": 11.0
+ },
+ "8101": {
+  "name": "spell 8101",
+  "action": "sorcery_any",
+  "incant": false,
+  "school_id": null,
+  "fp": 0,
+  "stamina": 15,
+  "damage": {
+   "mag": 143.0
+  },
+  "hits": 2.0,
+  "confidence": "assumed",
+  "super_armor": 4.0
+ }
+}

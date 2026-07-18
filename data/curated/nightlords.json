@@ -79,7 +79,7 @@
     "fire": 500
    },
    "poise": 30.0,
-   "attack_count": 10
+   "attack_count": 11
   }
  },
  "Adel": {
@@ -160,10 +160,11 @@
   "attacks": {
    "max_damage": {
     "phys": 270,
-    "thunder": 380
+    "thunder": 380,
+    "blow": 180
    },
    "poise": 50.0,
-   "attack_count": 48
+   "attack_count": 111
   }
  },
  "Gnoster": {
@@ -246,7 +247,7 @@
     "mag": 300
    },
    "poise": 30.0,
-   "attack_count": 112
+   "attack_count": 201
   }
  },
  "Maris": {
@@ -306,7 +307,7 @@
     "phys": 150
    },
    "poise": 30.0,
-   "attack_count": 8
+   "attack_count": 11
   }
  },
  "Libra": {
@@ -382,7 +383,7 @@
     "dark": 350
    },
    "poise": 100.0,
-   "attack_count": 12
+   "attack_count": 15
   }
  },
  "Fulghor": {
@@ -466,7 +467,7 @@
     "dark": 300
    },
    "poise": 100.0,
-   "attack_count": 68
+   "attack_count": 69
   }
  },
  "Caligo": {
@@ -550,7 +551,7 @@
     "phys": 280
    },
    "poise": 80.0,
-   "attack_count": 26
+   "attack_count": 37
   }
  },
  "Heolstor": {

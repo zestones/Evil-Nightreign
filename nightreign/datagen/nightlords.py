@@ -100,8 +100,15 @@ def _attack_index(behaviors):
     return index
 
 
+# AtkParam atkAttribute enum: the PHYSICAL sub-type of a hit. Splitting the
+# boss's physical peak by sub-type lets survival use the character's
+# slash/blow/thrust negations (scoring.TARGET_TYPE_TO_ENGINE maps them).
+_ATK_ATTRIBUTE = {0: "slash", 1: "blow", 2: "thrust"}
+
+
 def resolve_attacks(variation_id, attack_index, attacks):
-    """An enemy's attack profile: peak damage per element + peak poise damage."""
+    """An enemy's attack profile: peak damage per element + peak poise damage.
+    Physical peaks are keyed by the hit's sub-type when it carries one."""
     max_damage, poise, count = {}, 0, 0
     for ref_id in attack_index.get(variation_id, []):
         atk = attacks.get(str(ref_id))
@@ -110,7 +117,10 @@ def resolve_attacks(variation_id, attack_index, attacks):
         count += 1
         for elem, field in _ATK_ELEMENTS:
             if atk.get(field):
-                max_damage[elem] = max(max_damage.get(elem, 0), atk[field])
+                key = elem
+                if elem == "phys":
+                    key = _ATK_ATTRIBUTE.get(atk.get("atkAttribute"), "phys")
+                max_damage[key] = max(max_damage.get(key, 0), atk[field])
         poise = max(poise, atk.get("atkSuperArmor", 0) or 0)
     return {"max_damage": max_damage, "poise": poise, "attack_count": count}
 

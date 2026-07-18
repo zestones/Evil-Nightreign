@@ -1,0 +1,362 @@
+{
+ "300": {
+  "name": "Fire Pot",
+  "action": "throwing_pot",
+  "damage": {
+   "fire": 230.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 3.0
+ },
+ "320": {
+  "name": "Lightning Pot",
+  "action": "throwing_pot",
+  "damage": {
+   "thunder": 260.0
+  },
+  "hits": 1.0,
+  "confidence": "assumed",
+  "super_armor": 6.0
+ },
+ "330": {
+  "name": "Fetid Pot",
+  "action": "throwing_pot",
+  "damage": {
+   "phys": 155.0
+  },
+  "hits": 12.0,
+  "confidence": "params_interval",
+  "status": {
+   "poison": 120.0
+  },
+  "super_armor": 1.0
+ },
+ "340": {
+  "name": "Swarm Pot",
+  "action": "throwing_pot",
+  "damage": {
+   "phys": 680.0
+  },
+  "hits": 6.0,
+  "confidence": "params_interval",
+  "status": {
+   "bleed": 180.0
+  },
+  "super_armor": 1.0
+ },
+ "350": {
+  "name": "Holy Water Pot",
+  "action": "throwing_pot",
+  "damage": {
+   "dark": 167.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 3.0
+ },
+ "360": {
+  "name": "Freezing Pot",
+  "action": "throwing_pot",
+  "damage": {
+   "mag": 174.0
+  },
+  "hits": 12.0,
+  "confidence": "params_interval",
+  "status": {
+   "frost": 212.0
+  },
+  "super_armor": 4.0
+ },
+ "370": {
+  "name": "Poison Pot",
+  "action": "throwing_pot",
+  "damage": {
+   "phys": 1.0
+  },
+  "hits": 1.0,
+  "confidence": "params_interval"
+ },
+ "390": {
+  "name": "Alluring Pot",
+  "action": "throwing_pot",
+  "damage": {
+   "phys": 1.0
+  },
+  "hits": 1.0,
+  "confidence": "params"
+ },
+ "391": {
+  "name": "Beastlure Pot",
+  "action": "throwing_pot",
+  "damage": {
+   "phys": 1.0
+  },
+  "hits": 1.0,
+  "confidence": "params"
+ },
+ "600": {
+  "name": "Volcano Pot",
+  "action": "throwing_pot",
+  "damage": {
+   "fire": 25.0
+  },
+  "hits": 1.0,
+  "confidence": "params"
+ },
+ "640": {
+  "name": "Sleep Pot",
+  "action": "throwing_pot",
+  "damage": {
+   "phys": 1.0
+  },
+  "hits": 1.0,
+  "confidence": "params"
+ },
+ "650": {
+  "name": "Rancor Pot",
+  "action": "throwing_pot",
+  "damage": {
+   "mag": 75.0
+  },
+  "hits": 1.0,
+  "confidence": "assumed",
+  "super_armor": 1.0
+ },
+ "660": {
+  "name": "Magic Pot",
+  "action": "throwing_pot",
+  "damage": {
+   "mag": 322.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 3.0
+ },
+ "670": {
+  "name": "Rot Pot",
+  "action": "throwing_pot",
+  "damage": {
+   "phys": 56.0
+  },
+  "hits": 12.0,
+  "confidence": "params_interval",
+  "status": {
+   "rot": 100.0
+  },
+  "super_armor": 1.0
+ },
+ "900": {
+  "name": "Neutralizing Boluses",
+  "action": null,
+  "damage": {
+   "dark": 300.0
+  },
+  "hits": 1.0,
+  "confidence": "params_interval",
+  "super_armor": 20.0
+ },
+ "930": {
+  "name": "Stimulating Boluses",
+  "action": null,
+  "damage": {
+   "mag": 220.0
+  },
+  "hits": 2.0,
+  "confidence": "params_interval",
+  "status": {
+   "frost": 70.0
+  },
+  "super_armor": 4.0
+ },
+ "1700": {
+  "name": "Throwing Dagger",
+  "action": "throwing_knife",
+  "damage": {
+   "phys": 67.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 1.0
+ },
+ "1720": {
+  "name": "Poisonbone Dart",
+  "action": "throwing_knife",
+  "damage": {
+   "phys": 50.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "status": {
+   "poison": 58.0
+  },
+  "super_armor": 1.0
+ },
+ "1730": {
+  "name": "Kukri",
+  "action": null,
+  "damage": {
+   "phys": 87.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "status": {
+   "bleed": 70.0
+  },
+  "super_armor": 3.0
+ },
+ "1740": {
+  "name": "Crystal Dart",
+  "action": "throwing_knife",
+  "damage": {
+   "phys": 66.0,
+   "mag": 44.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 1.0
+ },
+ "1750": {
+  "name": "Fan Daggers",
+  "action": "throwing_knife",
+  "damage": {
+   "phys": 185.0
+  },
+  "hits": 5.0,
+  "confidence": "params",
+  "super_armor": 2.5
+ },
+ "3000": {
+  "name": "Ancestral Infant's Head",
+  "action": null,
+  "damage": {
+   "mag": 165.0
+  },
+  "hits": 3.0,
+  "confidence": "params"
+ },
+ "3010": {
+  "name": "Omen Bairn",
+  "action": null,
+  "damage": {
+   "dark": 1400.0
+  },
+  "hits": 19.0,
+  "confidence": "params_interval",
+  "super_armor": 47.0
+ },
+ "3011": {
+  "name": "Regal Omen Bairn",
+  "action": null,
+  "damage": {
+   "dark": 2270.0
+  },
+  "hits": 36.0,
+  "confidence": "params_interval",
+  "super_armor": 64.0
+ },
+ "3030": {
+  "name": "Cuckoo Glintstone",
+  "action": null,
+  "damage": {
+   "phys": 1.0,
+   "mag": 555.0
+  },
+  "hits": 7.0,
+  "confidence": "params",
+  "super_armor": 20.0
+ },
+ "3050": {
+  "name": "Glintstone Scrap",
+  "action": null,
+  "damage": {
+   "mag": 820.0
+  },
+  "hits": 10.0,
+  "confidence": "params_interval",
+  "super_armor": 20.0
+ },
+ "3051": {
+  "name": "Large Glintstone Scrap",
+  "action": null,
+  "damage": {
+   "mag": 1560.0
+  },
+  "hits": 24.0,
+  "confidence": "params_interval",
+  "super_armor": 48.0
+ },
+ "3060": {
+  "name": "Gravity Stone Fan",
+  "action": null,
+  "damage": {
+   "phys": 179.0,
+   "mag": 60.0
+  },
+  "hits": 2.0,
+  "confidence": "assumed",
+  "super_armor": 160.0
+ },
+ "3070": {
+  "name": "Gravity Stone Chunk",
+  "action": null,
+  "damage": {
+   "phys": 262.0,
+   "mag": 70.0
+  },
+  "hits": 2.0,
+  "confidence": "params",
+  "super_armor": 10.0
+ },
+ "3080": {
+  "name": "Wraith Calling Bell",
+  "action": null,
+  "damage": {
+   "mag": 255.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 3.0
+ },
+ "3350": {
+  "name": "Bewitching Branch",
+  "action": null,
+  "damage": {
+   "phys": 1.0
+  },
+  "hits": 1.0,
+  "confidence": "params"
+ },
+ "3510": {
+  "name": "Spark Aromatic",
+  "action": null,
+  "damage": {
+   "fire": 740.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 100.0
+ },
+ "3580": {
+  "name": "Poison Spraymist",
+  "action": "perfume",
+  "damage": {
+   "phys": 35.0
+  },
+  "hits": 7.0,
+  "confidence": "params_interval",
+  "status": {
+   "poison": 56.0
+  }
+ },
+ "11016": {
+  "name": "Ruptured Crystal Tear",
+  "action": null,
+  "damage": {
+   "dark": 1500.0
+  },
+  "hits": 1.0,
+  "confidence": "params",
+  "super_armor": 10.0
+ }
+}
