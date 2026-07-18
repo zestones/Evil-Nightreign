@@ -237,16 +237,28 @@ These affect exact numbers but not build ranking, so they are left for later:
   ordering), but each weapon's exact R1 animation lives in a shared TAE
   moveset category reached through the format's inheritance graph, still to be
   resolved. Class cadence is the working approximation.
-- **Skill / weapon-art damage** — motion values per skill hit are wired
-  (`resources/actions.py` skill class); the spell/art *base* damage still needs
-  the Magic/SwordArts params (available in `regulation.bin`).
-- **Exact HP/FP/stamina pools** — the stat→pool curves need locating; ranking uses the raw stats.
+- ~~**Skill / weapon-art damage**~~ — **done for character skills/ultimates**
+  (2026-07-17): they are hidden weapons (`60xxxxxx`) scored as damage SOURCES
+  (`engine/sources.py`, actions `char_skill`/`ultimate_art`, DPS via HeroParam
+  cooldowns; kit paradigms in `resources/kits.py` decide strike/replay/utility).
+  Weapon arts: catalog extracted (`nr data sword_arts`, 50 arts carry an
+  independent payload) but the rolled-art payload is not yet scored (same
+  droppable-roll situation as affixes) — backlog.
+- **Exact HP/stamina pools** — the stat→pool curves need locating; ranking
+  uses the raw stats. **FP is resolved**: FP = 45 + 5×Mind (exact fit on four
+  community pools, confirmation measurement in `docs/CALIBRATION.md`), and
+  cast-heavy profiles are FP-clamped transparently (`scoring.clamp_play_for_fp`).
 - ~~**Per-action buff gating**~~ — **done**: the SpEffect gates (attack
   sub-categories, stateInfo 367 for crits, magParamChange/miracleParamChange
   for spells) are decoded into per-effect `actions`, and offense is scored
   through a **play profile** (`--play "melee=0.7,skill=0.2,crit=0.1"`, default
   pure melee) — see `optimizer_mathematical_formulation.md` §2.1. The report's
   PLAY line shows counted effects, NOTE the ones your profile gates out.
-- **Spell damage** — casters are ranked via their relic multipliers (school
-  gates decoded), but the offense base is still weapon AR; real sorcery/
-  incantation damage needs the spell params (same family as motion values).
+- ~~**Spell damage**~~ — **done** (2026-07-17): every catalyst instance
+  resolves its rolled spells (`nr data magic` — 127 damaging spells, per-hit
+  from AtkParam_Pc, multi-hit via bullet recursion + the shared-hit-list
+  re-hit window, channeled DPS via consumeLoopMP/dmgHitRecordLifeTime), and a
+  cast-declaring profile ranks catalysts by SPELL damage at the character's
+  scaling (`spell_attack`, catalyst Int/Fai corrections). A declared cast on a
+  non-catalyst deals 0 (never a silent weapon-AR fallback). Absolute spell
+  numbers are theoretical until `SPELL_FACTOR` is measured (CALIBRATION.md §A).

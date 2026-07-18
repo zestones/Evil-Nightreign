@@ -21,7 +21,7 @@ uv run nr demo pipeline             # demo: Duchess + weapon + relics -> damage 
 uv run pytest                       # validation (AR vs real in-game readings)
 ```
 
-Regenerate a single step: `uv run nr data {relics|params|weapons|nightlords|npcs|vessels}`.
+Regenerate a single step: `uv run nr data {relics|params|effects|weapons|magic|sword_arts|accessories|nightlords|npcs|vessels|...}` (full list: `nr data --help`).
 
 **The web UI** — a Nightreign-styled SPA (Vite + React + Tailwind + Three.js) with a Nightfarer character-select and every weapon/relic shown with its real in-game icon. It needs the extracted visuals (Pillow + your copy of the game) and one build:
 

@@ -127,4 +127,48 @@ unresolved = sum(1 for r in RELICS for e in r["effects"]
 total = sum(len(r["effects"]) for r in RELICS)
 print(f"  info  effect instances without a resolved definition: {unresolved}/{total}")
 
+# ---- RES-*: multi-source resolvability (ROADMAP phase A acceptance) ----
+# Every damage source the engine may score must resolve end-to-end in the
+# curated data; a broken chain must fail HERE, not silently score zero.
+print()
+MAGIC_PATH = constants.DATA_CURATED / "magic.json"
+if MAGIC_PATH.exists():
+    MAGIC = json.load(open(MAGIC_PATH))
+    CUSTOM = json.load(open(constants.DATA_RAW / "custom_weapons.json"))
+    WEAPONS = json.load(open(constants.DATA_RAW / "weapons.json"))
+    CHARACTERS = json.load(open(constants.DATA_CURATED / "characters.json"))
+
+    # RES-1: every rolled catalyst spell resolves to a magic.json entry
+    bad_spells = [(cid, s["id"]) for cid, c in CUSTOM.items()
+                  for s in (c.get("spells") or []) if str(s["id"]) not in MAGIC]
+    n_cat = sum(1 for c in CUSTOM.values() if c.get("spells"))
+    check("RES-1 every rolled catalyst spell resolves", not bad_spells,
+          f"{n_cat} catalyst instances")
+
+    # RES-2: every character skill/ultimate (except -1) is a real hidden
+    # weapon with an attack base (Executor's ultimate is a transformation)
+    bases = ("attackBasePhysics", "attackBaseMagic", "attackBaseFire",
+             "attackBaseThunder", "attackBaseDark")
+    bad_skills = []
+    for name, c in CHARACTERS.items():
+        for field in ("skill_weapon", "ultimate_weapon"):
+            wid = c.get(field)
+            if wid in (None, -1):
+                continue
+            row = WEAPONS.get(str(wid)) or {}
+            if not any((row.get(f) or 0) > 0 for f in bases):
+                bad_skills.append((name, field, wid))
+    check("RES-2 every character skill/ult is a damaging hidden weapon",
+          not bad_skills, f"{len(CHARACTERS)} characters")
+    for b in bad_skills[:5]:
+        print(f"        offending: {b}")
+
+    # RES-3: every damaging spell carries a play-profile action class
+    bad_actions = [sid for sid, m in MAGIC.items()
+                   if "damage" in m and not str(m.get("action", "")).startswith(("sorcery_", "incant_"))]
+    check("RES-3 every damaging spell has a cast action class", not bad_actions,
+          f"{sum(1 for m in MAGIC.values() if 'damage' in m)} damaging spells")
+else:
+    print("  skip  RES-* multi-source invariants (magic.json not generated — run `nr data magic`)")
+
 sys.exit(1 if failures else 0)
