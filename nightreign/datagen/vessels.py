@@ -69,13 +69,20 @@ def run():
     per_hero, shared = {name: [] for name in HERO.values()}, []
     for rid, row in kept:
         hero_type = row["heroType"]
+        name = re.sub(r"^\[.*?\]\s*", "", names.get(rid, str(rid)))
         vessel = {
-            "name": re.sub(r"^\[.*?\]\s*", "", names.get(rid, str(rid))),
+            "name": name,
             "normal_slots": slots(row, "relicSlot"),
             "deep_slots": slots(row, "deepRelicSlot"),
             "goods_id": row["goodsId"],
             "owned": row["goodsId"] in owned_goods,
             "default": row.get("unlockFlag") == 0,
+            # Obtainable in-game, SAVE-INDEPENDENT: every vessel EXCEPT the 10
+            # phantom "<Nightfarer>'s Chalice" rows — wired in the params but with
+            # no unlock path (verified in-game; only rows named "...Chalice", none
+            # obtainable). This is the "all vessels unlocked" universe the
+            # optimizer offers every player, regardless of whose save is loaded.
+            "obtainable": "Chalice" not in name,
         }
         (shared if hero_type == SHARED else per_hero[HERO[hero_type]]).append(vessel)
 
@@ -92,9 +99,10 @@ def run():
               ensure_ascii=False, indent=1)
     total = sum(len(v) for v in vessels.values())
     n_owned = sum(v["owned"] for arr in vessels.values() for v in arr)
+    n_obtain = sum(v["obtainable"] for arr in vessels.values() for v in arr)
     print(f"  vessels: {len(vessels)} characters, {total} chalices "
           f"(3 normal + 3 deep slots each, incl. {len(shared)} shared), "
-          f"{n_owned} owned")
+          f"{n_owned} owned, {n_obtain} obtainable")
 
 
 if __name__ == "__main__":

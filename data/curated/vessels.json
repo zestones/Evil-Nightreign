@@ -14,7 +14,8 @@
    ],
    "goods_id": 9600,
    "owned": true,
-   "default": true
+   "default": true,
+   "obtainable": true
   },
   {
    "name": "Wylder's Goblet",
@@ -30,7 +31,8 @@
    ],
    "goods_id": 9601,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Wylder's Chalice",
@@ -46,7 +48,8 @@
    ],
    "goods_id": 9602,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": false
   },
   {
    "name": "Soot-Covered Wylder's Urn",
@@ -62,7 +65,8 @@
    ],
    "goods_id": 9700,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sealed Wylder's Urn",
@@ -78,7 +82,8 @@
    ],
    "goods_id": 9800,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Decrepit Wylder's Goblet",
@@ -94,7 +99,8 @@
    ],
    "goods_id": 9920,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Forgotten Wylder's Goblet",
@@ -110,7 +116,8 @@
    ],
    "goods_id": 9921,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sacred Erdtree Grail",
@@ -126,7 +133,8 @@
    ],
    "goods_id": 9650,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Spirit Shelter Grail",
@@ -142,7 +150,8 @@
    ],
    "goods_id": 9651,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Giant's Cradle Grail",
@@ -158,7 +167,8 @@
    ],
    "goods_id": 9652,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Scadutree Grail",
@@ -174,7 +184,8 @@
    ],
    "goods_id": 9660,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   }
  ],
  "Guardian": [
@@ -192,7 +203,8 @@
    ],
    "goods_id": 9603,
    "owned": true,
-   "default": true
+   "default": true,
+   "obtainable": true
   },
   {
    "name": "Guardian's Goblet",
@@ -208,7 +220,8 @@
    ],
    "goods_id": 9604,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Guardian's Chalice",
@@ -224,7 +237,8 @@
    ],
    "goods_id": 9605,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": false
   },
   {
    "name": "Soot-Covered Guardian's Urn",
@@ -240,7 +254,8 @@
    ],
    "goods_id": 9703,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sealed Guardian's Urn",
@@ -256,7 +271,8 @@
    ],
    "goods_id": 9803,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Decrepit Guardian's Goblet",
@@ -272,7 +288,8 @@
    ],
    "goods_id": 9925,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Forgotten Guardian's Goblet",
@@ -288,7 +305,8 @@
    ],
    "goods_id": 9926,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sacred Erdtree Grail",
@@ -304,7 +322,8 @@
    ],
    "goods_id": 9650,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Spirit Shelter Grail",
@@ -320,7 +339,8 @@
    ],
    "goods_id": 9651,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Giant's Cradle Grail",
@@ -336,7 +356,8 @@
    ],
    "goods_id": 9652,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Scadutree Grail",
@@ -352,7 +373,8 @@
    ],
    "goods_id": 9660,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   }
  ],
  "Ironeye": [
@@ -370,7 +392,8 @@
    ],
    "goods_id": 9606,
    "owned": true,
-   "default": true
+   "default": true,
+   "obtainable": true
   },
   {
    "name": "Ironeye's Goblet",
@@ -386,7 +409,8 @@
    ],
    "goods_id": 9607,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Ironeye's Chalice",
@@ -402,7 +426,8 @@
    ],
    "goods_id": 9608,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": false
   },
   {
    "name": "Soot-Covered Ironeye's Urn",
@@ -418,7 +443,8 @@
    ],
    "goods_id": 9706,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sealed Ironeye's Urn",
@@ -434,7 +460,8 @@
    ],
    "goods_id": 9806,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Decrepit Ironeye's Goblet",
@@ -450,7 +477,8 @@
    ],
    "goods_id": 9930,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Forgotten Ironeye's Goblet",
@@ -466,7 +494,8 @@
    ],
    "goods_id": 9931,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sacred Erdtree Grail",
@@ -482,7 +511,8 @@
    ],
    "goods_id": 9650,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Spirit Shelter Grail",
@@ -498,7 +528,8 @@
    ],
    "goods_id": 9651,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Giant's Cradle Grail",
@@ -514,7 +545,8 @@
    ],
    "goods_id": 9652,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Scadutree Grail",
@@ -530,7 +562,8 @@
    ],
    "goods_id": 9660,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   }
  ],
  "Duchess": [
@@ -548,7 +581,8 @@
    ],
    "goods_id": 9609,
    "owned": true,
-   "default": true
+   "default": true,
+   "obtainable": true
   },
   {
    "name": "Duchess' Goblet",
@@ -564,7 +598,8 @@
    ],
    "goods_id": 9610,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Duchess' Chalice",
@@ -580,7 +615,8 @@
    ],
    "goods_id": 9611,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": false
   },
   {
    "name": "Soot-Covered Duchess' Urn",
@@ -596,7 +632,8 @@
    ],
    "goods_id": 9709,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sealed Duchess' Urn",
@@ -612,7 +649,8 @@
    ],
    "goods_id": 9809,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Decrepit Duchess' Goblet",
@@ -628,7 +666,8 @@
    ],
    "goods_id": 9935,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Forgotten Duchess' Goblet",
@@ -644,7 +683,8 @@
    ],
    "goods_id": 9936,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sacred Erdtree Grail",
@@ -660,7 +700,8 @@
    ],
    "goods_id": 9650,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Spirit Shelter Grail",
@@ -676,7 +717,8 @@
    ],
    "goods_id": 9651,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Giant's Cradle Grail",
@@ -692,7 +734,8 @@
    ],
    "goods_id": 9652,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Scadutree Grail",
@@ -708,7 +751,8 @@
    ],
    "goods_id": 9660,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   }
  ],
  "Raider": [
@@ -726,7 +770,8 @@
    ],
    "goods_id": 9612,
    "owned": true,
-   "default": true
+   "default": true,
+   "obtainable": true
   },
   {
    "name": "Raider's Goblet",
@@ -742,7 +787,8 @@
    ],
    "goods_id": 9613,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Raider's Chalice",
@@ -758,7 +804,8 @@
    ],
    "goods_id": 9614,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": false
   },
   {
    "name": "Soot-Covered Raider's Urn",
@@ -774,7 +821,8 @@
    ],
    "goods_id": 9712,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sealed Raider's Urn",
@@ -790,7 +838,8 @@
    ],
    "goods_id": 9812,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Decrepit Raider's Goblet",
@@ -806,7 +855,8 @@
    ],
    "goods_id": 9940,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Forgotten Raider's Goblet",
@@ -822,7 +872,8 @@
    ],
    "goods_id": 9941,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sacred Erdtree Grail",
@@ -838,7 +889,8 @@
    ],
    "goods_id": 9650,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Spirit Shelter Grail",
@@ -854,7 +906,8 @@
    ],
    "goods_id": 9651,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Giant's Cradle Grail",
@@ -870,7 +923,8 @@
    ],
    "goods_id": 9652,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Scadutree Grail",
@@ -886,7 +940,8 @@
    ],
    "goods_id": 9660,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   }
  ],
  "Revenant": [
@@ -904,7 +959,8 @@
    ],
    "goods_id": 9615,
    "owned": true,
-   "default": true
+   "default": true,
+   "obtainable": true
   },
   {
    "name": "Revenant's Goblet",
@@ -920,7 +976,8 @@
    ],
    "goods_id": 9616,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Revenant's Chalice",
@@ -936,7 +993,8 @@
    ],
    "goods_id": 9617,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": false
   },
   {
    "name": "Soot-Covered Revenant's Urn",
@@ -952,7 +1010,8 @@
    ],
    "goods_id": 9715,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sealed Revenant's Urn",
@@ -968,7 +1027,8 @@
    ],
    "goods_id": 9815,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Decrepit Revenant's Goblet",
@@ -984,7 +1044,8 @@
    ],
    "goods_id": 9945,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Forgotten Revenant's Goblet",
@@ -1000,7 +1061,8 @@
    ],
    "goods_id": 9946,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sacred Erdtree Grail",
@@ -1016,7 +1078,8 @@
    ],
    "goods_id": 9650,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Spirit Shelter Grail",
@@ -1032,7 +1095,8 @@
    ],
    "goods_id": 9651,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Giant's Cradle Grail",
@@ -1048,7 +1112,8 @@
    ],
    "goods_id": 9652,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Scadutree Grail",
@@ -1064,7 +1129,8 @@
    ],
    "goods_id": 9660,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   }
  ],
  "Recluse": [
@@ -1082,7 +1148,8 @@
    ],
    "goods_id": 9618,
    "owned": true,
-   "default": true
+   "default": true,
+   "obtainable": true
   },
   {
    "name": "Recluse's Goblet",
@@ -1098,7 +1165,8 @@
    ],
    "goods_id": 9619,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Recluse's Chalice",
@@ -1114,7 +1182,8 @@
    ],
    "goods_id": 9620,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": false
   },
   {
    "name": "Soot-Covered Recluse's Urn",
@@ -1130,7 +1199,8 @@
    ],
    "goods_id": 9718,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sealed Recluse's Urn",
@@ -1146,7 +1216,8 @@
    ],
    "goods_id": 9818,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Decrepit Recluse's Goblet",
@@ -1162,7 +1233,8 @@
    ],
    "goods_id": 9950,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Forgotten Recluse's Goblet",
@@ -1178,7 +1250,8 @@
    ],
    "goods_id": 9951,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sacred Erdtree Grail",
@@ -1194,7 +1267,8 @@
    ],
    "goods_id": 9650,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Spirit Shelter Grail",
@@ -1210,7 +1284,8 @@
    ],
    "goods_id": 9651,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Giant's Cradle Grail",
@@ -1226,7 +1301,8 @@
    ],
    "goods_id": 9652,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Scadutree Grail",
@@ -1242,7 +1318,8 @@
    ],
    "goods_id": 9660,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   }
  ],
  "Executor": [
@@ -1260,7 +1337,8 @@
    ],
    "goods_id": 9621,
    "owned": true,
-   "default": true
+   "default": true,
+   "obtainable": true
   },
   {
    "name": "Executor's Goblet",
@@ -1276,7 +1354,8 @@
    ],
    "goods_id": 9622,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Executor's Chalice",
@@ -1292,7 +1371,8 @@
    ],
    "goods_id": 9623,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": false
   },
   {
    "name": "Soot-Covered Executor's Urn",
@@ -1308,7 +1388,8 @@
    ],
    "goods_id": 9721,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sealed Executor's Urn",
@@ -1324,7 +1405,8 @@
    ],
    "goods_id": 9821,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Decrepit Executor's Goblet",
@@ -1340,7 +1422,8 @@
    ],
    "goods_id": 9955,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Forgotten Executor's Goblet",
@@ -1356,7 +1439,8 @@
    ],
    "goods_id": 9956,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sacred Erdtree Grail",
@@ -1372,7 +1456,8 @@
    ],
    "goods_id": 9650,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Spirit Shelter Grail",
@@ -1388,7 +1473,8 @@
    ],
    "goods_id": 9651,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Giant's Cradle Grail",
@@ -1404,7 +1490,8 @@
    ],
    "goods_id": 9652,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Scadutree Grail",
@@ -1420,7 +1507,8 @@
    ],
    "goods_id": 9660,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   }
  ],
  "Scholar": [
@@ -1438,7 +1526,8 @@
    ],
    "goods_id": 9900,
    "owned": false,
-   "default": true
+   "default": true,
+   "obtainable": true
   },
   {
    "name": "Scholar's Goblet",
@@ -1454,7 +1543,8 @@
    ],
    "goods_id": 9901,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Scholar's Chalice",
@@ -1470,7 +1560,8 @@
    ],
    "goods_id": 9902,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": false
   },
   {
    "name": "Soot-Covered Scholar's Urn",
@@ -1486,7 +1577,8 @@
    ],
    "goods_id": 9903,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sealed Scholar's Urn",
@@ -1502,7 +1594,8 @@
    ],
    "goods_id": 9904,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Decrepit Scholar's Goblet",
@@ -1518,7 +1611,8 @@
    ],
    "goods_id": 9905,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Forgotten Scholar's Goblet",
@@ -1534,7 +1628,8 @@
    ],
    "goods_id": 9906,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sacred Erdtree Grail",
@@ -1550,7 +1645,8 @@
    ],
    "goods_id": 9650,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Spirit Shelter Grail",
@@ -1566,7 +1662,8 @@
    ],
    "goods_id": 9651,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Giant's Cradle Grail",
@@ -1582,7 +1679,8 @@
    ],
    "goods_id": 9652,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Scadutree Grail",
@@ -1598,7 +1696,8 @@
    ],
    "goods_id": 9660,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   }
  ],
  "Undertaker": [
@@ -1616,7 +1715,8 @@
    ],
    "goods_id": 9910,
    "owned": false,
-   "default": true
+   "default": true,
+   "obtainable": true
   },
   {
    "name": "Undertaker's Goblet",
@@ -1632,7 +1732,8 @@
    ],
    "goods_id": 9911,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Undertaker's Chalice",
@@ -1648,7 +1749,8 @@
    ],
    "goods_id": 9912,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": false
   },
   {
    "name": "Soot-Covered Undertaker's Urn",
@@ -1664,7 +1766,8 @@
    ],
    "goods_id": 9913,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sealed Undertaker's Urn",
@@ -1680,7 +1783,8 @@
    ],
    "goods_id": 9914,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Decrepit Undertaker's Goblet",
@@ -1696,7 +1800,8 @@
    ],
    "goods_id": 9915,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Forgotten Undertaker's Goblet",
@@ -1712,7 +1817,8 @@
    ],
    "goods_id": 9916,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Sacred Erdtree Grail",
@@ -1728,7 +1834,8 @@
    ],
    "goods_id": 9650,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Spirit Shelter Grail",
@@ -1744,7 +1851,8 @@
    ],
    "goods_id": 9651,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Giant's Cradle Grail",
@@ -1760,7 +1868,8 @@
    ],
    "goods_id": 9652,
    "owned": true,
-   "default": false
+   "default": false,
+   "obtainable": true
   },
   {
    "name": "Scadutree Grail",
@@ -1776,7 +1885,8 @@
    ],
    "goods_id": 9660,
    "owned": false,
-   "default": false
+   "default": false,
+   "obtainable": true
   }
  ]
 }

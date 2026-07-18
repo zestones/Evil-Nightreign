@@ -20,7 +20,7 @@ export interface FormState {
   refusedCurses: string[]; // curse keys the player vetoes (exclude those relics)
 }
 
-export function toRequest(f: FormState): OptimizeRequest {
+export function toRequest(f: FormState, collection?: string): OptimizeRequest {
   const play: Record<string, number> = {};
   for (const r of f.play) if (r.weight > 0) play[r.action] = (play[r.action] ?? 0) + r.weight;
   return {
@@ -29,6 +29,7 @@ export function toRequest(f: FormState): OptimizeRequest {
     weapon_type: f.weaponType,
     level: f.level,
     don: f.don,
+    ...(collection ? { collection } : {}),
     // backend `weight` multiplies the OFFENSE ratio (scoring.py): 1 = full
     // offense, 0 = full survival. The slider is offense→survival (0 = full
     // offense on the left), so the offense weight is (100 - position).

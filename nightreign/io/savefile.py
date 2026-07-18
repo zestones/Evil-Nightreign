@@ -100,3 +100,19 @@ def read_relic_records(valid_item_ids, save_path=None):
         for record_id, (item_id, effects, curses) in scan_relics(buffer, valid_item_ids).items():
             relics[record_id] = (item_id, effects, curses, find_sort_key(buffer, record_id))
     return relics
+
+
+def read_relic_records_from_bytes(valid_item_ids, data):
+    """`read_relic_records` for an in-memory save (uploaded bytes).
+
+    Spills to a temp file (decrypt_slots reads a path and shells to openssl),
+    then removes it — the raw save is never persisted. Used by the web upload
+    path so a visitor can optimize on their own collection."""
+    with tempfile.NamedTemporaryFile(suffix=".sl2", delete=False) as f:
+        f.write(data)
+        path = f.name
+    try:
+        return read_relic_records(valid_item_ids, path)
+    finally:
+        if os.path.exists(path):
+            os.remove(path)

@@ -5,23 +5,30 @@ Local web UI for the optimizer — stdlib only, offline, single page.
     nr ui            start http://127.0.0.1:8377 and open the browser
 
 Endpoints:
-    GET  /            the single-page app (static/index.html)
-    GET  /api/meta    characters, bosses, weapon types, toggles, actions, levels
-    POST /api/optimize  run the engine; body = the form as JSON
+    GET  /              the single-page app (static/index.html)
+    GET  /api/meta      characters, bosses, weapon types, toggles, actions, levels
+    POST /api/collection  decode an uploaded save (raw .sl2 bytes) -> the player's
+                          relics, cached under a token; body-in, JSON summary out
+    POST /api/optimize  run the engine; body = the form as JSON (optional
+                        `collection` token to run on an uploaded save)
 
 Game data is loaded once at startup and shared read-only across requests.
+Uploaded saves are decoded to relics in memory and never persisted.
 """
 
 import json
 import re
 import threading
+import time
+import uuid
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+from nightreign.io import savefile
 from nightreign.optimize import runner
 from nightreign.optimize.context import Context
-from nightreign.resources import actions, curses, kits, weapon_types
+from nightreign.resources import actions, curses, kits, relic_reference, weapon_types
 
 STATIC = Path(__file__).parent / "static"
 
@@ -31,6 +38,41 @@ CONTENT_TYPES = {
     ".woff2": "font/woff2", ".webp": "image/webp", ".png": "image/png",
     ".svg": "image/svg+xml", ".webmanifest": "application/manifest+json",
 }
+
+# ---- uploaded-collection sessions -----------------------------------------
+# A visitor uploads their save (POST /api/collection); we decode it to a relic
+# list and cache it under an opaque token so subsequent /api/optimize calls
+# stay tiny. The save itself is NEVER stored — only the decoded relics. The
+# cache is bounded (TTL + cap, per process) so it can't grow without limit.
+MAX_UPLOAD = 32 * 1024 * 1024        # a Nightreign save is ~19 MB
+_COLLECTION_TTL = 2 * 3600           # seconds a decoded collection is kept
+_COLLECTION_CAP = 50                 # max concurrent collections held
+_COLLECTIONS = {}                    # token -> (created_ts, relics)
+_COLLECTIONS_LOCK = threading.Lock()
+
+
+def _store_collection(relics):
+    """Cache a decoded collection, return its token. Evicts expired then oldest."""
+    token = uuid.uuid4().hex
+    now = time.time()
+    with _COLLECTIONS_LOCK:
+        for t in [t for t, (ts, _) in _COLLECTIONS.items() if now - ts > _COLLECTION_TTL]:
+            _COLLECTIONS.pop(t, None)
+        while len(_COLLECTIONS) >= _COLLECTION_CAP:
+            _COLLECTIONS.pop(min(_COLLECTIONS, key=lambda t: _COLLECTIONS[t][0]), None)
+        _COLLECTIONS[token] = (now, relics)
+    return token
+
+
+def _get_collection(token):
+    """The relics for a token, or None if unknown/expired."""
+    now = time.time()
+    with _COLLECTIONS_LOCK:
+        entry = _COLLECTIONS.get(token)
+        if not entry or now - entry[0] > _COLLECTION_TTL:
+            _COLLECTIONS.pop(token, None)
+            return None
+        return entry[1]
 
 
 BUILD_HINT = (
@@ -141,12 +183,12 @@ TOGGLES = {
 }
 
 
-def _curse_catalog(data):
-    """The Deep-of-Night curses present in the owned relics, for the acceptance
+def _curse_catalog(relics):
+    """The Deep-of-Night curses present in a relic collection, for the acceptance
     list: [{key, label, group, scored, count}] + the per-cursed-relic key sets
     (so the UI can show a live 'N relics excluded' count)."""
     present, text_by_key, cursed_sets = {}, {}, []
-    for r in data["relics"]:
+    for r in relics:
         ks = []
         for e in r["effects"]:
             if e.get("is_curse") and e.get("key"):
@@ -174,10 +216,10 @@ def _meta(data):
             for i in range(8)
             if str(base + i) in data["hero_stats"]
         )
-        vessels = [v["name"] for v in data["vessels"].get(name, []) if v.get("owned")]
+        vessels = [v["name"] for v in data["vessels"].get(name, []) if v.get("obtainable")]
         if levels and vessels:
             heroes.append({"name": name, "levels": levels, "vessels": vessels})
-    curse_catalog, cursed_sets = _curse_catalog(data)
+    curse_catalog, cursed_sets = _curse_catalog(data["relics"])
     return {
         "characters": heroes,
         "bosses": list(data["nightlords"]),
@@ -348,11 +390,47 @@ def make_handler(data):
             self._send(404, {"error": "not found"})
 
         def do_POST(self):
-            if self.path != "/api/optimize":
-                return self._send(404, {"error": "not found"})
+            if self.path == "/api/collection":
+                return self._handle_collection()
+            if self.path == "/api/optimize":
+                return self._handle_optimize()
+            return self._send(404, {"error": "not found"})
+
+        def _handle_collection(self):
+            """Decode an uploaded save (raw .sl2 bytes) into the player's relic
+            collection and cache it under a token. The save is never stored."""
+            length = int(self.headers.get("Content-Length", 0))
+            if length <= 0 or length > MAX_UPLOAD:
+                return self._send(400, {"error": "empty or oversized save file"})
+            raw = self.rfile.read(length)
+            try:
+                effect_by_id, text_by_key, item_by_id = data["reference"]
+                records = savefile.read_relic_records_from_bytes(set(item_by_id), raw)
+                relics = relic_reference.build_relics(
+                    records, effect_by_id, text_by_key, item_by_id)
+            except Exception as e:  # malformed / non-Nightreign file — never crash
+                return self._send(400, {"error": f"could not read save ({type(e).__name__})"})
+            if not relics:
+                return self._send(400, {"error": "no relics found in this save"})
+            catalog, cursed_sets = _curse_catalog(relics)
+            token = _store_collection(relics)
+            return self._send(200, {"token": token, "relic_count": len(relics),
+                                    "curses": catalog, "cursed_relic_curses": cursed_sets})
+
+        def _handle_optimize(self):
             try:
                 length = int(self.headers.get("Content-Length", 0))
                 req = json.loads(self.rfile.read(length) or b"{}")
+                # per-request collection: an uploaded save's token swaps the relic
+                # list (shallow copy — the ThreadingHTTPServer shares `data`, so
+                # never mutate the global in place). No token = demo collection.
+                req_data = data
+                token = req.get("collection")
+                if token:
+                    relics = _get_collection(token)
+                    if relics is None:
+                        return self._send(410, {"error": "collection expired — re-import your save"})
+                    req_data = {**data, "relics": relics}
                 play = {
                     a: float(w)
                     for a, w in (req.get("play") or {}).items()
@@ -372,7 +450,7 @@ def make_handler(data):
                     top=int(req.get("top", 3)),
                     max_weapon_level=int(req.get("max_weapon_level", 25)),
                     play=play,
-                    data=data,
+                    data=req_data,
                     count_debuffs=bool(req.get("count_debuffs", True)),
                     refused_curses=tuple(req.get("refused_curses") or ()),
                 )
@@ -386,7 +464,7 @@ def make_handler(data):
                         "results": [
                             _serialize(
                                 r,
-                                data,
+                                req_data,
                                 (
                                     results[0]["character"]
                                     if results
@@ -411,6 +489,8 @@ def make_handler(data):
 def serve(port=8377, open_browser=True):
     print("loading game data ...")
     data = runner.load_data()
+    # id->name/semantics maps for decoding uploaded saves (POST /api/collection)
+    data["reference"] = relic_reference.load()
     server = ThreadingHTTPServer(("127.0.0.1", port), make_handler(data))
     url = f"http://127.0.0.1:{port}"
     print(f"nr ui ready on {url}  (Ctrl+C to stop)")

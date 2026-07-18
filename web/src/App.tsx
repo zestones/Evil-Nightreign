@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Rite } from "./components/Rite";
 import { Verdict } from "./components/Verdict";
+import { LandingOverlay } from "./components/LandingOverlay";
 import { ThemedTooltip } from "./components/ThemedTooltip";
 import { TooltipRoot } from "./components/ui/Tooltip";
-import { getMeta, optimize, bossArt, type Build, type Meta, type Mode } from "./lib/api";
+import { getMeta, optimize, importSave, bossArt, type Build, type Collection, type Meta, type Mode } from "./lib/api";
 import { toRequest, type FormState } from "./lib/form";
 
 export default function App() {
@@ -16,6 +17,18 @@ export default function App() {
   const [mode, setMode] = useState<Mode>("auto");
   const [snapDon, setSnapDon] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  // the player's uploaded collection (null = the built-in demo collection)
+  const [collection, setCollection] = useState<Collection | null>(null);
+  const [importing, setImporting] = useState(false);
+  // `entered` = overlay dismissed (app visible). `hasEntered` stays true after
+  // the first choice, so a re-opened overlay ("change") can be closed while the
+  // very first visit still requires a demo/import choice.
+  const [entered, setEntered] = useState(false);
+  const [hasEntered, setHasEntered] = useState(false);
+  const enter = () => {
+    setEntered(true);
+    setHasEntered(true);
+  };
 
   useEffect(() => {
     getMeta()
@@ -42,32 +55,56 @@ export default function App() {
 
   const patch = (p: Partial<FormState>) => setForm((f) => (f ? { ...f, ...p } : f));
 
+  const onImportSave = async (file: File) => {
+    setImporting(true);
+    setError(null);
+    try {
+      setCollection(await importSave(file));
+      enter(); // dismiss the landing overlay on a successful import
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Could not read that save file");
+    } finally {
+      setImporting(false);
+    }
+  };
+
   const runOptimize = async () => {
     if (!form) return;
     setBusy(true);
     setError(null);
     try {
-      const res = await optimize(toRequest(form));
+      const res = await optimize(toRequest(form, collection?.token));
       setResults(res.results);
       setMode(res.mode);
       setSnapDon(form.don);
       setView("verdict");
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Summon failed");
+      const msg = e instanceof Error ? e.message : "Summon failed";
+      if (/expired/i.test(msg)) setCollection(null); // token dropped → back to demo
+      setError(msg);
     } finally {
       setBusy(false);
     }
   };
 
+  // the effective meta: an uploaded collection overrides the demo's counts,
+  // curses and cursed-relic sets so the whole UI reflects the player's relics.
+  const effectiveMeta: Meta | null = meta
+    ? collection
+      ? { ...meta, relic_count: collection.relic_count, curses: collection.curses, cursed_relic_curses: collection.cursed_relic_curses }
+      : meta
+    : null;
+
   return (
     <TooltipRoot>
-      {!meta || !form ? (
+      {!effectiveMeta || !form ? (
         <Splash error={error} />
       ) : (
         <AnimatePresence mode="wait">
           {view === "rite" ? (
             <motion.div key="rite" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, filter: "blur(4px)" }} transition={{ duration: 0.4 }}>
-              <Rite meta={meta} form={form} patch={patch} onOptimize={runOptimize} busy={busy} />
+              <Rite meta={effectiveMeta} form={form} patch={patch} onOptimize={runOptimize} busy={busy}
+                    collection={collection} onReopen={() => setEntered(false)} />
             </motion.div>
           ) : (
             <motion.div key="verdict" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
@@ -77,6 +114,20 @@ export default function App() {
           )}
         </AnimatePresence>
       )}
+
+      {/* landing gate — pick demo or import before entering (over the scene) */}
+      <AnimatePresence>
+        {effectiveMeta && form && view === "rite" && !entered && (
+          <LandingOverlay
+            relicCount={effectiveMeta.relic_count}
+            importing={importing}
+            closable={hasEntered}
+            onClose={() => setEntered(true)}
+            onDemo={enter}
+            onImportSave={onImportSave}
+          />
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>{busy && <Invoking />}</AnimatePresence>
 

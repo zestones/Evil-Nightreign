@@ -3,9 +3,31 @@ import { Scene } from "./Scene";
 import { Frame } from "./ui/Frame";
 import { Roster } from "./Roster";
 import { ContextPanel } from "./ContextPanel";
+import { cn } from "@/lib/cn";
 import { CHARACTER_LORE } from "@/lib/labels";
-import type { Meta } from "@/lib/api";
+import type { Collection, Meta } from "@/lib/api";
 import type { FormState } from "@/lib/form";
+
+// The collection indicator under the title: which relics the optimizer is using
+// (the built-in demo, or the player's uploaded save). Clicking it re-opens the
+// landing overlay to switch.
+function CollectionBar({ meta, collection, onReopen }: { meta: Meta; collection: Collection | null; onReopen: () => void }) {
+  const imported = !!collection;
+  return (
+    <button
+      onClick={onReopen}
+      title="Switch between the demo collection and your imported save"
+      className="group absolute left-1/2 top-[52px] z-20 flex -translate-x-1/2 items-center gap-2.5 rounded-full border border-line/60 bg-night-900/70 px-4 py-1.5 text-[12px] backdrop-blur-md transition hover:border-gold/60"
+    >
+      <span className={cn("h-1.5 w-1.5 flex-none rounded-full", imported ? "bg-relic-green" : "bg-gold/70")} />
+      <span className="text-silver/85">
+        {imported ? "Your save" : "Demo collection"} ·{" "}
+        <b className="tabular-nums text-ink">{meta.relic_count.toLocaleString()}</b> relics
+      </span>
+      <span className="text-gold/80 transition group-hover:text-gold-bright">change</span>
+    </button>
+  );
+}
 
 // Identity plate — CENTERED over the stage (the area left of the side panel),
 // so it sits just left of the hero and never slides under the panel where the
@@ -41,12 +63,16 @@ export function Rite({
   patch,
   onOptimize,
   busy,
+  collection,
+  onReopen,
 }: {
   meta: Meta;
   form: FormState;
   patch: (p: Partial<FormState>) => void;
   onOptimize: () => void;
   busy: boolean;
+  collection: Collection | null;
+  onReopen: () => void;
 }) {
   const selectHero = (name: string) => {
     const hero = meta.characters.find((h) => h.name === name);
@@ -66,6 +92,9 @@ export function Rite({
           <span className="bg-gradient-to-b from-[#dfe6f2] via-silver to-[#5b6c86] bg-clip-text text-transparent">NIGHTREIGN</span>
         </h1>
       </div>
+
+      {/* collection indicator — demo vs the player's imported save (click to switch) */}
+      <CollectionBar meta={meta} collection={collection} onReopen={onReopen} />
 
       {/* roster (left) — compact character-select grid */}
       <div className="absolute left-5 top-[86px] z-20 w-[336px]">

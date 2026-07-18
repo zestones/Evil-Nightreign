@@ -19,7 +19,7 @@ from nightreign.resources import constants
 
 # Ordered so dependencies come first (effects need params+relics; rosters need
 # npc_params; accessories need effect_params from the params step).
-DATA_STEPS = ["relics", "params", "effects", "weapons", "magic", "sword_arts",
+DATA_STEPS = ["reference", "relics", "params", "effects", "weapons", "magic", "sword_arts",
               "accessories", "goods", "motion_values", "weapon_affixes",
               "characters", "nightlords", "npcs", "vessels", "scaling", "animations"]
 # opt-in steps, excluded from the default "nr data" run (need extra tooling):
@@ -59,8 +59,10 @@ def cmd_data(args):
     from nightreign.datagen import (params, weapons, relics, nightlords, npcs,
                                     vessels, effects, scaling, characters,
                                     weapon_affixes, motion_values, animations,
-                                    magic, sword_arts, accessories, goods, icons, art)
-    runners = {"relics": relics.run, "params": params.run, "effects": effects.run,
+                                    magic, sword_arts, accessories, goods, icons, art,
+                                    reference)
+    runners = {"reference": reference.run,
+               "relics": relics.run, "params": params.run, "effects": effects.run,
                "weapons": weapons.run, "weapon_affixes": weapon_affixes.run,
                "magic": magic.run, "sword_arts": sword_arts.run,
                "accessories": accessories.run, "goods": goods.run,

@@ -145,6 +145,16 @@ export interface OptimizeRequest {
   beam: number;
   count_debuffs: boolean;
   refused_curses: string[];
+  collection?: string; // token from importSave() — run on the player's own relics
+}
+
+// The decoded, collection-derived data returned by POST /api/collection after a
+// save upload. Overrides the demo values in Meta.
+export interface Collection {
+  token: string;
+  relic_count: number;
+  curses: CurseMeta[];
+  cursed_relic_curses: string[][];
 }
 
 export async function getMeta(): Promise<Meta> {
@@ -158,6 +168,20 @@ export async function optimize(req: OptimizeRequest): Promise<OptimizeResponse> 
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(req),
+  });
+  const data = await r.json();
+  if (!r.ok) throw new Error(data.error || r.statusText);
+  return data;
+}
+
+// Upload a Nightreign save (NR0000.sl2) — the raw bytes are the request body.
+// The server decodes it to the player's relics and returns a token + summary;
+// the save is never stored.
+export async function importSave(file: File): Promise<Collection> {
+  const r = await fetch("/api/collection", {
+    method: "POST",
+    headers: { "Content-Type": "application/octet-stream" },
+    body: file,
   });
   const data = await r.json();
   if (!r.ok) throw new Error(data.error || r.statusText);

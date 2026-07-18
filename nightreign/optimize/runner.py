@@ -520,7 +520,7 @@ def _optimize_generic(data, character, stats, targets, weight, don, don_scale,
                             weak_point="weak_point" in toggles)
     kit_factor, kit_details = kits.offense_factor(character, toggles, play)
     results = []
-    for vessel in vessels_owned(data, character):
+    for vessel in vessels_available(data, character):
         slots = [("normal", c) for c in vessel["normal_slots"]]
         if include_deep:
             slots += [("deep", c) for c in vessel["deep_slots"]]
@@ -557,8 +557,12 @@ def _optimize_generic(data, character, stats, targets, weight, don, don_scale,
     return _finalize(unique[:top], data)
 
 
-def vessels_owned(data, character):
-    return [v for v in data["vessels"].get(character, []) if v.get("owned")]
+def vessels_available(data, character):
+    """Vessels the optimizer may search for a character. Default policy: ALL
+    obtainable vessels (the "all vessels unlocked" universe), so the tool works
+    for any player without decoding per-save vessel ownership. Excludes only the
+    phantom "<Nightfarer>'s Chalice" rows (obtainable=False in vessels.json)."""
+    return [v for v in data["vessels"].get(character, []) if v.get("obtainable")]
 
 
 def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
@@ -584,7 +588,7 @@ def optimize(character, boss=None, weapon_type=None, level=15, weight=0.5,
     don_row = data["scaling"]["deep_of_night"].get(str(don), {}) if include_deep else {}
     don_scale = don_row.get("attack", 1.0)
     targets = resolve_targets(data, boss, don_row.get("hp", 1.0))
-    vessels = [v for v in data["vessels"].get(character, []) if v.get("owned")]
+    vessels = vessels_available(data, character)
     fp_pool = dmg_sources.max_fp(stats)
     wants_casts = any(a.startswith(("sorcery_", "incant_")) for a in play)
 

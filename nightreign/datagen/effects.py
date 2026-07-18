@@ -17,7 +17,7 @@ Run: python3 -m nightreign data effects
 """
 import json
 
-from nightreign.resources import actions, conditions, constants, curses
+from nightreign.resources import actions, conditions, constants, curses, relic_reference
 
 CHARACTERS = ["Wylder", "Guardian", "Ironeye", "Duchess", "Raider",
               "Revenant", "Recluse", "Executor", "Scholar", "Undertaker"]
@@ -108,19 +108,20 @@ def _action_gates(effect_params, *sp_ids):
 
 def run():
     constants.DATA_CURATED.mkdir(parents=True, exist_ok=True)
-    relics = json.load(open(constants.DATA_CURATED / "relics.json"))
+    effect_by_id, text_by_key, _ = relic_reference.load()
     effect_params = json.load(open(constants.DATA_RAW / "effect_params.json"))
     attach = json.load(open(constants.DATA_RAW / "attach_effect.json"))
     filters = json.load(open(constants.DATA_RAW / "attach_effect_filter.json"))
 
-    owned_ids, text_by_id = {}, {}
-    for relic in relics:
-        for e in relic["effects"]:
-            owned_ids[e["id"]] = e["key"]
-            text_by_id[e["id"]] = e["text"]
+    # EVERY relic effect id from the shipped reference — not just the dev's owned
+    # relics — so ANY player's uploaded collection scores against real magnitudes
+    # (a relic bearing an effect the dev never owned is no longer scored neutral).
+    all_ids = {eid: meta["key"] for eid, meta in effect_by_id.items()}
+    text_by_id = {eid: text_by_key.get(meta["key"], str(eid))
+                  for eid, meta in effect_by_id.items()}
 
     resolved, with_mag, with_cond = {}, 0, 0
-    for eid, key in owned_ids.items():
+    for eid, key in all_ids.items():
         ae = attach.get(str(eid))
         if not ae:
             resolved[eid] = dict(key=key, text=text_by_id[eid], magnitude={},
@@ -172,7 +173,7 @@ def run():
 
     json.dump(resolved, open(constants.DATA_CURATED / "effects.json", "w"),
               ensure_ascii=False, indent=1)
-    print(f"  effects: resolved {len(resolved)} owned effects "
+    print(f"  effects: resolved {len(resolved)} relic effects "
           f"({with_mag} with magnitude, {with_cond} with a condition)")
 
 
