@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Golden-master pin of the full optimize() pipeline output.
 
-The multi-source engine refactor (docs/ROADMAP.md phase B) must keep every
+The multi-source engine refactor (docs/roadmap.md phase B) must keep every
 pure-melee profile BIT-IDENTICAL: same scores, same weapon, same relic picks.
 These tests freeze representative contexts BEFORE the refactor and fail on
 any deviation afterwards.

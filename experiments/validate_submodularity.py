@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Proposition 1 test — the aggregation is submodular, and NOT trivially modular.
 
-Agg decomposes as a sum of per-key functions f_k (see optimizer_mathematical_formulation.md S2; for
+Agg decomposes as a sum of per-key functions f_k (see optimizer-math.md S2; for
 grouped effects key <-> (group, level), invariant INV-2). We isolate a single
 f_k on real relics — three carriers of the same (group, level) — and measure
 its marginals:

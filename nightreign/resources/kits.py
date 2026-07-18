@@ -5,7 +5,7 @@ Curated semantic layer over the params: the hidden skill/ultimate weapons
 (characters.json) carry exact bases and scaling, but HOW a kit's mechanics
 bind into the score is per-character knowledge. Doctrine identical to the
 Deep-of-Night curses: every figure carries its source; anything unsourced is
-`None` -> displayed, NEVER scored (research report 2026-07-17, docs/ROADMAP.md).
+`None` -> displayed, NEVER scored (research report 2026-07-17, docs/roadmap.md).
 
 Skill paradigms (verified 2026-07-17 web research, multi-source):
   strike  — the hidden weapon IS the damage model (base+scaling exact).

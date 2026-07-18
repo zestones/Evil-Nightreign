@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Context-aware dominance pruning — Theorem 2 of optimizer_mathematical_formulation.md §3.
+"""Context-aware dominance pruning — Theorem 2 of optimizer-math.md §3.
 
 A relic may be dropped only if at least s_c DISTINCT relics strictly dominate
 it, where s_c is the number of vessel slots accepting its color in its pool

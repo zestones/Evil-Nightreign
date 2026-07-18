@@ -9,12 +9,12 @@ which proves nothing about optimality. The real test is:
 Context: Duchess, Greatsword + Fire, offense vs a fire target, colored slots
 [Red, Blue, Green]. One slot per color means s_c = 1, so Theorem 2 licenses the
 single-dominator rule used below (with "Any" slots it would need >= s_c strict
-dominators — see the counterexample in optimizer_mathematical_formulation.md S3). We enumerate BOTH
+dominators — see the counterexample in optimizer-math.md S3). We enumerate BOTH
 pools exhaustively and check the two optima are identical. Enumerating the full
 pool is exactly the right practice: the ground-truth optimum must not trust the
 pruning it validates.
 
-Aggregation and profiles are PER KEY (optimizer_mathematical_formulation.md S2): copies of a
+Aggregation and profiles are PER KEY (optimizer-math.md S2): copies of a
 stacking key add, a non-stacking key counts once (max over copies). Data
 invariants backing this model: experiments/validate_invariants.py.
 """

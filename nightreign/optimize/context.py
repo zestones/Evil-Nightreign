@@ -38,7 +38,7 @@ class Context:
                    for e in relic["effects"])
 
     def effect_active(self, effect_info, relic_entry):
-        """Is this effect instance active here? (optimizer_mathematical_formulation.md §1: cond(e))."""
+        """Is this effect instance active here? (optimizer-math.md §1: cond(e))."""
         # master switch: with curses off, no debuff is scored or shown active
         if effect_info.get("is_debuff") and not self.count_debuffs:
             return False

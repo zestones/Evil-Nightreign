@@ -1,5 +1,7 @@
 # Optimizer — mathematical formulation, guarantees, and empirical validation
 
+> 📄 GitHub does not render the LaTeX in this file. A clean typeset version is available as a PDF: [**optimizer-math.pdf**](optimizer-math.pdf).
+
 This document formalizes the relic build optimization problem, proves the structural properties the algorithm relies on, and validates them on the real data under `data/curated/`. Companion to [`optimizer.md`](optimizer.md). Every data-level assumption used by a proof is machine-checked by `experiments/validate_invariants.py`; re-run it whenever the curated data is regenerated.
 
 ## 1. Notation and problem

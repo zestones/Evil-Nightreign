@@ -2,7 +2,7 @@
 """Damage sources: per-action attack-power bases beyond the equipped weapon.
 
 The optimizer's proven core aggregates relic multipliers per key and applies
-them per action class (optimizer_mathematical_formulation.md §2.1). A
+them per action class (optimizer-math.md §2.1). A
 DamageSource supplies the CONSTANT base the multipliers act on for actions
 whose damage does not come from the equipped weapon's own AR:
 

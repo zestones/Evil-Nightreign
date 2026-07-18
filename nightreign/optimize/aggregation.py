@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Per-key effect aggregation — the verified stacking model (optimizer_mathematical_formulation.md §2).
+"""Per-key effect aggregation — the verified stacking model (optimizer-math.md §2).
 
 Unit of aggregation = the effect KEY (INV-1/2, machine-checked by
 experiments/validate_invariants.py; rules game-verified §5.0):

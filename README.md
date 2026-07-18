@@ -23,7 +23,7 @@ uv run pytest                       # validation (AR vs real in-game readings)
 
 Regenerate a single step: `uv run nr data {relics|params|effects|weapons|magic|sword_arts|accessories|nightlords|npcs|vessels|...}` (full list: `nr data --help`).
 
-**The web UI** — a Nightreign-styled SPA (Vite + React + Tailwind + Three.js) with a Nightfarer character-select and every weapon/relic shown with its real in-game icon. It needs the extracted visuals (Pillow + your copy of the game) and one build:
+**The web UI** — a Nightreign-styled SPA (Vite + React + Tailwind + Three.js) with a Nightfarer character-select and every weapon/relic shown with its real in-game icon. On the landing screen you either explore a demo collection or **import your own save** (`NR0000.sl2`) — it's decoded in your session to your real relics and never stored. It needs the extracted visuals (Pillow + your copy of the game) and one build:
 
 ```bash
 uv pip install -e '.[assets]'                 # Pillow (build-time only)
@@ -57,13 +57,21 @@ flowchart TD
     optimizer --> build
 ```
 
+## Documentation
+
+- [`docs/optimizer.md`](docs/optimizer.md) — how the optimizer works end to end: context, the two-axis score, multi-source damage, beam search and pruning, and the UI surface.
+- [`docs/optimizer-math.md`](docs/optimizer-math.md) — the formal problem, the structural guarantees the algorithm relies on (submodularity, lossless pruning), and their machine-checked validation on real data. **GitHub can't render the LaTeX** — read the typeset **[PDF](docs/optimizer-math.pdf)** (regenerate any time with `bash docs/build-math-pdf.sh`).
+- [`docs/calibration.md`](docs/calibration.md) — how each constant was measured in-game, and what's still theoretical.
+- [`docs/roadmap.md`](docs/roadmap.md) — coverage matrix and phased plan · [`docs/todo.md`](docs/todo.md) — the working backlog.
+- [`docs/deploy.md`](docs/deploy.md) — host it for free on Render (Docker).
+
 ## Structure
 
 ```text
 nightreign/          the package
 ├── io/              read raw files (regulation.bin, save, paramdef)
 ├── engine/          the engine: weapon AR, damage formula, relic effects
-├── optimize/        the optimizer (coming)
+├── optimize/        the optimizer: aggregation · pruning · beam search · scoring
 ├── datagen/         extraction logic (called by the CLI)
 ├── resources/       constants, Nightlord mapping, name tables
 └── cli.py           the `nr` entry point
@@ -77,6 +85,10 @@ examples/            demos      tests/  validation (AR vs in-game readings)
 ## Validation
 
 The AR formula is checked against real in-game readings (Duchess, levels 1-15): `uv run pytest`.
+
+## Disclaimer
+
+Fan-made and **not affiliated with, endorsed by, or sponsored by FromSoftware or Bandai Namco**. *Elden Ring*, *Nightreign*, and all game data and assets are © their respective owners. This is a free, non-commercial tool for personal build optimization; no game files are redistributed in this repository.
 
 ---
 

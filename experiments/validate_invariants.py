@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Data invariants the math doc (optimizer_mathematical_formulation.md) relies on — machine-checked.
+"""Data invariants the math doc (optimizer-math.md) relies on — machine-checked.
 
 The proofs in S2/S3 are stated on the *per-key* model. That model is only valid
 because the curated data satisfies the invariants below; re-run this script

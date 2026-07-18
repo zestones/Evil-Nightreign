@@ -17,6 +17,7 @@ Uploaded saves are decoded to relics in memory and never persisted.
 """
 
 import json
+import os
 import re
 import threading
 import time
@@ -487,14 +488,18 @@ def make_handler(data):
 
 
 def serve(port=8377, open_browser=True):
+    # Host/port are env-overridable so the same command runs locally (default
+    # 127.0.0.1, private) and on a host like Render (HOST=0.0.0.0, PORT injected).
+    host = os.environ.get("HOST", "127.0.0.1")
+    port = int(os.environ.get("PORT", port))
     print("loading game data ...")
     data = runner.load_data()
     # id->name/semantics maps for decoding uploaded saves (POST /api/collection)
     data["reference"] = relic_reference.load()
-    server = ThreadingHTTPServer(("127.0.0.1", port), make_handler(data))
-    url = f"http://127.0.0.1:{port}"
+    server = ThreadingHTTPServer((host, port), make_handler(data))
+    url = f"http://{host}:{port}"
     print(f"nr ui ready on {url}  (Ctrl+C to stop)")
-    if open_browser:
+    if open_browser and host in ("127.0.0.1", "localhost"):
         threading.Timer(0.4, lambda: webbrowser.open(url)).start()
     try:
         server.serve_forever()

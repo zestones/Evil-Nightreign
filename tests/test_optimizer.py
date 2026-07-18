@@ -3,7 +3,7 @@
 
 Three pillars, each pinned to something externally verified:
   * aggregation reproduces the IN-GAME measurements of 2026-07-15
-    (optimizer_mathematical_formulation.md §5.0),
+    (optimizer-math.md §5.0),
   * pruning: the single-dominator counterexample is lossy, the s_c-aware rule
     of Theorem 2 is not,
   * beam(k=12) matches the exhaustive optimum on a real pruned context.

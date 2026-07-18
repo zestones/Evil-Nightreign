@@ -27,9 +27,9 @@ restrictive (non-Any) slots first, and beam (top-k partial builds), against the
 EXHAUSTIVE optimum. Pools are pruned with the multiplicity-aware rule of
 Theorem 2: a relic is dropped only if >= s_c relics strictly dominate it, where
 s_c = number of slots accepting its color (single-dominator pruning is unsafe
-with "Any" slots — see the counterexample in optimizer_mathematical_formulation.md S3).
+with "Any" slots — see the counterexample in optimizer-math.md S3).
 
-Aggregation and profiles are PER KEY (optimizer_mathematical_formulation.md S2); the data
+Aggregation and profiles are PER KEY (optimizer-math.md S2); the data
 invariants backing this are checked by experiments/validate_invariants.py.
 
 Run with --verify-pruning to also enumerate the UNPRUNED pools and check

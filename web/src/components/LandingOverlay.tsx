@@ -137,9 +137,22 @@ export function LandingOverlay({
           </div>
         </div>
 
-        <p className="mt-7 max-w-[520px] text-center text-[11px] leading-relaxed text-dim">
-          Your save is read only to extract your relics — never written to disk or shared.
-        </p>
+        <div className="mt-7 flex max-w-[560px] flex-col items-center gap-2 text-center">
+          <p className="text-[11px] leading-relaxed text-dim">
+            Your save is read only to extract your relics — never written to disk or shared.
+          </p>
+          <p className="text-[11.5px] leading-relaxed text-silver/45">
+            Fan-made · <b className="text-silver/70">not affiliated with FromSoftware or Bandai Namco</b> · <span className="italic">Elden Ring</span> / <span className="italic">Nightreign</span> and all game data &amp; assets © their owners ·{" "}
+            <a
+              href="https://github.com/zestones/Evil-Nightreign"
+              target="_blank"
+              rel="noreferrer"
+              className="text-gold/70 underline decoration-dotted underline-offset-2 transition hover:text-gold-bright"
+            >
+              GitHub ↗
+            </a>
+          </p>
+        </div>
       </div>
     </motion.div>
   );

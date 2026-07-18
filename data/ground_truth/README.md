@@ -24,4 +24,4 @@ One JSON file per measured mechanic:
 
 ## Adding measurements
 
-Follow the calibration checklist (docs/, phase E of ROADMAP.md). Each new constant (e.g. `SPELL_FACTOR`) must land here with its protocol notes before the engine treats it as calibrated.
+Follow the calibration checklist (docs/, phase E of roadmap.md). Each new constant (e.g. `SPELL_FACTOR`) must land here with its protocol notes before the engine treats it as calibrated.

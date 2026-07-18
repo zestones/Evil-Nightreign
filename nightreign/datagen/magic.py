@@ -15,7 +15,7 @@ Hits per cast resolve params-only through the bullet tree: `numShoot`
 (fan-out), `HitBulletID` (on-hit child), `intervalCreate*` (periodic spawner
 over the bullet's `life`). A spell whose structure cannot be resolved keeps
 its direct hits with confidence "assumed" — flagged for the calibration
-session, never invented (docs/ROADMAP.md phase E doctrine).
+session, never invented (docs/roadmap.md phase E doctrine).
 
 Spell school = `subCategory1`, the SAME id space that gates relic effects
 (actions.SUBCATEGORY_ACTIONS — verified: 4390 Glintblade Phalanx -> 3, 4100

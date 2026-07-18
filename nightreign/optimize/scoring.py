@@ -19,7 +19,7 @@ SURVIVAL — one-shot margin proxy: (vigor x maxHpRate multipliers) divided by
 
 Both axes are normalized by the relic-less baseline, so S is dimensionless and
 S = 1 means "no better than an empty vessel". Stat-boosting relics feed back
-into AR inside the marginal step (optimizer_mathematical_formulation.md §6.5)
+into AR inside the marginal step (optimizer-math.md §6.5)
 via a memoized AR recomputation — the only non-submodular coupling, handled
 exactly. The per-action mixture is a weighted sum of exponentials: monotone,
 not submodular — the regime §4 already assigns to beam + exhaustive checks.
