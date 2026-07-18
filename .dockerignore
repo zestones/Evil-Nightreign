@@ -18,6 +18,11 @@ nightreign/ui/static/app
 # NR0000.sl2 is a personal save)
 inputs/
 
+# secrets & deploy tooling — not needed in the image
+.env
+.env.example
+deploy.sh
+
 # not needed at runtime
 tests/
 experiments/

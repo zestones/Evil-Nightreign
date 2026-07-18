@@ -3,6 +3,9 @@
 inputs/*
 !inputs/.gitkeep
 
+# Local secrets
+.env
+
 # Big regenerable data intermediates (rebuild with `nr data`)
 data/raw/*
 !data/raw/.gitkeep
