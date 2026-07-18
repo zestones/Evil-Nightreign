@@ -1,0 +1,50 @@
+[
+ {
+  "score": 1.372381537,
+  "weapon_id": "1160000",
+  "weapon": "Blade of Calling",
+  "vessel": "Duchess' Urn",
+  "picks": [
+   3229614396,
+   3229614439,
+   3229615149,
+   3229615839,
+   3229615907,
+   3229615964
+  ],
+  "offense_ratio": 1.131429741,
+  "survival_ratio": 1.613333333
+ },
+ {
+  "score": 1.350728458,
+  "weapon_id": "1160000",
+  "weapon": "Blade of Calling",
+  "vessel": "Forgotten Duchess' Goblet",
+  "picks": [
+   3229614389,
+   3229615577,
+   3229615762,
+   3229615839,
+   3229615907,
+   3229615969
+  ],
+  "offense_ratio": 1.097431276,
+  "survival_ratio": 1.604025641
+ },
+ {
+  "score": 1.32685522,
+  "weapon_id": "1160000",
+  "weapon": "Blade of Calling",
+  "vessel": "Soot-Covered Duchess' Urn",
+  "picks": [
+   3229614389,
+   3229614439,
+   3229615762,
+   3229615867,
+   3229615907,
+   3229615976
+  ],
+  "offense_ratio": 1.102428389,
+  "survival_ratio": 1.551282051
+ }
+]

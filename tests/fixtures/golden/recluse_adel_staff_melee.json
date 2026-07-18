@@ -1,0 +1,41 @@
+[
+ {
+  "score": 1.205589682,
+  "weapon_id": "33270000",
+  "weapon": "Rotten Crystal Staff",
+  "vessel": "Recluse's Goblet",
+  "picks": [
+   3229614396,
+   3229614439,
+   3229615577
+  ],
+  "offense_ratio": 1.047543,
+  "survival_ratio": 1.363636364
+ },
+ {
+  "score": 1.196969697,
+  "weapon_id": "33270000",
+  "weapon": "Rotten Crystal Staff",
+  "vessel": "Decrepit Recluse's Goblet",
+  "picks": [
+   3229614174,
+   3229614396,
+   3229614439
+  ],
+  "offense_ratio": 1.0,
+  "survival_ratio": 1.393939394
+ },
+ {
+  "score": 1.175286651,
+  "weapon_id": "33270000",
+  "weapon": "Rotten Crystal Staff",
+  "vessel": "Soot-Covered Recluse's Urn",
+  "picks": [
+   3229614174,
+   3229614439,
+   3229615577
+  ],
+  "offense_ratio": 1.047543,
+  "survival_ratio": 1.303030303
+ }
+]

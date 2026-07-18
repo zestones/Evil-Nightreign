@@ -1,0 +1,50 @@
+[
+ {
+  "score": 1.326801925,
+  "weapon_id": "22030000",
+  "weapon": "Raptor Talons",
+  "vessel": "Sealed Duchess' Urn",
+  "picks": [
+   3229614396,
+   3229614439,
+   3229615096,
+   3229615762,
+   3229615812,
+   3229615964
+  ],
+  "offense_ratio": 1.113603849,
+  "survival_ratio": 1.54
+ },
+ {
+  "score": 1.333478175,
+  "weapon_id": "7100000",
+  "weapon": "Eclipse Shotel",
+  "vessel": "Sealed Duchess' Urn",
+  "picks": [
+   3229614236,
+   3229614396,
+   3229614439,
+   3229614646,
+   3229614906,
+   3229615762
+  ],
+  "offense_ratio": 1.126956351,
+  "survival_ratio": 1.54
+ },
+ {
+  "score": 1.341219307,
+  "weapon_id": "2140000",
+  "weapon": "Sword of Night and Flame",
+  "vessel": "Sealed Duchess' Urn",
+  "picks": [
+   3229614312,
+   3229614396,
+   3229614439,
+   3229614481,
+   3229615302,
+   3229615762
+  ],
+  "offense_ratio": 1.231284767,
+  "survival_ratio": 1.451153846
+ }
+]

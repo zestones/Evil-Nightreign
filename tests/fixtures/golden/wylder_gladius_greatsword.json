@@ -1,0 +1,41 @@
+[
+ {
+  "score": 1.177391232,
+  "weapon_id": "3090000",
+  "weapon": "Dark Moon Greatsword",
+  "vessel": "Wylder's Urn",
+  "picks": [
+   3229614396,
+   3229614439,
+   3229615976
+  ],
+  "offense_ratio": 1.007970775,
+  "survival_ratio": 1.25
+ },
+ {
+  "score": 1.169307409,
+  "weapon_id": "3090000",
+  "weapon": "Dark Moon Greatsword",
+  "vessel": "Decrepit Wylder's Goblet",
+  "picks": [
+   3229614396,
+   3229614536,
+   3229615577
+  ],
+  "offense_ratio": 1.115640081,
+  "survival_ratio": 1.192307692
+ },
+ {
+  "score": 1.158044257,
+  "weapon_id": "3090000",
+  "weapon": "Dark Moon Greatsword",
+  "vessel": "Soot-Covered Wylder's Urn",
+  "picks": [
+   3229614396,
+   3229615577,
+   3229615964
+  ],
+  "offense_ratio": 1.07809624,
+  "survival_ratio": 1.192307692
+ }
+]

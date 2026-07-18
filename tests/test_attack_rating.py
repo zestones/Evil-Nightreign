@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Ground-truth regression test for the AR formula.
 
-These are REAL in-game Attack Rating readings (Duchess). If a change to the
+REAL in-game Attack Rating readings (Duchess), loaded from the versioned
+measurement bank data/ground_truth/attack_rating.json. If a change to the
 formula or the AR factor breaks them, this test fails loudly.
 
 Run: python tests/test_attack_rating.py   (or `pytest`)
@@ -11,23 +12,17 @@ import json
 from nightreign.engine import attack_rating
 from nightreign.resources import constants
 
-TOLERANCE = 1.5  # AR
-
-# weapon id -> {Duchess hero_stats row id: measured in-game AR}
-MEASURED = {
-    "1750000": {"40000": 38, "40001": 46, "40002": 67, "40003": 72},  # Duchess Dagger, lv 1/2/12/15
-    "1040000": {"40003": 94},                                          # Reduvia, lv15
-    "1010000": {"40003": 122},                                         # Black Knife, lv15
-}
+GROUND_TRUTH = json.load(open(constants.ROOT / "data" / "ground_truth" / "attack_rating.json"))
+TOLERANCE = GROUND_TRUTH["tolerance_ar"]
 
 
 def _cases():
     tables = attack_rating.load_tables()
     hero = json.load(open(constants.DATA_RAW / "hero_stats.json"))
-    for weapon_id, readings in MEASURED.items():
-        for hero_id, expected in readings.items():
-            predicted = sum(attack_rating.attack_rating(weapon_id, 0, hero[hero_id], tables).values())
-            yield weapon_id, hero_id, predicted, expected
+    for m in GROUND_TRUTH["measurements"]:
+        weapon_id, hero_id, expected = m["weapon_id"], m["hero_stats_id"], m["value"]
+        predicted = sum(attack_rating.attack_rating(weapon_id, 0, hero[hero_id], tables).values())
+        yield weapon_id, hero_id, predicted, expected
 
 
 def test_attack_rating_matches_ingame():

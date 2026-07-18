@@ -1,0 +1,50 @@
+[
+ {
+  "score": 1.316331388,
+  "weapon_id": "1160000",
+  "weapon": "Blade of Calling",
+  "vessel": "Sealed Duchess' Urn",
+  "picks": [
+   3229614396,
+   3229614439,
+   3229615096,
+   3229615595,
+   3229615762,
+   3229615964
+  ],
+  "offense_ratio": 1.092662775,
+  "survival_ratio": 1.54
+ },
+ {
+  "score": 1.303100844,
+  "weapon_id": "1160000",
+  "weapon": "Blade of Calling",
+  "vessel": "Duchess' Urn",
+  "picks": [
+   3229614396,
+   3229614439,
+   3229615149,
+   3229615271,
+   3229615839,
+   3229615964
+  ],
+  "offense_ratio": 1.066201688,
+  "survival_ratio": 1.54
+ },
+ {
+  "score": 1.299828609,
+  "weapon_id": "1160000",
+  "weapon": "Blade of Calling",
+  "vessel": "Giant's Cradle Grail",
+  "picks": [
+   3229614236,
+   3229614396,
+   3229615149,
+   3229615573,
+   3229615839,
+   3229615964
+  ],
+  "offense_ratio": 1.189400808,
+  "survival_ratio": 1.41025641
+ }
+]

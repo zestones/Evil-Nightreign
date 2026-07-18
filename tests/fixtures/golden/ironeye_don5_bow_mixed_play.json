@@ -1,0 +1,50 @@
+[
+ {
+  "score": 1.408047164,
+  "weapon_id": "41070000",
+  "weapon": "Black Bow",
+  "vessel": "Forgotten Ironeye's Goblet",
+  "picks": [
+   3229614396,
+   3229614439,
+   3229614553,
+   3229614906,
+   3229615762,
+   3229615839
+  ],
+  "offense_ratio": 1.099202437,
+  "survival_ratio": 1.716891892
+ },
+ {
+  "score": 1.371937496,
+  "weapon_id": "41070000",
+  "weapon": "Black Bow",
+  "vessel": "Soot-Covered Ironeye's Urn",
+  "picks": [
+   3229614396,
+   3229614553,
+   3229614906,
+   3229615577,
+   3229615812,
+   3229615839
+  ],
+  "offense_ratio": 1.27671283,
+  "survival_ratio": 1.467162162
+ },
+ {
+  "score": 1.369156796,
+  "weapon_id": "41070000",
+  "weapon": "Black Bow",
+  "vessel": "Ironeye's Goblet",
+  "picks": [
+   3229614391,
+   3229614396,
+   3229614502,
+   3229614553,
+   3229614906,
+   3229615839
+  ],
+  "offense_ratio": 1.333583862,
+  "survival_ratio": 1.40472973
+ }
+]

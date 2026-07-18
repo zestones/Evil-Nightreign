@@ -1,0 +1,50 @@
+[
+ {
+  "score": 1.338343245,
+  "weapon_id": "1750000",
+  "weapon": "Générique — n'importe quelle arme",
+  "vessel": "Sealed Duchess' Urn",
+  "picks": [
+   3229614396,
+   3229614439,
+   3229615096,
+   3229615762,
+   3229615812,
+   3229615964
+  ],
+  "offense_ratio": 1.136686489,
+  "survival_ratio": 1.54
+ },
+ {
+  "score": 1.300085299,
+  "weapon_id": "1750000",
+  "weapon": "Générique — n'importe quelle arme",
+  "vessel": "Decrepit Duchess' Goblet",
+  "picks": [
+   3229614389,
+   3229614393,
+   3229614396,
+   3229615096,
+   3229615762,
+   3229615839
+  ],
+  "offense_ratio": 0.971324444,
+  "survival_ratio": 1.628846154
+ },
+ {
+  "score": 1.3,
+  "weapon_id": "1750000",
+  "weapon": "Générique — n'importe quelle arme",
+  "vessel": "Duchess' Urn",
+  "picks": [
+   3229614353,
+   3229614396,
+   3229614439,
+   3229614731,
+   3229615839,
+   3229615964
+  ],
+  "offense_ratio": 1.06,
+  "survival_ratio": 1.54
+ }
+]
