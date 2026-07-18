@@ -137,17 +137,17 @@ export function LandingOverlay({
           </div>
         </div>
 
-        <div className="mt-7 flex max-w-[560px] flex-col items-center gap-2 text-center">
-          <p className="text-[11px] leading-relaxed text-dim">
-            Your save is read only to extract your relics — never written to disk or shared.
+        <div className="mt-8 flex max-w-[620px] flex-col items-center gap-2 rounded-sm border border-line/45 bg-night-900/55 px-6 py-3.5 text-center backdrop-blur-sm">
+          <p className="text-[12px] leading-relaxed text-silver/75">
+            Your save is read only to extract your relics — <b className="text-silver">never written to disk or shared</b>.
           </p>
-          <p className="text-[11.5px] leading-relaxed text-silver/45">
-            Fan-made · <b className="text-silver/70">not affiliated with FromSoftware or Bandai Namco</b> · <span className="italic">Elden Ring</span> / <span className="italic">Nightreign</span> and all game data &amp; assets © their owners ·{" "}
+          <p className="text-[12.5px] leading-relaxed text-silver/70">
+            Fan-made · <b className="text-gold-bright">not affiliated with FromSoftware or Bandai Namco</b> · <span className="italic text-silver/85">Elden Ring</span> / <span className="italic text-silver/85">Nightreign</span> and all game data &amp; assets © their owners ·{" "}
             <a
               href="https://github.com/zestones/Evil-Nightreign"
               target="_blank"
               rel="noreferrer"
-              className="text-gold/70 underline decoration-dotted underline-offset-2 transition hover:text-gold-bright"
+              className="font-medium text-gold underline decoration-dotted underline-offset-2 transition hover:text-gold-bright"
             >
               GitHub ↗
             </a>
