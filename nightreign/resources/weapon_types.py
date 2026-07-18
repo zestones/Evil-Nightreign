@@ -32,7 +32,7 @@ WEPMOTION_TO_TYPE = {
     38: "Halberd",
     39: "Heavy Thrusting Sword",
     40: "Curved Greatsword",
-    41: "Staff",
+    41: "Staff",              # category 41 also holds Sacred Seals — see weapon_type()
     42: "Fist",
     43: "Whip",
     44: "Bow",
@@ -45,10 +45,32 @@ WEPMOTION_TO_TYPE = {
     52: "Ballista",
 }
 
+# Both catalyst families share wepmotionCategory 41 (verified 2026-07-17:
+# 17 Seals + 34 Staffs/Scepters among the 254 category-41 rows). The data
+# criterion that separates them is the scaling stat: Seals cast incantations
+# and scale on Faith (correctFaith>0, e.g. Finger Seal correctFaith=100),
+# Staffs cast sorceries and scale on Intelligence (correctMagic>0).
+CATALYST_TYPES = ("Staff", "Sacred Seal")
+
+# EquipParamWeapon.atkAttribute: the weapon's PHYSICAL strike sub-type
+# (its attack rows carry 253 "depends on weapon"). 3 = neutral standard.
+ATK_ATTRIBUTE_SUBTYPE = {0: "slash", 1: "blow", 2: "thrust"}
+
+
+def weapon_subtype(weapon_row):
+    """The weapon's primary physical sub-type label (None = neutral) —
+    ventilates its physical damage onto the target's slash/blow/thrust
+    multipliers (35-44% real swings on Maris/Caligo)."""
+    return ATK_ATTRIBUTE_SUBTYPE.get(weapon_row.get("atkAttribute"))
+
 
 def weapon_type(weapon_row):
     """Type label of a weapons.json row (None when the category is unmapped)."""
-    return WEPMOTION_TO_TYPE.get(weapon_row.get("wepmotionCategory"))
+    label = WEPMOTION_TO_TYPE.get(weapon_row.get("wepmotionCategory"))
+    if label == "Staff" and (weapon_row.get("correctFaith") or 0) > \
+            (weapon_row.get("correctMagic") or 0):
+        return "Sacred Seal"
+    return label
 
 
 # Relative attack cadence (R1 light attacks per second) per weapon class.

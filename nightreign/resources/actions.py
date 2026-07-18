@@ -52,9 +52,26 @@ STATEINFO_STATES = {
 # miracleParamChange flags): they apply to every school of their kind
 SPELL_UMBRELLAS = ("sorcery_any", "incant_any")
 
+# actions whose damage base is a SOURCE (engine/sources.py), not the equipped
+# weapon: the character Skill and Ultimate Art (hidden weapons 60xxxxxx).
+# Conservatively OUTSIDE the melee-performed family: patch 1.03.2 had to
+# special-case Executor's Cursed Sword into "Improved Skill Attack Power",
+# implying character skills are NOT covered by weapon-skill buffs by default.
+# Whether they inherit generic melee buffs is unmeasured — calibration item.
+SOURCE_ACTIONS = ("char_skill", "ultimate_art")
+
+# actions performed with a CONSUMABLE or innate ability, not the equipped
+# weapon: without a resolved damage source they must score ZERO — falling
+# back to weapon AR would score a pot throw as a weapon swing (matrix audit
+# 2026-07-17, finding #3). Their consumable damage model is phase-D backlog
+# (Goods -> Bullet -> AtkParam chain, same shape as spells).
+NON_WEAPON_ACTIONS = ("throwing_knife", "throwing_pot", "perfume",
+                      "roar_breath", "glintstone_stones")
+
 #: every declarable action class (for CLI validation)
 ACTION_CLASSES = sorted(set(SUBCATEGORY_ACTIONS.values())
-                        | set(STATEINFO_ACTIONS.values()) | set(SPELL_UMBRELLAS))
+                        | set(STATEINFO_ACTIONS.values()) | set(SPELL_UMBRELLAS)
+                        | set(SOURCE_ACTIONS))
 
 #: an effect with no action gate applies to every action
 ANY_ACTION = "*"
